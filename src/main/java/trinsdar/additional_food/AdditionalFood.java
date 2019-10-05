@@ -12,9 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(value = AdditionalFood.MODID)
 public class AdditionalFood {
-    public static final String MODID = "gtc_expansion";
-    public static final String MODNAME = "GregTech Classic Expansion";
-    public static final String MODVERSION = "@VERSION@";
+    public static final String MODID = "additional_food";
 
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();

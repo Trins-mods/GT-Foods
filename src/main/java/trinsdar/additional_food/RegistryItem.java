@@ -5,13 +5,14 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import net.minecraftforge.registries.ObjectHolder;
 import trinsdar.additional_food.items.ItemFood;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@ObjectHolder(AdditionalFood.MODID)
+@Mod.EventBusSubscriber(modid = AdditionalFood.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RegistryItem {
     private static List<Item> toRegister = new ArrayList<>();
     public static final ItemFood burgerBun = registerItem(new ItemFood("burger_bun",1, 1.0F));
