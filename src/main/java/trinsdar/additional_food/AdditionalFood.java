@@ -20,7 +20,6 @@ public class AdditionalFood {
 
     public AdditionalFood() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -29,20 +28,5 @@ public class AdditionalFood {
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
-    }
-
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-        // some example code to dispatch IMC to another mod
-    }
-
-    private void processIMC(final InterModProcessEvent event)
-    {
-        // some example code to receive and process InterModComms from other mods
-    }
-
-    private void doClientStuff(final FMLClientSetupEvent event)
-    {
-        // do something that can only be done on the client
     }
 }
