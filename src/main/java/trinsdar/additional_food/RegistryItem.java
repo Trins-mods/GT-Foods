@@ -67,6 +67,8 @@ public class RegistryItem {
     public static final ItemFood cookedRibs = registerFoodItem("cooked_ribs", 10, 1.6F);
     public static final ItemFood rawRibEyeSteak = registerFoodItem("raw_rib_eye_steak", 3, 0.6F);
     public static final ItemFood cookedRibEyeSteak = registerFoodItem("cooked_rib_eye_steak", 10, 1.6F);
+    public static final ItemFood rawDogmeat = registerFoodItem("raw_dogmeat", 2, 0.6F);
+    public static final ItemFood cookedDogmeat = registerFoodItem("cooked_dogmeat", 8, 1.6F);
     public static final ItemFood rawHorsemeat = registerFoodItem("raw_horsemeat", 2, 0.6F);
     public static final ItemFood cookedHorsemeat = registerFoodItem("cooked_horsemeat", 8, 1.6F);
     public static final ItemFood rawMulemeat = registerFoodItem("raw_mulemeat", 3, 0.8F);
