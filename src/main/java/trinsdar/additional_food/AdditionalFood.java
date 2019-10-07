@@ -28,5 +28,6 @@ public class AdditionalFood {
     private void setup(final FMLCommonSetupEvent event)
     {
         // some preinit code
+        //JsonMaker.initModels();
     }
 }
