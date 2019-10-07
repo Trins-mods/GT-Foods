@@ -1,11 +1,15 @@
 package trinsdar.additional_food;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockNamedItem;
+import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import net.minecraftforge.registries.ObjectHolder;
+import trinsdar.additional_food.items.ItemBerry;
 import trinsdar.additional_food.items.ItemFood;
 
 import java.util.ArrayList;
@@ -39,16 +43,16 @@ public class RegistryItem {
     public static final ItemFood bananaSlice = registerFoodItem("banana_slice",0, 0.15F);
     public static final ItemFood pomegranate = registerFoodItem("pomegranate", 1, 0.6F);
     public static final ItemFood pomeraisins =registerFoodItem("pomeraisins", 2, 0.6F);
-    public static final ItemFood blueberry = registerFoodItem("blueberry", 1, 0.6F);
-    public static final ItemFood gooseberry = registerFoodItem("gooseberry", 1, 0.6F);
+    public static final ItemBerry blueberry = registerBerry(RegistryBlock.blueberryBush,"blueberry", 1, 0.6F);
+    public static final ItemBerry gooseberry = registerBerry(RegistryBlock.gooseberryBush, "gooseberry", 1, 0.6F);
     public static final ItemFood candleberry = registerFoodItem("candleberry", 1, 0.6F);
     public static final ItemFood cranberry = registerFoodItem("cranberry", 1, 0.6F);
     public static final ItemFood blackCurrants = registerFoodItem("black_currants", 1, 0.6F);
     public static final ItemFood redCurrants = registerFoodItem("red_currants", 1, 0.6F);
     public static final ItemFood whiteCurrants = registerFoodItem("white_currants", 1, 0.6F);
-    public static final ItemFood blackberry = registerFoodItem("blackberry", 1, 0.6F);
-    public static final ItemFood raspberry = registerFoodItem("raspberry", 1, 0.6F);
-    public static final ItemFood strawberry = registerFoodItem("strawberry", 1, 0.6F);
+    public static final ItemBerry blackberry = registerBerry(RegistryBlock.blackberryBush,"blackberry", 1, 0.6F);
+    public static final ItemBerry raspberry = registerBerry(RegistryBlock.raspberryBush,"raspberry", 1, 0.6F);
+    public static final ItemBerry strawberry = registerBerry(RegistryBlock.strawberryBush,"strawberry", 1, 0.6F);
     public static final ItemFood appleSlice = registerFoodItem("apple_slice", 1, 0.3F);
     public static final ItemFood peanut = registerFoodItem("peanut", 2, 0.3F);
     public static final ItemFood hazelnut = registerFoodItem("hazelnut", 2, 0.3F);
@@ -118,6 +122,10 @@ public class RegistryItem {
 
     static ItemFood registerFoodItem(String id, int hunger, float saturation){
         return registerItem(new ItemFood(id, hunger, saturation));
+    }
+
+    static ItemBerry registerBerry(Block block, String id, int hunger, float saturation){
+        return registerItem(new ItemBerry(block, id, hunger, saturation));
     }
 
     static <T extends Item> T registerItem(T item) {
