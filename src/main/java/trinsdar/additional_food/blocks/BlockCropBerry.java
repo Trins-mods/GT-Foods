@@ -21,10 +21,9 @@ import trinsdar.additional_food.AdditionalFood;
 
 public class BlockCropBerry extends SweetBerryBushBlock {
     Item berry;
-    public BlockCropBerry(String name, Item berry) {
+    public BlockCropBerry(String berry) {
         super(Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().sound(SoundType.SWEET_BERRY_BUSH));
-        this.berry = berry;
-        this.setRegistryName(new ResourceLocation(AdditionalFood.MODID, name.toLowerCase()));
+        this.berry = Items.SWEET_BERRIES;
     }
 
     @Override

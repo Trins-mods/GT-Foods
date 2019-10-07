@@ -1,10 +1,7 @@
 package trinsdar.additional_food;
 
-import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
 import net.minecraft.item.Item;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -19,7 +16,7 @@ public class JsonMaker {
             writerLang.beginObject();
             writerLang.setIndent("  ");
             writerLang.name("itemGroup.additional_food").value("Additional Food");
-            for(Item item : RegistryItem.getToRegister()){
+            for(Item item : Registry.getToRegister()){
                 try {
                     String name = item.getRegistryName().toString().replaceAll("additional_food:", "");
                     String capitalizedName = capitilization(name);
