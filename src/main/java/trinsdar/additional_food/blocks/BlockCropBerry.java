@@ -17,13 +17,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.registries.ForgeRegistries;
 import trinsdar.additional_food.AdditionalFood;
 
 public class BlockCropBerry extends SweetBerryBushBlock {
     Item berry;
     public BlockCropBerry(String berry) {
         super(Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().sound(SoundType.SWEET_BERRY_BUSH));
-        this.berry = Items.SWEET_BERRIES;
+        this.berry = ForgeRegistries.ITEMS.getValue(new ResourceLocation(AdditionalFood.MODID, berry));
     }
 
     @Override

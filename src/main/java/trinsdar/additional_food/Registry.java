@@ -18,7 +18,6 @@ import trinsdar.additional_food.items.ItemFood;
 import java.util.ArrayList;
 import java.util.List;
 
-@ObjectHolder(AdditionalFood.MODID)
 @Mod.EventBusSubscriber(modid = AdditionalFood.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Registry {
     private static List<Item> toRegister = new ArrayList<>();
@@ -38,7 +37,6 @@ public class Registry {
     public static final RegistryObject<Item> BLACKBERRY = ITEMS.register("blackberry", () -> registerBerry(BLACKBERRY_BUSH.get(), 1, 0.6F));
     public static final RegistryObject<Item> RASPBERRY = ITEMS.register("raspberry", () -> registerBerry(RASPBERRY_BUSH.get(), 1, 0.6F));
     public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry", () -> registerBerry(STRAWBERRY_BUSH.get(), 1, 0.6F));
-
 
     public static final ItemFood LEMON = registerFoodItem("lemon", 1, 0.6F);
     public static final ItemFood LEMON_SLICE = registerFoodItem("lemon_slice", 0, 0.15F);
