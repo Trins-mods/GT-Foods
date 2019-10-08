@@ -12,7 +12,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ObjectHolder;
+import org.lwjgl.system.CallbackI;
 import trinsdar.additional_food.blocks.BlockCropBerry;
+import trinsdar.additional_food.blocks.BlockCropWaterlogged;
 import trinsdar.additional_food.items.ItemFood;
 
 import java.util.ArrayList;
@@ -31,12 +33,14 @@ public class Registry {
     public static final RegistryObject<Block> BLACKBERRY_BUSH = BLOCKS.register("blackberry_bush", () -> registerBlock(new BlockCropBerry("blackberry")));
     public static final RegistryObject<Block> RASPBERRY_BUSH = BLOCKS.register("raspberry_bush", () -> registerBlock(new BlockCropBerry("raspberry")));
     public static final RegistryObject<Block> STRAWBERRY_BUSH = BLOCKS.register("strawberry_bush", () -> registerBlock(new BlockCropBerry("strawberry")));
+    public static final RegistryObject<Block> CRANBERRY_CROP = BLOCKS.register("cranberry_crop", () -> registerBlock(new BlockCropWaterlogged()));
 
-    public static final RegistryObject<Item> BLUEBERRY = ITEMS.register("blueberry", () -> registerBerry(BLUEBERRY_BUSH.get(), 1, 0.6F));
-    public static final RegistryObject<Item> GOOSEBERRY = ITEMS.register("gooseberry", () -> registerBerry(GOOSEBERRY_BUSH.get(),  1, 0.6F));
-    public static final RegistryObject<Item> BLACKBERRY = ITEMS.register("blackberry", () -> registerBerry(BLACKBERRY_BUSH.get(), 1, 0.6F));
-    public static final RegistryObject<Item> RASPBERRY = ITEMS.register("raspberry", () -> registerBerry(RASPBERRY_BUSH.get(), 1, 0.6F));
-    public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry", () -> registerBerry(STRAWBERRY_BUSH.get(), 1, 0.6F));
+    public static final RegistryObject<Item> BLUEBERRY = ITEMS.register("blueberry", () -> registerBerry(BLUEBERRY_BUSH.get(), 2, 0.6F));
+    public static final RegistryObject<Item> GOOSEBERRY = ITEMS.register("gooseberry", () -> registerBerry(GOOSEBERRY_BUSH.get(),  2, 0.6F));
+    public static final RegistryObject<Item> BLACKBERRY = ITEMS.register("blackberry", () -> registerBerry(BLACKBERRY_BUSH.get(), 2, 0.6F));
+    public static final RegistryObject<Item> RASPBERRY = ITEMS.register("raspberry", () -> registerBerry(RASPBERRY_BUSH.get(), 2, 0.6F));
+    public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry", () -> registerBerry(STRAWBERRY_BUSH.get(), 2, 0.6F));
+    public static final RegistryObject<Item> CRANBERRY = ITEMS.register("cranberry", () -> registerBerry(CRANBERRY_CROP.get(), 2, 0.6F));
 
     public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> registerFoodItem( 1, 0.6F));
     public static final RegistryObject<Item> LEMON_SLICE = ITEMS.register("lemon_slice", () -> registerFoodItem( 0, 0.15F));
@@ -63,7 +67,6 @@ public class Registry {
     public static final RegistryObject<Item> POMEGRANATE = ITEMS.register("pomegranate", () -> registerFoodItem( 1, 0.6F));
     public static final RegistryObject<Item> POMERAISINS =ITEMS.register("pomeraisins", () -> registerFoodItem( 2, 0.6F));
     public static final RegistryObject<Item> CANDLEBERRY = ITEMS.register("candleberry", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> CRANBERRY = ITEMS.register("cranberry", () -> registerFoodItem( 1, 0.6F));
     public static final RegistryObject<Item> BLACK_CURRANTS = ITEMS.register("black_currants", () -> registerFoodItem( 1, 0.6F));
     public static final RegistryObject<Item> RED_CURRANTS = ITEMS.register("red_currants", () -> registerFoodItem( 1, 0.6F));
     public static final RegistryObject<Item> WHITE_CURRANTS = ITEMS.register("white_currants", () -> registerFoodItem( 1, 0.6F));
