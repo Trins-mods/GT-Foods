@@ -16,7 +16,7 @@ public class JsonMaker {
             writerLang.beginObject();
             writerLang.setIndent("  ");
             writerLang.name("itemGroup.additional_food").value("Additional Food");
-            for(Item item : Registry.getToRegister()){
+            for(Item item : Registry.getItemIdList()){
                 try {
                     String name = item.getRegistryName().toString().replaceAll("additional_food:", "");
                     String capitalizedName = capitilization(name);
