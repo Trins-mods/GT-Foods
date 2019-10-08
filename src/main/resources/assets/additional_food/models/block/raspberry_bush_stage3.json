@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "additional_food:block/raspberry_bush_stage3"
+    }
+}

@@ -1,5 +1,10 @@
 {
   "itemGroup.additional_food": "Additional Food",
+  "block.additional_food.blackberry_bush": "Blackberry Bush",
+  "block.additional_food.blueberry_bush": "Blueberry Bush",
+  "block.additional_food.gooseberry_bush": "Gooseberry Bush",
+  "block.additional_food.raspberry_bush": "Raspberry Bush",
+  "block.additional_food.strawberry_bush": "Strawberry Bush",
   "item.additional_food.lemon": "Lemon",
   "item.additional_food.lemon_slice": "Lemon Slice",
   "item.additional_food.tomato": "Tomato",
