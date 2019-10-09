@@ -12,6 +12,7 @@ import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.Direction;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -37,7 +38,6 @@ public class BlockCropWaterlogged extends CropsBlock implements ILiquidContainer
         return state.getBlock() == Blocks.DIRT && stateWater.getFluid() == Fluids.WATER && stateAir.getBlock() == Blocks.AIR;
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     protected IItemProvider getSeedsItem()
     {
@@ -46,14 +46,23 @@ public class BlockCropWaterlogged extends CropsBlock implements ILiquidContainer
 
     @Override
     public int getMaxAge() {
-        return 4;
+        return 3;
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state)
     {
         return new ItemStack(this.getSeedsItem());
+    }
+
+    @Override
+    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        BlockState blockstate = super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+        if (!blockstate.isAir()) {
+            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+        }
+
+        return blockstate;
     }
 
     @Override
@@ -68,7 +77,7 @@ public class BlockCropWaterlogged extends CropsBlock implements ILiquidContainer
 
     @Override
     public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return !this.isMaxAge(state);
+        return !this.isMaxAge(state) && worldIn.getBlockState(pos.up()).getBlock() == Blocks.AIR;
     }
 
     @Override
