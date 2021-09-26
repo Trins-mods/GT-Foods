@@ -38,7 +38,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = "${mod_version}"
-group = 'trinsdar.gt-foods' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'trinsdar.gt_foods' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'GT Foods'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -79,7 +79,7 @@ minecraft {
             //arg "-mixin.config=gtsp.mixins.json"
 
             mods {
-                gt-foods {
+                gt_foods {
                     source sourceSets.main
                 }
             }
@@ -99,7 +99,7 @@ minecraft {
             //arg "-mixin.config=gtsp.mixins.json"
 
             mods {
-                gt-foods {
+                gt_foods {
                     source sourceSets.main
                 }
             }
@@ -117,10 +117,10 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
             //arg "-mixin.config=gtsp.mixins.json"
-            args '--mod', 'gt-foods', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
+            args '--mod', 'gt_foods', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
 
             mods {
-                gt-foods {
+                gt_foods {
                     source sourceSets.main
                 }
             }
@@ -135,7 +135,6 @@ dependencies {
 
     runtimeOnly fg.deobf("curse.maven:world_stripper-250603:3142092")
     runtimeOnly fg.deobf("curse.maven:world_edit-225608:3172951")
-    implementation fg.deobf("curse.maven:spartan_weaponry-278141:${spartan_weaponry_file}")
     runtimeOnly fg.deobf("curse.maven:top-245211:${top_file}")
 
     runtimeOnly fg.deobf("com.github.Gregtech-Intergalactical:AntimatterAPI:${antimatter_version}")
