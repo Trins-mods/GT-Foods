@@ -1,158 +1,149 @@
-package trinsdar.additional_food;
+package trinsdar.gt_foods;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ObjectHolder;
-import org.lwjgl.system.CallbackI;
-import trinsdar.additional_food.blocks.BlockCropBerry;
-import trinsdar.additional_food.blocks.BlockCropWaterlogged;
-import trinsdar.additional_food.items.ItemFood;
+import net.minecraft.util.ResourceLocation;
+import trinsdar.gt_foods.blocks.BlockCropBerry;
+import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = AdditionalFood.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Registry {
-    private static List<Item> itemIdList = new ArrayList<>();
-    private static List<Block> blockIdList = new ArrayList<>();
+    private static final Map<ResourceLocation, Item> itemIdList = new LinkedHashMap<>();
+    private static final Map<ResourceLocation, Block> blockIdList = new LinkedHashMap<>();
 
-    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, AdditionalFood.MODID);
-    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, AdditionalFood.MODID);
+    public static final Block BLUEBERRY_BUSH = registerBlock("blueberry_bush", new BlockCropBerry());
+    public static final Block GOOSEBERRY_BUSH = registerBlock("gooseberry_bush", new BlockCropBerry());
+    public static final Block BLACKBERRY_BUSH = registerBlock("blackberry_bush", new BlockCropBerry());
+    public static final Block RASPBERRY_BUSH = registerBlock("rasberry_bush", new BlockCropBerry());
+    public static final Block STRAWBERRY_BUSH = registerBlock("strawbery_bush", new BlockCropBerry());
+    public static final Block CRANBERRY_CROP = registerBlock("cranberry_crop", new BlockCropWaterlogged());
 
-    public static final RegistryObject<Block> BLUEBERRY_BUSH = BLOCKS.register("blueberry_bush", () -> registerBlock(new BlockCropBerry("blueberry")));
-    public static final RegistryObject<Block> GOOSEBERRY_BUSH = BLOCKS.register("gooseberry_bush", () -> registerBlock(new BlockCropBerry("gooseberry")));
-    public static final RegistryObject<Block> BLACKBERRY_BUSH = BLOCKS.register("blackberry_bush", () -> registerBlock(new BlockCropBerry("blackberry")));
-    public static final RegistryObject<Block> RASPBERRY_BUSH = BLOCKS.register("raspberry_bush", () -> registerBlock(new BlockCropBerry("raspberry")));
-    public static final RegistryObject<Block> STRAWBERRY_BUSH = BLOCKS.register("strawberry_bush", () -> registerBlock(new BlockCropBerry("strawberry")));
-    public static final RegistryObject<Block> CRANBERRY_CROP = BLOCKS.register("cranberry_crop", () -> registerBlock(new BlockCropWaterlogged()));
+    public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.6F);
+    public static final Item GOOSEBERRY = registerBerry("gooseberry", GOOSEBERRY_BUSH, 2, 0.6F);
+    public static final Item BLACKBERRY = registerBerry("blackberry", BLACKBERRY_BUSH, 2, 0.6F);
+    public static final Item RASPBERRY = registerBerry("raspberry", RASPBERRY_BUSH, 2, 0.6F);
+    public static final Item STRAWBERRY = registerBerry("strawberry", STRAWBERRY_BUSH, 2, 0.6F);
+    public static final Item CRANBERRY = registerBerry("cranberry", CRANBERRY_CROP, 2, 0.6F);
 
-    public static final RegistryObject<Item> BLUEBERRY = ITEMS.register("blueberry", () -> registerBerry(BLUEBERRY_BUSH.get(), 2, 0.6F));
-    public static final RegistryObject<Item> GOOSEBERRY = ITEMS.register("gooseberry", () -> registerBerry(GOOSEBERRY_BUSH.get(),  2, 0.6F));
-    public static final RegistryObject<Item> BLACKBERRY = ITEMS.register("blackberry", () -> registerBerry(BLACKBERRY_BUSH.get(), 2, 0.6F));
-    public static final RegistryObject<Item> RASPBERRY = ITEMS.register("raspberry", () -> registerBerry(RASPBERRY_BUSH.get(), 2, 0.6F));
-    public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry", () -> registerBerry(STRAWBERRY_BUSH.get(), 2, 0.6F));
-    public static final RegistryObject<Item> CRANBERRY = ITEMS.register("cranberry", () -> registerBerry(CRANBERRY_CROP.get(), 2, 0.6F));
+    public static final Item LEMON = registerFoodItem("lemon", 1, 0.6F);
+    public static final Item LEMON_SLICE = registerFoodItem("lemon_slice", 0, 0.15F);
+    public static final Item TOMATO = registerFoodItem("tomato", 1, 0.6F);
+    public static final Item TOMATO_SLICE = registerFoodItem("tomato_slice", 0, 0.15F);
+    public static final Item MAX_TOMATO = registerFoodItem("max_tomato", 9, 1.0F);
+    public static final Item ONION = registerFoodItem("onion", 1, 1.2F);
+    public static final Item ONION_SLICE = registerFoodItem("onion_slice", 0, 0.3F);
+    public static final Item CUCUMBER = registerFoodItem("cucumber", 1, 1.2F);
+    public static final Item CUCUMBER_SLICE = registerFoodItem("cucumber_slice", 0, 0.3F);
+    public static final Item CHILI_PEPPER = registerFoodItem("chili_pepper", 1, 1.2F);
+    public static final Item GREEN_GRAPES = registerFoodItem("green_grapes", 1, 0.6F);
+    public static final Item GREEN_RAISINS = registerFoodItem("green_raisins", 2, 0.6F);
+    public static final Item WHITE_GRAPES = registerFoodItem("white_grapes", 1, 0.6F);
+    public static final Item WHITE_RAISINS = registerFoodItem("white_raisins", 2, 0.6F);
+    public static final Item RED_GRAPES = registerFoodItem("red_grapes", 1, 0.6F);
+    public static final Item RED_RAISINS = registerFoodItem("red_raisins", 2, 0.6F);
+    public static final Item PURPLE_GRAPES = registerFoodItem("purple_grapes", 1, 0.6F);
+    public static final Item PURPLE_RAISINS = registerFoodItem("purple_raisins", 2, 0.6F);
+    public static final Item CHOCOLATE_RAISINS = registerFoodItem("chocolate_raisins", 3, 1.2F);
+    public static final Item CARROT_SLICE = registerFoodItem("carrot_slice", 0, 0.3F);
+    public static final Item BANANA = registerFoodItem("banana", 1, 0.6F);
+    public static final Item BANANA_SLICE = registerFoodItem("banana_slice", 0, 0.15F);
+    public static final Item POMEGRANATE = registerFoodItem("pomegranate", 1, 0.6F);
+    public static final Item POMERAISINS = registerFoodItem("pomeraisins", 2, 0.6F);
+    public static final Item CANDLEBERRY = registerFoodItem("candleberry", 1, 0.6F);
+    public static final Item BLACK_CURRANTS = registerFoodItem("black_currants", 1, 0.6F);
+    public static final Item RED_CURRANTS = registerFoodItem("red_currants", 1, 0.6F);
+    public static final Item WHITE_CURRANTS = registerFoodItem("white_currants", 1, 0.6F);
+    public static final Item APPLE_SLICE = registerFoodItem("apple_slice", 1, 0.3F);
+    public static final Item PEANUT = registerFoodItem("peanut", 2, 0.3F);
+    public static final Item HAZELNUT = registerFoodItem("hazelnut", 2, 0.3F);
+    public static final Item ANANAS = registerFoodItem("ananas", 4, 0.3F);
+    public static final Item ANANAS_SLICE = registerFoodItem("ananas_slice", 1, 0.3F);
+    public static final Item CINNAMON_BARK = registerFoodItem("cinnamon_bark", 2, 0.3F);
+    public static final Item CHEESE = registerFoodItem("cheese", 2, 1.2F);
+    public static final Item CHEESE_SLICE = registerFoodItem("cheese_slice", 1, 0.6F);
+    public static final Item RAW_HAM = registerFoodItem("raw_ham", 3, 0.6F);
+    public static final Item COOKED_HAM = registerFoodItem("cooked_ham", 10, 1.6F);
+    public static final Item RAW_HAM_SLICE = registerFoodItem("raw_ham_slice", 1, 0.6F);
+    public static final Item COOKED_HAM_SLICE = registerFoodItem("cooked_ham_slice", 3, 1.6F);
+    public static final Item RAW_BACON = registerFoodItem("raw_bacon", 1, 0.9F);
+    public static final Item COOKED_BACON = registerFoodItem("cooked_bacon", 3, 1.8F);
+    public static final Item RAW_RIBS = registerFoodItem("raw_ribs", 3, 0.6F);
+    public static final Item COOKED_RIBS = registerFoodItem("cooked_ribs", 10, 1.6F);
+    public static final Item RAW_RIB_EYE_STEAK = registerFoodItem("raw_rib_eye_steak", 3, 0.6F);
+    public static final Item COOKED_RIB_EYE_STEAK = registerFoodItem("cooked_rib_eye_steak", 10, 1.6F);
+    public static final Item RAW_DOGMEAT = registerFoodItem("raw_dogmeat", 2, 0.6F);
+    public static final Item COOKED_DOGMEAT = registerFoodItem("cooked_dogmeat", 8, 1.6F);
+    public static final Item RAW_HORSEMEAT = registerFoodItem("raw_horsemeat", 2, 0.6F);
+    public static final Item COOKED_HORSEMEAT = registerFoodItem("cooked_horsemeat", 8, 1.6F);
+    public static final Item RAW_MULEMEAT = registerFoodItem("raw_mulemeat", 3, 0.8F);
+    public static final Item COOKED_MULEMEAT = registerFoodItem("cooked_mulemeat", 10, 1.8F);
+    public static final Item RAW_DONKEYMEAT = registerFoodItem("raw_donkeymeat", 2, 0.6F);
+    public static final Item COOKED_DONKEYMEAT = registerFoodItem("cooked_donkeymeat", 8, 1.6F);
+    public static final Item RAISIN_COOKIE = registerFoodItem("raisin_cookie", 2, 0.2F);
+    public static final Item CHOCOLATE_RAISIN_COOKIE = registerFoodItem("chocolate_raisin_cookie", 2, 0.2F);
+    public static final Item MARGHERITA_PIZZA = registerFoodItem("margherita_pizza", 6, 1.2F);
+    public static final Item MINCEMEAT_PIZZA = registerFoodItem("mincemeat_pizza", 7, 1.2F);
+    public static final Item VEGGIE_PIZZA = registerFoodItem("veggie_pizza", 5, 1.2F);
+    public static final Item HAWAIIN_PIZZA = registerFoodItem("hawaiin_pizza", 7, 1.2F);
+    public static final Item BUN = registerFoodItem("bun", 2, 1.2F);
+    public static final Item SLICED_BUN = registerFoodItem("sliced_bun", 1, 1.2F);
+    public static final Item BUN_SLICES = registerFoodItem("bun_slices", 2, 1.2F);
+    public static final Item VEGGIE_BURGER = registerFoodItem("veggie_burger", 4, 1.2F);
+    public static final Item CHEESE_BURGER = registerFoodItem("cheese_burger", 4, 1.4F);
+    public static final Item HAMBURGER = registerFoodItem("hamburger", 6, 1.6F);
+    public static final Item TOFU_BURGER = registerFoodItem("tofu_burger", 4, 1.4F);
+    public static final Item SOYLENT_BURGER = registerFoodItem("soylent_burger", 5, 1.4F);
+    public static final Item FISH_BURGER = registerFoodItem("fish_burger", 6, 1.6F);
+    public static final Item SLICED_BREAD = registerFoodItem("sliced_bread", 2, 1.2F);
+    public static final Item BREAD_SLICES = registerFoodItem("bread_slices", 5, 1.2F);
+    public static final Item VEGGIE_SANDWICH = registerFoodItem("veggie_sandwich", 7, 1.2F);
+    public static final Item CHEESE_SANDWICH = registerFoodItem("cheese_sandwich", 7, 1.4F);
+    public static final Item BACON_SANDWICH = registerFoodItem("bacon_sandwich", 10, 1.8F);
+    public static final Item STEAK_SANDWICH = registerFoodItem("steak_sandwich", 10, 1.6F);
+    public static final Item BAGUETTE = registerFoodItem("baguette", 8, 1.2F);
+    public static final Item SLICED_BAGUETTE = registerFoodItem("sliced_baguette", 4, 1.2F);
+    public static final Item BAGUETTE_SLICES = registerFoodItem("baguette_slices", 8, 1.2F);
+    public static final Item LARGE_VEGGIE_SANDWICH = registerFoodItem("large_veggie_sandwich", 15, 2.2F);
+    public static final Item LARGE_CHEESE_SANDWICH = registerFoodItem("large_cheese_sandwich", 15, 2.4F);
+    public static final Item LARGE_BACON_SANDWICH = registerFoodItem("large_bacon_sandwich", 20, 2.8F);
+    public static final Item LARGE_STEAK_SANDWICH = registerFoodItem("large_steak_sandwich", 20, 2.6F);
+    public static final Item RAW_FRIES = registerFoodItem("raw_fries", 1, 1.2F);
+    public static final Item FRIES = registerFoodItem("fries", 7, 1.2F);
+    public static final Item RAW_POTATO_CHIPS = registerFoodItem("raw_potato_chips", 1, 1.2F);
+    public static final Item POTATO_CHIPS = registerFoodItem("potato_chips", 7, 1.2F);
+    public static final Item CHILI_CHIPS = registerFoodItem("chili_chips", 7, 1.2F);
 
-    public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> LEMON_SLICE = ITEMS.register("lemon_slice", () -> registerFoodItem( 0, 0.15F));
-    public static final RegistryObject<Item> TOMATO = ITEMS.register("tomato", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> TOMATO_SLICE = ITEMS.register("tomato_slice", () -> registerFoodItem( 0, 0.15F));
-    public static final RegistryObject<Item> MAX_TOMATO = ITEMS.register("max_tomato", () -> registerFoodItem( 9, 1.0F));
-    public static final RegistryObject<Item> ONION = ITEMS.register("onion", () -> registerFoodItem( 1, 1.2F));
-    public static final RegistryObject<Item> ONION_SLICE = ITEMS.register("onion_slice", () -> registerFoodItem( 0, 0.3F));
-    public static final RegistryObject<Item> CUCUMBER = ITEMS.register("cucumber", () -> registerFoodItem( 1, 1.2F));
-    public static final RegistryObject<Item> CUCUMBER_SLICE = ITEMS.register("cucumber_slice", () -> registerFoodItem( 0, 0.3F));
-    public static final RegistryObject<Item> CHILI_PEPPER = ITEMS.register("chili_pepper", () -> registerFoodItem( 1, 1.2F));
-    public static final RegistryObject<Item> GREEN_GRAPES = ITEMS.register("green_grapes", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> GREEN_RAISINS = ITEMS.register("green_raisins", () -> registerFoodItem( 2, 0.6F));
-    public static final RegistryObject<Item> WHITE_GRAPES = ITEMS.register("white_grapes", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> WHITE_RAISINS = ITEMS.register("white_raisins", () -> registerFoodItem( 2, 0.6F));
-    public static final RegistryObject<Item> RED_GRAPES = ITEMS.register("red_grapes", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> RED_RAISINS = ITEMS.register("red_raisins", () -> registerFoodItem( 2, 0.6F));
-    public static final RegistryObject<Item> PURPLE_GRAPES = ITEMS.register("purple_grapes", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> PURPLE_RAISINS = ITEMS.register("purple_raisins", () -> registerFoodItem( 2, 0.6F));
-    public static final RegistryObject<Item> CHOCOLATE_RAISINS = ITEMS.register("chocolate_raisins", () -> registerFoodItem( 3, 1.2F));
-    public static final RegistryObject<Item> CARROT_SLICE = ITEMS.register("carrot_slice", () -> registerFoodItem( 0, 0.3F));
-    public static final RegistryObject<Item> BANANA = ITEMS.register("banana", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> BANANA_SLICE = ITEMS.register("banana_slice", () -> registerFoodItem(0, 0.15F));
-    public static final RegistryObject<Item> POMEGRANATE = ITEMS.register("pomegranate", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> POMERAISINS =ITEMS.register("pomeraisins", () -> registerFoodItem( 2, 0.6F));
-    public static final RegistryObject<Item> CANDLEBERRY = ITEMS.register("candleberry", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> BLACK_CURRANTS = ITEMS.register("black_currants", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> RED_CURRANTS = ITEMS.register("red_currants", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> WHITE_CURRANTS = ITEMS.register("white_currants", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> APPLE_SLICE = ITEMS.register("apple_slice", () -> registerFoodItem( 1, 0.3F));
-    public static final RegistryObject<Item> PEANUT = ITEMS.register("peanut", () -> registerFoodItem( 2, 0.3F));
-    public static final RegistryObject<Item> HAZELNUT = ITEMS.register("hazelnut", () -> registerFoodItem( 2, 0.3F));
-    public static final RegistryObject<Item> ANANAS = ITEMS.register("ananas", () -> registerFoodItem( 4, 0.3F));
-    public static final RegistryObject<Item> ANANAS_SLICE = ITEMS.register("ananas_slice", () -> registerFoodItem( 1, 0.3F));
-    public static final RegistryObject<Item> CINNAMON_BARK = ITEMS.register("cinnamon_bark", () -> registerFoodItem( 2, 0.3F));
-    public static final RegistryObject<Item> CHEESE = ITEMS.register("cheese", () -> registerFoodItem( 2, 1.2F));
-    public static final RegistryObject<Item> CHEESE_SLICE = ITEMS.register("cheese_slice", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> RAW_HAM = ITEMS.register("raw_ham", () -> registerFoodItem( 3, 0.6F));
-    public static final RegistryObject<Item> COOKED_HAM = ITEMS.register("cooked_ham", () -> registerFoodItem( 10, 1.6F));
-    public static final RegistryObject<Item> RAW_HAM_SLICE = ITEMS.register("raw_ham_slice", () -> registerFoodItem( 1, 0.6F));
-    public static final RegistryObject<Item> COOKED_HAM_SLICE = ITEMS.register("cooked_ham_slice", () -> registerFoodItem( 3, 1.6F));
-    public static final RegistryObject<Item> RAW_BACON = ITEMS.register("raw_bacon", () -> registerFoodItem( 1, 0.9F));
-    public static final RegistryObject<Item> COOKED_BACON = ITEMS.register("cooked_bacon", () -> registerFoodItem( 3, 1.8F));
-    public static final RegistryObject<Item> RAW_RIBS = ITEMS.register("raw_ribs", () -> registerFoodItem( 3, 0.6F));
-    public static final RegistryObject<Item> COOKED_RIBS = ITEMS.register("cooked_ribs", () -> registerFoodItem( 10, 1.6F));
-    public static final RegistryObject<Item> RAW_RIB_EYE_STEAK = ITEMS.register("raw_rib_eye_steak", () -> registerFoodItem( 3, 0.6F));
-    public static final RegistryObject<Item> COOKED_RIB_EYE_STEAK = ITEMS.register("cooked_rib_eye_steak", () -> registerFoodItem( 10, 1.6F));
-    public static final RegistryObject<Item> RAW_DOGMEAT = ITEMS.register("raw_dogmeat", () -> registerFoodItem( 2, 0.6F));
-    public static final RegistryObject<Item> COOKED_DOGMEAT = ITEMS.register("cooked_dogmeat", () -> registerFoodItem( 8, 1.6F));
-    public static final RegistryObject<Item> RAW_HORSEMEAT = ITEMS.register("raw_horsemeat", () -> registerFoodItem( 2, 0.6F));
-    public static final RegistryObject<Item> COOKED_HORSEMEAT = ITEMS.register("cooked_horsemeat", () -> registerFoodItem( 8, 1.6F));
-    public static final RegistryObject<Item> RAW_MULEMEAT = ITEMS.register("raw_mulemeat", () -> registerFoodItem( 3, 0.8F));
-    public static final RegistryObject<Item> COOKED_MULEMEAT = ITEMS.register("cooked_mulemeat", () -> registerFoodItem( 10, 1.8F));
-    public static final RegistryObject<Item> RAW_DONKEYMEAT = ITEMS.register("raw_donkeymeat", () -> registerFoodItem( 2, 0.6F));
-    public static final RegistryObject<Item> COOKED_DONKEYMEAT = ITEMS.register("cooked_donkeymeat", () -> registerFoodItem( 8, 1.6F));
-    public static final RegistryObject<Item> RAISIN_COOKIE = ITEMS.register("raisin_cookie", () -> registerFoodItem( 2, 0.2F));
-    public static final RegistryObject<Item> CHOCOLATE_RAISIN_COOKIE = ITEMS.register("chocolate_raisin_cookie", () -> registerFoodItem( 2, 0.2F));
-    public static final RegistryObject<Item> MARGHERITA_PIZZA = ITEMS.register("margherita_pizza", () -> registerFoodItem( 6, 1.2F));
-    public static final RegistryObject<Item> MINCEMEAT_PIZZA = ITEMS.register("mincemeat_pizza", () -> registerFoodItem( 7, 1.2F));
-    public static final RegistryObject<Item> VEGGIE_PIZZA = ITEMS.register("veggie_pizza", () -> registerFoodItem( 5, 1.2F));
-    public static final RegistryObject<Item> HAWAIIN_PIZZA = ITEMS.register("hawaiin_pizza", () -> registerFoodItem( 7, 1.2F));
-    public static final RegistryObject<Item> BUN = ITEMS.register("bun", () -> registerFoodItem(2, 1.2F));
-    public static final RegistryObject<Item> SLICED_BUN = ITEMS.register("sliced_bun", () -> registerFoodItem( 1, 1.2F));
-    public static final RegistryObject<Item> BUN_SLICES = ITEMS.register("bun_slices", () -> registerFoodItem( 2, 1.2F));
-    public static final RegistryObject<Item> VEGGIE_BURGER = ITEMS.register("veggie_burger", () -> registerFoodItem( 4, 1.2F));
-    public static final RegistryObject<Item> CHEESE_BURGER = ITEMS.register("cheese_burger", () -> registerFoodItem( 4, 1.4F));
-    public static final RegistryObject<Item> HAMBURGER = ITEMS.register("hamburger", () -> registerFoodItem( 6, 1.6F));
-    public static final RegistryObject<Item> TOFU_BURGER = ITEMS.register("tofu_burger", () -> registerFoodItem( 4, 1.4F));
-    public static final RegistryObject<Item> SOYLENT_BURGER = ITEMS.register("soylent_burger", () -> registerFoodItem( 5, 1.4F));
-    public static final RegistryObject<Item> FISH_BURGER = ITEMS.register("fish_burger", () -> registerFoodItem( 6, 1.6F));
-    public static final RegistryObject<Item> SLICED_BREAD = ITEMS.register("sliced_bread", () -> registerFoodItem( 2, 1.2F));
-    public static final RegistryObject<Item> BREAD_SLICES = ITEMS.register("bread_slices", () -> registerFoodItem( 5, 1.2F));
-    public static final RegistryObject<Item> VEGGIE_SANDWICH = ITEMS.register("veggie_sandwich", () -> registerFoodItem( 7, 1.2F));
-    public static final RegistryObject<Item> CHEESE_SANDWICH = ITEMS.register("cheese_sandwich", () -> registerFoodItem( 7, 1.4F));
-    public static final RegistryObject<Item> BACON_SANDWICH = ITEMS.register("bacon_sandwich", () -> registerFoodItem( 10, 1.8F));
-    public static final RegistryObject<Item> STEAK_SANDWICH = ITEMS.register("steak_sandwich", () -> registerFoodItem( 10, 1.6F));
-    public static final RegistryObject<Item> BAGUETTE = ITEMS.register("baguette", () -> registerFoodItem( 8, 1.2F));
-    public static final RegistryObject<Item> SLICED_BAGUETTE = ITEMS.register("sliced_baguette", () -> registerFoodItem( 4, 1.2F));
-    public static final RegistryObject<Item> BAGUETTE_SLICES = ITEMS.register("baguette_slices", () -> registerFoodItem( 8, 1.2F));
-    public static final RegistryObject<Item> LARGE_VEGGIE_SANDWICH = ITEMS.register("large_veggie_sandwich", () -> registerFoodItem( 15, 2.2F));
-    public static final RegistryObject<Item> LARGE_CHEESE_SANDWICH = ITEMS.register("large_cheese_sandwich", () -> registerFoodItem( 15, 2.4F));
-    public static final RegistryObject<Item> LARGE_BACON_SANDWICH = ITEMS.register("large_bacon_sandwich", () -> registerFoodItem( 20, 2.8F));
-    public static final RegistryObject<Item> LARGE_STEAK_SANDWICH = ITEMS.register("large_steak_sandwich", () -> registerFoodItem( 20, 2.6F));
-    public static final RegistryObject<Item> RAW_FRIES = ITEMS.register("raw_fries", () -> registerFoodItem( 1, 1.2F));
-    public static final RegistryObject<Item> FRIES = ITEMS.register("fries", () -> registerFoodItem( 7, 1.2F));
-    public static final RegistryObject<Item> RAW_POTATO_CHIPS = ITEMS.register("raw_potato_chips", () -> registerFoodItem( 1, 1.2F));
-    public static final RegistryObject<Item> POTATO_CHIPS = ITEMS.register("potato_chips", () -> registerFoodItem( 7, 1.2F));
-    public static final RegistryObject<Item> CHILI_CHIPS = ITEMS.register("chili_chips", () -> registerFoodItem( 7, 1.2F));
-
-    static <T extends Block> T registerBlock(T block) {
-        blockIdList.add(block);
+    static <T extends Block> T registerBlock(String id, T block) {
+        blockIdList.put(new ResourceLocation(GTFoods.MODID, id), block);
         return block;
     }
 
-    static Item registerFoodItem(int hunger, float saturation){
-        return registerItem(new Item(new Item.Properties().group(AdditionalFood.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).build())));
+    static Item registerFoodItem(String id, int hunger, float saturation) {
+        return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).build())));
     }
 
-    static BlockNamedItem registerBerry(Block block, int hunger, float saturation){
-        return registerItem(new BlockNamedItem(block, new Item.Properties().group(AdditionalFood.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).build())));
+    static BlockNamedItem registerBerry(String id, Block block, int hunger, float saturation) {
+        return registerItem(id, new BlockNamedItem(block, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).build())));
     }
 
-    static <T extends Item> T registerItem(T item) {
-        itemIdList.add(item);
+    static <T extends Item> T registerItem(String id, T item) {
+        itemIdList.put(new ResourceLocation(GTFoods.MODID, id), item);
         return item;
     }
 
-    public static List<Item> getItemIdList() {
+    public static void init(){
+
+    }
+
+    public static Map<ResourceLocation, Item> getItemIdList() {
         return itemIdList;
     }
 
-    public static List<Block> getBlockIdList() {
+    public static Map<ResourceLocation, Block> getBlockIdList() {
         return blockIdList;
     }
 }

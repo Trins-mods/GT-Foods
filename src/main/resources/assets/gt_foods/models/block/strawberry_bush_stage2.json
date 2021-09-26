@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "gt_foods:block/strawberry_bush_stage2"
+    }
+}

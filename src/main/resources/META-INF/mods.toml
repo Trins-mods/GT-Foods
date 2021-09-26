@@ -1,24 +1,32 @@
-modLoader="javafml" #mandatory
-loaderVersion="[28,)" #mandatory (28 is current forge version)
-# issueTrackerURL="http://my.issue.tracker/" #optional
-# A list of mods - how many allowed here is determined by the individual mod loader
-[[mods]] #mandatory
-modId="additional_food" #mandatory
-version="${file.jarVersion}" #mandatory
- # A display name for the mod
-displayName="Additional Food" #mandatory\
-# A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL="http://example.com/" #optional
-# A file name (in the root of the mod JAR) containing a logo for display
-logoFile="examplemod.png" #optional
-credits="Thanks for this example mod goes to Java" #optional
+modLoader="javafml"
+license="LGPLv3"
+loaderVersion="[31,)"
+issueTrackerURL="https://github.com/Trinsdar/GT-Foods/issues"
+[[mods]]
+modId="gt_foods"
+version="${version}"
+displayName="GT Foods"
+displayURL="https://github.com/Trinsdar/GT-4-Reimagined"
+credits="Greg for the original foods from gt6" #optional
 authors="Trinsdar" #optional
 description='''
 Adds more food to minecraft, inspired by gt5 and 6 foods.
 '''
-[[dependencies.additional_food]]
+[[dependencies.gt_foods]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36.1.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.gt_foods]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14.4]"
-    ordering="NONE"
+    versionRange="[1.16.5,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.gt_foods]]
+    modId="antimatter"
+    mandatory=false
+    versionRange="[0.0.4,)"
+    ordering="AFTER"
     side="BOTH"
