@@ -18,11 +18,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import trinsdar.gt_foods.Registry;
+import trinsdar.gt_foods.Data;
 
 import javax.annotation.Nullable;
 
-import static net.minecraft.state.properties.BlockStateProperties.HORIZONTAL_FACING;
 import static net.minecraft.state.properties.BlockStateProperties.WATERLOGGED;
 
 public class BlockCropWaterlogged extends CropsBlock implements IWaterLoggable {
@@ -44,7 +43,7 @@ public class BlockCropWaterlogged extends CropsBlock implements IWaterLoggable {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return Registry.CRANBERRY;
+        return Data.CRANBERRY;
     }
 
     @Override
@@ -91,7 +90,7 @@ public class BlockCropWaterlogged extends CropsBlock implements IWaterLoggable {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         FluidState fluidState = context.getWorld().getFluidState(context.getPos());
-        return this.getDefaultState().with(HORIZONTAL_FACING, context.getPlacementHorizontalFacing()).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+        return this.getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
 
     @Override

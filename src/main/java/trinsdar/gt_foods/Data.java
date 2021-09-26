@@ -11,15 +11,15 @@ import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Registry {
+public class Data {
     private static final Map<ResourceLocation, Item> itemIdList = new LinkedHashMap<>();
     private static final Map<ResourceLocation, Block> blockIdList = new LinkedHashMap<>();
 
     public static final Block BLUEBERRY_BUSH = registerBlock("blueberry_bush", new BlockCropBerry());
     public static final Block GOOSEBERRY_BUSH = registerBlock("gooseberry_bush", new BlockCropBerry());
     public static final Block BLACKBERRY_BUSH = registerBlock("blackberry_bush", new BlockCropBerry());
-    public static final Block RASPBERRY_BUSH = registerBlock("rasberry_bush", new BlockCropBerry());
-    public static final Block STRAWBERRY_BUSH = registerBlock("strawbery_bush", new BlockCropBerry());
+    public static final Block RASPBERRY_BUSH = registerBlock("raspberry_bush", new BlockCropBerry());
+    public static final Block STRAWBERRY_BUSH = registerBlock("strawberry_bush", new BlockCropBerry());
     public static final Block CRANBERRY_CROP = registerBlock("cranberry_crop", new BlockCropWaterlogged());
 
     public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.6F);
@@ -60,8 +60,8 @@ public class Registry {
     public static final Item APPLE_SLICE = registerFoodItem("apple_slice", 1, 0.3F);
     public static final Item PEANUT = registerFoodItem("peanut", 2, 0.3F);
     public static final Item HAZELNUT = registerFoodItem("hazelnut", 2, 0.3F);
-    public static final Item ANANAS = registerFoodItem("ananas", 4, 0.3F);
-    public static final Item ANANAS_SLICE = registerFoodItem("ananas_slice", 1, 0.3F);
+    public static final Item PINEAPPLE = registerFoodItem("pineapple", 4, 0.3F);
+    public static final Item PINEAPPLE_SLICE = registerFoodItem("pineapple_slice", 1, 0.3F);
     public static final Item CINNAMON_BARK = registerFoodItem("cinnamon_bark", 2, 0.3F);
     public static final Item CHEESE = registerFoodItem("cheese", 2, 1.2F);
     public static final Item CHEESE_SLICE = registerFoodItem("cheese_slice", 1, 0.6F);

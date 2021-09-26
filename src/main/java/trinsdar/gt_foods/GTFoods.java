@@ -1,11 +1,15 @@
 package trinsdar.gt_foods;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -22,22 +26,35 @@ public class GTFoods {
 
     public GTFoods() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        Registry.init();
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
+        Data.init();
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        // some preinit code
-        //JsonMaker.initModels();
+    }
+
+    private void setupClient(final FMLClientSetupEvent event) {
+        addBlocksToRenderLayer(RenderType.getCutout(),
+                Data.BLUEBERRY_BUSH, Data.BLACKBERRY_BUSH,
+                Data.GOOSEBERRY_BUSH, Data.RASPBERRY_BUSH,
+                Data.STRAWBERRY_BUSH, Data.CRANBERRY_CROP);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public void addBlocksToRenderLayer(RenderType type, Block... blocks){
+        for (Block block : blocks) {
+            RenderTypeLookup.setRenderLayer(block, type);
+        }
     }
 
     @SubscribeEvent
     public void onRegisterBlock(RegistryEvent.Register<Block> event){
-        Registry.getBlockIdList().forEach((r, b) -> event.getRegistry().register(b.setRegistryName(r)));
+        Data.getBlockIdList().forEach((r, b) -> event.getRegistry().register(b.setRegistryName(r)));
     }
 
     @SubscribeEvent
     public void onRegisterItem(RegistryEvent.Register<Item> event){
-        Registry.getItemIdList().forEach((r, i) -> event.getRegistry().register(i.setRegistryName(r)));
+        Data.getItemIdList().forEach((r, i) -> event.getRegistry().register(i.setRegistryName(r)));
     }
 }

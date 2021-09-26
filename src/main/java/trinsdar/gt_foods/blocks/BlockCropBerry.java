@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import trinsdar.gt_foods.Registry;
+import trinsdar.gt_foods.Data;
 
 public class BlockCropBerry extends SweetBerryBushBlock {
     Item berry;
@@ -31,20 +31,20 @@ public class BlockCropBerry extends SweetBerryBushBlock {
     }
 
     public Item getItem() {
-        if (this == Registry.BLUEBERRY_BUSH) {
-            return Registry.BLUEBERRY;
+        if (this == Data.BLUEBERRY_BUSH) {
+            return Data.BLUEBERRY;
         }
-        if (this == Registry.BLACKBERRY_BUSH) {
-            return Registry.BLACKBERRY;
+        if (this == Data.BLACKBERRY_BUSH) {
+            return Data.BLACKBERRY;
         }
-        if (this == Registry.GOOSEBERRY_BUSH) {
-            return Registry.GOOSEBERRY;
+        if (this == Data.GOOSEBERRY_BUSH) {
+            return Data.GOOSEBERRY;
         }
-        if (this == Registry.RASPBERRY_BUSH) {
-            return Registry.RASPBERRY;
+        if (this == Data.RASPBERRY_BUSH) {
+            return Data.RASPBERRY;
         }
-        if (this == Registry.STRAWBERRY_BUSH) {
-            return Registry.STRAWBERRY;
+        if (this == Data.STRAWBERRY_BUSH) {
+            return Data.STRAWBERRY;
         }
         return Items.SWEET_BERRIES;
     }
