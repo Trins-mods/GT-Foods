@@ -1,10 +1,11 @@
-package trinsdar.gt_foods;
+package trinsdar.gt_foods.data;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
 import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
 
@@ -63,6 +64,7 @@ public class Data {
     public static final Item PINEAPPLE = registerFoodItem("pineapple", 4, 0.3F);
     public static final Item PINEAPPLE_SLICE = registerFoodItem("pineapple_slice", 1, 0.3F);
     public static final Item CINNAMON_BARK = registerFoodItem("cinnamon_bark", 2, 0.3F);
+    public static final Item COCONUT = registerFoodItem("coconut", 2, 1.2F);
     public static final Item CHEESE = registerFoodItem("cheese", 2, 1.2F);
     public static final Item CHEESE_SLICE = registerFoodItem("cheese_slice", 1, 0.6F);
     public static final Item RAW_HAM = registerFoodItem("raw_ham", 3, 0.6F);
@@ -72,17 +74,18 @@ public class Data {
     public static final Item RAW_BACON = registerFoodItem("raw_bacon", 1, 0.9F);
     public static final Item COOKED_BACON = registerFoodItem("cooked_bacon", 3, 1.8F);
     public static final Item RAW_RIBS = registerFoodItem("raw_ribs", 3, 0.6F);
-    public static final Item COOKED_RIBS = registerFoodItem("cooked_ribs", 10, 1.6F);
+    public static final Item GRILLED_RIBS = registerFoodItem("grilled_ribs", 10, 1.6F);
+    public static final Item BARBECUE_RIBS = registerFoodItem("barbecue_ribs", 10, 1.6F);
     public static final Item RAW_RIB_EYE_STEAK = registerFoodItem("raw_rib_eye_steak", 3, 0.6F);
-    public static final Item COOKED_RIB_EYE_STEAK = registerFoodItem("cooked_rib_eye_steak", 10, 1.6F);
+    public static final Item GRILLED_RIB_EYE_STEAK = registerFoodItem("grilled_rib_eye_steak", 10, 1.6F);
     public static final Item RAW_DOGMEAT = registerFoodItem("raw_dogmeat", 2, 0.6F);
-    public static final Item COOKED_DOGMEAT = registerFoodItem("cooked_dogmeat", 8, 1.6F);
+    public static final Item GRILLED_DOGMEAT = registerFoodItem("grilled_dogmeat", 8, 1.6F);
     public static final Item RAW_HORSEMEAT = registerFoodItem("raw_horsemeat", 2, 0.6F);
-    public static final Item COOKED_HORSEMEAT = registerFoodItem("cooked_horsemeat", 8, 1.6F);
+    public static final Item GRILLED_HORSEMEAT = registerFoodItem("grilled_horsemeat", 8, 1.6F);
     public static final Item RAW_MULEMEAT = registerFoodItem("raw_mulemeat", 3, 0.8F);
-    public static final Item COOKED_MULEMEAT = registerFoodItem("cooked_mulemeat", 10, 1.8F);
+    public static final Item GRILLED_MULEMEAT = registerFoodItem("grilled_mulemeat", 10, 1.8F);
     public static final Item RAW_DONKEYMEAT = registerFoodItem("raw_donkeymeat", 2, 0.6F);
-    public static final Item COOKED_DONKEYMEAT = registerFoodItem("cooked_donkeymeat", 8, 1.6F);
+    public static final Item GRILLED_DONKEYMEAT = registerFoodItem("grilled_donkeymeat", 8, 1.6F);
     public static final Item RAISIN_COOKIE = registerFoodItem("raisin_cookie", 2, 0.2F);
     public static final Item CHOCOLATE_RAISIN_COOKIE = registerFoodItem("chocolate_raisin_cookie", 2, 0.2F);
     public static final Item MARGHERITA_PIZZA = registerFoodItem("margherita_pizza", 6, 1.2F);

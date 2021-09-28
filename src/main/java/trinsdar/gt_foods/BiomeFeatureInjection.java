@@ -7,6 +7,7 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import trinsdar.gt_foods.data.GTFConfiguredFeatures;
 
 public class BiomeFeatureInjection {
     public static void onEvent(BiomeLoadingEvent event){

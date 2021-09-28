@@ -9,7 +9,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import trinsdar.gt_foods.GTFoods;
-import trinsdar.gt_foods.Data;
+import trinsdar.gt_foods.data.Data;
 
 public class GTFItemModelProvider extends ItemModelProvider {
     public GTFItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {

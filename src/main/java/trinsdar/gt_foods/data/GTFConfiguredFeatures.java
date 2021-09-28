@@ -1,4 +1,4 @@
-package trinsdar.gt_foods;
+package trinsdar.gt_foods.data;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -10,7 +10,9 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.IFeatureConfig;
+import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
+import trinsdar.gt_foods.data.Data;
 
 public class GTFConfiguredFeatures {
     public static final ConfiguredFeature<?, ?> BLUEBERRY_BUSH = createConfiguredFeature("blueberry_bush", Feature.RANDOM_PATCH.withConfiguration((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(Data.BLUEBERRY_BUSH.getDefaultState().with(BlockCropBerry.AGE, 3)), new SimpleBlockPlacer())).tries(64).preventProjection().build()));

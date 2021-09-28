@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import trinsdar.gt_foods.Data;
+import trinsdar.gt_foods.data.Data;
 
 import javax.annotation.Nullable;
 

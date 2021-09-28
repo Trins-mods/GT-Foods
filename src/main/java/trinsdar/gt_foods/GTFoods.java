@@ -9,12 +9,15 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import trinsdar.gt_foods.data.Data;
+import trinsdar.gt_foods.data.GTFConfiguredFeatures;
 
 @Mod(value = GTFoods.MODID)
 public class GTFoods {
@@ -31,6 +34,9 @@ public class GTFoods {
         Data.init();
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
         MinecraftForge.EVENT_BUS.addListener(BiomeFeatureInjection::onEvent);
+        if (ModList.get().isLoaded("antimatter")){
+            new GTFRegistrar();
+        }
 
     }
 
