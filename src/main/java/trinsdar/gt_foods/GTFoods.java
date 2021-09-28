@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,9 +30,12 @@ public class GTFoods {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
         Data.init();
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
+        MinecraftForge.EVENT_BUS.addListener(BiomeFeatureInjection::onEvent);
+
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+        GTFConfiguredFeatures.init();
     }
 
     private void setupClient(final FMLClientSetupEvent event) {
