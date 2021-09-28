@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
@@ -23,20 +25,20 @@ public class Data {
     public static final Block STRAWBERRY_BUSH = registerBlock("strawberry_bush", new BlockCropBerry());
     public static final Block CRANBERRY_CROP = registerBlock("cranberry_crop", new BlockCropWaterlogged());
 
-    public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.2F);
-    public static final Item GOOSEBERRY = registerBerry("gooseberry", GOOSEBERRY_BUSH, 2, 0.2F);
-    public static final Item BLACKBERRY = registerBerry("blackberry", BLACKBERRY_BUSH, 2, 0.2F);
-    public static final Item RASPBERRY = registerBerry("raspberry", RASPBERRY_BUSH, 2, 0.2F);
-    public static final Item STRAWBERRY = registerBerry("strawberry", STRAWBERRY_BUSH, 2, 0.2F);
-    public static final Item CRANBERRY = registerBerry("cranberry", CRANBERRY_CROP, 2, 0.2F);
+    public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.3F);
+    public static final Item GOOSEBERRY = registerBerry("gooseberry", GOOSEBERRY_BUSH, 2, 0.3F);
+    public static final Item BLACKBERRY = registerBerry("blackberry", BLACKBERRY_BUSH, 2, 0.3F);
+    public static final Item RASPBERRY = registerBerry("raspberry", RASPBERRY_BUSH, 2, 0.3F);
+    public static final Item STRAWBERRY = registerBerry("strawberry", STRAWBERRY_BUSH, 2, 0.3F);
+    public static final Item CRANBERRY = registerBerry("cranberry", CRANBERRY_CROP, 2, 0.3F);
 
-    public static final Item LEMON = registerFoodItem("lemon", 1, 0.6F);
-    public static final Item LEMON_SLICE = registerFoodItem("lemon_slice", 0, 0.15F);
-    public static final Item TOMATO = registerFoodItem("tomato", 1, 0.6F);
-    public static final Item TOMATO_SLICE = registerFoodItem("tomato_slice", 0, 0.15F);
-    public static final Item MAX_TOMATO = registerFoodItem("max_tomato", 9, 1.0F);
-    public static final Item ONION = registerFoodItem("onion", 1, 1.2F);
-    public static final Item ONION_SLICE = registerFoodItem("onion_slice", 0, 0.3F);
+    public static final Item LEMON = registerFoodItem("lemon", 1, 0.3F);
+    public static final Item LEMON_SLICE = registerFoodItem("lemon_slice", new Food.Builder().hunger(1).saturation(0.075F).fastToEat().build());
+    public static final Item TOMATO = registerFoodItem("tomato", 1, 0.3F);
+    public static final Item TOMATO_SLICE = registerFoodItem("tomato_slice", new Food.Builder().hunger(0).saturation(0.075F).fastToEat().build());
+    public static final Item MAX_TOMATO = registerFoodItem("max_tomato", new Food.Builder().hunger(9).saturation(0.5F).effect(() -> new EffectInstance(Effects.REGENERATION, 2), 1.0F).build());
+    public static final Item ONION = registerFoodItem("onion", 1, 0.6F);
+    public static final Item ONION_SLICE = registerFoodItem("onion_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
     public static final Item CUCUMBER = registerFoodItem("cucumber", 1, 1.2F);
     public static final Item CUCUMBER_SLICE = registerFoodItem("cucumber_slice", 0, 0.3F);
     public static final Item CHILI_PEPPER = registerFoodItem("chili_pepper", 1, 1.2F);
@@ -126,7 +128,11 @@ public class Data {
     }
 
     static Item registerFoodItem(String id, int hunger, float saturation) {
-        return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).build())));
+        return registerFoodItem(id, new Food.Builder().hunger(hunger).saturation(saturation).build());
+    }
+
+    static Item registerFoodItem(String id, Food food) {
+        return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB).food(food)));
     }
 
     static Item registerMeatItem(String id, int hunger, float saturation) {
@@ -134,7 +140,7 @@ public class Data {
     }
 
     static BlockNamedItem registerBerry(String id, Block block, int hunger, float saturation) {
-        return registerItem(id, new BlockNamedItem(block, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).build())));
+        return registerItem(id, new BlockNamedItem(block, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).fastToEat().build())));
     }
 
     static <T extends Item> T registerItem(String id, T item) {
