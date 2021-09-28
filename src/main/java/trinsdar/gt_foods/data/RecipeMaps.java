@@ -5,7 +5,7 @@ import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.recipe.map.RecipeMap;
 
 public class RecipeMaps {
-    public static RecipeMap<?> SLICING = AntimatterAPI.registerIfAbsent(RecipeMap.class, "slicing", () -> new RecipeMap<>("slicing", new RecipeBuilder()));
+    public static RecipeMap<?> SLICING = AntimatterAPI.registerIfAbsent(RecipeMap.class, "gt.recipe_map.slicing", () -> new RecipeMap<>("slicing", new RecipeBuilder()));
 
     public static void init(){}
 }
