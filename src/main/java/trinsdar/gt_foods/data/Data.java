@@ -23,12 +23,12 @@ public class Data {
     public static final Block STRAWBERRY_BUSH = registerBlock("strawberry_bush", new BlockCropBerry());
     public static final Block CRANBERRY_CROP = registerBlock("cranberry_crop", new BlockCropWaterlogged());
 
-    public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.6F);
-    public static final Item GOOSEBERRY = registerBerry("gooseberry", GOOSEBERRY_BUSH, 2, 0.6F);
-    public static final Item BLACKBERRY = registerBerry("blackberry", BLACKBERRY_BUSH, 2, 0.6F);
-    public static final Item RASPBERRY = registerBerry("raspberry", RASPBERRY_BUSH, 2, 0.6F);
-    public static final Item STRAWBERRY = registerBerry("strawberry", STRAWBERRY_BUSH, 2, 0.6F);
-    public static final Item CRANBERRY = registerBerry("cranberry", CRANBERRY_CROP, 2, 0.6F);
+    public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.2F);
+    public static final Item GOOSEBERRY = registerBerry("gooseberry", GOOSEBERRY_BUSH, 2, 0.2F);
+    public static final Item BLACKBERRY = registerBerry("blackberry", BLACKBERRY_BUSH, 2, 0.2F);
+    public static final Item RASPBERRY = registerBerry("raspberry", RASPBERRY_BUSH, 2, 0.2F);
+    public static final Item STRAWBERRY = registerBerry("strawberry", STRAWBERRY_BUSH, 2, 0.2F);
+    public static final Item CRANBERRY = registerBerry("cranberry", CRANBERRY_CROP, 2, 0.2F);
 
     public static final Item LEMON = registerFoodItem("lemon", 1, 0.6F);
     public static final Item LEMON_SLICE = registerFoodItem("lemon_slice", 0, 0.15F);
@@ -67,25 +67,25 @@ public class Data {
     public static final Item COCONUT = registerFoodItem("coconut", 2, 1.2F);
     public static final Item CHEESE = registerFoodItem("cheese", 2, 1.2F);
     public static final Item CHEESE_SLICE = registerFoodItem("cheese_slice", 1, 0.6F);
-    public static final Item RAW_HAM = registerFoodItem("raw_ham", 3, 0.6F);
-    public static final Item COOKED_HAM = registerFoodItem("cooked_ham", 10, 1.6F);
-    public static final Item RAW_HAM_SLICE = registerFoodItem("raw_ham_slice", 1, 0.6F);
-    public static final Item COOKED_HAM_SLICE = registerFoodItem("cooked_ham_slice", 3, 1.6F);
-    public static final Item RAW_BACON = registerFoodItem("raw_bacon", 1, 0.9F);
-    public static final Item COOKED_BACON = registerFoodItem("cooked_bacon", 3, 1.8F);
-    public static final Item RAW_RIBS = registerFoodItem("raw_ribs", 3, 0.6F);
-    public static final Item GRILLED_RIBS = registerFoodItem("grilled_ribs", 10, 1.6F);
-    public static final Item BARBECUE_RIBS = registerFoodItem("barbecue_ribs", 10, 1.6F);
-    public static final Item RAW_RIB_EYE_STEAK = registerFoodItem("raw_rib_eye_steak", 3, 0.6F);
-    public static final Item GRILLED_RIB_EYE_STEAK = registerFoodItem("grilled_rib_eye_steak", 10, 1.6F);
+    public static final Item RAW_HAM = registerMeatItem("raw_ham", 3, 0.6F);
+    public static final Item COOKED_HAM = registerMeatItem("cooked_ham", 10, 1.6F);
+    public static final Item RAW_HAM_SLICE = registerMeatItem("raw_ham_slice", 1, 0.6F);
+    public static final Item COOKED_HAM_SLICE = registerMeatItem("cooked_ham_slice", 3, 1.6F);
+    public static final Item RAW_BACON = registerMeatItem("raw_bacon", 1, 0.9F);
+    public static final Item COOKED_BACON = registerMeatItem("cooked_bacon", 3, 1.8F);
+    public static final Item RAW_RIBS = registerMeatItem("raw_ribs", 3, 0.6F);
+    public static final Item GRILLED_RIBS = registerMeatItem("grilled_ribs", 10, 1.6F);
+    public static final Item BARBECUE_RIBS = registerMeatItem("barbecue_ribs", 10, 1.6F);
+    public static final Item RAW_RIB_EYE_STEAK = registerMeatItem("raw_rib_eye_steak", 3, 0.6F);
+    public static final Item GRILLED_RIB_EYE_STEAK = registerMeatItem("grilled_rib_eye_steak", 10, 1.6F);
     public static final Item RAW_DOGMEAT = registerFoodItem("raw_dogmeat", 2, 0.6F);
     public static final Item GRILLED_DOGMEAT = registerFoodItem("grilled_dogmeat", 8, 1.6F);
-    public static final Item RAW_HORSEMEAT = registerFoodItem("raw_horsemeat", 2, 0.6F);
-    public static final Item GRILLED_HORSEMEAT = registerFoodItem("grilled_horsemeat", 8, 1.6F);
-    public static final Item RAW_MULEMEAT = registerFoodItem("raw_mulemeat", 3, 0.8F);
-    public static final Item GRILLED_MULEMEAT = registerFoodItem("grilled_mulemeat", 10, 1.8F);
-    public static final Item RAW_DONKEYMEAT = registerFoodItem("raw_donkeymeat", 2, 0.6F);
-    public static final Item GRILLED_DONKEYMEAT = registerFoodItem("grilled_donkeymeat", 8, 1.6F);
+    public static final Item RAW_HORSEMEAT = registerMeatItem("raw_horsemeat", 2, 0.6F);
+    public static final Item GRILLED_HORSEMEAT = registerMeatItem("grilled_horsemeat", 8, 1.6F);
+    public static final Item RAW_MULEMEAT = registerMeatItem("raw_mulemeat", 3, 0.8F);
+    public static final Item GRILLED_MULEMEAT = registerMeatItem("grilled_mulemeat", 10, 1.8F);
+    public static final Item RAW_DONKEYMEAT = registerMeatItem("raw_donkeymeat", 2, 0.6F);
+    public static final Item GRILLED_DONKEYMEAT = registerMeatItem("grilled_donkeymeat", 8, 1.6F);
     public static final Item RAISIN_COOKIE = registerFoodItem("raisin_cookie", 2, 0.2F);
     public static final Item CHOCOLATE_RAISIN_COOKIE = registerFoodItem("chocolate_raisin_cookie", 2, 0.2F);
     public static final Item MARGHERITA_PIZZA = registerFoodItem("margherita_pizza", 6, 1.2F);
@@ -127,6 +127,10 @@ public class Data {
 
     static Item registerFoodItem(String id, int hunger, float saturation) {
         return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).build())));
+    }
+
+    static Item registerMeatItem(String id, int hunger, float saturation) {
+        return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).meat().build())));
     }
 
     static BlockNamedItem registerBerry(String id, Block block, int hunger, float saturation) {
