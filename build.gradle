@@ -76,7 +76,7 @@ minecraft {
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            //arg "-mixin.config=gtsp.mixins.json"
+            arg "-mixin.config=gt_foods.mixins.json"
 
             mods {
                 gt_foods {
@@ -96,7 +96,7 @@ minecraft {
             //jvmArgs '-javaagent:/opt/JavaHot/hotswap-agent.jar -XX:TraceRedefineClasses=1'
             //Comment this if you aren't developing against antimatter locally.
 
-            //arg "-mixin.config=gtsp.mixins.json"
+            arg "-mixin.config=gt_foods.mixins.json"
 
             mods {
                 gt_foods {
@@ -116,7 +116,7 @@ minecraft {
 
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
-            //arg "-mixin.config=gtsp.mixins.json"
+            arg "-mixin.config=gt_foods.mixins.json"
             args '--mod', 'gt_foods', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources')
 
             mods {
@@ -167,10 +167,17 @@ publishing {
     }
 }
 
+apply plugin: 'org.spongepowered.mixin'
+
+mixin {
+    add sourceSets.main, "gt_foods.refmap.json"
+}
+
 jar {
     zip64 true
     manifest {
         attributes([
+                "MixinConfigs": "gt_foods.mixins.json",
                 "Specification-Title": project.name,
                 "Specification-Vendor": "GT Foods",
                 "Specification-Version": project.version,
