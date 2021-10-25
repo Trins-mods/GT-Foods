@@ -9,7 +9,7 @@ import static muramasa.antimatter.machine.MachineFlag.GUI;
 import static muramasa.antimatter.machine.MachineFlag.ITEM;
 
 public class Machines {
-    public static BasicMachine SLICER = (BasicMachine) AntimatterAPI.registerIfAbsent(Machine.class, "slicer", () -> new BasicMachine(GTFoods.MODID, "slicer").setMap(RecipeMaps.SLICING).addFlags(GUI, ITEM));
+    public static BasicMachine SLICER = new BasicMachine(GTFoods.MODID, "slicer").setMap(RecipeMaps.SLICING).addFlags(GUI, ITEM);
 
     public static void init(){
 
