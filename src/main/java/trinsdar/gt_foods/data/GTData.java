@@ -5,7 +5,6 @@ import muramasa.antimatter.Data;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.material.TextureSet;
 import trinsdar.gt_foods.GTFoods;
 
