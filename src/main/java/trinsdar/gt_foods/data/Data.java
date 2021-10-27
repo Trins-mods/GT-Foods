@@ -1,9 +1,14 @@
 package trinsdar.gt_foods.data;
 
+import muramasa.antimatter.Ref;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.enchantment.UnbreakingEnchantment;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
@@ -13,6 +18,7 @@ import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Data {
     private static final Map<ResourceLocation, Item> itemIdList = new LinkedHashMap<>();
@@ -31,6 +37,31 @@ public class Data {
     public static final Item RASPBERRY = registerBerry("raspberry", RASPBERRY_BUSH, 2, 0.3F);
     public static final Item STRAWBERRY = registerBerry("strawberry", STRAWBERRY_BUSH, 2, 0.3F);
     public static final Item CRANBERRY = registerBerry("cranberry", CRANBERRY_CROP, 2, 0.3F);
+
+    public static final Item IRON_KNIFE = registerItem("iron_knife", new Item(new Item.Properties().defaultMaxDamage(256).setNoRepair()){
+        @Override
+        public boolean hasContainerItem(ItemStack stack) {
+            return true;
+        }
+
+        @Override
+        public ItemStack getContainerItem(final ItemStack oldStack) {
+            ItemStack stack = oldStack.copy();
+            int amount = 5;
+            int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack), j = 0;
+            for (int k = 0; level > 0 && k < amount; k++) {
+                //if (UnbreakingEnchantment.negateDamage(stack, level, )) j++;
+            }
+            amount -= j;
+            boolean empty = false;
+            if (amount > 0) {
+                int l = stack.getDamage() + amount;
+                stack.setDamage(l);
+                empty = l >= stack.getMaxDamage();
+            }
+            return empty ? ItemStack.EMPTY : stack;
+        }
+    });
 
     public static final Item LEMON = registerFoodItem("lemon", 1, 0.3F);
     public static final Item LEMON_SLICE = registerFoodItem("lemon_slice", new Food.Builder().hunger(0).saturation(0.075F).fastToEat().build());
