@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "K#"
+  ],
+  "key": {
+    "#": {
+      "item": "gt_foods:cucumber"
+    },
+    "K": {
+      "tag": "forge:tools/knife"
+    }
+  },
+  "result": {
+    "item": "gt_foods:cucumber_slice",
+    "count": 4
+  }
+}

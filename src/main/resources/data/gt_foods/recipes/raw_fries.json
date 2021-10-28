@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "K",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:potato"
+    },
+    "K": {
+      "tag": "forge:tools/knife"
+    }
+  },
+  "result": {
+    "item": "gt_foods:raw_fries",
+    "count": 1
+  }
+}

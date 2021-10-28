@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "K#"
+  ],
+  "key": {
+    "#": {
+      "item": "gt_foods:pickle"
+    },
+    "K": {
+      "tag": "forge:tools/knife"
+    }
+  },
+  "result": {
+    "item": "gt_foods:pickle_slice",
+    "count": 4
+  }
+}

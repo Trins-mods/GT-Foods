@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "K#"
+  ],
+  "key": {
+    "#": {
+      "item": "gt_foods:cooked_ham"
+    },
+    "K": {
+      "tag": "forge:tools/knife"
+    }
+  },
+  "result": {
+    "item": "gt_foods:cooked_ham_slice",
+    "count": 4
+  }
+}

@@ -31,5 +31,6 @@ public class SlicerLoader {
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Data.SUGARY_RAISIN_DOUGH, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.COOKIE_SHAPED_RAISIN_DOUGH, 4)).add(16, 16);
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Data.SUGARY_CHOCOLATE_RAISIN_DOUGH, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.COOKIE_SHAPED_CHOCOLATE_RAISIN_DOUGH, 4)).add(16, 16);
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Items.MELON, 1), RecipeIngredient.of(GTData.EigthsSlicerBlades, 1).setNoConsume()).io(new ItemStack(Items.MELON_SLICE, 8), new ItemStack(Items.MELON_SEEDS)).add(16, 16);
+        RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Items.EGG, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.SLICED_EGG, 4)).add(16, 16);
     }
 }
