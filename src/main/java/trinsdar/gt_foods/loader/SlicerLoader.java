@@ -14,7 +14,7 @@ public class SlicerLoader {
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Data.TOMATO, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.TOMATO_SLICE, 4)).add(16, 16);
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Data.ONION, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.ONION_SLICE, 4)).add(16, 16);
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Data.CUCUMBER, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.CUCUMBER_SLICE, 4)).add(16, 16);
-        RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Data.PICKEL, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.PICKEL_SLICE, 4)).add(16, 16);
+        RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Data.PICKLE, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.PICKLE_SLICE, 4)).add(16, 16);
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Items.CARROT, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.CARROT_SLICE, 4)).add(16, 16);
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Data.BANANA, 1), RecipeIngredient.of(GTData.FlatSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.BANANA_SLICE, 4)).add(16, 16);
         RecipeMaps.SLICING.RB().ii(RecipeIngredient.of(Items.APPLE, 1), RecipeIngredient.of(GTData.HollowQuartersSlicerBlades, 1).setNoConsume()).io(new ItemStack(Data.APPLE_SLICE, 4)).add(16, 16);

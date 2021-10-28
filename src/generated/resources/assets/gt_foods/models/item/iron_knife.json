@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gt_foods:item/pickel_slice"
+    "layer0": "gt_foods:item/iron_knife"
   }
 }

@@ -38,7 +38,7 @@ public class Data {
     public static final Item STRAWBERRY = registerBerry("strawberry", STRAWBERRY_BUSH, 2, 0.3F);
     public static final Item CRANBERRY = registerBerry("cranberry", CRANBERRY_CROP, 2, 0.3F);
 
-    public static final Item IRON_KNIFE = registerItem("iron_knife", new Item(new Item.Properties().defaultMaxDamage(256).setNoRepair()){
+    public static final Item IRON_KNIFE = registerItem("iron_knife", new Item(new Item.Properties().defaultMaxDamage(256).group(GTFoods.CREATIVE_TAB).setNoRepair()){
         @Override
         public boolean hasContainerItem(ItemStack stack) {
             return true;
@@ -72,8 +72,8 @@ public class Data {
     public static final Item ONION_SLICE = registerFoodItem("onion_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
     public static final Item CUCUMBER = registerFoodItem("cucumber", 1, 0.6F);
     public static final Item CUCUMBER_SLICE = registerFoodItem("cucumber_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
-    public static final Item PICKEL = registerFoodItem("pickel", 1, 0.6F);
-    public static final Item PICKEL_SLICE = registerFoodItem("pickel_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
+    public static final Item PICKLE = registerFoodItem("pickle", 1, 0.6F);
+    public static final Item PICKLE_SLICE = registerFoodItem("pickle_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
     public static final Item CHILI_PEPPER = registerFoodItem("chili_pepper", 1, 0.6F);
     public static final Item GREEN_GRAPES = registerFoodItem("green_grapes", 1, 0.3F);
     public static final Item GREEN_RAISINS = registerFoodItem("green_raisins", 2, 0.3F);
