@@ -63,6 +63,8 @@ public class Data {
         }
     });
 
+
+    /** Food */
     public static final Item LEMON = registerFoodItem("lemon", 1, 0.3F);
     public static final Item LEMON_SLICE = registerFoodItem("lemon_slice", new Food.Builder().hunger(0).saturation(0.075F).fastToEat().build());
     public static final Item TOMATO = registerFoodItem("tomato", 1, 0.3F);
@@ -136,7 +138,10 @@ public class Data {
     public static final Item COOKIE_SHAPED_DOUGH = registerFoodItem("cookie_shaped_dough", 1, 0.1F);
     public static final Item COOKIE_SHAPED_RAISIN_DOUGH = registerFoodItem("cookie_shaped_raisin_dough", 1, 0.1F);
     public static final Item COOKIE_SHAPED_CHOCOLATE_RAISIN_DOUGH = registerFoodItem("cookie_shaped_chocolate_raisin_dough", 1, 0.1F);
+    public static final Item RAW_CAKE_BOTTOM = registerFoodItem("raw_cake_bottom", 2, 0.1F);
+    public static final Item CAKE_BOTTOM = registerFoodItem("cake_bottom", 3, 0.1F);
     public static final Item PIZZA_DOUGH = registerFoodItem("pizza_dough",1, 0.1F);
+    public static final Item PIZZA_DOUGH_WITH_SAUCE = registerFoodItem("pizza_dough_with_sauce",1, 0.1F);
     public static final Item FLATTENED_PASTA_DOUGH = registerFoodItem("flattened_pasta_dough", 1, 0.3F);
     public static final Item BUN_DOUGH = registerFoodItem("bun_dough", 1, 0.3F);
     public static final Item BAGUETTE_DOUGH = registerFoodItem("baguette_dough", 1, 0.3F);
@@ -149,6 +154,10 @@ public class Data {
     public static final Item SALTED_BUTTER = registerFoodItem("salted_butter", 1, 2.0F);
     public static final Item RAISIN_COOKIE = registerFoodItem("raisin_cookie", 2, 0.1F);
     public static final Item CHOCOLATE_RAISIN_COOKIE = registerFoodItem("chocolate_raisin_cookie", 2, 0.1F);
+    public static final Item RAW_MARGHERITA_PIZZA = registerFoodItem("raw_margherita_pizza", 2, 0.15F);
+    public static final Item RAW_MINCEMEAT_PIZZA = registerFoodItem("raw_mincemeat_pizza", 2, 0.15F);
+    public static final Item RAW_VEGGIE_PIZZA = registerFoodItem("raw_veggie_pizza", 1, 0.15F);
+    public static final Item RAW_HAWAIIN_PIZZA = registerFoodItem("raw_hawaiin_pizza", 2, 0.15F);
     public static final Item MARGHERITA_PIZZA = registerFoodItem("margherita_pizza", 6, 0.6F);
     public static final Item MINCEMEAT_PIZZA = registerFoodItem("mincemeat_pizza", 7, 0.6F);
     public static final Item VEGGIE_PIZZA = registerFoodItem("veggie_pizza", 5, 0.6F);
@@ -182,6 +191,10 @@ public class Data {
     public static final Item CHILI_CHIPS = registerFoodItem("chili_chips", 7, 0.6F);
     //todo icecream and juice
 
+    /** Food ingredients*/
+    public static final Item TOMATO_SAUCE = registerIngredient("tomato_sauce");
+    
+
     static <T extends Block> T registerBlock(String id, T block) {
         blockIdList.put(new ResourceLocation(GTFoods.MODID, id), block);
         return block;
@@ -201,6 +214,10 @@ public class Data {
 
     static BlockNamedItem registerBerry(String id, Block block, int hunger, float saturation) {
         return registerItem(id, new BlockNamedItem(block, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).fastToEat().build())));
+    }
+
+    static Item registerIngredient(String id){
+        return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB)));
     }
 
     static <T extends Item> T registerItem(String id, T item) {
