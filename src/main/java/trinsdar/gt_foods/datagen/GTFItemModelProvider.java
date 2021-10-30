@@ -20,8 +20,5 @@ public class GTFItemModelProvider extends AntimatterItemModelProvider {
     @Override
     protected void registerModels() {
         super.registerModels();
-        Data.getItemIdList().forEach((r, i) -> {
-            tex(i, new ResourceLocation(r.getNamespace(), "item/" + r.getPath()));
-        });
     }
 }

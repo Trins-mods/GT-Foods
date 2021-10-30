@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gt_foods:item/chocolate_raisin_cookie"
+    "layer0": "gt_foods:item/food/chocolate_raisin_cookie"
   }
 }

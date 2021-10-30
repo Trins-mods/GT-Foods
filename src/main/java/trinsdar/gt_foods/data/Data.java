@@ -1,6 +1,7 @@
 package trinsdar.gt_foods.data;
 
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.item.ItemBasic;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -15,6 +16,8 @@ import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
 import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
+import trinsdar.gt_foods.items.ItemBerry;
+import trinsdar.gt_foods.items.ItemFood;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,11 +27,11 @@ public class Data {
     private static final Map<ResourceLocation, Item> itemIdList = new LinkedHashMap<>();
     private static final Map<ResourceLocation, Block> blockIdList = new LinkedHashMap<>();
 
-    public static final Block BLUEBERRY_BUSH = registerBlock("blueberry_bush", new BlockCropBerry());
-    public static final Block GOOSEBERRY_BUSH = registerBlock("gooseberry_bush", new BlockCropBerry());
-    public static final Block BLACKBERRY_BUSH = registerBlock("blackberry_bush", new BlockCropBerry());
-    public static final Block RASPBERRY_BUSH = registerBlock("raspberry_bush", new BlockCropBerry());
-    public static final Block STRAWBERRY_BUSH = registerBlock("strawberry_bush", new BlockCropBerry());
+    public static final Block BLUEBERRY_BUSH =new BlockCropBerry("blueberry_bush", "blueberry");
+    public static final Block GOOSEBERRY_BUSH = new BlockCropBerry("gooseberry_bush", "gooseberry");
+    public static final Block BLACKBERRY_BUSH = new BlockCropBerry("blackberry_bush", "blackberry");
+    public static final Block RASPBERRY_BUSH =new BlockCropBerry("raspberry_bush", "raspberry");
+    public static final Block STRAWBERRY_BUSH = new BlockCropBerry("strawberry_bush", "strawberry");
     public static final Block CRANBERRY_CROP = registerBlock("cranberry_crop", new BlockCropWaterlogged());
 
     public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.3F);
@@ -37,31 +40,6 @@ public class Data {
     public static final Item RASPBERRY = registerBerry("raspberry", RASPBERRY_BUSH, 2, 0.3F);
     public static final Item STRAWBERRY = registerBerry("strawberry", STRAWBERRY_BUSH, 2, 0.3F);
     public static final Item CRANBERRY = registerBerry("cranberry", CRANBERRY_CROP, 2, 0.3F);
-
-    public static final Item IRON_KNIFE = registerItem("iron_knife", new Item(new Item.Properties().defaultMaxDamage(256).group(GTFoods.CREATIVE_TAB).setNoRepair()){
-        @Override
-        public boolean hasContainerItem(ItemStack stack) {
-            return true;
-        }
-
-        @Override
-        public ItemStack getContainerItem(final ItemStack oldStack) {
-            ItemStack stack = oldStack.copy();
-            int amount = 5;
-            int level = EnchantmentHelper.getEnchantmentLevel(Enchantments.UNBREAKING, stack), j = 0;
-            for (int k = 0; level > 0 && k < amount; k++) {
-                //if (UnbreakingEnchantment.negateDamage(stack, level, )) j++;
-            }
-            amount -= j;
-            boolean empty = false;
-            if (amount > 0) {
-                int l = stack.getDamage() + amount;
-                stack.setDamage(l);
-                empty = l >= stack.getMaxDamage();
-            }
-            return empty ? ItemStack.EMPTY : stack;
-        }
-    });
 
 
     /** Food */
@@ -205,24 +183,19 @@ public class Data {
     }
 
     static Item registerFoodItem(String id, Food food) {
-        return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB).food(food)));
+        return new ItemFood(GTFoods.MODID, id, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(food));
     }
 
     static Item registerMeatItem(String id, int hunger, float saturation) {
-        return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).meat().build())));
+        return registerFoodItem(id, new Food.Builder().hunger(hunger).saturation(saturation).meat().build());
     }
 
     static BlockNamedItem registerBerry(String id, Block block, int hunger, float saturation) {
-        return registerItem(id, new BlockNamedItem(block, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).fastToEat().build())));
+        return new ItemBerry(GTFoods.MODID, id, block, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).fastToEat().build()));
     }
 
     static Item registerIngredient(String id){
-        return registerItem(id, new Item(new Item.Properties().group(GTFoods.CREATIVE_TAB)));
-    }
-
-    static <T extends Item> T registerItem(String id, T item) {
-        itemIdList.put(new ResourceLocation(GTFoods.MODID, id), item);
-        return item;
+        return new ItemBasic<>(GTFoods.MODID, id, new Item.Properties().group(GTFoods.CREATIVE_TAB));
     }
 
     public static void init(){

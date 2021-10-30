@@ -21,34 +21,20 @@ import trinsdar.gt_foods.loader.SlicerLoader;
 
 public class GTFRegistrar extends AntimatterMod {
     public GTFRegistrar(){
-        AntimatterDynamics.addProvider(GTFoods.MODID, g -> new AntimatterBlockStateProvider(GTFoods.MODID, "GT Foods BlockStates", g));
-        AntimatterDynamics.addProvider(GTFoods.MODID, GTFItemModelProvider::new);
-        AntimatterDynamics.addProvider(GTFoods.MODID, GTFLangProvider::new);
-        registerRecipeLoaders();
-    }
-
-    private void registerRecipeLoaders() {
-        IRecipeRegistrate loader = AntimatterAPI.getRecipeRegistrate(GTFoods.MODID);
-        loader.add(SlicerLoader::init);
     }
 
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
-        if (event == RegistrationEvent.DATA_INIT){
-            GTData.init();
-            RecipeMaps.init();
-            Machines.init();
-            Guis.init();
-        }
+
     }
 
     @Override
     public int getPriority() {
-        return -4000;
+        return 200000;
     }
 
     @Override
     public String getId() {
-        return GTFoods.MODID;
+        return GTFoods.MODID + "_registrar";
     }
 }

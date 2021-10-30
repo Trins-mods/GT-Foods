@@ -1,5 +1,14 @@
 package trinsdar.gt_foods.blocks;
 
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
+import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
+import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
+import muramasa.antimatter.registration.IAntimatterObject;
+import muramasa.antimatter.registration.IModelProvider;
+import muramasa.antimatter.registration.ITextureProvider;
+import muramasa.antimatter.texture.Texture;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.SweetBerryBushBlock;
@@ -10,19 +19,38 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.IItemProvider;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
+import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.Data;
+import trinsdar.gt_foods.items.ItemBerry;
 
-public class BlockCropBerry extends SweetBerryBushBlock {
-    Item berry;
+public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterObject, ITextureProvider, IModelProvider {
+    final String id, itemID;
 
-    public BlockCropBerry() {
+    public BlockCropBerry(String id, String itemID) {
         super(Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().sound(SoundType.SWEET_BERRY_BUSH));
+        this.id = id;
+        this.itemID = itemID;
+        AntimatterAPI.register(BlockCropBerry.class, this);
+    }
+
+    @Override
+    public String getDomain() {
+        return GTFoods.MODID;
+    }
+
+    @Override
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -31,22 +59,7 @@ public class BlockCropBerry extends SweetBerryBushBlock {
     }
 
     public Item getItem() {
-        if (this == Data.BLUEBERRY_BUSH) {
-            return Data.BLUEBERRY;
-        }
-        if (this == Data.BLACKBERRY_BUSH) {
-            return Data.BLACKBERRY;
-        }
-        if (this == Data.GOOSEBERRY_BUSH) {
-            return Data.GOOSEBERRY;
-        }
-        if (this == Data.RASPBERRY_BUSH) {
-            return Data.RASPBERRY;
-        }
-        if (this == Data.STRAWBERRY_BUSH) {
-            return Data.STRAWBERRY;
-        }
-        return Items.SWEET_BERRIES;
+        return AntimatterAPI.get(ItemBerry.class, this.itemID, getDomain());
     }
 
     @Override
@@ -64,5 +77,42 @@ public class BlockCropBerry extends SweetBerryBushBlock {
         } else {
             return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
         }
+    }
+
+    @Override
+    public Texture[] getTextures() {
+        return new Texture[]{new Texture(GTFoods.MODID, "block/" + getId() + "_stage2"), new Texture(GTFoods.MODID, "block/" + getId() + "_stage3")};
+    }
+
+    @Override
+    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+        prov.getVariantBuilder(block).forAllStates(s -> {
+            int age = s.get(AGE);
+            ModelFile model;
+            switch (age){
+                case 0: {
+                    model = prov.existing("minecraft", "block/sweet_berry_bush_stage0");
+                    break;
+                }
+                case 1: {
+                    model = prov.existing("minecraft", "block/sweet_berry_bush_stage1");
+                    break;
+                }
+                case 2: {
+                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_stage2").parent(prov.models().getExistingFile(new ResourceLocation("minecraft:block/cross"))).texture("cross", getTextures()[0]);
+                    break;
+                }
+                default: {
+                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_stage3").parent(prov.models().getExistingFile(new ResourceLocation("minecraft:block/cross"))).texture("cross", getTextures()[1]);
+                    break;
+                }
+            }
+            return ConfiguredModel.builder().modelFile(model).build();
+        });
+    }
+
+    @Override
+    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+
     }
 }

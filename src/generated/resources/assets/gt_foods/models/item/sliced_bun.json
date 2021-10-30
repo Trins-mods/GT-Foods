@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gt_foods:item/sliced_bun"
+    "layer0": "gt_foods:item/food/sliced_bun"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gt_foods:item/green_raisins"
+    "layer0": "gt_foods:item/food/green_raisins"
   }
 }

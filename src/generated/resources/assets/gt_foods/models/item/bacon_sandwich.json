@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gt_foods:item/bacon_sandwich"
+    "layer0": "gt_foods:item/food/bacon_sandwich"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gt_foods:item/grilled_dogmeat"
+    "layer0": "gt_foods:item/food/grilled_dogmeat"
   }
 }

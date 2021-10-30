@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gt_foods:item/pickle_slice"
+    "layer0": "gt_foods:item/food/pickle_slice"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "gt_foods:item/raw_ham_slice"
+    "layer0": "gt_foods:item/food/raw_ham_slice"
   }
 }
