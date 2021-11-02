@@ -79,7 +79,7 @@ public class GTFoods extends AntimatterMod {
 
     @Override
     public int getPriority() {
-        return -4000;
+        return 200000;
     }
 
     private void setup(final FMLCommonSetupEvent event) {
