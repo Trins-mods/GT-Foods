@@ -5,26 +5,22 @@ import muramasa.antimatter.AntimatterDynamics;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
+import muramasa.antimatter.event.AntimatterLoaderEvent;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.RegistrationEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import trinsdar.gt_foods.data.Data;
-import trinsdar.gt_foods.data.GTData;
+import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFConfiguredFeatures;
 import trinsdar.gt_foods.data.Guis;
 import trinsdar.gt_foods.data.Machines;
@@ -32,6 +28,8 @@ import trinsdar.gt_foods.data.RecipeMaps;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.datagen.GTFLangProvider;
 import trinsdar.gt_foods.loader.SlicerLoader;
+
+import java.util.function.BiConsumer;
 
 @Mod(value = GTFoods.MODID)
 public class GTFoods extends AntimatterMod {
@@ -51,14 +49,14 @@ public class GTFoods extends AntimatterMod {
         AntimatterDynamics.addProvider(GTFoods.MODID, g -> new AntimatterBlockStateProvider(GTFoods.MODID, "GT Foods BlockStates", g));
         AntimatterDynamics.addProvider(GTFoods.MODID, GTFItemModelProvider::new);
         AntimatterDynamics.addProvider(GTFoods.MODID, GTFLangProvider::new);
-        registerRecipeLoaders();
         new GTFRegistrar();
+        MinecraftForge.EVENT_BUS.addListener(GTFoods::registerRecipeLoaders);
 
     }
 
-    private void registerRecipeLoaders() {
-        IRecipeRegistrate loader = AntimatterAPI.getRecipeRegistrate(GTFoods.MODID);
-        loader.add(SlicerLoader::init);
+    private static void registerRecipeLoaders(AntimatterLoaderEvent event) {
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(Ref.ID, a, b);
+        loader.accept("slicer", SlicerLoader::init);
     }
 
     @Override
@@ -69,8 +67,7 @@ public class GTFoods extends AntimatterMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
-            GTData.init();
-            Data.init();
+            GTFData.init();
             RecipeMaps.init();
             Machines.init();
             Guis.init();
@@ -88,9 +85,9 @@ public class GTFoods extends AntimatterMod {
 
     private void setupClient(final FMLClientSetupEvent event) {
         addBlocksToRenderLayer(RenderType.getCutout(),
-                Data.BLUEBERRY_BUSH, Data.BLACKBERRY_BUSH,
-                Data.GOOSEBERRY_BUSH, Data.RASPBERRY_BUSH,
-                Data.STRAWBERRY_BUSH, Data.CRANBERRY_CROP);
+                GTFData.BLUEBERRY_BUSH, GTFData.BLACKBERRY_BUSH,
+                GTFData.GOOSEBERRY_BUSH, GTFData.RASPBERRY_BUSH,
+                GTFData.STRAWBERRY_BUSH, GTFData.CRANBERRY_CROP);
     }
 
     @OnlyIn(Dist.CLIENT)

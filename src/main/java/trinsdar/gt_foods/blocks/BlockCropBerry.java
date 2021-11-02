@@ -1,10 +1,10 @@
 package trinsdar.gt_foods.blocks;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import muramasa.antimatter.registration.IAntimatterObject;
+import muramasa.antimatter.registration.IItemBlockProvider;
 import muramasa.antimatter.registration.IModelProvider;
 import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.texture.Texture;
@@ -30,10 +30,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import trinsdar.gt_foods.GTFoods;
-import trinsdar.gt_foods.data.Data;
 import trinsdar.gt_foods.items.ItemBerry;
 
-public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterObject, ITextureProvider, IModelProvider {
+public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterObject, ITextureProvider, IModelProvider, IItemBlockProvider {
     final String id, itemID;
 
     public BlockCropBerry(String id, String itemID) {
@@ -114,5 +113,10 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
     @Override
     public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
 
+    }
+
+    @Override
+    public boolean generateItemBlock() {
+        return false;
     }
 }

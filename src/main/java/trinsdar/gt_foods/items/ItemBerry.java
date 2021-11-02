@@ -32,13 +32,6 @@ public class ItemBerry extends BlockNamedItem implements IAntimatterObject, ITex
         AntimatterAPI.register(getClass(), this);
     }
 
-    public ItemBerry(String domain, String id, Block block, Class clazz, Properties properties) {
-        super(block, properties);
-        this.domain = domain;
-        this.id = id;
-        AntimatterAPI.register(clazz, this);
-    }
-
     public ItemBerry tip(String tooltip) {
         this.tooltip = tooltip;
         return this;

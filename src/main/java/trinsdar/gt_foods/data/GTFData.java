@@ -1,7 +1,10 @@
 package trinsdar.gt_foods.data;
 
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.TextureSet;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -23,8 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class Data {
-    private static final Map<ResourceLocation, Item> itemIdList = new LinkedHashMap<>();
+public class GTFData {
     private static final Map<ResourceLocation, Block> blockIdList = new LinkedHashMap<>();
 
     public static final Block BLUEBERRY_BUSH =new BlockCropBerry("blueberry_bush", "blueberry");
@@ -32,7 +34,16 @@ public class Data {
     public static final Block BLACKBERRY_BUSH = new BlockCropBerry("blackberry_bush", "blackberry");
     public static final Block RASPBERRY_BUSH =new BlockCropBerry("raspberry_bush", "raspberry");
     public static final Block STRAWBERRY_BUSH = new BlockCropBerry("strawberry_bush", "strawberry");
-    public static final Block CRANBERRY_CROP = registerBlock("cranberry_crop", new BlockCropWaterlogged());
+    public static final Block CRANBERRY_CROP = new BlockCropWaterlogged("cranberry", "cranberry", 3);
+
+    public static final Material StainlessSteel = AntimatterAPI.register(Material.class, new Material(Ref.ID, "stainless_steel", 0xc8c8dc, TextureSet.NONE)).flags(muramasa.antimatter.Data.RING, muramasa.antimatter.Data.ROD, muramasa.antimatter.Data.PLATE_TINY);
+
+    public static final ItemBasic<?> SlicerBladeFrame = new ItemBasic<>(GTFoods.MODID, "slicer_blade_frame");
+    public static final ItemBasic<?> FlatSlicerBlades = new ItemBasic<>(GTFoods.MODID, "flat_slicer_blades");
+    public static final ItemBasic<?> GridSlicerBlades = new ItemBasic<>(GTFoods.MODID, "grid_slicer_blades");
+    public static final ItemBasic<?> EigthsSlicerBlades = new ItemBasic<>(GTFoods.MODID, "eigths_slicer_blades");
+    public static final ItemBasic<?> SplitSlicerBlades = new ItemBasic<>(GTFoods.MODID, "split_slicer_blades");
+    public static final ItemBasic<?> HollowQuartersSlicerBlades = new ItemBasic<>(GTFoods.MODID, "hollow_quarters_slicer_blades");
 
     public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.3F);
     public static final Item GOOSEBERRY = registerBerry("gooseberry", GOOSEBERRY_BUSH, 2, 0.3F);
@@ -171,12 +182,6 @@ public class Data {
 
     /** Food ingredients*/
     public static final Item TOMATO_SAUCE = registerIngredient("tomato_sauce");
-    
-
-    static <T extends Block> T registerBlock(String id, T block) {
-        blockIdList.put(new ResourceLocation(GTFoods.MODID, id), block);
-        return block;
-    }
 
     static Item registerFoodItem(String id, int hunger, float saturation) {
         return registerFoodItem(id, new Food.Builder().hunger(hunger).saturation(saturation).build());
@@ -200,13 +205,5 @@ public class Data {
 
     public static void init(){
 
-    }
-
-    public static Map<ResourceLocation, Item> getItemIdList() {
-        return itemIdList;
-    }
-
-    public static Map<ResourceLocation, Block> getBlockIdList() {
-        return blockIdList;
     }
 }

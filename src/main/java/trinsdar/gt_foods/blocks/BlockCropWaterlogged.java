@@ -1,5 +1,9 @@
 package trinsdar.gt_foods.blocks;
 
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.registration.IAntimatterObject;
+import muramasa.antimatter.registration.IModelProvider;
+import muramasa.antimatter.registration.ITextureProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -10,6 +14,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
@@ -18,16 +23,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import trinsdar.gt_foods.data.Data;
+import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.GTFData;
+import trinsdar.gt_foods.items.ItemBerry;
 
 import javax.annotation.Nullable;
 
 import static net.minecraft.state.properties.BlockStateProperties.WATERLOGGED;
 
-public class BlockCropWaterlogged extends CropsBlock implements IWaterLoggable {
+public class BlockCropWaterlogged extends BlockCrop implements IWaterLoggable {
 
-    public BlockCropWaterlogged() {
-        super(Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP));
+    public BlockCropWaterlogged(String id, String itemID, int maxAge) {
+        super(id, itemID, maxAge, Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP));
     }
 
     @Override
@@ -39,21 +46,6 @@ public class BlockCropWaterlogged extends CropsBlock implements IWaterLoggable {
         FluidState stateWater = worldIn.getFluidState(pos.up());
         BlockState stateAir = worldIn.getBlockState(pos.up(2));
         return state.getBlock() == Blocks.DIRT && stateWater.getFluid() == Fluids.WATER && stateAir.getBlock() == Blocks.AIR;
-    }
-
-    @Override
-    protected IItemProvider getSeedsItem() {
-        return Data.CRANBERRY;
-    }
-
-    @Override
-    public int getMaxAge() {
-        return 3;
-    }
-
-    @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
-        return new ItemStack(this.getSeedsItem());
     }
 
     @Override
