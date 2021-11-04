@@ -27,6 +27,7 @@ import trinsdar.gt_foods.data.Machines;
 import trinsdar.gt_foods.data.RecipeMaps;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.datagen.GTFLangProvider;
+import trinsdar.gt_foods.datagen.GTFRecipeProvider;
 import trinsdar.gt_foods.loader.SlicerLoader;
 
 import java.util.function.BiConsumer;
@@ -49,6 +50,7 @@ public class GTFoods extends AntimatterMod {
         AntimatterDynamics.addProvider(GTFoods.MODID, g -> new AntimatterBlockStateProvider(GTFoods.MODID, "GT Foods BlockStates", g));
         AntimatterDynamics.addProvider(GTFoods.MODID, GTFItemModelProvider::new);
         AntimatterDynamics.addProvider(GTFoods.MODID, GTFLangProvider::new);
+        AntimatterDynamics.addProvider(MODID, g -> new GTFRecipeProvider(MODID, "GT Foods Recipes", g));
         new GTFRegistrar();
         MinecraftForge.EVENT_BUS.addListener(GTFoods::registerRecipeLoaders);
 
