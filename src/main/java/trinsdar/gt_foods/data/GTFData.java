@@ -141,6 +141,10 @@ public class GTFData {
     public static final Item CHEESE_BAR = registerFoodItem("cheese_bar", 2, 0.6F);
     public static final Item BUTTER = registerFoodItem("butter", 1, 2.0F);
     public static final Item SALTED_BUTTER = registerFoodItem("salted_butter", 1, 2.0F);
+    public static final Item RAW_MEAT_BAR = registerFoodItem("raw_meat_bar", 2, 0.3F);
+    public static final Item COOKED_MEAT_BAR = registerFoodItem("cooked_meat_bar", 2, 0.8F);
+    public static final Item RAW_FISH_BAR = registerFoodItem("raw_fish_bar", 2, 0.3F);
+    public static final Item COOKED_FISH_BAR = registerFoodItem("cooked_fish_bar", 2, 0.8F);
     public static final Item RAISIN_COOKIE = registerFoodItem("raisin_cookie", 2, 0.1F);
     public static final Item CHOCOLATE_RAISIN_COOKIE = registerFoodItem("chocolate_raisin_cookie", 2, 0.1F);
     public static final Item RAW_MARGHERITA_PIZZA = registerFoodItem("raw_margherita_pizza", 2, 0.15F);

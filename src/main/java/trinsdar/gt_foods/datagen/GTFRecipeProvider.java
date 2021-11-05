@@ -17,9 +17,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.Data.INGOT;
 import static muramasa.antimatter.Data.KNIFE;
-import static muramasa.antimatter.Data.RAW_ORE;
 import static net.minecraft.item.Items.*;
 import static trinsdar.gt_foods.data.GTFData.*;
 
@@ -31,11 +29,11 @@ public class GTFRecipeProvider extends AntimatterRecipeProvider {
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         super.registerRecipes(consumer);
-        registerFoodCraftingRecipes(consumer);
+        registerFoodKnifeRecipes(consumer);
         registerFoodFurnaceRecipes(consumer);
     }
 
-    protected void registerFoodCraftingRecipes(Consumer<IFinishedRecipe> consumer){
+    protected void registerFoodKnifeRecipes(Consumer<IFinishedRecipe> consumer){
         ICriterionInstance knife = this.hasSafeItem(Data.KNIFE.getForgeTag());
         Function<Item, ImmutableMap<Character, Object>> map = item -> of('I', item, 'K', KNIFE.getForgeTag());
         String array = "KI";
@@ -62,6 +60,45 @@ public class GTFRecipeProvider extends AntimatterRecipeProvider {
         addStackRecipe(consumer, GTFoods.MODID, "slice_tomato", "slices", "has_knife", knife, new ItemStack(TOMATO_SLICE, 4), map.apply(TOMATO), array);
     }
 
+    protected void registerFoodCraftingRecipes(Consumer<IFinishedRecipe> consumer){
+        shapeless(consumer,"buns", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(BUN_SLICES), SLICED_BUN, SLICED_BUN);
+        shapeless(consumer,"burger_veggie", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(VEGGIE_BURGER), SLICED_BUN, SLICED_BUN, CUCUMBER_SLICE, TOMATO_SLICE, ONION_SLICE);
+        shapeless(consumer,"burger_veggie_2", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(VEGGIE_BURGER), BUN_SLICES, CUCUMBER_SLICE, TOMATO_SLICE, ONION_SLICE);
+        shapeless(consumer,"burger_cheese", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(CHEESE_BURGER), SLICED_BUN, SLICED_BUN, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE);
+        shapeless(consumer,"burger_cheese_2", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(CHEESE_BURGER), BUN_SLICES, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE);
+        shapeless(consumer,"hamburger", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(HAMBURGER), SLICED_BUN, SLICED_BUN, COOKED_MEAT_BAR);
+        shapeless(consumer,"hamburger_2", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(HAMBURGER), BUN_SLICES, COOKED_MEAT_BAR);
+        shapeless(consumer,"burger_tufu", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(TOFU_BURGER), SLICED_BUN, SLICED_BUN, TOFU_BAR);
+        shapeless(consumer,"burger_tufu_2", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(TOFU_BURGER), BUN_SLICES, TOFU_BAR);
+        shapeless(consumer,"burger_soylent", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(SOYLENT_BURGER), SLICED_BUN, SLICED_BUN, SOYLENT_BAR);
+        shapeless(consumer,"burger_soylent_2", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(SOYLENT_BURGER), BUN_SLICES, SOYLENT_BAR);
+        shapeless(consumer,"burger_fish", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(FISH_BURGER), SLICED_BUN, SLICED_BUN, COOKED_FISH_BAR);
+        shapeless(consumer,"burger_fish_2", "burgers", "has_bun_slices", this.hasSafeItem(SLICED_BUN), new ItemStack(FISH_BURGER), BUN_SLICES, COOKED_FISH_BAR);
+
+
+        shapeless(consumer,"breads", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(BREAD_SLICES), SLICED_BREAD, SLICED_BREAD);
+        shapeless(consumer,"sandwich_veggie", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(VEGGIE_SANDWICH), SLICED_BREAD, SLICED_BREAD, CUCUMBER_SLICE, CUCUMBER_SLICE, TOMATO_SLICE, TOMATO_SLICE, ONION_SLICE);
+        shapeless(consumer,"sandwich_veggie_2", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(VEGGIE_SANDWICH), BREAD_SLICES, CUCUMBER_SLICE, CUCUMBER_SLICE, TOMATO_SLICE, TOMATO_SLICE, ONION_SLICE);
+        shapeless(consumer,"sandwich_cheese", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(CHEESE_SANDWICH), SLICED_BREAD, SLICED_BREAD, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE);
+        shapeless(consumer,"sandwich_cheese_2", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(CHEESE_SANDWICH), BREAD_SLICES, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE);
+        shapeless(consumer,"sandwich_bacon", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(BACON_SANDWICH), SLICED_BREAD, SLICED_BREAD, COOKED_BACON, COOKED_BACON, COOKED_BACON);
+        shapeless(consumer,"sandwich_bacon_2", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(BACON_SANDWICH), BREAD_SLICES, COOKED_BACON, COOKED_BACON, COOKED_BACON);
+        shapeless(consumer,"sandwich_steak", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(STEAK_SANDWICH), SLICED_BREAD, SLICED_BREAD, COOKED_BEEF);
+        shapeless(consumer,"sandwich_steak_2", "sandwiches", "has_bread_slices", this.hasSafeItem(SLICED_BREAD), new ItemStack(STEAK_SANDWICH), BREAD_SLICES, COOKED_BEEF);
+
+        shapeless(consumer,"baguettes", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(BAGUETTE_SLICES), SLICED_BAGUETTE, SLICED_BAGUETTE);
+        shapeless(consumer,"sandwich_large_veggie", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(LARGE_VEGGIE_SANDWICH), SLICED_BAGUETTE, SLICED_BAGUETTE, CUCUMBER_SLICE, CUCUMBER_SLICE, CUCUMBER_SLICE, TOMATO_SLICE, TOMATO_SLICE, TOMATO_SLICE, ONION_SLICE);
+        shapeless(consumer,"sandwich_large_veggie_2", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(LARGE_VEGGIE_SANDWICH), BAGUETTE_SLICES, CUCUMBER_SLICE, CUCUMBER_SLICE, CUCUMBER_SLICE, TOMATO_SLICE, TOMATO_SLICE, TOMATO_SLICE, ONION_SLICE);
+        shapeless(consumer,"sandwich_large_cheese", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(LARGE_CHEESE_SANDWICH), SLICED_BAGUETTE, SLICED_BAGUETTE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE);
+        shapeless(consumer,"sandwich_large_cheese_2", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(LARGE_CHEESE_SANDWICH), BAGUETTE_SLICES, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE, CHEESE_SLICE);
+        shapeless(consumer,"sandwich_large_bacon", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(LARGE_BACON_SANDWICH), SLICED_BAGUETTE, SLICED_BAGUETTE, COOKED_BACON, COOKED_BACON, COOKED_BACON, COOKED_BACON, COOKED_BACON, COOKED_BACON);
+        shapeless(consumer,"sandwich_large_bacon_2", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(LARGE_BACON_SANDWICH), BAGUETTE_SLICES, COOKED_BACON, COOKED_BACON, COOKED_BACON, COOKED_BACON, COOKED_BACON, COOKED_BACON);
+        shapeless(consumer,"sandwich_large_steak", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(LARGE_STEAK_SANDWICH), SLICED_BAGUETTE, SLICED_BAGUETTE, COOKED_BEEF, COOKED_BEEF);
+        shapeless(consumer,"sandwich_large_steak_2", "large_sandwiches", "has_baguette_slices", this.hasSafeItem(SLICED_BAGUETTE), new ItemStack(LARGE_STEAK_SANDWICH), BAGUETTE_SLICES, COOKED_BEEF, COOKED_BEEF);
+
+        shapeless(consumer, "cake_bottom_raw", "misc", "has_sugary_dough", this.hasSafeItem(SUGARY_DOUGH), new ItemStack(RAW_CAKE_BOTTOM), SUGARY_DOUGH, SUGARY_DOUGH, SUGARY_DOUGH, SUGARY_DOUGH);
+    }
+
     protected void registerFoodFurnaceRecipes(Consumer<IFinishedRecipe> consumer){
         addCookingRecipe(consumer, RAW_HAM, COOKED_HAM, "ham");
         addCookingRecipe(consumer, RAW_HAM_SLICE, COOKED_HAM_SLICE, "ham_slice");
@@ -85,6 +122,8 @@ public class GTFRecipeProvider extends AntimatterRecipeProvider {
         addCookingRecipe(consumer, RAW_VEGGIE_PIZZA, VEGGIE_PIZZA, "veggie_pizza");
         addCookingRecipe(consumer, RAW_HAWAIIN_PIZZA, HAWAIIN_PIZZA, "hawaiin_pizza");
         addCookingRecipe(consumer, RAW_POTATO_CHIPS, POTATO_CHIPS, "potato_chips");
+        addCookingRecipe(consumer, RAW_MEAT_BAR, COOKED_MEAT_BAR, "meat_bar");
+        addCookingRecipe(consumer, RAW_FISH_BAR, COOKED_FISH_BAR, "fish_bar");
     }
 
     protected void addCookingRecipe(Consumer<IFinishedRecipe> consumer, Item input, Item output, String id){
