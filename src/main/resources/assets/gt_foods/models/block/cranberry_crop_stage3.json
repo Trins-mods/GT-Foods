@@ -1,6 +1,0 @@
-{
-    "parent": "block/crop",
-    "textures": {
-        "crop": "gt_foods:block/cranberry/3"
-    }
-}

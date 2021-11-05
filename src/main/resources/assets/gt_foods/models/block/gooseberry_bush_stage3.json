@@ -1,6 +1,0 @@
-{
-    "parent": "block/cross",
-    "textures": {
-        "cross": "gt_foods:block/gooseberry_bush_stage3"
-    }
-}
