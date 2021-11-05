@@ -74,7 +74,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
     public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
         prov.getVariantBuilder(block).forAllStates(s -> {
             int age = s.get(AGE);
-            return ConfiguredModel.builder().modelFile(prov.models().getBuilder(block.getRegistryName().getPath() + "_stage" + age).parent(prov.models().getExistingFile(new ResourceLocation("minecraft:block/crop"))).texture("crop", new Texture(getDomain(), "block/" + getId() + "/" + Math.min(age, maxAge)))).build();
+            return ConfiguredModel.builder().modelFile(prov.models().getBuilder(block.getRegistryName().getPath() + "_stage" + age).parent(prov.models().getExistingFile(new ResourceLocation("minecraft:block/crop"))).texture("crop", new Texture(getDomain(), "block/crops/" + getId() + "/" + Math.min(age, maxAge)))).build();
         });
     }
 

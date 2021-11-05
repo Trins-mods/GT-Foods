@@ -80,7 +80,7 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(GTFoods.MODID, "block/" + getId() + "_stage2"), new Texture(GTFoods.MODID, "block/" + getId() + "_stage3")};
+        return new Texture[]{new Texture(GTFoods.MODID, "block/crops/" + getId() + "_stage2"), new Texture(GTFoods.MODID, "block/crops/" + getId() + "_stage3")};
     }
 
     @Override

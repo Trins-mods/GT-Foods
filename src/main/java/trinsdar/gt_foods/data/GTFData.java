@@ -19,6 +19,9 @@ import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
 import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
+import trinsdar.gt_foods.blocks.BlockLeaves;
+import trinsdar.gt_foods.blocks.BlockLogStrippable;
+import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.items.ItemBerry;
 import trinsdar.gt_foods.items.ItemFood;
 
@@ -35,6 +38,13 @@ public class GTFData {
     public static final Block RASPBERRY_BUSH =new BlockCropBerry("raspberry_bush", "raspberry");
     public static final Block STRAWBERRY_BUSH = new BlockCropBerry("strawberry_bush", "strawberry");
     public static final Block CRANBERRY_CROP = new BlockCropWaterlogged("cranberry", "cranberry", 3);
+
+    public static final Block STRIPPED_CINNAMON_LOG = new BlockLogStrippable("cinnamon", null, true, false);
+    public static final Block CINNAMON_LOG = new BlockLogStrippable("cinnamon", () -> STRIPPED_CINNAMON_LOG, false, false);
+    public static final Block STRIPPED_CINNAMON_WOOD = new BlockLogStrippable("cinnamon", null, true, true);
+    public static final Block CINNAMON_WOOD = new BlockLogStrippable("cinnamon", () -> STRIPPED_CINNAMON_WOOD, false, true);
+    public static final Block CINNAMON_LEAVES = new BlockLeaves("cinnamon_leaves");
+    public static final Block CINNAMON_PLANKS = new BlockPlanks(GTFoods.MODID, "cinnamon_planks");
 
     public static final Material StainlessSteel = AntimatterAPI.register(Material.class, new Material(Ref.ID, "stainless_steel", 0xc8c8dc, TextureSet.NONE)).flags(muramasa.antimatter.Data.RING, muramasa.antimatter.Data.ROD, muramasa.antimatter.Data.PLATE_TINY);
 
