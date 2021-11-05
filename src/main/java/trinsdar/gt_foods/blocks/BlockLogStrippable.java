@@ -106,7 +106,7 @@ public class BlockLogStrippable extends RotatedPillarBlock implements IAntimatte
     @Override
     public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
         if (wood){
-            prov.state(block, ((ITextureProvider) block).getTextures()[1]);
+            prov.axisBlock((RotatedPillarBlock) block, new Texture(getDomain(), "block/tree/" + getId().replace("wood", "log") + "_side"), new Texture(getDomain(), "block/tree/" + getId().replace("wood", "log") + "_side"));
             return;
         }
         prov.axisBlock((RotatedPillarBlock) block, getTextures()[1], getTextures()[0]);
