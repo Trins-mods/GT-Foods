@@ -129,7 +129,7 @@ public class GTFRecipeProvider extends AntimatterRecipeProvider {
     protected void addCookingRecipe(Consumer<IFinishedRecipe> consumer, Item input, Item output, String id){
         AntimatterCookingRecipeBuilder.smeltingRecipe(RecipeIngredient.of(input, 1).get(), new ItemStack(output), 1.0F, 200)
                 .addCriterion("has_" + input.getRegistryName().getPath(), hasItem(input))
-                .build(consumer, fixLoc(providerDomain, id));
+                .build(consumer, fixLoc(providerDomain, "smelting_" + id));
         AntimatterCookingRecipeBuilder.cookingRecipe(RecipeIngredient.of(input, 1).get(), new ItemStack(output), 1.0F, 100, IRecipeSerializer.SMOKING)
                 .addCriterion("has_" + input.getRegistryName().getPath(), hasItem(input))
                 .build(consumer, fixLoc(providerDomain, "smoking_" + id));
