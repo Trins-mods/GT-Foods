@@ -73,6 +73,18 @@ public class GTFRecipeProvider extends AntimatterRecipeProvider {
         addCookingRecipe(consumer, RAW_MULEMEAT, GRILLED_MULEMEAT, "mulemeat");
         addCookingRecipe(consumer, RAW_DONKEYMEAT, GRILLED_DONKEYMEAT, "donkeymeat");
         addCookingRecipe(consumer, EGG, FRIED_EGG, "cooked_egg");
+        addCookingRecipe(consumer, BUN_DOUGH, BUN, "bun");
+        addCookingRecipe(consumer, BREAD_DOUGH, BREAD, "bread");
+        addCookingRecipe(consumer, BAGUETTE_DOUGH, BAGUETTE, "baguette");
+        addCookingRecipe(consumer, RAW_CAKE_BOTTOM, CAKE_BOTTOM, "cake_bottom");
+        addCookingRecipe(consumer, COOKIE_SHAPED_DOUGH, COOKIE, "cookie");
+        addCookingRecipe(consumer, COOKIE_SHAPED_RAISIN_DOUGH, RAISIN_COOKIE, "raisin_cookie");
+        addCookingRecipe(consumer, COOKIE_SHAPED_CHOCOLATE_RAISIN_DOUGH, CHOCOLATE_RAISIN_COOKIE, "chocolate_raisin_cookie");
+        addCookingRecipe(consumer, RAW_MARGHERITA_PIZZA, MARGHERITA_PIZZA, "margherita_pizza");
+        addCookingRecipe(consumer, RAW_MINCEMEAT_PIZZA, MINCEMEAT_PIZZA, "mincemeat_pizza");
+        addCookingRecipe(consumer, RAW_VEGGIE_PIZZA, VEGGIE_PIZZA, "veggie_pizza");
+        addCookingRecipe(consumer, RAW_HAWAIIN_PIZZA, HAWAIIN_PIZZA, "hawaiin_pizza");
+        addCookingRecipe(consumer, RAW_POTATO_CHIPS, POTATO_CHIPS, "potato_chips");
     }
 
     protected void addCookingRecipe(Consumer<IFinishedRecipe> consumer, Item input, Item output, String id){
