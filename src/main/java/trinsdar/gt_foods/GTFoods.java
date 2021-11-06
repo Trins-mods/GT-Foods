@@ -31,6 +31,7 @@ import trinsdar.gt_foods.data.GTFConfiguredFeatures;
 import trinsdar.gt_foods.data.Guis;
 import trinsdar.gt_foods.data.Machines;
 import trinsdar.gt_foods.data.RecipeMaps;
+import trinsdar.gt_foods.datagen.GTFBlockLootProvider;
 import trinsdar.gt_foods.datagen.GTFBlockTagProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.datagen.GTFItemTagProvider;
@@ -66,6 +67,7 @@ public class GTFoods extends AntimatterMod {
         });
         AntimatterDynamics.addProvider(Ref.ID, g -> new GTFItemTagProvider(MODID, "GT Foods Item Tags", false, g, p[0], new ExistingFileHelperOverride()));
         AntimatterDynamics.addProvider(MODID, g -> new GTFRecipeProvider(MODID, "GT Foods Recipes", g));
+        AntimatterDynamics.addProvider(Ref.ID, g -> new GTFBlockLootProvider(MODID, "GT Foods Loot generator",g));
         new GTFRegistrar();
         MinecraftForge.EVENT_BUS.addListener(GTFoods::registerRecipeLoaders);
     }

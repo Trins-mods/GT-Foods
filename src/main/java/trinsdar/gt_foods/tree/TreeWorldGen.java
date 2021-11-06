@@ -24,7 +24,7 @@ import java.util.stream.Stream;
 public class TreeWorldGen {
     final static BaseTreeFeatureConfig CINNAMON_TREE_CONFIG =
             (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.CINNAMON_LOG.getDefaultState()), new SimpleBlockStateProvider(GTFData.CINNAMON_LEAVES.getDefaultState()),
-                    new CinnamonFoliagePlacer(), new StraightTrunkPlacer(4, 3, 0), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+                    new CinnamonFoliagePlacer(), new StraightTrunkPlacer(6, 3, 0), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
     public static final GTFTreeFeature CINNAMON_TREE_FEATURE = new GTFTreeFeature("cinnamon");
     public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_CINNAMON_TREE_FEATURE = register("configured_cinnamon_tree", CINNAMON_TREE_FEATURE.withConfiguration(CINNAMON_TREE_CONFIG));
 

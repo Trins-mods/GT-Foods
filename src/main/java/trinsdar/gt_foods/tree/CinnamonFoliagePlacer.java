@@ -2,6 +2,7 @@ package trinsdar.gt_foods.tree;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import muramasa.antimatter.Antimatter;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.IWorldGenerationReader;
@@ -25,7 +26,7 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
     }
 
     public CinnamonFoliagePlacer() {
-        super(FeatureSpread.create(3), FeatureSpread.create(0));
+        super(FeatureSpread.create(3), FeatureSpread.create(-1));
     }
 
     @Override
@@ -45,14 +46,33 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
-        double treeRadius = 3.5;
-        for(int i = offset; i >= offset - foliageHeight; --i) {
-            if (i == offset){
-                this.func_236753_a_(world, random, config, center, 1, leaves, i, treeNode.func_236765_c_(), box);
+        for(int i = offset + radius; i >= offset - radius; --i) {
+            pos.setPos(x, y + i, z);
+            if (i == offset - radius){
+                this.func_236753_a_(world, random, config, center, radius - 1, leaves, i, treeNode.func_236765_c_(), box);
                 continue;
             }
-            pos.setPos(x, y + i, z);
-            circle(pos.toMutable(), treeRadius, position -> {
+            if (i == offset + radius){
+                cornerlessSquare(pos.toMutable(), radius - 1, false, position -> {
+                    if (TreeFeature.isAirOrLeavesAt(world, position)) {
+                        world.setBlockState(position, config.leavesProvider.getBlockState(random, position), 19);
+                        box.expandTo(new MutableBoundingBox(position, position));
+                        leaves.add(position.toImmutable());
+                    }
+                });
+                continue;
+            }
+            if (i == offset + (radius - 1)){
+                cornerlessSquare(pos.toMutable(), radius, true, position -> {
+                    if (TreeFeature.isAirOrLeavesAt(world, position)) {
+                        world.setBlockState(position, config.leavesProvider.getBlockState(random, position), 19);
+                        box.expandTo(new MutableBoundingBox(position, position));
+                        leaves.add(position.toImmutable());
+                    }
+                });
+                continue;
+            }
+            cornerlessSquare(pos.toMutable(), radius, false, position -> {
                 if (TreeFeature.isAirOrLeavesAt(world, position)) {
                     world.setBlockState(position, config.leavesProvider.getBlockState(random, position), 19);
                     box.expandTo(new MutableBoundingBox(position, position));
@@ -81,14 +101,32 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
      * @param radius The radius of the circle
      * @param consumer The target of the positions; it passes the same BlockPos.Mutable object each time
      */
-    private static void circle(BlockPos.Mutable origin, double radius, Consumer<BlockPos.Mutable> consumer) {
+    private static void cornerlessSquare(BlockPos.Mutable origin, int radius, boolean rounded, Consumer<BlockPos.Mutable> consumer) {
         int x = origin.getX();
         int z = origin.getZ();
 
-        double radiusSq = radius * radius;
-        int radiusCeil = (int) Math.ceil(radius);
+        for (int rx = -radius; rx <= radius; rx++){
+            for (int rz = -radius; rz <= radius; rz++){
+                int abx = Math.abs(rx), abz = Math.abs(rz);
+                if (abx == abz && abx == radius){
+                    continue;
+                }
+                if (rounded){
+                    if (abx == radius || abz == radius){
+                        if (abx == radius - 1 || abz == radius - 1){
+                            continue;
+                        }
+                    }
+                }
+                origin.setPos(x + rx, origin.getY(), z + rz);
+                consumer.accept(origin);
+            }
+        }
 
-        for (int dz = -radiusCeil; dz <= radiusCeil; dz++) {
+        //double radiusSq = radius * radius;
+        //int radiusCeil = (int) Math.ceil(radius);
+
+        /*for (int dz = -radiusCeil; dz <= radiusCeil; dz++) {
             int dzSq = dz * dz;
 
             for (int dx = -radiusCeil; dx <= radiusCeil; dx++) {
@@ -99,12 +137,12 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
                     consumer.accept(origin);
                 }
             }
-        }
+        }*/
     }
 
     @Override
-    public int func_230374_a_(Random p_230374_1_, int p_230374_2_, BaseTreeFeatureConfig p_230374_3_) {
-        return Math.max(2, p_230374_2_ - (3 + p_230374_1_.nextInt(2)));
+    public int func_230374_a_(Random random, int radius, BaseTreeFeatureConfig config) {
+        return Math.max(2, radius - (3 + random.nextInt(2)));
     }
 
     @Override
