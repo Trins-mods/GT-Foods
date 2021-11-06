@@ -26,6 +26,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import trinsdar.gt_foods.blocks.BlockCrop;
+import trinsdar.gt_foods.blocks.BlockCropBerry;
+import trinsdar.gt_foods.blocks.BlockLeaves;
+import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFConfiguredFeatures;
 import trinsdar.gt_foods.data.Guis;
@@ -109,10 +113,10 @@ public class GTFoods extends AntimatterMod {
     }
 
     private void setupClient(final FMLClientSetupEvent event) {
-        addBlocksToRenderLayer(RenderType.getCutout(),
-                GTFData.BLUEBERRY_BUSH, GTFData.BLACKBERRY_BUSH,
-                GTFData.GOOSEBERRY_BUSH, GTFData.RASPBERRY_BUSH,
-                GTFData.STRAWBERRY_BUSH, GTFData.CRANBERRY_CROP);
+        AntimatterAPI.all(BlockCrop.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
+        AntimatterAPI.all(BlockCropBerry.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
+        AntimatterAPI.all(BlockSapling.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
+        AntimatterAPI.all(BlockLeaves.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
     }
 
     @OnlyIn(Dist.CLIENT)
