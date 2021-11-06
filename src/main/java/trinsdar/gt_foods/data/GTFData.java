@@ -22,8 +22,10 @@ import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
 import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
+import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.items.ItemBerry;
 import trinsdar.gt_foods.items.ItemFood;
+import trinsdar.gt_foods.tree.CinnamonTree;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -45,6 +47,7 @@ public class GTFData {
     public static final Block CINNAMON_WOOD = new BlockLogStrippable("cinnamon", () -> STRIPPED_CINNAMON_WOOD, false, true);
     public static final Block CINNAMON_LEAVES = new BlockLeaves("cinnamon_leaves");
     public static final Block CINNAMON_PLANKS = new BlockPlanks(GTFoods.MODID, "cinnamon_planks");
+    public static final Block CINNAMON_SAPLING = new BlockSapling("cinnamon_sapling", new CinnamonTree());
 
     public static final Material StainlessSteel = AntimatterAPI.register(Material.class, new Material(Ref.ID, "stainless_steel", 0xc8c8dc, TextureSet.NONE)).flags(muramasa.antimatter.Data.RING, muramasa.antimatter.Data.ROD, muramasa.antimatter.Data.PLATE_TINY);
 

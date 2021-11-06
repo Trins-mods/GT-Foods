@@ -13,6 +13,7 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.trees.Tree;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
@@ -26,8 +27,8 @@ import java.util.Random;
 public class BlockSapling extends SaplingBlock implements IGrowable, IAntimatterObject, IModelProvider, ITextureProvider {
     protected String id;
 
-    public BlockSapling(String id) {
-        super(null,/*new RubberTree(),*/ Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT));
+    public BlockSapling(String id, Tree tree) {
+        super(tree, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT));
         this.id = id;
         AntimatterAPI.register(BlockSapling.class, this);
         //RubberTree.TREE_FEATURE.init();
