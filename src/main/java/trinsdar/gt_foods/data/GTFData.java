@@ -49,8 +49,6 @@ public class GTFData {
     public static final Block CINNAMON_PLANKS = new BlockPlanks(GTFoods.MODID, "cinnamon_planks");
     public static final Block CINNAMON_SAPLING = new BlockSapling("cinnamon_sapling", new CinnamonTree());
 
-    public static final Material StainlessSteel = AntimatterAPI.register(Material.class, new Material(Ref.ID, "stainless_steel", 0xc8c8dc, TextureSet.NONE)).flags(muramasa.antimatter.Data.RING, muramasa.antimatter.Data.ROD, muramasa.antimatter.Data.PLATE_TINY);
-
     public static final ItemBasic<?> SlicerBladeFrame = new ItemBasic<>(GTFoods.MODID, "slicer_blade_frame");
     public static final ItemBasic<?> FlatSlicerBlades = new ItemBasic<>(GTFoods.MODID, "flat_slicer_blades");
     public static final ItemBasic<?> GridSlicerBlades = new ItemBasic<>(GTFoods.MODID, "grid_slicer_blades");

@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.ToolTypes;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -58,6 +59,9 @@ public class GTFRecipeProvider extends AntimatterRecipeProvider {
         addStackRecipe(consumer, GTFoods.MODID, "bun_slice", "slices", "has_knife", knife, new ItemStack(SLICED_BUN, 2), map.apply(BUN), array);
         addStackRecipe(consumer, GTFoods.MODID, "bread_slice", "slices", "has_knife", knife, new ItemStack(SLICED_BREAD, 2), map.apply(BREAD), array);
         addStackRecipe(consumer, GTFoods.MODID, "slice_tomato", "slices", "has_knife", knife, new ItemStack(TOMATO_SLICE, 4), map.apply(TOMATO), array);
+
+        shapeless(consumer, "dough_pizza", "dough", "has_rolling_pin", hasSafeItem(ToolTypes.ROLLING_PIN.getForgeTag()), new ItemStack(PIZZA_DOUGH), ToolTypes.ROLLING_PIN.getForgeTag(), DOUGH);
+        shapeless(consumer, "dough_pasta", "dough", "has_rolling_pin", hasSafeItem(ToolTypes.ROLLING_PIN.getForgeTag()), new ItemStack(FLATTENED_PASTA_DOUGH), ToolTypes.ROLLING_PIN.getForgeTag(), EGG_DOUGH);
     }
 
     protected void registerFoodCraftingRecipes(Consumer<IFinishedRecipe> consumer){
@@ -124,6 +128,12 @@ public class GTFRecipeProvider extends AntimatterRecipeProvider {
         addCookingRecipe(consumer, RAW_POTATO_CHIPS, POTATO_CHIPS, "potato_chips");
         addCookingRecipe(consumer, RAW_MEAT_BAR, COOKED_MEAT_BAR, "meat_bar");
         addCookingRecipe(consumer, RAW_FISH_BAR, COOKED_FISH_BAR, "fish_bar");
+        addCookingRecipe(consumer, GREEN_GRAPES, GREEN_RAISINS, "green_raisins");
+        addCookingRecipe(consumer, RED_GRAPES, RED_RAISINS, "red_raisins");
+        addCookingRecipe(consumer, WHITE_GRAPES, WHITE_RAISINS, "white_raisins");
+        addCookingRecipe(consumer, PURPLE_GRAPES, PURPLE_RAISINS, "purple_raisins");
+        addCookingRecipe(consumer, POMEGRANATE, POMERAISINS, "pomeraisins");
+
     }
 
     protected void addCookingRecipe(Consumer<IFinishedRecipe> consumer, Item input, Item output, String id){

@@ -32,6 +32,8 @@ import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFConfiguredFeatures;
+import trinsdar.gt_foods.data.GTFMaterialTypes;
+import trinsdar.gt_foods.data.GTFMaterials;
 import trinsdar.gt_foods.data.Guis;
 import trinsdar.gt_foods.data.Machines;
 import trinsdar.gt_foods.data.RecipeMaps;
@@ -95,6 +97,8 @@ public class GTFoods extends AntimatterMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
+            GTFMaterialTypes.init();
+            GTFMaterials.init();
             GTFData.init();
             RecipeMaps.init();
             Machines.init();
