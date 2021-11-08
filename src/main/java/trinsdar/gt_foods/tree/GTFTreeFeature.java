@@ -13,9 +13,9 @@ import trinsdar.gt_foods.GTFoods;
 import java.util.Random;
 
 public class GTFTreeFeature extends TreeFeature {
-    public GTFTreeFeature(String id) {
+    public GTFTreeFeature() {
         super(BaseTreeFeatureConfig.CODEC);
-        this.setRegistryName(new ResourceLocation(GTFoods.MODID, id + "_tree"));
+        this.setRegistryName(new ResourceLocation(GTFoods.MODID, "tree"));
     }
 
     public static void init() {

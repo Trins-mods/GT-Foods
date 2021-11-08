@@ -45,7 +45,7 @@ public class BlockFloweringLeaves extends BlockLeaves{
 
     @Override
     public boolean ticksRandomly(BlockState state) {
-        return super.ticksRandomly(state) && state.get(FLOWERING) < 3;
+        return !state.get(PERSISTENT) && (state.get(DISTANCE) == 7 || state.get(FLOWERING) < 3);
     }
 
     private Item getFruit(){
@@ -68,7 +68,10 @@ public class BlockFloweringLeaves extends BlockLeaves{
             return ActionResultType.PASS;
         } else if (i == 3) {
             int j = 1 + worldIn.rand.nextInt(2);
-            spawnAsEntity(worldIn, pos, new ItemStack(getFruit(), j));
+            ItemStack fruit = new ItemStack(getFruit(), j);
+            if (!player.addItemStackToInventory(fruit)) {
+                spawnAsEntity(worldIn, pos, fruit);
+            }
             worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
             worldIn.setBlockState(pos, state.with(FLOWERING, 0), 2);
             return ActionResultType.func_233537_a_(worldIn.isRemote);
@@ -102,7 +105,7 @@ public class BlockFloweringLeaves extends BlockLeaves{
                     break;
                 }
                 default: {
-                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "fruiting").parent(prov.models().getExistingFile(new ResourceLocation(Ref.ID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "fruiting"));
+                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_fruiting").parent(prov.models().getExistingFile(new ResourceLocation(Ref.ID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "fruiting"));
                     break;
                 }
             }

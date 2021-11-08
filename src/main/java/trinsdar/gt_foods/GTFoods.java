@@ -81,7 +81,7 @@ public class GTFoods extends AntimatterMod {
     @SubscribeEvent
     public static void onRegister(final RegistryEvent.Register<Feature<?>> e) {
         final String domain = ModLoadingContext.get().getActiveNamespace();
-        e.getRegistry().register(TreeWorldGen.CINNAMON_TREE_FEATURE);
+        e.getRegistry().register(TreeWorldGen.TREE_FEATURE);
     }
 
     private static void registerRecipeLoaders(AntimatterLoaderEvent event) {

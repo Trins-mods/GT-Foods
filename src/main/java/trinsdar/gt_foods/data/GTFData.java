@@ -1,35 +1,28 @@
 package trinsdar.gt_foods.data;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.TextureSet;
 import net.minecraft.block.Block;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.enchantment.UnbreakingEnchantment;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
 import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
+import trinsdar.gt_foods.blocks.BlockFloweringLeaves;
 import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.items.ItemBerry;
 import trinsdar.gt_foods.items.ItemFood;
-import trinsdar.gt_foods.tree.CinnamonTree;
+import trinsdar.gt_foods.tree.GTFTree;
+import trinsdar.gt_foods.tree.TreeWorldGen;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class GTFData {
     private static final Map<ResourceLocation, Block> blockIdList = new LinkedHashMap<>();
@@ -47,7 +40,23 @@ public class GTFData {
     public static final Block CINNAMON_WOOD = new BlockLogStrippable("cinnamon", () -> STRIPPED_CINNAMON_WOOD, false, true);
     public static final Block CINNAMON_LEAVES = new BlockLeaves("cinnamon_leaves");
     public static final Block CINNAMON_PLANKS = new BlockPlanks(GTFoods.MODID, "cinnamon_planks");
-    public static final Block CINNAMON_SAPLING = new BlockSapling("cinnamon_sapling", new CinnamonTree());
+    public static final Block CINNAMON_SAPLING = new BlockSapling("cinnamon_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_CINNAMON_TREE_FEATURE));
+
+    public static final Block STRIPPED_HAZEL_LOG = new BlockLogStrippable("hazel", null, true, false);
+    public static final Block HAZEL_LOG = new BlockLogStrippable("hazel", () -> STRIPPED_HAZEL_LOG, false, false);
+    public static final Block STRIPPED_HAZEL_WOOD = new BlockLogStrippable("hazel", null, true, true);
+    public static final Block HAZEL_WOOD = new BlockLogStrippable("hazel", () -> STRIPPED_HAZEL_WOOD, false, true);
+    public static final Block HAZEL_LEAVES = new BlockFloweringLeaves("hazel_leaves", "hazelnut");
+    public static final Block HAZEL_PLANKS = new BlockPlanks(GTFoods.MODID, "hazel_planks");
+    public static final Block HAZEL_SAPLING = new BlockSapling("hazel_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_HAZEL_TREE_FEATURE));
+
+    public static final Block STRIPPED_COCONUT_LOG = new BlockLogStrippable("coconut", null, true, false);
+    public static final Block COCONUT_LOG = new BlockLogStrippable("coconut", () -> STRIPPED_COCONUT_LOG, false, false);
+    public static final Block STRIPPED_COCONUT_WOOD = new BlockLogStrippable("coconut", null, true, true);
+    public static final Block COCONUT_WOOD = new BlockLogStrippable("coconut", () -> STRIPPED_COCONUT_WOOD, false, true);
+    public static final Block COCONUT_LEAVES = new BlockFloweringLeaves("coconut_leaves", "coconut");
+    public static final Block COCONUT_PLANKS = new BlockPlanks(GTFoods.MODID, "coconut_planks");
+    public static final Block COCONUT_SAPLING = new BlockSapling("coconut_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_CINNAMON_TREE_FEATURE));
 
     public static final ItemBasic<?> SlicerBladeFrame = new ItemBasic<>(GTFoods.MODID, "slicer_blade_frame");
     public static final ItemBasic<?> FlatSlicerBlades = new ItemBasic<>(GTFoods.MODID, "flat_slicer_blades");

@@ -10,20 +10,24 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
-public class CinnamonTree extends Tree {
+public class GTFTree extends Tree {
+    Supplier<ConfiguredFeature<BaseTreeFeatureConfig, ?>> treeFeature;
+    public GTFTree(Supplier<ConfiguredFeature<BaseTreeFeatureConfig, ?>> treeFeature){
+        this.treeFeature = treeFeature;
+    }
 
     @Override
     protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random rand, boolean flowers) {
-        return TreeWorldGen.CONFIGURED_CINNAMON_TREE_FEATURE;
+        return treeFeature.get();
     }
 
     @Override
     public boolean attemptGrowTree(ServerWorld world, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, Random random) {
-        ConfiguredFeature<BaseTreeFeatureConfig, ?> configuredFeature = TreeWorldGen.CONFIGURED_CINNAMON_TREE_FEATURE;
         world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
-        configuredFeature.config.forcePlacement();
-        if (!configuredFeature.generate(world, chunkGenerator, random, pos)) {
+        treeFeature.get().config.forcePlacement();
+        if (!treeFeature.get().generate(world, chunkGenerator, random, pos)) {
             world.setBlockState(pos, state, 4);
             return false;
         } else
