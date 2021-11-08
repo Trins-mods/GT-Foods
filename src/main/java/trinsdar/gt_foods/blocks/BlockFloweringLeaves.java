@@ -68,7 +68,7 @@ public class BlockFloweringLeaves extends BlockLeaves{
             return ActionResultType.PASS;
         } else if (i == 3) {
             int j = 1 + worldIn.rand.nextInt(2);
-            spawnAsEntity(worldIn, pos, new ItemStack(Items.SWEET_BERRIES, j));
+            spawnAsEntity(worldIn, pos, new ItemStack(getFruit(), j));
             worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
             worldIn.setBlockState(pos, state.with(FLOWERING, 0), 2);
             return ActionResultType.func_233537_a_(worldIn.isRemote);
