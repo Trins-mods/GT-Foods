@@ -105,7 +105,7 @@ public class BlockFloweringLeaves extends BlockLeaves{
                     break;
                 }
                 default: {
-                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_fruiting").parent(prov.models().getExistingFile(new ResourceLocation(Ref.ID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "fruiting"));
+                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_fruiting").parent(prov.models().getExistingFile(new ResourceLocation(Ref.ID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "_fruiting"));
                     break;
                 }
             }
