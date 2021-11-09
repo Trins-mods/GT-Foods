@@ -11,6 +11,7 @@ import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
 import net.minecraft.world.gen.feature.WorldDecoratingHelper;
+import net.minecraft.world.gen.foliageplacer.FoliagePlacer;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
@@ -30,9 +31,13 @@ public class TreeWorldGen {
     final static BaseTreeFeatureConfig HAZEL_TREE_CONFIG =
             (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.HAZEL_LOG.getDefaultState()), HAZEL_LEAF_BLOCKS,
                     new HazelFoliagePlacer(), new StraightTrunkPlacer(3, 0, 0), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+    final static BaseTreeFeatureConfig LEMON_TREE_CONFIG =
+            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.HAZEL_LOG.getDefaultState()), HAZEL_LEAF_BLOCKS,
+                    new LemonFoliagePlacer(), new StraightTrunkPlacer(4, 0, 0), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
     public static final GTFTreeFeature TREE_FEATURE = new GTFTreeFeature();
     public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_CINNAMON_TREE_FEATURE = register("configured_cinnamon_tree", TREE_FEATURE.withConfiguration(CINNAMON_TREE_CONFIG));
     public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_HAZEL_TREE_FEATURE = register("configured_hazel_tree", TREE_FEATURE.withConfiguration(HAZEL_TREE_CONFIG));
+    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_LEMON_TREE_FEATURE = register("configured_lemon_tree", TREE_FEATURE.withConfiguration(LEMON_TREE_CONFIG));
 
 
     public static ConfiguredFeature<BaseTreeFeatureConfig,?> register(String id, ConfiguredFeature<BaseTreeFeatureConfig,?> feature){

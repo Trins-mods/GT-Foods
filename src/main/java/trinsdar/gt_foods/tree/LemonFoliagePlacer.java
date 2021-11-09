@@ -15,22 +15,22 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class HazelFoliagePlacer extends FoliagePlacer {
-    public static final Codec<HazelFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
-        return func_242830_b(p_242834_0_).apply(p_242834_0_, HazelFoliagePlacer::new);
+public class LemonFoliagePlacer extends FoliagePlacer {
+    public static final Codec<LemonFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
+        return func_242830_b(p_242834_0_).apply(p_242834_0_, LemonFoliagePlacer::new);
     });
-    public static final FoliagePlacerType<HazelFoliagePlacer> HAZEL = new FoliagePlacerType<>(CODEC);
-    protected HazelFoliagePlacer(FeatureSpread radius, FeatureSpread offset) {
+    public static final FoliagePlacerType<LemonFoliagePlacer> LEMON = new FoliagePlacerType<>(CODEC);
+    protected LemonFoliagePlacer(FeatureSpread radius, FeatureSpread offset) {
         super(radius, offset);
     }
 
-    public HazelFoliagePlacer() {
-        super(FeatureSpread.create(3), FeatureSpread.create(1));
+    public LemonFoliagePlacer() {
+        super(FeatureSpread.create(1), FeatureSpread.create(0));
     }
 
     @Override
     protected FoliagePlacerType<?> getPlacerType() {
-        return HAZEL;
+        return LEMON;
     }
 
     @Override
@@ -45,10 +45,10 @@ public class HazelFoliagePlacer extends FoliagePlacer {
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
-        for(int i = offset; i >= offset - radius; --i) {
+        for(int i = offset + 1; i >= offset - 2; --i) {
             pos.setPos(x, y + i, z);
-            boolean cornerless = !(i == offset || i == offset - 2);
-            int r = i == offset ? 1 : i == offset - 3 ? 3 : 2;
+            boolean cornerless = i == -1;
+            int r = i == -1 ? 2 : i == offset + 1 ? 0 : 1;
             square(pos.toMutable(), r, cornerless, position -> {
                 if (TreeFeature.isAirOrLeavesAt(world, position)) {
                     world.setBlockState(position, config.leavesProvider.getBlockState(random, position), 19);
@@ -75,8 +75,15 @@ public class HazelFoliagePlacer extends FoliagePlacer {
         for (int rx = -radius; rx <= radius; rx++){
             for (int rz = -radius; rz <= radius; rz++){
                 int abx = Math.abs(rx), abz = Math.abs(rz);
-                if (cornerless && abx == abz && abx == radius){
-                    continue;
+                if (cornerless){
+                    if (abx == abz && abx == radius){
+                        continue;
+                    }
+                    if (abx == radius || abz == radius){
+                        if (abx == radius - 1 || abz == radius - 1){
+                            continue;
+                        }
+                    }
                 }
                 origin.setPos(x + rx, origin.getY(), z + rz);
                 consumer.accept(origin);

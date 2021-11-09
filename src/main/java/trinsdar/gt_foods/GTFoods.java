@@ -7,7 +7,9 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.ExistingFileHelperOverride;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
+import muramasa.antimatter.event.AntimatterCraftingEvent;
 import muramasa.antimatter.event.AntimatterLoaderEvent;
+import muramasa.antimatter.event.AntimatterProvidersEvent;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
 import muramasa.antimatter.registration.RegistrationEvent;
 import net.minecraft.block.Block;
@@ -42,7 +44,8 @@ import trinsdar.gt_foods.datagen.GTFBlockTagProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.datagen.GTFItemTagProvider;
 import trinsdar.gt_foods.datagen.GTFLangProvider;
-import trinsdar.gt_foods.datagen.GTFRecipeProvider;
+import trinsdar.gt_foods.loader.CraftingTableLoader;
+import trinsdar.gt_foods.loader.FurnaceLoader;
 import trinsdar.gt_foods.loader.SlicerLoader;
 import trinsdar.gt_foods.tree.TreeWorldGen;
 
@@ -66,16 +69,10 @@ public class GTFoods extends AntimatterMod {
         AntimatterDynamics.addProvider(GTFoods.MODID, g -> new AntimatterBlockStateProvider(GTFoods.MODID, "GT Foods BlockStates", g));
         AntimatterDynamics.addProvider(GTFoods.MODID, GTFItemModelProvider::new);
         AntimatterDynamics.addProvider(GTFoods.MODID, GTFLangProvider::new);
-        final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
-        AntimatterDynamics.addProvider(Ref.ID, g -> {
-            p[0] = new GTFBlockTagProvider(MODID, "GT Foods Block Tags", false, g, new ExistingFileHelperOverride());
-            return p[0];
-        });
-        AntimatterDynamics.addProvider(Ref.ID, g -> new GTFItemTagProvider(MODID, "GT Foods Item Tags", false, g, p[0], new ExistingFileHelperOverride()));
-        AntimatterDynamics.addProvider(MODID, g -> new GTFRecipeProvider(MODID, "GT Foods Recipes", g));
-        AntimatterDynamics.addProvider(Ref.ID, g -> new GTFBlockLootProvider(MODID, "GT Foods Loot generator",g));
         new GTFRegistrar();
         MinecraftForge.EVENT_BUS.addListener(GTFoods::registerRecipeLoaders);
+        MinecraftForge.EVENT_BUS.addListener(GTFoods::registerCraftingLoaders);
+        MinecraftForge.EVENT_BUS.addListener(GTFoods::onProviders);
     }
 
     @SubscribeEvent
@@ -87,6 +84,22 @@ public class GTFoods extends AntimatterMod {
     private static void registerRecipeLoaders(AntimatterLoaderEvent event) {
         BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(Ref.ID, a, b);
         loader.accept("slicer", SlicerLoader::init);
+    }
+
+    private static void registerCraftingLoaders(AntimatterCraftingEvent event){
+        event.addLoader(FurnaceLoader::loadRecipes);
+        event.addLoader(CraftingTableLoader::loadRecipes);
+    }
+
+    private static void onProviders(AntimatterProvidersEvent event){
+        if (event.getSide() == Dist.CLIENT) return;
+        final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
+        event.addProvider(Ref.ID, g -> {
+            p[0] = new GTFBlockTagProvider(MODID, "GT Foods Block Tags", false, g, new ExistingFileHelperOverride());
+            return p[0];
+        });
+        event.addProvider(Ref.ID, g -> new GTFItemTagProvider(MODID, "GT Foods Item Tags", false, g, p[0], new ExistingFileHelperOverride()));
+        event.addProvider(Ref.ID, g -> new GTFBlockLootProvider(MODID, "GT Foods Loot generator",g));
     }
 
     @Override
