@@ -27,7 +27,7 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
     }
 
     public CoconutFoliagePlacer() {
-        super(FeatureSpread.create(1), FeatureSpread.create(0));
+        super(FeatureSpread.create(1), FeatureSpread.create(-1));
     }
 
     @Override
@@ -40,10 +40,10 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
         generate(world, random, config, trunkHeight, treeNode, foilageHeight, radius, leaves, offset, box);
     }
 
-    protected void generate(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foliageHeight, int radius, Set<BlockPos> leaves, int i, MutableBoundingBox blockBox) {
+    protected void generate(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foliageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox blockBox) {
 
         //The origin of this leaf piece
-        BlockPos center = treeNode.func_236763_a_().toImmutable();
+        BlockPos center = treeNode.func_236763_a_().toMutable().move(0, offset, 0).toImmutable();
 
         //The working mutable position
         BlockPos.Mutable pos = new BlockPos.Mutable();

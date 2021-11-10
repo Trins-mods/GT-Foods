@@ -56,7 +56,7 @@ public class BlockFloweringLeaves extends BlockLeaves{
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         super.randomTick(state, worldIn, pos, random);
         if (state.get(FLOWERING) < 3 && worldIn.rand.nextInt(10) == 0){
-            worldIn.setBlockState(pos, state.with(FLOWERING, state.get(FLOWERING) + 1));
+            worldIn.setBlockState(pos, state.cycleValue(FLOWERING));
         }
     }
 
