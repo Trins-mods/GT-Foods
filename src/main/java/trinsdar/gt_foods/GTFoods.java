@@ -16,6 +16,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,6 +27,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import trinsdar.gt_foods.blocks.BlockCrop;
@@ -76,9 +78,17 @@ public class GTFoods extends AntimatterMod {
     }
 
     @SubscribeEvent
-    public static void onRegister(final RegistryEvent.Register<Feature<?>> e) {
-        final String domain = ModLoadingContext.get().getActiveNamespace();
+    public static void onRegisterFeature(final RegistryEvent.Register<Feature<?>> e) {
+
         e.getRegistry().register(TreeWorldGen.TREE_FEATURE);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterFoliage(final RegistryEvent.Register<FoliagePlacerType<?>> e) {
+        e.getRegistry().register(TreeWorldGen.CINNAMON_FOLIAGE_PLACER);
+        e.getRegistry().register(TreeWorldGen.COCONUT_FOLIAGE_PLACER);
+        e.getRegistry().register(TreeWorldGen.HAZEL_FOLIAGE_PLACER);
+        e.getRegistry().register(TreeWorldGen.LEMON_FOLIAGE_PLACER);
     }
 
     private static void registerRecipeLoaders(AntimatterLoaderEvent event) {

@@ -54,9 +54,9 @@ public class GTFData {
     public static final Block COCONUT_LOG = new BlockLogStrippable("coconut", () -> STRIPPED_COCONUT_LOG, false, false);
     public static final Block STRIPPED_COCONUT_WOOD = new BlockLogStrippable("coconut", null, true, true);
     public static final Block COCONUT_WOOD = new BlockLogStrippable("coconut", () -> STRIPPED_COCONUT_WOOD, false, true);
-    public static final Block COCONUT_LEAVES = new BlockFloweringLeaves("coconut_leaves", "coconut");
+    public static final Block COCONUT_LEAVES = new BlockLeaves("coconut_leaves");
     public static final Block COCONUT_PLANKS = new BlockPlanks(GTFoods.MODID, "coconut_planks");
-    public static final Block COCONUT_SAPLING = new BlockSapling("coconut_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_LEMON_TREE_FEATURE));
+    public static final Block COCONUT_SAPLING = new BlockSapling("coconut_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_COCONUT_TREE_FEATURE));
 
     public static final ItemBasic<?> SlicerBladeFrame = new ItemBasic<>(GTFoods.MODID, "slicer_blade_frame");
     public static final ItemBasic<?> FlatSlicerBlades = new ItemBasic<>(GTFoods.MODID, "flat_slicer_blades");

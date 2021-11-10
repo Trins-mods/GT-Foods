@@ -2,7 +2,6 @@ package trinsdar.gt_foods.tree;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import muramasa.antimatter.Antimatter;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.IWorldGenerationReader;
@@ -20,7 +19,7 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
     public static final Codec<CinnamonFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
         return func_242830_b(p_242834_0_).apply(p_242834_0_, CinnamonFoliagePlacer::new);
     });
-    public static final FoliagePlacerType<CinnamonFoliagePlacer> CINNAMON = new FoliagePlacerType<>(CODEC);
+
     protected CinnamonFoliagePlacer(FeatureSpread radius, FeatureSpread offset) {
         super(radius, offset);
     }
@@ -31,7 +30,7 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected FoliagePlacerType<?> getPlacerType() {
-        return CINNAMON;
+        return TreeWorldGen.CINNAMON_FOLIAGE_PLACER;
     }
 
     @Override

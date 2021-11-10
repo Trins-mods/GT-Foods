@@ -19,7 +19,7 @@ public class HazelFoliagePlacer extends FoliagePlacer {
     public static final Codec<HazelFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
         return func_242830_b(p_242834_0_).apply(p_242834_0_, HazelFoliagePlacer::new);
     });
-    public static final FoliagePlacerType<HazelFoliagePlacer> HAZEL = new FoliagePlacerType<>(CODEC);
+
     protected HazelFoliagePlacer(FeatureSpread radius, FeatureSpread offset) {
         super(radius, offset);
     }
@@ -30,7 +30,7 @@ public class HazelFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected FoliagePlacerType<?> getPlacerType() {
-        return HAZEL;
+        return TreeWorldGen.HAZEL_FOLIAGE_PLACER;
     }
 
     @Override

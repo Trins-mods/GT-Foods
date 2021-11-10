@@ -19,7 +19,7 @@ public class LemonFoliagePlacer extends FoliagePlacer {
     public static final Codec<LemonFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
         return func_242830_b(p_242834_0_).apply(p_242834_0_, LemonFoliagePlacer::new);
     });
-    public static final FoliagePlacerType<LemonFoliagePlacer> LEMON = new FoliagePlacerType<>(CODEC);
+
     protected LemonFoliagePlacer(FeatureSpread radius, FeatureSpread offset) {
         super(radius, offset);
     }
@@ -30,7 +30,7 @@ public class LemonFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected FoliagePlacerType<?> getPlacerType() {
-        return LEMON;
+        return TreeWorldGen.LEMON_FOLIAGE_PLACER;
     }
 
     @Override
