@@ -24,7 +24,7 @@ import trinsdar.gt_foods.data.GTFData;
 
 public class BlockHangingFruit extends BlockCrop{
     public BlockHangingFruit(String id, String fruit) {
-        super(id, fruit, 4);
+        super(id, fruit, 3);
     }
 
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {

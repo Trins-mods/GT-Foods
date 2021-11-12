@@ -11,6 +11,7 @@ import net.minecraft.world.gen.feature.FeatureSpread;
 import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
+import trinsdar.gt_foods.data.GTFData;
 
 import javax.swing.tree.TreeNode;
 import java.util.Random;
@@ -62,6 +63,14 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
         for (int dZ = -1; dZ < 2; dZ++) {
             for (int dX = -1; dX < 2; dX++) {
                 checkAndSetBlockState(world, random, pos.setPos(center).move(dZ, 0, dX), leaves, blockBox, config);
+                if (dX != 0 && dZ != 0){
+                    if (random.nextBoolean()){
+                        BlockPos currentPosition = pos.setPos(center).move(dX, -1, dZ);
+                        if (TreeFeature.isAirOrLeavesAt(world, currentPosition)) {
+                            world.setBlockState(currentPosition, GTFData.COCONUT_HANGING_PLANT.getDefaultState(), 19);
+                        }
+                    }
+                }
             }
         }
 

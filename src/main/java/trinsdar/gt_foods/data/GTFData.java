@@ -12,6 +12,7 @@ import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
 import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
 import trinsdar.gt_foods.blocks.BlockFloweringLeaves;
+import trinsdar.gt_foods.blocks.BlockHangingFruit;
 import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
@@ -50,6 +51,14 @@ public class GTFData {
     public static final Block HAZEL_PLANKS = new BlockPlanks(GTFoods.MODID, "hazel_planks");
     public static final Block HAZEL_SAPLING = new BlockSapling("hazel_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_HAZEL_TREE_FEATURE));
 
+    public static final Block STRIPPED_LEMON_LOG = new BlockLogStrippable("lemon", null, true, false);
+    public static final Block LEMON_LOG = new BlockLogStrippable("lemon", () -> STRIPPED_LEMON_LOG, false, false);
+    public static final Block STRIPPED_LEMON_WOOD = new BlockLogStrippable("lemon", null, true, true);
+    public static final Block LEMON_WOOD = new BlockLogStrippable("lemon", () -> STRIPPED_LEMON_WOOD, false, true);
+    public static final Block LEMON_LEAVES = new BlockFloweringLeaves("lemon_leaves", "lemon");
+    public static final Block LEMON_PLANKS = new BlockPlanks(GTFoods.MODID, "lemon_planks");
+    public static final Block LEMON_SAPLING = new BlockSapling("lemon_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_LEMON_TREE_FEATURE));
+
     public static final Block STRIPPED_COCONUT_LOG = new BlockLogStrippable("coconut", null, true, false);
     public static final Block COCONUT_LOG = new BlockLogStrippable("coconut", () -> STRIPPED_COCONUT_LOG, false, false);
     public static final Block STRIPPED_COCONUT_WOOD = new BlockLogStrippable("coconut", null, true, true);
@@ -57,6 +66,7 @@ public class GTFData {
     public static final Block COCONUT_LEAVES = new BlockLeaves("coconut_leaves");
     public static final Block COCONUT_PLANKS = new BlockPlanks(GTFoods.MODID, "coconut_planks");
     public static final Block COCONUT_SAPLING = new BlockSapling("coconut_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_COCONUT_TREE_FEATURE));
+    public static final Block COCONUT_HANGING_PLANT = new BlockHangingFruit("coconut_hanging_plant", "coconut");
 
     public static final ItemBasic<?> SlicerBladeFrame = new ItemBasic<>(GTFoods.MODID, "slicer_blade_frame");
     public static final ItemBasic<?> FlatSlicerBlades = new ItemBasic<>(GTFoods.MODID, "flat_slicer_blades");
