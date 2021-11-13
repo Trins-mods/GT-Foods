@@ -42,6 +42,8 @@ public class GTFBlockLootProvider extends AntimatterBlockLootProvider {
         AntimatterAPI.all(BlockSapling.class, providerDomain, this::add);
         AntimatterAPI.all(BlockPlanks.class, providerDomain, this::add);
         tables.put(GTFData.CINNAMON_LEAVES, b -> droppingWithChancesAndSticks(GTFData.CINNAMON_LEAVES, GTFData.CINNAMON_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F));
+        tables.put(GTFData.COCONUT_LEAVES, b -> droppingWithChancesAndSticks(GTFData.COCONUT_LEAVES, GTFData.COCONUT_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F));
         tables.put(GTFData.HAZEL_LEAVES, b -> droppingWithChancesAndSticks(GTFData.HAZEL_LEAVES, GTFData.HAZEL_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).acceptCondition(NOT_SILK_TOUCH_OR_SHEARS).acceptCondition(BlockStateProperty.builder(GTFData.HAZEL_LEAVES).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlockFloweringLeaves.FLOWERING, 3))).addEntry(withSurvivesExplosion(b, ItemLootEntry.builder(GTFData.HAZELNUT).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F)))))));
+        tables.put(GTFData.LEMON_LEAVES, b -> droppingWithChancesAndSticks(GTFData.LEMON_LEAVES, GTFData.LEMON_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).acceptCondition(NOT_SILK_TOUCH_OR_SHEARS).acceptCondition(BlockStateProperty.builder(GTFData.LEMON_LEAVES).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlockFloweringLeaves.FLOWERING, 3))).addEntry(withSurvivesExplosion(b, ItemLootEntry.builder(GTFData.LEMON).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F)))))));
     }
 }

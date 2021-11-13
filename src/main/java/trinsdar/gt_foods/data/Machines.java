@@ -16,10 +16,20 @@ public class Machines {
         if (!AntimatterAPI.isModLoaded("gti")){
             NonGtiMachines.init();
         }
+
+        if (!AntimatterAPI.isModLoaded("gt4r")){
+            NonGt4rMachines.init();
+        }
     }
 
     public static class NonGtiMachines {
         public static BasicMachine MIXER = new BasicMachine(GTFoods.MODID, "mixer").setMap(RecipeMaps.NonGtiRecipeMaps.MIXING).addFlags(GUI, ITEM, FLUID);
+
+        static void init(){}
+    }
+
+    public static class NonGt4rMachines {
+        public static BasicMachine BATH = new BasicMachine(GTFoods.MODID, "bath").setMap(RecipeMaps.NonGt4rRecipeMaps.BATHING).addFlags(GUI, ITEM, FLUID);
 
         static void init(){}
     }
