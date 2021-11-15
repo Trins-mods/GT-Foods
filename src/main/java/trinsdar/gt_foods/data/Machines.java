@@ -2,7 +2,6 @@ package trinsdar.gt_foods.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.types.BasicMachine;
-import muramasa.antimatter.machine.types.Machine;
 import trinsdar.gt_foods.GTFoods;
 
 import static muramasa.antimatter.machine.MachineFlag.FLUID;
@@ -23,13 +22,13 @@ public class Machines {
     }
 
     public static class NonGtiMachines {
-        public static BasicMachine MIXER = new BasicMachine(GTFoods.MODID, "mixer").setMap(RecipeMaps.NonGtiRecipeMaps.MIXING).addFlags(GUI, ITEM, FLUID);
+        public static BasicMachine MIXER = new BasicMachine(GTFoods.MODID, "mixer").setMap(RecipeMaps.MIXING).addFlags(GUI, ITEM, FLUID);
 
         static void init(){}
     }
 
     public static class NonGt4rMachines {
-        public static BasicMachine BATH = new BasicMachine(GTFoods.MODID, "bath").setMap(RecipeMaps.NonGt4rRecipeMaps.BATHING).addFlags(GUI, ITEM, FLUID);
+        public static BasicMachine BATH = new BasicMachine(GTFoods.MODID, "bath").setMap(RecipeMaps.BATHING).addFlags(GUI, ITEM, FLUID);
 
         static void init(){}
     }
