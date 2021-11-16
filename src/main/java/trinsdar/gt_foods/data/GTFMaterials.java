@@ -22,6 +22,7 @@ public class GTFMaterials {
     public static final Material Ketchup = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "ketchup", 0x950000, NONE)).asFluid();
     public static final Material FishOil = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "fish_oil", 0xffc400, NONE)).asFluid(6);
     public static final Material SeedOil = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "seed_oil", 0xc4ff00, NONE)).asFluid(6);
+    public static final Material HotFryingOil = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "hot_frying_oil", 0xd0aa42, NONE)).asFluid();
 
     public static final Material Chocolate = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "chocolate", 0x643200, NONE)).asDust(GROUND).asFluid();
     public static final Material BlackPepper = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "black_pepper", 0x282828, NONE)).asDust(GROUND);
