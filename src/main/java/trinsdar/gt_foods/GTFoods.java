@@ -32,6 +32,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import trinsdar.gt_foods.blocks.BlockCrop;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
+import trinsdar.gt_foods.blocks.BlockJuicer;
 import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFData;
@@ -147,6 +148,7 @@ public class GTFoods extends AntimatterMod {
         AntimatterAPI.all(BlockCropBerry.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
         AntimatterAPI.all(BlockSapling.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
         AntimatterAPI.all(BlockLeaves.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
+        AntimatterAPI.all(BlockJuicer.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
     }
 
     @OnlyIn(Dist.CLIENT)

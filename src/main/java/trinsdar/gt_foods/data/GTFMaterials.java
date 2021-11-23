@@ -36,6 +36,6 @@ public class GTFMaterials {
     public static final Material Corn = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "corn", 0xfaf06f, NONE)).flags(FLOUR);
 
     public static void init(){
-
+        
     }
 }
