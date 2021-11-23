@@ -26,10 +26,11 @@ public class Machines {
                 new Texture(GTFoods.MODID, "block/juicer/sides"),
     };
     public static BasicMachine SLICER = new BasicMachine(GTFoods.MODID, "slicer").setMap(RecipeMaps.SLICING).addFlags(GUI, ITEM);
-    public static BasicMachine JUICER = new BasicMachine(GTFoods.MODID, "juicer").setMap(RecipeMaps.JUICING).addFlags(ITEM, FLUID).baseTexture(J).renderContainedLiquids();
+    public static BasicMachine JUICER = new Juicer(GTFoods.MODID, "juicer").setMap(RecipeMaps.JUICING).addFlags(ITEM, FLUID).setTiers(Tier.LV).baseTexture(J).renderContainedLiquids().noCovers();
 
     public static void init(){
         MachineFlag.ENERGY.remove(JUICER);
+        MachineFlag.COVERABLE.remove(JUICER);
 
         if (!AntimatterAPI.isModLoaded("gti")){
             NonGtiMachines.init();
