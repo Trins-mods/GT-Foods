@@ -15,9 +15,11 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 
+import net.minecraft.world.gen.foliageplacer.FoliagePlacer.Foliage;
+
 public class LemonFoliagePlacer extends FoliagePlacer {
     public static final Codec<LemonFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
-        return func_242830_b(p_242834_0_).apply(p_242834_0_, LemonFoliagePlacer::new);
+        return foliagePlacerParts(p_242834_0_).apply(p_242834_0_, LemonFoliagePlacer::new);
     });
 
     protected LemonFoliagePlacer(FeatureSpread radius, FeatureSpread offset) {
@@ -25,35 +27,35 @@ public class LemonFoliagePlacer extends FoliagePlacer {
     }
 
     public LemonFoliagePlacer() {
-        super(FeatureSpread.create(1), FeatureSpread.create(0));
+        super(FeatureSpread.fixed(1), FeatureSpread.fixed(0));
     }
 
     @Override
-    protected FoliagePlacerType<?> getPlacerType() {
+    protected FoliagePlacerType<?> type() {
         return TreeWorldGen.LEMON_FOLIAGE_PLACER;
     }
 
     @Override
-    protected void func_230372_a_(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foilageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox box) {
+    protected void createFoliage(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foilageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox box) {
         generate(world, random, config, trunkHeight, treeNode, foilageHeight, radius, leaves, offset, box);
     }
 
     protected void generate(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foliageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox box) {
-        BlockPos center = treeNode.func_236763_a_();
-        BlockPos.Mutable pos = center.toMutable();
+        BlockPos center = treeNode.foliagePos();
+        BlockPos.Mutable pos = center.mutable();
 
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
         for(int i = offset + 1; i >= offset - 2; --i) {
-            pos.setPos(x, y + i, z);
+            pos.set(x, y + i, z);
             boolean cornerless = i == -1;
             int r = i == -1 ? 2 : i == offset + 1 ? 0 : 1;
-            square(pos.toMutable(), r, cornerless, position -> {
-                if (TreeFeature.isAirOrLeavesAt(world, position)) {
-                    world.setBlockState(position, config.leavesProvider.getBlockState(random, position), 19);
-                    box.expandTo(new MutableBoundingBox(position, position));
-                    leaves.add(position.toImmutable());
+            square(pos.mutable(), r, cornerless, position -> {
+                if (TreeFeature.isAirOrLeaves(world, position)) {
+                    world.setBlock(position, config.leavesProvider.getState(random, position), 19);
+                    box.expand(new MutableBoundingBox(position, position));
+                    leaves.add(position.immutable());
                 }
             });
         }
@@ -85,19 +87,19 @@ public class LemonFoliagePlacer extends FoliagePlacer {
                         }
                     }
                 }
-                origin.setPos(x + rx, origin.getY(), z + rz);
+                origin.set(x + rx, origin.getY(), z + rz);
                 consumer.accept(origin);
             }
         }
     }
 
     @Override
-    public int func_230374_a_(Random random, int radius, BaseTreeFeatureConfig config) {
+    public int foliageHeight(Random random, int radius, BaseTreeFeatureConfig config) {
         return 2;
     }
 
     @Override
-    protected boolean func_230373_a_(Random p_230373_1_, int p_230373_2_, int p_230373_3_, int p_230373_4_, int p_230373_5_, boolean p_230373_6_) {
+    protected boolean shouldSkipLocation(Random p_230373_1_, int p_230373_2_, int p_230373_3_, int p_230373_4_, int p_230373_5_, boolean p_230373_6_) {
         return false;
     }
 }

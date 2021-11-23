@@ -18,9 +18,11 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 
+import net.minecraft.world.gen.foliageplacer.FoliagePlacer.Foliage;
+
 public class CoconutFoliagePlacer extends FoliagePlacer {
     public static final Codec<CoconutFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
-        return func_242830_b(p_242834_0_).apply(p_242834_0_, CoconutFoliagePlacer::new);
+        return foliagePlacerParts(p_242834_0_).apply(p_242834_0_, CoconutFoliagePlacer::new);
     });
 
     protected CoconutFoliagePlacer(FeatureSpread radius, FeatureSpread offset) {
@@ -28,23 +30,23 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
     }
 
     public CoconutFoliagePlacer() {
-        super(FeatureSpread.create(1), FeatureSpread.create(-1));
+        super(FeatureSpread.fixed(1), FeatureSpread.fixed(-1));
     }
 
     @Override
-    protected FoliagePlacerType<?> getPlacerType() {
+    protected FoliagePlacerType<?> type() {
         return TreeWorldGen.COCONUT_FOLIAGE_PLACER;
     }
 
     @Override
-    protected void func_230372_a_(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foilageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox box) {
+    protected void createFoliage(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foilageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox box) {
         generate(world, random, config, trunkHeight, treeNode, foilageHeight, radius, leaves, offset, box);
     }
 
     protected void generate(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foliageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox blockBox) {
 
         //The origin of this leaf piece
-        BlockPos center = treeNode.func_236763_a_().toMutable().move(0, offset, 0).toImmutable();
+        BlockPos center = treeNode.foliagePos().mutable().move(0, offset, 0).immutable();
 
         //The working mutable position
         BlockPos.Mutable pos = new BlockPos.Mutable();
@@ -53,21 +55,21 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
         boolean flipSpiral = random.nextBoolean();
 
         //Place the top blocks
-        checkAndSetBlockState(world, random, pos.setPos(center).move(0, 1, 0), leaves, blockBox, config);
-        checkAndSetBlockState(world, random, pos.setPos(center).move(1, 1, 0), leaves, blockBox, config);
-        checkAndSetBlockState(world, random, pos.setPos(center).move(0, 1, 1), leaves, blockBox, config);
-        checkAndSetBlockState(world, random, pos.setPos(center).move(-1, 1, 0), leaves, blockBox, config);
-        checkAndSetBlockState(world, random, pos.setPos(center).move(0, 1, -1), leaves, blockBox, config);
+        checkAndSetBlockState(world, random, pos.set(center).move(0, 1, 0), leaves, blockBox, config);
+        checkAndSetBlockState(world, random, pos.set(center).move(1, 1, 0), leaves, blockBox, config);
+        checkAndSetBlockState(world, random, pos.set(center).move(0, 1, 1), leaves, blockBox, config);
+        checkAndSetBlockState(world, random, pos.set(center).move(-1, 1, 0), leaves, blockBox, config);
+        checkAndSetBlockState(world, random, pos.set(center).move(0, 1, -1), leaves, blockBox, config);
 
         //Place supports for dangly bits
         for (int dZ = -1; dZ < 2; dZ++) {
             for (int dX = -1; dX < 2; dX++) {
-                checkAndSetBlockState(world, random, pos.setPos(center).move(dZ, 0, dX), leaves, blockBox, config);
+                checkAndSetBlockState(world, random, pos.set(center).move(dZ, 0, dX), leaves, blockBox, config);
                 if (dX != 0 && dZ != 0){
                     if (random.nextBoolean()){
-                        BlockPos currentPosition = pos.setPos(center).move(dX, -1, dZ);
-                        if (TreeFeature.isAirOrLeavesAt(world, currentPosition)) {
-                            world.setBlockState(currentPosition, GTFData.COCONUT_HANGING_PLANT.getDefaultState(), 19);
+                        BlockPos currentPosition = pos.set(center).move(dX, -1, dZ);
+                        if (TreeFeature.isAirOrLeaves(world, currentPosition)) {
+                            world.setBlock(currentPosition, GTFData.COCONUT_HANGING_PLANT.defaultBlockState(), 19);
                         }
                     }
                 }
@@ -76,12 +78,12 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
 
         //Place 2 dangly bits in each direction
         for (int d = 0; d < 4; d++) {
-            Direction direction = Direction.byHorizontalIndex(d);
+            Direction direction = Direction.from2DDataValue(d);
 
-            pos.setPos(center).move(direction, 2);
+            pos.set(center).move(direction, 2);
             placeSpiral(world, random, pos, leaves, blockBox, config, direction, !flipSpiral);
 
-            pos.setPos(center).move(direction, 3);
+            pos.set(center).move(direction, 3);
             placeSpiral(world, random, pos, leaves, blockBox, config, direction, flipSpiral);
         }
     }
@@ -101,10 +103,10 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
     }
 
     private void checkAndSetBlockState(IWorldGenerationReader world, Random random, BlockPos.Mutable currentPosition, Set<BlockPos> set, MutableBoundingBox blockBox, BaseTreeFeatureConfig config) {
-        if (TreeFeature.isAirOrLeavesAt(world, currentPosition)) {
-            world.setBlockState(currentPosition, config.leavesProvider.getBlockState(random, currentPosition), 19);
-            blockBox.expandTo(new MutableBoundingBox(currentPosition, currentPosition));
-            set.add(currentPosition.toImmutable());
+        if (TreeFeature.isAirOrLeaves(world, currentPosition)) {
+            world.setBlock(currentPosition, config.leavesProvider.getState(random, currentPosition), 19);
+            blockBox.expand(new MutableBoundingBox(currentPosition, currentPosition));
+            set.add(currentPosition.immutable());
         }
     }
 
@@ -152,19 +154,19 @@ public class CoconutFoliagePlacer extends FoliagePlacer {
                         }
                     }
                 }
-                origin.setPos(x + rx, origin.getY(), z + rz);
+                origin.set(x + rx, origin.getY(), z + rz);
                 consumer.accept(origin);
             }
         }
     }
 
     @Override
-    public int func_230374_a_(Random random, int radius, BaseTreeFeatureConfig config) {
+    public int foliageHeight(Random random, int radius, BaseTreeFeatureConfig config) {
         return 0;
     }
 
     @Override
-    protected boolean func_230373_a_(Random p_230373_1_, int p_230373_2_, int p_230373_3_, int p_230373_4_, int p_230373_5_, boolean p_230373_6_) {
+    protected boolean shouldSkipLocation(Random p_230373_1_, int p_230373_2_, int p_230373_3_, int p_230373_4_, int p_230373_5_, boolean p_230373_6_) {
         return false;
     }
 }

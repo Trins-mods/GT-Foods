@@ -24,6 +24,8 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.items.ItemBerry;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BlockCrop extends CropsBlock implements IAntimatterObject, ITextureProvider, IModelProvider, IItemBlockProvider {
 
     final String id, itemID;
@@ -38,7 +40,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
     }
 
     public BlockCrop(String id, String itemID, int maxAge) {
-        this(id, itemID, maxAge, Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP));
+        this(id, itemID, maxAge, Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP));
     }
 
     @Override
@@ -52,7 +54,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
     }
 
     @Override
-    protected IItemProvider getSeedsItem() {
+    protected IItemProvider getBaseSeedId() {
         return getItem();
     }
 
@@ -77,7 +79,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
     @Override
     public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
         prov.getVariantBuilder(block).forAllStates(s -> {
-            int age = s.get(AGE);
+            int age = s.getValue(AGE);
             return ConfiguredModel.builder().modelFile(prov.models().getBuilder(block.getRegistryName().getPath() + "_stage" + age).parent(prov.models().getExistingFile(new ResourceLocation("minecraft:block/crop"))).texture("crop", getTextures()[Math.min(maxAge, age)])).build();
         });
     }

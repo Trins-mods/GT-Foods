@@ -31,46 +31,48 @@ import javax.annotation.Nullable;
 
 import static net.minecraft.state.properties.BlockStateProperties.WATERLOGGED;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BlockCropWaterlogged extends BlockCrop implements IWaterLoggable {
 
     public BlockCropWaterlogged(String id, String itemID, int maxAge) {
-        super(id, itemID, maxAge, Properties.create(Material.OCEAN_PLANT).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP));
+        super(id, itemID, maxAge, Properties.of(Material.WATER_PLANT).noCollission().randomTicks().sound(SoundType.CROP));
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        super.fillStateContainer(builder.add(WATERLOGGED));
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder.add(WATERLOGGED));
     }
 
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        FluidState stateWater = worldIn.getFluidState(pos.up());
-        BlockState stateAir = worldIn.getBlockState(pos.up(2));
-        return state.getBlock() == Blocks.DIRT && stateWater.getFluid() == Fluids.WATER && stateAir.getBlock() == Blocks.AIR;
+    protected boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        FluidState stateWater = worldIn.getFluidState(pos.above());
+        BlockState stateAir = worldIn.getBlockState(pos.above(2));
+        return state.getBlock() == Blocks.DIRT && stateWater.getType() == Fluids.WATER && stateAir.getBlock() == Blocks.AIR;
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
-        BlockState blockstate = super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+        BlockState blockstate = super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
         if (!blockstate.isAir()) {
-            worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+            worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
         }
 
         return blockstate;
     }
 
     @Override
-    public void grow(World worldIn, BlockPos pos, BlockState state) {
+    public void growCrops(World worldIn, BlockPos pos, BlockState state) {
         int i = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
         int j = this.getMaxAge();
         if (i > j) {
             i = j;
         }
-        worldIn.setBlockState(pos, this.withAge(i), 2);
+        worldIn.setBlock(pos, this.getStateForAge(i), 2);
     }
 
     @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return !this.isMaxAge(state) && worldIn.getBlockState(pos.up()).getBlock() == Blocks.AIR;
+    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+        return !this.isMaxAge(state) && worldIn.getBlockState(pos.above()).getBlock() == Blocks.AIR;
     }
 
     @Override
@@ -81,12 +83,12 @@ public class BlockCropWaterlogged extends BlockCrop implements IWaterLoggable {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        FluidState fluidState = context.getWorld().getFluidState(context.getPos());
-        return this.getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+        FluidState fluidState = context.getLevel().getFluidState(context.getClickedPos());
+        return this.defaultBlockState().setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
     }
 
     @Override
     public FluidState getFluidState(BlockState state) {
-        return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 }

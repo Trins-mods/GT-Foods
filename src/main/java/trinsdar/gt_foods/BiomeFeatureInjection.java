@@ -15,7 +15,7 @@ public class BiomeFeatureInjection {
 
         if (event.getName() == null) return;
         //if (!getValidBiomesStatic().test(biomeCategory)) return;
-        RegistryKey<Biome> biomeKey = RegistryKey.getOrCreateKey(Registry.BIOME_KEY, event.getName());
+        RegistryKey<Biome> biomeKey = RegistryKey.create(Registry.BIOME_REGISTRY, event.getName());
         float p = 0.15F;
         if (event.getClimate().temperature > 0.8f) {
             p = 0.04F;

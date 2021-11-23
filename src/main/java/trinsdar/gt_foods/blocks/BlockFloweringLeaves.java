@@ -38,14 +38,14 @@ public class BlockFloweringLeaves extends BlockLeaves{
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        super.fillStateContainer(builder);
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
         builder.add(FLOWERING);
     }
 
     @Override
-    public boolean ticksRandomly(BlockState state) {
-        return !state.get(PERSISTENT) && (state.get(DISTANCE) == 7 || state.get(FLOWERING) < 3);
+    public boolean isRandomlyTicking(BlockState state) {
+        return !state.getValue(PERSISTENT) && (state.getValue(DISTANCE) == 7 || state.getValue(FLOWERING) < 3);
     }
 
     private Item getFruit(){
@@ -55,41 +55,41 @@ public class BlockFloweringLeaves extends BlockLeaves{
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         super.randomTick(state, worldIn, pos, random);
-        if (state.get(FLOWERING) < 3 && worldIn.rand.nextInt(10) == 0){
-            worldIn.setBlockState(pos, state.cycleValue(FLOWERING));
+        if (state.getValue(FLOWERING) < 3 && worldIn.random.nextInt(10) == 0){
+            worldIn.setBlockAndUpdate(pos, state.cycle(FLOWERING));
         }
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        int i = state.get(FLOWERING);
+    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        int i = state.getValue(FLOWERING);
         boolean flag = i == 3;
-        if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
+        if (!flag && player.getItemInHand(handIn).getItem() == Items.BONE_MEAL) {
             return ActionResultType.PASS;
         } else if (i == 3) {
-            int j = 1 + worldIn.rand.nextInt(2);
+            int j = 1 + worldIn.random.nextInt(2);
             ItemStack fruit = new ItemStack(getFruit(), j);
-            if (!player.addItemStackToInventory(fruit)) {
-                spawnAsEntity(worldIn, pos, fruit);
+            if (!player.addItem(fruit)) {
+                popResource(worldIn, pos, fruit);
             }
-            worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            worldIn.setBlockState(pos, state.with(FLOWERING, 0), 2);
-            return ActionResultType.func_233537_a_(worldIn.isRemote);
+            worldIn.playSound((PlayerEntity)null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            worldIn.setBlock(pos, state.setValue(FLOWERING, 0), 2);
+            return ActionResultType.sidedSuccess(worldIn.isClientSide);
         } else {
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+            return super.use(state, worldIn, pos, player, handIn, hit);
         }
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         BlockState state = super.getStateForPlacement(context);
-        return state == null ? null : state.with(FLOWERING, 0);
+        return state == null ? null : state.setValue(FLOWERING, 0);
     }
 
     @Override
     public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
         prov.getVariantBuilder(block).forAllStates(s -> {
-            int age = s.get(FLOWERING);
+            int age = s.getValue(FLOWERING);
             ModelFile model;
             switch (age){
                 case 0: {

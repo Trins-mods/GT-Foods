@@ -32,11 +32,13 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.items.ItemBerry;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterObject, ITextureProvider, IModelProvider, IItemBlockProvider {
     final String id, itemID;
 
     public BlockCropBerry(String id, String itemID) {
-        super(Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().sound(SoundType.SWEET_BERRY_BUSH));
+        super(Properties.of(Material.PLANT).randomTicks().noCollission().sound(SoundType.SWEET_BERRY_BUSH));
         this.id = id;
         this.itemID = itemID;
         AntimatterAPI.register(BlockCropBerry.class, this);
@@ -53,7 +55,7 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
     }
 
     @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(IBlockReader worldIn, BlockPos pos, BlockState state) {
         return new ItemStack(getItem());
     }
 
@@ -62,19 +64,19 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        int i = state.get(AGE);
+    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        int i = state.getValue(AGE);
         boolean flag = i == 3;
-        if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
+        if (!flag && player.getItemInHand(handIn).getItem() == Items.BONE_MEAL) {
             return ActionResultType.PASS;
         } else if (i > 1) {
-            int j = 1 + worldIn.rand.nextInt(2);
-            spawnAsEntity(worldIn, pos, new ItemStack(getItem(), j + (flag ? 1 : 0)));
-            worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-            worldIn.setBlockState(pos, state.with(AGE, 1), 2);
-            return ActionResultType.func_233537_a_(worldIn.isRemote);
+            int j = 1 + worldIn.random.nextInt(2);
+            popResource(worldIn, pos, new ItemStack(getItem(), j + (flag ? 1 : 0)));
+            worldIn.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
+            worldIn.setBlock(pos, state.setValue(AGE, 1), 2);
+            return ActionResultType.sidedSuccess(worldIn.isClientSide);
         } else {
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+            return super.use(state, worldIn, pos, player, handIn, hit);
         }
     }
 
@@ -86,7 +88,7 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
     @Override
     public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
         prov.getVariantBuilder(block).forAllStates(s -> {
-            int age = s.get(AGE);
+            int age = s.getValue(AGE);
             ModelFile model;
             switch (age){
                 case 0: {

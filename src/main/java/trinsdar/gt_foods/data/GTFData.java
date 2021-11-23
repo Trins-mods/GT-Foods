@@ -85,16 +85,16 @@ public class GTFData {
 
     /** Food */
     public static final Item LEMON = registerFoodItem("lemon", 1, 0.3F);
-    public static final Item LEMON_SLICE = registerFoodItem("lemon_slice", new Food.Builder().hunger(0).saturation(0.075F).fastToEat().build());
+    public static final Item LEMON_SLICE = registerFoodItem("lemon_slice", new Food.Builder().nutrition(0).saturationMod(0.075F).fast().build());
     public static final Item TOMATO = registerFoodItem("tomato", 1, 0.3F);
-    public static final Item TOMATO_SLICE = registerFoodItem("tomato_slice", new Food.Builder().hunger(0).saturation(0.075F).fastToEat().build());
-    public static final Item MAX_TOMATO = registerFoodItem("max_tomato", new Food.Builder().hunger(9).saturation(0.5F).effect(() -> new EffectInstance(Effects.REGENERATION, 2), 1.0F).build());
+    public static final Item TOMATO_SLICE = registerFoodItem("tomato_slice", new Food.Builder().nutrition(0).saturationMod(0.075F).fast().build());
+    public static final Item MAX_TOMATO = registerFoodItem("max_tomato", new Food.Builder().nutrition(9).saturationMod(0.5F).effect(() -> new EffectInstance(Effects.REGENERATION, 2), 1.0F).build());
     public static final Item ONION = registerFoodItem("onion", 1, 0.6F);
-    public static final Item ONION_SLICE = registerFoodItem("onion_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
+    public static final Item ONION_SLICE = registerFoodItem("onion_slice", new Food.Builder().nutrition(0).saturationMod(0.15F).fast().build());
     public static final Item CUCUMBER = registerFoodItem("cucumber", 1, 0.6F);
-    public static final Item CUCUMBER_SLICE = registerFoodItem("cucumber_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
+    public static final Item CUCUMBER_SLICE = registerFoodItem("cucumber_slice", new Food.Builder().nutrition(0).saturationMod(0.15F).fast().build());
     public static final Item PICKLE = registerFoodItem("pickle", 1, 0.6F);
-    public static final Item PICKLE_SLICE = registerFoodItem("pickle_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
+    public static final Item PICKLE_SLICE = registerFoodItem("pickle_slice", new Food.Builder().nutrition(0).saturationMod(0.15F).fast().build());
     public static final Item CHILI_PEPPER = registerFoodItem("chili_pepper", 1, 0.6F);
     public static final Item GREEN_GRAPES = registerFoodItem("green_grapes", 1, 0.3F);
     public static final Item GREEN_RAISINS = registerFoodItem("green_raisins", 2, 0.3F);
@@ -105,9 +105,9 @@ public class GTFData {
     public static final Item PURPLE_GRAPES = registerFoodItem("purple_grapes", 1, 0.3F);
     public static final Item PURPLE_RAISINS = registerFoodItem("purple_raisins", 2, 0.3F);
     public static final Item CHOCOLATE_RAISINS = registerFoodItem("chocolate_raisins", 3, 0.6F);
-    public static final Item CARROT_SLICE = registerFoodItem("carrot_slice", new Food.Builder().hunger(0).saturation(0.15F).fastToEat().build());
+    public static final Item CARROT_SLICE = registerFoodItem("carrot_slice", new Food.Builder().nutrition(0).saturationMod(0.15F).fast().build());
     public static final Item BANANA = registerFoodItem("banana", 1, 0.3F);
-    public static final Item BANANA_SLICE = registerFoodItem("banana_slice", new Food.Builder().hunger(0).saturation(0.075F).fastToEat().build());
+    public static final Item BANANA_SLICE = registerFoodItem("banana_slice", new Food.Builder().nutrition(0).saturationMod(0.075F).fast().build());
     public static final Item POMEGRANATE = registerFoodItem("pomegranate", 1, 0.3F);
     public static final Item POMERAISINS = registerFoodItem("pomeraisins", 2, 0.3F);
     public static final Item CANDLEBERRY = registerFoodItem("candleberry", 1, 0.3F);
@@ -118,7 +118,7 @@ public class GTFData {
     public static final Item PEANUT = registerFoodItem("peanut", 2, 0.15F);
     public static final Item HAZELNUT = registerFoodItem("hazelnut", 2, 0.15F);
     public static final Item PINEAPPLE = registerFoodItem("pineapple", 4, 0.15F);
-    public static final Item PINEAPPLE_SLICE = registerFoodItem("pineapple_slice", new Food.Builder().hunger(1).saturation(0.15F).fastToEat().build());
+    public static final Item PINEAPPLE_SLICE = registerFoodItem("pineapple_slice", new Food.Builder().nutrition(1).saturationMod(0.15F).fast().build());
     public static final Item CINNAMON_BARK = registerFoodItem("cinnamon_bark", 2, 0.15F);
     public static final Item COCONUT = registerFoodItem("coconut", 2, 0.15F);
     public static final Item CHEESE = registerFoodItem("cheese", 2, 0.6F);
@@ -218,23 +218,23 @@ public class GTFData {
     public static final Item TOMATO_SAUCE = registerIngredient("tomato_sauce");
 
     static Item registerFoodItem(String id, int hunger, float saturation) {
-        return registerFoodItem(id, new Food.Builder().hunger(hunger).saturation(saturation).build());
+        return registerFoodItem(id, new Food.Builder().nutrition(hunger).saturationMod(saturation).build());
     }
 
     static Item registerFoodItem(String id, Food food) {
-        return new ItemFood(GTFoods.MODID, id, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(food));
+        return new ItemFood(GTFoods.MODID, id, new Item.Properties().tab(GTFoods.CREATIVE_TAB).food(food));
     }
 
     static Item registerMeatItem(String id, int hunger, float saturation) {
-        return registerFoodItem(id, new Food.Builder().hunger(hunger).saturation(saturation).meat().build());
+        return registerFoodItem(id, new Food.Builder().nutrition(hunger).saturationMod(saturation).meat().build());
     }
 
     static BlockNamedItem registerBerry(String id, Block block, int hunger, float saturation) {
-        return new ItemBerry(GTFoods.MODID, id, block, new Item.Properties().group(GTFoods.CREATIVE_TAB).food(new Food.Builder().hunger(hunger).saturation(saturation).fastToEat().build()));
+        return new ItemBerry(GTFoods.MODID, id, block, new Item.Properties().tab(GTFoods.CREATIVE_TAB).food(new Food.Builder().nutrition(hunger).saturationMod(saturation).fast().build()));
     }
 
     static Item registerIngredient(String id){
-        return new ItemBasic<>(GTFoods.MODID, id, new Item.Properties().group(GTFoods.CREATIVE_TAB));
+        return new ItemBasic<>(GTFoods.MODID, id, new Item.Properties().tab(GTFoods.CREATIVE_TAB));
     }
 
     public static void init(){

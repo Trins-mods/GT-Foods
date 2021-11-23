@@ -15,9 +15,11 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 
+import net.minecraft.world.gen.foliageplacer.FoliagePlacer.Foliage;
+
 public class CinnamonFoliagePlacer extends FoliagePlacer {
     public static final Codec<CinnamonFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
-        return func_242830_b(p_242834_0_).apply(p_242834_0_, CinnamonFoliagePlacer::new);
+        return foliagePlacerParts(p_242834_0_).apply(p_242834_0_, CinnamonFoliagePlacer::new);
     });
 
     protected CinnamonFoliagePlacer(FeatureSpread radius, FeatureSpread offset) {
@@ -25,57 +27,57 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
     }
 
     public CinnamonFoliagePlacer() {
-        super(FeatureSpread.create(3), FeatureSpread.create(-1));
+        super(FeatureSpread.fixed(3), FeatureSpread.fixed(-1));
     }
 
     @Override
-    protected FoliagePlacerType<?> getPlacerType() {
+    protected FoliagePlacerType<?> type() {
         return TreeWorldGen.CINNAMON_FOLIAGE_PLACER;
     }
 
     @Override
-    protected void func_230372_a_(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foilageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox box) {
+    protected void createFoliage(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foilageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox box) {
         generate(world, random, config, trunkHeight, treeNode, foilageHeight, radius, leaves, offset, box);
     }
 
     protected void generate(IWorldGenerationReader world, Random random, BaseTreeFeatureConfig config, int trunkHeight, Foliage treeNode, int foliageHeight, int radius, Set<BlockPos> leaves, int offset, MutableBoundingBox box) {
-        BlockPos center = treeNode.func_236763_a_();
-        BlockPos.Mutable pos = center.toMutable();
+        BlockPos center = treeNode.foliagePos();
+        BlockPos.Mutable pos = center.mutable();
 
         int x = pos.getX();
         int y = pos.getY();
         int z = pos.getZ();
         for(int i = offset + radius; i >= offset - radius; --i) {
-            pos.setPos(x, y + i, z);
+            pos.set(x, y + i, z);
             if (i == offset - radius){
-                this.func_236753_a_(world, random, config, center, radius - 1, leaves, i, treeNode.func_236765_c_(), box);
+                this.placeLeavesRow(world, random, config, center, radius - 1, leaves, i, treeNode.doubleTrunk(), box);
                 continue;
             }
             if (i == offset + radius){
-                cornerlessSquare(pos.toMutable(), radius - 1, false, position -> {
-                    if (TreeFeature.isAirOrLeavesAt(world, position)) {
-                        world.setBlockState(position, config.leavesProvider.getBlockState(random, position), 19);
-                        box.expandTo(new MutableBoundingBox(position, position));
-                        leaves.add(position.toImmutable());
+                cornerlessSquare(pos.mutable(), radius - 1, false, position -> {
+                    if (TreeFeature.isAirOrLeaves(world, position)) {
+                        world.setBlock(position, config.leavesProvider.getState(random, position), 19);
+                        box.expand(new MutableBoundingBox(position, position));
+                        leaves.add(position.immutable());
                     }
                 });
                 continue;
             }
             if (i == offset + (radius - 1)){
-                cornerlessSquare(pos.toMutable(), radius, true, position -> {
-                    if (TreeFeature.isAirOrLeavesAt(world, position)) {
-                        world.setBlockState(position, config.leavesProvider.getBlockState(random, position), 19);
-                        box.expandTo(new MutableBoundingBox(position, position));
-                        leaves.add(position.toImmutable());
+                cornerlessSquare(pos.mutable(), radius, true, position -> {
+                    if (TreeFeature.isAirOrLeaves(world, position)) {
+                        world.setBlock(position, config.leavesProvider.getState(random, position), 19);
+                        box.expand(new MutableBoundingBox(position, position));
+                        leaves.add(position.immutable());
                     }
                 });
                 continue;
             }
-            cornerlessSquare(pos.toMutable(), radius, false, position -> {
-                if (TreeFeature.isAirOrLeavesAt(world, position)) {
-                    world.setBlockState(position, config.leavesProvider.getBlockState(random, position), 19);
-                    box.expandTo(new MutableBoundingBox(position, position));
-                    leaves.add(position.toImmutable());
+            cornerlessSquare(pos.mutable(), radius, false, position -> {
+                if (TreeFeature.isAirOrLeaves(world, position)) {
+                    world.setBlock(position, config.leavesProvider.getState(random, position), 19);
+                    box.expand(new MutableBoundingBox(position, position));
+                    leaves.add(position.immutable());
                 }
             });
         }
@@ -117,7 +119,7 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
                         }
                     }
                 }
-                origin.setPos(x + rx, origin.getY(), z + rz);
+                origin.set(x + rx, origin.getY(), z + rz);
                 consumer.accept(origin);
             }
         }
@@ -140,12 +142,12 @@ public class CinnamonFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    public int func_230374_a_(Random random, int radius, BaseTreeFeatureConfig config) {
+    public int foliageHeight(Random random, int radius, BaseTreeFeatureConfig config) {
         return Math.max(2, radius - (3 + random.nextInt(2)));
     }
 
     @Override
-    protected boolean func_230373_a_(Random p_230373_1_, int p_230373_2_, int p_230373_3_, int p_230373_4_, int p_230373_5_, boolean p_230373_6_) {
+    protected boolean shouldSkipLocation(Random p_230373_1_, int p_230373_2_, int p_230373_3_, int p_230373_4_, int p_230373_5_, boolean p_230373_6_) {
         return false;
     }
 }

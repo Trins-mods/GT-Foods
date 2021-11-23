@@ -144,11 +144,11 @@ public class GTFoods extends AntimatterMod {
     }
 
     private void setupClient(final FMLClientSetupEvent event) {
-        AntimatterAPI.all(BlockCrop.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
-        AntimatterAPI.all(BlockCropBerry.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
-        AntimatterAPI.all(BlockSapling.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
-        AntimatterAPI.all(BlockLeaves.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
-        AntimatterAPI.all(BlockJuicer.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.getCutout()));
+        AntimatterAPI.all(BlockCrop.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
+        AntimatterAPI.all(BlockCropBerry.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
+        AntimatterAPI.all(BlockSapling.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
+        AntimatterAPI.all(BlockLeaves.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
+        AntimatterAPI.all(BlockJuicer.class, MODID, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
     }
 
     @OnlyIn(Dist.CLIENT)
