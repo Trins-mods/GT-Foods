@@ -19,6 +19,8 @@ import net.minecraft.item.ItemStack;
 import java.util.Arrays;
 import java.util.Set;
 
+import net.minecraft.item.Item.Properties;
+
 public class ItemBerry extends BlockNamedItem implements IAntimatterObject, ITextureProvider, IModelProvider {
 
     protected String domain, id, tooltip = "";

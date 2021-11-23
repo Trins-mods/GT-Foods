@@ -28,7 +28,7 @@ public class BlockSapling extends SaplingBlock implements IGrowable, IAntimatter
     protected String id;
 
     public BlockSapling(String id, Tree tree) {
-        super(tree, Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT));
+        super(tree, Block.Properties.of(Material.PLANT).noCollission().randomTicks().strength(0.0F).sound(SoundType.GRASS));
         this.id = id;
         AntimatterAPI.register(BlockSapling.class, this);
         //RubberTree.TREE_FEATURE.init();
@@ -45,7 +45,7 @@ public class BlockSapling extends SaplingBlock implements IGrowable, IAntimatter
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(STAGE);
     }
 
@@ -65,7 +65,7 @@ public class BlockSapling extends SaplingBlock implements IGrowable, IAntimatter
     }
 
     @Override
-    public void placeTree(ServerWorld world, BlockPos pos, BlockState state, Random random) {
-        if (world.getBiome(pos).getCategory() != Biome.Category.NETHER && world.getBiome(pos).getCategory() != Biome.Category.THEEND) super.placeTree(world, pos, state, random);
+    public void advanceTree(ServerWorld world, BlockPos pos, BlockState state, Random random) {
+        if (world.getBiome(pos).getBiomeCategory() != Biome.Category.NETHER && world.getBiome(pos).getBiomeCategory() != Biome.Category.THEEND) super.advanceTree(world, pos, state, random);
     }
 }

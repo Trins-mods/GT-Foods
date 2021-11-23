@@ -34,6 +34,6 @@ public class GTFLangProvider extends AntimatterLanguageProvider {
         AntimatterAPI.all(BlockLeaves.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         AntimatterAPI.all(BlockPlanks.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         AntimatterAPI.all(BlockSapling.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        GTFMaterialTypes.GROUND.all().forEach(m -> override(Data.DUST.get(m).getTranslationKey(), "Ground " + lowerUnderscoreToUpperSpaced(m.getId())));
+        GTFMaterialTypes.GROUND.all().forEach(m -> override(Data.DUST.get(m).getDescriptionId(), "Ground " + lowerUnderscoreToUpperSpaced(m.getId())));
     }
 }

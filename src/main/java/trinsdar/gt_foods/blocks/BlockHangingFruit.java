@@ -27,44 +27,44 @@ public class BlockHangingFruit extends BlockCrop{
         super(id, fruit, 3);
     }
 
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        BlockState stateAir = worldIn.getBlockState(pos.up(2));
+    protected boolean mayPlaceOn(BlockState state, IBlockReader worldIn, BlockPos pos) {
+        BlockState stateAir = worldIn.getBlockState(pos.above(2));
         return state.getBlock() == Blocks.AIR && stateAir.getBlock() == GTFData.COCONUT_LEAVES;
     }
 
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        int i = state.get(AGE);
+    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        int i = state.getValue(AGE);
         boolean flag = i == 3;
-        if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) {
+        if (!flag && player.getItemInHand(handIn).getItem() == Items.BONE_MEAL) {
             return ActionResultType.PASS;
         } else if (i == 3) {
-            int j = 1 + worldIn.rand.nextInt(2);
-            ItemStack fruit = new ItemStack(getSeedsItem(), j);
-            if (!player.addItemStackToInventory(fruit)) {
-                spawnAsEntity(worldIn, pos, fruit);
+            int j = 1 + worldIn.random.nextInt(2);
+            ItemStack fruit = new ItemStack(getBaseSeedId(), j);
+            if (!player.addItem(fruit)) {
+                popResource(worldIn, pos, fruit);
             }
-            worldIn.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            worldIn.setBlockState(pos, state.with(AGE, 0), 2);
-            return ActionResultType.func_233537_a_(worldIn.isRemote);
+            worldIn.playSound((PlayerEntity)null, pos, SoundEvents.GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            worldIn.setBlock(pos, state.setValue(AGE, 0), 2);
+            return ActionResultType.sidedSuccess(worldIn.isClientSide);
         } else {
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+            return super.use(state, worldIn, pos, player, handIn, hit);
         }
     }
 
     @Override
-    public void grow(World worldIn, BlockPos pos, BlockState state) {
+    public void growCrops(World worldIn, BlockPos pos, BlockState state) {
         int i = this.getAge(state) + this.getBonemealAgeIncrease(worldIn);
         int j = this.getMaxAge();
         if (i > j) {
             i = j;
         }
-        worldIn.setBlockState(pos, this.withAge(i), 2);
+        worldIn.setBlock(pos, this.getStateForAge(i), 2);
     }
 
     @Override
-    public boolean canGrow(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
-        return !this.isMaxAge(state) && worldIn.getBlockState(pos.up()).getBlock() == GTFData.COCONUT_LEAVES;
+    public boolean isValidBonemealTarget(IBlockReader worldIn, BlockPos pos, BlockState state, boolean isClient) {
+        return !this.isMaxAge(state) && worldIn.getBlockState(pos.above()).getBlock() == GTFData.COCONUT_LEAVES;
     }
 
     @Override

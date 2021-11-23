@@ -56,10 +56,10 @@ public class FurnaceLoader {
         AntimatterCookingRecipeBuilder.smeltingRecipe(RecipeIngredient.of(input, 1).get(), new ItemStack(output), 1.0F, 200)
                 .addCriterion("has_" + input.getRegistryName().getPath(), provider.hasSafeItem(input))
                 .build(consumer, provider.fixLoc(GTFoods.MODID, "smelting_" + id));
-        AntimatterCookingRecipeBuilder.cookingRecipe(RecipeIngredient.of(input, 1).get(), new ItemStack(output), 1.0F, 100, IRecipeSerializer.SMOKING)
+        AntimatterCookingRecipeBuilder.cookingRecipe(RecipeIngredient.of(input, 1).get(), new ItemStack(output), 1.0F, 100, IRecipeSerializer.SMOKING_RECIPE)
                 .addCriterion("has_" + input.getRegistryName().getPath(), provider.hasSafeItem(input))
                 .build(consumer, provider.fixLoc(GTFoods.MODID, "smoking_" + id));
-        AntimatterCookingRecipeBuilder.cookingRecipe(RecipeIngredient.of(input, 1).get(), new ItemStack(output), 0.0F, 600, IRecipeSerializer.CAMPFIRE_COOKING)
+        AntimatterCookingRecipeBuilder.cookingRecipe(RecipeIngredient.of(input, 1).get(), new ItemStack(output), 0.0F, 600, IRecipeSerializer.CAMPFIRE_COOKING_RECIPE)
                 .addCriterion("has_" + input.getRegistryName().getPath(), provider.hasSafeItem(input))
                 .build(consumer, provider.fixLoc(GTFoods.MODID, "campfire_cooking_" + id));
     }

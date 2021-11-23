@@ -19,16 +19,16 @@ public class GTFTree extends Tree {
     }
 
     @Override
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random rand, boolean flowers) {
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getConfiguredFeature(Random rand, boolean flowers) {
         return treeFeature.get();
     }
 
     @Override
-    public boolean attemptGrowTree(ServerWorld world, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, Random random) {
-        world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
-        treeFeature.get().config.forcePlacement();
-        if (!treeFeature.get().generate(world, chunkGenerator, random, pos)) {
-            world.setBlockState(pos, state, 4);
+    public boolean growTree(ServerWorld world, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, Random random) {
+        world.setBlock(pos, Blocks.AIR.defaultBlockState(), 4);
+        treeFeature.get().config.setFromSapling();
+        if (!treeFeature.get().place(world, chunkGenerator, random, pos)) {
+            world.setBlock(pos, state, 4);
             return false;
         } else
             return true;

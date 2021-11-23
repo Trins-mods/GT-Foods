@@ -26,11 +26,11 @@ import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFData;
 
 public class GTFBlockLootProvider extends AntimatterBlockLootProvider {
-    private static final ILootCondition.IBuilder SILK_TOUCH = MatchTool.builder(ItemPredicate.Builder.create().enchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))));
-    private static final ILootCondition.IBuilder NO_SILK_TOUCH = SILK_TOUCH.inverted();
-    private static final ILootCondition.IBuilder SHEARS = MatchTool.builder(ItemPredicate.Builder.create().item(Items.SHEARS));
-    private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.alternative(SILK_TOUCH);
-    private static final ILootCondition.IBuilder NOT_SILK_TOUCH_OR_SHEARS = SILK_TOUCH_OR_SHEARS.inverted();
+    private static final ILootCondition.IBuilder SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))));
+    private static final ILootCondition.IBuilder NO_SILK_TOUCH = SILK_TOUCH.invert();
+    private static final ILootCondition.IBuilder SHEARS = MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS));
+    private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.or(SILK_TOUCH);
+    private static final ILootCondition.IBuilder NOT_SILK_TOUCH_OR_SHEARS = SILK_TOUCH_OR_SHEARS.invert();
     public GTFBlockLootProvider(String providerDomain, String providerName, DataGenerator gen) {
         super(providerDomain, providerName, gen);
     }
@@ -41,9 +41,9 @@ public class GTFBlockLootProvider extends AntimatterBlockLootProvider {
         AntimatterAPI.all(BlockLogStrippable.class, providerDomain, this::add);
         AntimatterAPI.all(BlockSapling.class, providerDomain, this::add);
         AntimatterAPI.all(BlockPlanks.class, providerDomain, this::add);
-        tables.put(GTFData.CINNAMON_LEAVES, b -> droppingWithChancesAndSticks(GTFData.CINNAMON_LEAVES, GTFData.CINNAMON_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F));
-        tables.put(GTFData.COCONUT_LEAVES, b -> droppingWithChancesAndSticks(GTFData.COCONUT_LEAVES, GTFData.COCONUT_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F));
-        tables.put(GTFData.HAZEL_LEAVES, b -> droppingWithChancesAndSticks(GTFData.HAZEL_LEAVES, GTFData.HAZEL_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).acceptCondition(NOT_SILK_TOUCH_OR_SHEARS).acceptCondition(BlockStateProperty.builder(GTFData.HAZEL_LEAVES).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlockFloweringLeaves.FLOWERING, 3))).addEntry(withSurvivesExplosion(b, ItemLootEntry.builder(GTFData.HAZELNUT).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F)))))));
-        tables.put(GTFData.LEMON_LEAVES, b -> droppingWithChancesAndSticks(GTFData.LEMON_LEAVES, GTFData.LEMON_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F).addLootPool(LootPool.builder().rolls(ConstantRange.of(1)).acceptCondition(NOT_SILK_TOUCH_OR_SHEARS).acceptCondition(BlockStateProperty.builder(GTFData.LEMON_LEAVES).fromProperties(StatePropertiesPredicate.Builder.newBuilder().withIntProp(BlockFloweringLeaves.FLOWERING, 3))).addEntry(withSurvivesExplosion(b, ItemLootEntry.builder(GTFData.LEMON).acceptFunction(SetCount.builder(RandomValueRange.of(1.0F, 2.0F)))))));
+        tables.put(GTFData.CINNAMON_LEAVES, b -> createLeavesDrops(GTFData.CINNAMON_LEAVES, GTFData.CINNAMON_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F));
+        tables.put(GTFData.COCONUT_LEAVES, b -> createLeavesDrops(GTFData.COCONUT_LEAVES, GTFData.COCONUT_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F));
+        tables.put(GTFData.HAZEL_LEAVES, b -> createLeavesDrops(GTFData.HAZEL_LEAVES, GTFData.HAZEL_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F).withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).when(NOT_SILK_TOUCH_OR_SHEARS).when(BlockStateProperty.hasBlockStateProperties(GTFData.HAZEL_LEAVES).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlockFloweringLeaves.FLOWERING, 3))).add(applyExplosionCondition(b, ItemLootEntry.lootTableItem(GTFData.HAZELNUT).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))))));
+        tables.put(GTFData.LEMON_LEAVES, b -> createLeavesDrops(GTFData.LEMON_LEAVES, GTFData.LEMON_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F).withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(1)).when(NOT_SILK_TOUCH_OR_SHEARS).when(BlockStateProperty.hasBlockStateProperties(GTFData.LEMON_LEAVES).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlockFloweringLeaves.FLOWERING, 3))).add(applyExplosionCondition(b, ItemLootEntry.lootTableItem(GTFData.LEMON).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))))));
     }
 }

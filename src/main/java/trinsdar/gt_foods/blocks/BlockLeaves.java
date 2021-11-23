@@ -22,19 +22,19 @@ public class BlockLeaves extends LeavesBlock implements IAntimatterObject, IMode
     protected String id;
 
     public BlockLeaves(String id) {
-        super(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2F).tickRandomly().sound(SoundType.PLANT).notSolid().setAllowsSpawn(BlockLeaves::allowsSpawnOnLeaves).setSuffocates((a, b, c) -> false).setBlocksVision((a, b, c) -> false));
+        super(Block.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BlockLeaves::allowsSpawnOnLeaves).isSuffocating((a, b, c) -> false).isViewBlocking((a, b, c) -> false));
         this.id = id;
         AntimatterAPI.register(BlockLeaves.class, this);
     }
 
     @Override
     public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-        return state.hasProperty(BlockStateProperties.WATERLOGGED) && state.get(BlockStateProperties.WATERLOGGED) ? 0 : 60;
+        return state.hasProperty(BlockStateProperties.WATERLOGGED) && state.getValue(BlockStateProperties.WATERLOGGED) ? 0 : 60;
     }
 
     @Override
     public int getFireSpreadSpeed(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-        return state.hasProperty(BlockStateProperties.WATERLOGGED) && state.get(BlockStateProperties.WATERLOGGED) ? 0 : 30;
+        return state.hasProperty(BlockStateProperties.WATERLOGGED) && state.getValue(BlockStateProperties.WATERLOGGED) ? 0 : 30;
     }
 
     @Override

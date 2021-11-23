@@ -25,28 +25,28 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class TreeWorldGen {
-    public static final WeightedBlockStateProvider HAZEL_LEAF_BLOCKS = new WeightedBlockStateProvider().addWeightedBlockstate(GTFData.HAZEL_LEAVES.getDefaultState().with(BlockFloweringLeaves.FLOWERING, 1), 1).addWeightedBlockstate(GTFData.HAZEL_LEAVES.getDefaultState(), 9);
+    public static final WeightedBlockStateProvider HAZEL_LEAF_BLOCKS = new WeightedBlockStateProvider().add(GTFData.HAZEL_LEAVES.defaultBlockState().setValue(BlockFloweringLeaves.FLOWERING, 1), 1).add(GTFData.HAZEL_LEAVES.defaultBlockState(), 9);
     public static final FoliagePlacerType<CinnamonFoliagePlacer> CINNAMON_FOLIAGE_PLACER = new FoliagePlacerType<>(CinnamonFoliagePlacer.CODEC);
     public static final FoliagePlacerType<CoconutFoliagePlacer> COCONUT_FOLIAGE_PLACER = new FoliagePlacerType<>(CoconutFoliagePlacer.CODEC);
     public static final FoliagePlacerType<HazelFoliagePlacer> HAZEL_FOLIAGE_PLACER = new FoliagePlacerType<>(HazelFoliagePlacer.CODEC);
     public static final FoliagePlacerType<LemonFoliagePlacer> LEMON_FOLIAGE_PLACER = new FoliagePlacerType<>(LemonFoliagePlacer.CODEC);
     final static BaseTreeFeatureConfig CINNAMON_TREE_CONFIG =
-            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.CINNAMON_LOG.getDefaultState()), new SimpleBlockStateProvider(GTFData.CINNAMON_LEAVES.getDefaultState()),
-                    new CinnamonFoliagePlacer(), new StraightTrunkPlacer(6, 3, 0), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.CINNAMON_LOG.defaultBlockState()), new SimpleBlockStateProvider(GTFData.CINNAMON_LEAVES.defaultBlockState()),
+                    new CinnamonFoliagePlacer(), new StraightTrunkPlacer(6, 3, 0), new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
     final static BaseTreeFeatureConfig HAZEL_TREE_CONFIG =
-            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.HAZEL_LOG.getDefaultState()), HAZEL_LEAF_BLOCKS,
-                    new HazelFoliagePlacer(), new StraightTrunkPlacer(3, 0, 0), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.HAZEL_LOG.defaultBlockState()), HAZEL_LEAF_BLOCKS,
+                    new HazelFoliagePlacer(), new StraightTrunkPlacer(3, 0, 0), new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
     final static BaseTreeFeatureConfig LEMON_TREE_CONFIG =
-            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.HAZEL_LOG.getDefaultState()), HAZEL_LEAF_BLOCKS,
-                    new LemonFoliagePlacer(), new StraightTrunkPlacer(4, 0, 0), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.HAZEL_LOG.defaultBlockState()), HAZEL_LEAF_BLOCKS,
+                    new LemonFoliagePlacer(), new StraightTrunkPlacer(4, 0, 0), new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
     final static BaseTreeFeatureConfig COCONUT_TREE_CONFIG =
-            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.COCONUT_LOG.getDefaultState()), new SimpleBlockStateProvider(GTFData.COCONUT_LEAVES.getDefaultState()),
-                    new CoconutFoliagePlacer(), new StraightTrunkPlacer(8, 2, 0), new TwoLayerFeature(1, 0, 2))).setIgnoreVines().build();
+            (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.COCONUT_LOG.defaultBlockState()), new SimpleBlockStateProvider(GTFData.COCONUT_LEAVES.defaultBlockState()),
+                    new CoconutFoliagePlacer(), new StraightTrunkPlacer(8, 2, 0), new TwoLayerFeature(1, 0, 2))).ignoreVines().build();
     public static final GTFTreeFeature TREE_FEATURE = new GTFTreeFeature();
-    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_CINNAMON_TREE_FEATURE = register("configured_cinnamon_tree", TREE_FEATURE.withConfiguration(CINNAMON_TREE_CONFIG));
-    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_HAZEL_TREE_FEATURE = register("configured_hazel_tree", TREE_FEATURE.withConfiguration(HAZEL_TREE_CONFIG));
-    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_LEMON_TREE_FEATURE = register("configured_lemon_tree", TREE_FEATURE.withConfiguration(LEMON_TREE_CONFIG));
-    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_COCONUT_TREE_FEATURE = register("configured_coconut_tree", TREE_FEATURE.withConfiguration(COCONUT_TREE_CONFIG));
+    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_CINNAMON_TREE_FEATURE = register("configured_cinnamon_tree", TREE_FEATURE.configured(CINNAMON_TREE_CONFIG));
+    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_HAZEL_TREE_FEATURE = register("configured_hazel_tree", TREE_FEATURE.configured(HAZEL_TREE_CONFIG));
+    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_LEMON_TREE_FEATURE = register("configured_lemon_tree", TREE_FEATURE.configured(LEMON_TREE_CONFIG));
+    public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CONFIGURED_COCONUT_TREE_FEATURE = register("configured_coconut_tree", TREE_FEATURE.configured(COCONUT_TREE_CONFIG));
 
 
     public static ConfiguredFeature<BaseTreeFeatureConfig,?> register(String id, ConfiguredFeature<BaseTreeFeatureConfig,?> feature){
@@ -70,7 +70,7 @@ public class TreeWorldGen {
             return IntStream.range(0, i).mapToObj((ix) -> {
                 int j = random.nextInt(16) + pos.getX();
                 int k = random.nextInt(16) + pos.getZ();
-                return new BlockPos(j, helper.func_242893_a(Heightmap.Type.MOTION_BLOCKING, j, k), k);
+                return new BlockPos(j, helper.getHeight(Heightmap.Type.MOTION_BLOCKING, j, k), k);
             });
         }
 
