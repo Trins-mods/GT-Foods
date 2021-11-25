@@ -22,6 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapeArray;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
@@ -31,9 +32,12 @@ import trinsdar.gt_foods.GTFoods;
 
 public class BlockJuicer extends BlockMachine {
 
-    public static final VoxelShape JUICER_SHAPE = VoxelShapes.create(new AxisAlignedBB(0.125, 0, 0.125, 0.875, 0.25, 0.875));
+    public final VoxelShape JUICER_SHAPE;
     public BlockJuicer(Machine<?> type, Tier tier) {
         super(type, tier, Properties.of(Material.STONE).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops().noOcclusion().harvestTool(ToolType.PICKAXE));
+        VoxelShape bottom = VoxelShapes.create(new AxisAlignedBB(0.125, 0, 0.125, 0.875, 0.25, 0.875));
+        VoxelShape top = VoxelShapes.create(new AxisAlignedBB(0.375, 0.25, 0.375, 0.625, 0.375, 0.625));
+        JUICER_SHAPE = VoxelShapes.or(bottom, top);
     }
 
     @Override

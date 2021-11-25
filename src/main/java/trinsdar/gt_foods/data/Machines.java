@@ -12,6 +12,7 @@ import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockJuicer;
+import trinsdar.gt_foods.tile.TileEntityJuicer;
 
 import static muramasa.antimatter.machine.MachineFlag.FLUID;
 import static muramasa.antimatter.machine.MachineFlag.GUI;
@@ -31,7 +32,7 @@ public class Machines {
         return new Texture[]{tex, tex, tex, tex, tex, tex};
     };
     public static BasicMachine SLICER = new BasicMachine(GTFoods.MODID, "slicer").setMap(RecipeMaps.SLICING).addFlags(GUI, ITEM);
-    public static BasicMachine JUICER = new Juicer(GTFoods.MODID, "juicer").setMap(RecipeMaps.JUICING).addFlags(ITEM, FLUID).setTiers(Tier.LV).baseTexture(J).renderContainedLiquids().noCovers().overlayTexture(O);
+    public static BasicMachine JUICER = new Juicer(GTFoods.MODID, "juicer").setMap(RecipeMaps.JUICING).addFlags(ITEM, FLUID).setTiers(Tier.LV).baseTexture(J).renderContainedLiquids().noCovers().overlayTexture(O).setTile(m -> () -> new TileEntityJuicer(m));
 
     public static void init(){
         MachineFlag.ENERGY.remove(JUICER);

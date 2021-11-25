@@ -20,6 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -34,10 +35,12 @@ public class TileEntityJuicer extends TileEntityMachine<TileEntityJuicer> {
     @Override
     public ActionResultType onInteract(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit, @Nullable AntimatterToolType type) {
         ItemStack held = player.getItemInHand(hand);
+        boolean[] success = new boolean[1];
+        success[0] = false;
         this.recipeHandler.ifPresent(r -> {
             if (!held.isEmpty()){
                 RecipeMap<?> map = getMachineType().getRecipeMap();
-                Recipe recipe = map != null ? map.find(new ItemStack[]{held}, new FluidStack[0], re -> !consumeInputs(re.getInputItems(), player, hand, true).isEmpty()) : null;
+                Recipe recipe = map != null ? map.find(new ItemStack[]{held}, new FluidStack[0], re -> !consumeInputs(re.getInputItems(), player, hand, true).isEmpty() && canOutput(re)) : null;
                 if (recipe != null){
                     List<ItemStack> inputs = consumeInputs(recipe.getInputItems(), player, hand, false);
                     inputs.forEach(i -> {
@@ -45,10 +48,21 @@ public class TileEntityJuicer extends TileEntityMachine<TileEntityJuicer> {
                             player.drop(i, false);
                         }
                     });
+                    this.fluidHandler.ifPresent(f -> {
+                        if (recipe.hasOutputFluids()){
+                            f.fillOutput(recipe.getOutputFluids()[0], IFluidHandler.FluidAction.EXECUTE);
+                        }
+                    });
+                    success[0] = true;
                 }
             }
         });
+        if (success[0]) return ActionResultType.SUCCESS;
         return super.onInteract(state, world, pos, player, hand, hit, type);
+    }
+
+    public boolean canOutput(Recipe recipe) {
+        return !this.fluidHandler.isPresent() || !recipe.hasOutputFluids() || this.fluidHandler.map(t -> t.canOutputsFit(recipe.getOutputFluids())).orElse(false);
     }
 
     public List<ItemStack> consumeInputs(List<RecipeIngredient> items, PlayerEntity player, Hand hand, boolean simulate) {
