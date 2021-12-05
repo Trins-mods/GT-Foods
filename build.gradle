@@ -1,3 +1,5 @@
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net/' }
@@ -8,14 +10,19 @@ buildscript {
             name = 'sponge'
             url = 'https://repo.spongepowered.org/maven'
         }
-        maven { url 'http://dvs1.progwml6.com/files/maven' }
+        maven {
+            name = 'parchment'
+            url = 'https://maven.parchmentmc.org'
+        }
+        maven { url 'https://dvs1.progwml6.com/files/maven' }
         maven {
             url "https://plugins.gradle.org/m2/"
         }
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
@@ -23,7 +30,7 @@ repositories {
     maven { url = 'https://libraries.minecraft.net/' }
     mavenCentral()
     maven { url = 'https://maven.minecraftforge.net/' }
-    maven { url 'http://dvs1.progwml6.com/files/maven' }
+    maven { url 'https://dvs1.progwml6.com/files/maven' }
     maven {
         url = "https://www.cursemaven.com"
     }
@@ -36,12 +43,13 @@ apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 version = "${mod_version}"
 group = 'trinsdar.gt_foods' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'GT Foods'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 sourceSets {
@@ -59,7 +67,7 @@ sourceSets {
 }
 
 minecraft {
-    mappings channel: 'official', version: "1.16.5"
+    mappings channel: 'parchment', version: '2021.10.17-1.16.5'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -70,7 +78,7 @@ minecraft {
         client {
             workingDirectory project.file('run')
 
-            // Recommended logging data for a userdev environment
+            // Recommended logging data for a userdev enmappings channel: 'parchment', version: '2021.10.17-1.16.5'vironment
             property 'forge.logging.markers', 'DEBUG'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
