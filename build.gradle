@@ -35,6 +35,10 @@ repositories {
         url = "https://www.cursemaven.com"
     }
     maven {
+        name = 'sponge'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+    maven {
         url "https://maven.tterrag.com/"
     }
     maven { url 'https://jitpack.io' }
@@ -152,7 +156,7 @@ dependencies {
     runtimeOnly fg.deobf("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
     compileOnly ("com.github.GregTech-Intergalactical:TesseractAPI:${tesseract_version}")
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
 
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
