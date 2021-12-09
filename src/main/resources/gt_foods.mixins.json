@@ -5,7 +5,8 @@
   "refmap": "gtsp.refmap.json",
   "mixins": [
     "MixinFoodStats",
-    "MixinMilkBucketItem"
+    "MixinMilkBucketItem",
+    "MixinBucketItem"
   ],
   "minVersion": "0.8"
 }

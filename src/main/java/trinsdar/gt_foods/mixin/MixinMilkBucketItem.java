@@ -58,7 +58,7 @@ public abstract class MixinMilkBucketItem extends Item {
     }*/
 
     @Inject(method = "use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;", at = @At("HEAD"), cancellable = true)
-    public void inject_useBucket_gtf(World pLevel, PlayerEntity pPlayer, Hand pHand, CallbackInfoReturnable<ActionResult<ItemStack>> callbackInfoReturnable){
+    public void inject_useBucket_gtf(World pLevel, PlayerEntity pPlayer, Hand pHand, CallbackInfoReturnable<ActionResult> callbackInfoReturnable){
         ActionResult<ItemStack> result = useBucket(pLevel, pPlayer, pHand);
         if (result.getResult() == ActionResultType.SUCCESS){
             callbackInfoReturnable.setReturnValue(result);
