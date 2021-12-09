@@ -7,7 +7,9 @@ import net.minecraft.advancements.ICriterionInstance;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.ToolTypes;
 
 import java.util.function.Consumer;
@@ -25,6 +27,7 @@ public class CraftingTableLoader {
     public static void loadRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
         registerFoodCraftingRecipes(consumer, provider);
         registerFoodKnifeRecipes(consumer, provider);
+        registerMachineRecipes(consumer, provider);
     }
 
     protected static void registerFoodKnifeRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
@@ -55,6 +58,10 @@ public class CraftingTableLoader {
 
         provider.shapeless(consumer, "dough_pizza", "dough", "has_rolling_pin", provider.hasSafeItem(ToolTypes.ROLLING_PIN.getForgeTag()), new ItemStack(PIZZA_DOUGH), ToolTypes.ROLLING_PIN.getForgeTag(), DOUGH);
         provider.shapeless(consumer, "dough_pasta", "dough", "has_rolling_pin", provider.hasSafeItem(ToolTypes.ROLLING_PIN.getForgeTag()), new ItemStack(FLATTENED_PASTA_DOUGH), ToolTypes.ROLLING_PIN.getForgeTag(), EGG_DOUGH);
+    }
+
+    protected static void registerMachineRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
+        provider.addStackRecipe(consumer, GTFoods.MODID, "juicer_clay", "machines", "has_knife", provider.hasSafeItem(KNIFE.getForgeTag()), new ItemStack(ClayJuicer), of('C', CLAY_BALL, 'R', ToolTypes.ROLLING_PIN.getForgeTag(), 'K', KNIFE.getForgeTag()), "KCR", "CCC");
     }
 
     protected static void registerFoodCraftingRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){

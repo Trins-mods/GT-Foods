@@ -2,12 +2,15 @@ package trinsdar.gt_foods.loader;
 
 import muramasa.antimatter.datagen.builder.AntimatterCookingRecipeBuilder;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.GTFData;
+import trinsdar.gt_foods.data.Machines;
 
 import java.util.function.Consumer;
 
@@ -49,6 +52,9 @@ public class FurnaceLoader {
         addCookingRecipe(consumer, provider, WHITE_GRAPES, WHITE_RAISINS, "white_raisins");
         addCookingRecipe(consumer, provider, PURPLE_GRAPES, PURPLE_RAISINS, "purple_raisins");
         addCookingRecipe(consumer, provider, POMEGRANATE, POMERAISINS, "pomeraisins");
+        AntimatterCookingRecipeBuilder.smeltingRecipe(RecipeIngredient.of(ClayJuicer, 1).get(), new ItemStack(Machines.JUICER.getItem(Tier.LV)), 1.0F, 200)
+                .addCriterion("has_clay_juicer", provider.hasSafeItem(ClayJuicer))
+                .build(consumer, provider.fixLoc(GTFoods.MODID, "smelting_juicer"));
 
     }
 

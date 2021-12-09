@@ -74,6 +74,7 @@ public class GTFData {
     public static final ItemBasic<?> EigthsSlicerBlades = new ItemBasic<>(GTFoods.MODID, "eigths_slicer_blades");
     public static final ItemBasic<?> SplitSlicerBlades = new ItemBasic<>(GTFoods.MODID, "split_slicer_blades");
     public static final ItemBasic<?> HollowQuartersSlicerBlades = new ItemBasic<>(GTFoods.MODID, "hollow_quarters_slicer_blades");
+    public static final ItemBasic<?> ClayJuicer = new ItemBasic<>(GTFoods.MODID, "clay_juicer");
 
     public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.3F);
     public static final Item GOOSEBERRY = registerBerry("gooseberry", GOOSEBERRY_BUSH, 2, 0.3F);
