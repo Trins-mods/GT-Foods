@@ -1,15 +1,30 @@
 package trinsdar.gt_foods.loader;
 
 import com.google.common.collect.ImmutableMap;
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
+import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.item.ItemCover;
+import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.pipe.PipeSize;
+import muramasa.gti.GregTech;
+import muramasa.gti.block.BlockCasing;
+import muramasa.gti.data.GregTechData;
+import muramasa.gti.data.TierMaps;
 import net.minecraft.advancements.ICriterionInstance;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraftforge.common.Tags;
+import trinsdar.gt4r.Ref;
+import trinsdar.gt4r.data.CustomTags;
+import trinsdar.gt4r.data.GT4RData;
+import trinsdar.gt4r.data.Materials;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.GTFData;
+import trinsdar.gt_foods.data.Machines;
 import trinsdar.gt_foods.data.ToolTypes;
 
 import java.util.function.Consumer;
@@ -17,8 +32,11 @@ import java.util.function.Function;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.Data.KNIFE;
+import static muramasa.antimatter.Data.PLATE;
+import static muramasa.antimatter.machine.Tier.LV;
 import static net.minecraft.item.Items.*;
 import static net.minecraft.item.Items.COOKED_BEEF;
+import static trinsdar.gt_foods.data.GTFMaterials.StainlessSteel;
 import static trinsdar.gt_foods.data.GTFData.*;
 import static trinsdar.gt_foods.data.GTFData.RAW_CAKE_BOTTOM;
 import static trinsdar.gt_foods.data.GTFData.SUGARY_DOUGH;
@@ -46,7 +64,7 @@ public class CraftingTableLoader {
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_egg", "slices", "has_knife", knife, new ItemStack(SLICED_EGG, 4), map.apply(BOILED_EGG), array);
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_lemon", "slices", "has_knife", knife, new ItemStack(LEMON_SLICE, 4), map.apply(LEMON), array);
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_onion", "slices", "has_knife", knife, new ItemStack(ONION_SLICE, 4), map.apply(ONION), array);
-        provider.addStackRecipe(consumer, GTFoods.MODID, "slice_pickle", "slices", "has_knife", knife, new ItemStack(PICKLE_SLICE, 4), map.apply(PICKLE), array);
+        provider.addStackRecipe(consumer, GTFoods.MODID, "slice_pic/kle", "slices", "has_knife", knife, new ItemStack(PICKLE_SLICE, 4), map.apply(PICKLE), array);
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_pineapple", "slices", "has_knife", knife, new ItemStack(PINEAPPLE_SLICE, 4), map.apply(PINEAPPLE), array);
         provider.addStackRecipe(consumer, GTFoods.MODID, "fries", "slices", "has_knife", knife, new ItemStack(RAW_FRIES), map.apply(POTATO), "K", "I");
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_ham_raw", "slices", "has_knife", knife, new ItemStack(RAW_HAM_SLICE, 4), map.apply(RAW_HAM), array);
@@ -62,6 +80,41 @@ public class CraftingTableLoader {
 
     protected static void registerMachineRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
         provider.addStackRecipe(consumer, GTFoods.MODID, "juicer_clay", "machines", "has_knife", provider.hasSafeItem(KNIFE.getForgeTag()), new ItemStack(ClayJuicer), of('C', CLAY_BALL, 'R', ToolTypes.ROLLING_PIN.getForgeTag(), 'K', KNIFE.getForgeTag()), "KCR", "CCC");
+        if (AntimatterAPI.isModLoaded("gti")){
+            for (Tier tier : Tier.getStandard()){
+                Item motor = GregTech.get(ItemBasic.class, "motor_"+tier.getId());
+                if (motor == null) return;
+                Item piston = GregTech.get(ItemBasic.class, "piston_"+tier.getId());
+                if (piston == null) return;
+                Item arm = GregTech.get(ItemBasic.class, "robot_arm_"+tier.getId());
+                if (arm == null) return;
+                Item conveyor = GregTech.get(ItemCover.class, "conveyor_"+tier.getId());
+                if (conveyor == null) return;
+                Item pump = GregTech.get(ItemCover.class, "pump_"+tier.getId());
+                if (pump == null) return;
+                Item casing = Item.BY_BLOCK.get(GregTech.get(BlockCasing.class, "casing_" + tier.getId()));
+                if (casing == null) return;
+                Item sensor = GregTech.get(ItemBasic.class, "sensor_"+tier.getId());
+                if (sensor == null) return;
+                Item emitter = GregTech.get(ItemBasic.class, "emitter_"+tier.getId());
+                if (emitter == null) return;
+                Item field = GregTech.get(ItemBasic.class, "field_gen_"+tier.getId());
+                if (field == null) return;
+                Item circuit = TierMaps.TIER_CIRCUITS.getOrDefault(tier, GregTechData.CircuitBasic);
+                Item cable = TierMaps.TIER_CABLES.get(tier);
+                if (cable == null) return;
+                Item glass = Items.GLASS;
+                Item rotor = TierMaps.TIER_ROTORS.get(tier);
+                provider.addStackRecipe(consumer, GTFoods.MODID, tier.getId() + "_slicer", "machines", "has_machine_hull", provider.hasSafeItem(casing), new ItemStack(Machines.SLICER.getItem(tier)), of('C', cable, 'c', circuit, 'M', casing, 'P', piston, 'm', conveyor), "CcC", "PMm", "CcC");
+                if (tier == Tier.LV && !AntimatterAPI.isModLoaded("gt4r")){
+                    provider.addItemRecipe(consumer, GTFoods.MODID, "bath", "machines", "has_machine_hull", provider.hasSafeItem(casing),
+                            Machines.NonGt4rMachines.BATH.getItem(LV), of('S', PLATE.getMaterialTag(StainlessSteel), 'M', casing), "SSS", "S S", "SMS");
+                }
+            }
+        } else if (AntimatterAPI.isModLoaded("gt4r")){
+            provider.addStackRecipe(consumer, GTFoods.MODID,  "slicer", "machines", "has_machine_hull", provider.hasSafeItem(CustomTags.MACHINE_HULLS_BASIC), new ItemStack(Machines.SLICER.getItem(LV)), of('C', GT4RData.CABLE_TIN.getBlockItem(PipeSize.VTINY), 'c', CustomTags.CIRCUITS_BASIC, 'M', CustomTags.MACHINE_HULLS_BASIC, 'P', CustomTags.PISTONS, 'm', GT4RData.ConveyorModule), "CcC", "PMm", "CcC");
+            provider.addStackRecipe(consumer, GTFoods.MODID,  "slicer", "machines", "has_machine_hull", provider.hasSafeItem(CustomTags.MACHINE_HULLS_BASIC), new ItemStack(Machines.NonGtiMachines.MIXER.getItem(LV)), of('G', Tags.Items.GLASS_COLORLESS, 'C', CustomTags.CIRCUITS_BASIC, 'M', CustomTags.MACHINE_HULLS_BASIC, 'R', Materials.TURBINE_BLADE.get(Materials.Bronze), 'm', GT4RData.MotorLV), "GRG", "GmG", "CMC");
+        }
     }
 
     protected static void registerFoodCraftingRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){

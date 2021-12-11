@@ -52,9 +52,9 @@ public class FurnaceLoader {
         addCookingRecipe(consumer, provider, WHITE_GRAPES, WHITE_RAISINS, "white_raisins");
         addCookingRecipe(consumer, provider, PURPLE_GRAPES, PURPLE_RAISINS, "purple_raisins");
         addCookingRecipe(consumer, provider, POMEGRANATE, POMERAISINS, "pomeraisins");
-        AntimatterCookingRecipeBuilder.smeltingRecipe(RecipeIngredient.of(ClayJuicer, 1).get(), new ItemStack(Machines.JUICER.getItem(Tier.LV)), 1.0F, 200)
+        /*AntimatterCookingRecipeBuilder.smeltingRecipe(RecipeIngredient.of(ClayJuicer, 1).get(), new ItemStack(Machines.JUICER.getItem(Tier.LV)), 1.0F, 200)
                 .addCriterion("has_clay_juicer", provider.hasSafeItem(ClayJuicer))
-                .build(consumer, provider.fixLoc(GTFoods.MODID, "smelting_juicer"));
+                .build(consumer, provider.fixLoc(GTFoods.MODID, "smelting_juicer"));*/
 
     }
 
