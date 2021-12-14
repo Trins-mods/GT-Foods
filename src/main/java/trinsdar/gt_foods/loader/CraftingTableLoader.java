@@ -105,15 +105,15 @@ public class CraftingTableLoader {
                 if (cable == null) return;
                 Item glass = Items.GLASS;
                 Item rotor = TierMaps.TIER_ROTORS.get(tier);
-                provider.addStackRecipe(consumer, GTFoods.MODID, tier.getId() + "_slicer", "machines", "has_machine_hull", provider.hasSafeItem(casing), new ItemStack(Machines.SLICER.getItem(tier)), of('C', cable, 'c', circuit, 'M', casing, 'P', piston, 'm', conveyor), "CcC", "PMm", "CcC");
+                provider.addStackRecipe(consumer, GTFoods.MODID, tier.getId() + "_slicer", "machines", "has_machine_casing", provider.hasSafeItem(casing), new ItemStack(Machines.SLICER.getItem(tier)), of('C', cable, 'c', circuit, 'M', casing, 'P', piston, 'm', conveyor), "CcC", "PMm", "CcC");
                 if (tier == Tier.LV && !AntimatterAPI.isModLoaded("gt4r")){
-                    provider.addItemRecipe(consumer, GTFoods.MODID, "bath", "machines", "has_machine_hull", provider.hasSafeItem(casing),
+                    provider.addItemRecipe(consumer, GTFoods.MODID, "bath", "machines", "has_machine_casing", provider.hasSafeItem(casing),
                             Machines.NonGt4rMachines.BATH.getItem(LV), of('S', PLATE.getMaterialTag(StainlessSteel), 'M', casing), "SSS", "S S", "SMS");
                 }
             }
         } else if (AntimatterAPI.isModLoaded("gt4r")){
             provider.addStackRecipe(consumer, GTFoods.MODID,  "slicer", "machines", "has_machine_hull", provider.hasSafeItem(CustomTags.MACHINE_HULLS_BASIC), new ItemStack(Machines.SLICER.getItem(LV)), of('C', GT4RData.CABLE_TIN.getBlockItem(PipeSize.VTINY), 'c', CustomTags.CIRCUITS_BASIC, 'M', CustomTags.MACHINE_HULLS_BASIC, 'P', CustomTags.PISTONS, 'm', GT4RData.ConveyorModule), "CcC", "PMm", "CcC");
-            provider.addStackRecipe(consumer, GTFoods.MODID,  "slicer", "machines", "has_machine_hull", provider.hasSafeItem(CustomTags.MACHINE_HULLS_BASIC), new ItemStack(Machines.NonGtiMachines.MIXER.getItem(LV)), of('G', Tags.Items.GLASS_COLORLESS, 'C', CustomTags.CIRCUITS_BASIC, 'M', CustomTags.MACHINE_HULLS_BASIC, 'R', Materials.TURBINE_BLADE.get(Materials.Bronze), 'm', GT4RData.MotorLV), "GRG", "GmG", "CMC");
+            provider.addStackRecipe(consumer, GTFoods.MODID,  "mixer", "machines", "has_machine_hull", provider.hasSafeItem(CustomTags.MACHINE_HULLS_BASIC), new ItemStack(Machines.NonGtiMachines.MIXER.getItem(LV)), of('G', Tags.Items.GLASS_COLORLESS, 'C', CustomTags.CIRCUITS_BASIC, 'M', CustomTags.MACHINE_HULLS_BASIC, 'R', Materials.TURBINE_BLADE.get(Materials.Bronze), 'm', GT4RData.MotorLV), "GRG", "GmG", "CMC");
         }
     }
 
