@@ -33,10 +33,12 @@ import static net.minecraft.state.properties.BlockStateProperties.WATERLOGGED;
 
 import net.minecraft.block.AbstractBlock.Properties;
 
+import java.util.function.Supplier;
+
 public class BlockCropWaterlogged extends BlockCrop implements IWaterLoggable {
 
-    public BlockCropWaterlogged(String id, String itemID, int maxAge) {
-        super(id, itemID, maxAge, Properties.of(Material.WATER_PLANT).noCollission().randomTicks().sound(SoundType.CROP));
+    public BlockCropWaterlogged(String id, Supplier<Item> seed, int maxAge) {
+        super(id, seed, maxAge, Properties.of(Material.WATER_PLANT).noCollission().randomTicks().sound(SoundType.CROP));
     }
 
     @Override

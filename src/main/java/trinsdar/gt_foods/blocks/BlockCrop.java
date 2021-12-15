@@ -26,21 +26,24 @@ import trinsdar.gt_foods.items.ItemBerry;
 
 import net.minecraft.block.AbstractBlock.Properties;
 
+import java.util.function.Supplier;
+
 public class BlockCrop extends CropsBlock implements IAntimatterObject, ITextureProvider, IModelProvider, IItemBlockProvider {
 
-    final String id, itemID;
+    final String id;
     final int maxAge;
+    final Supplier<Item> seed;
 
-    public BlockCrop(String id, String itemID, int maxAge, Properties builder) {
+    public BlockCrop(String id, Supplier<Item> seed, int maxAge, Properties builder) {
         super(builder);
         this.id = id;
-        this.itemID = itemID;
+        this.seed = seed;
         this.maxAge = maxAge;
         AntimatterAPI.register(BlockCrop.class, this);
     }
 
-    public BlockCrop(String id, String itemID, int maxAge) {
-        this(id, itemID, maxAge, Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP));
+    public BlockCrop(String id, Supplier<Item> seed, int maxAge) {
+        this(id, seed, maxAge, Properties.of(Material.PLANT).noCollission().randomTicks().sound(SoundType.CROP));
     }
 
     @Override
@@ -59,7 +62,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
     }
 
     public Item getItem() {
-        return AntimatterAPI.get(Item.class, this.itemID, getDomain());
+        return seed.get();
     }
 
     @Override

@@ -9,6 +9,7 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.blocks.BlockCrop;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
 import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
 import trinsdar.gt_foods.blocks.BlockFloweringLeaves;
@@ -19,6 +20,7 @@ import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.items.ItemBerry;
 import trinsdar.gt_foods.items.ItemFood;
+import trinsdar.gt_foods.items.ItemSeed;
 import trinsdar.gt_foods.tree.GTFTree;
 import trinsdar.gt_foods.tree.TreeWorldGen;
 
@@ -26,14 +28,23 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class GTFData {
-    private static final Map<ResourceLocation, Block> blockIdList = new LinkedHashMap<>();
 
     public static final Block BLUEBERRY_BUSH =new BlockCropBerry("blueberry_bush", "blueberry");
     public static final Block GOOSEBERRY_BUSH = new BlockCropBerry("gooseberry_bush", "gooseberry");
     public static final Block BLACKBERRY_BUSH = new BlockCropBerry("blackberry_bush", "blackberry");
     public static final Block RASPBERRY_BUSH =new BlockCropBerry("raspberry_bush", "raspberry");
     public static final Block STRAWBERRY_BUSH = new BlockCropBerry("strawberry_bush", "strawberry");
-    public static final Block CRANBERRY_CROP = new BlockCropWaterlogged("cranberry", "cranberry", 3);
+    public static final Block CRANBERRY_CROP = new BlockCropWaterlogged("cranberry", () -> GTFData.CRANBERRY, 3);
+    public static final Block BANANA_CROP = new BlockCrop("banana", () -> GTFData.BANANA_PUP, 3);
+    public static final Block BARLEY_CROP = new BlockCrop("barley", () -> GTFData.BARLEY_SEEDS, 7);
+    public static final Block CHILI_PEPPER_CROP = new BlockCrop("chili_pepper", () -> GTFData.CHILI_PEPPER_SEEDS, 3);
+    public static final Block CUCUMBER_CROP = new BlockCrop("cucumber", () -> GTFData.CUCUMBER_SEEDS, 3);
+    public static final Block OAT_CROP = new BlockCrop("oats", () -> GTFData.OAT_SEEDS, 7);
+    public static final Block RYE_CROP = new BlockCrop("rye", () -> GTFData.RYE_SEEDS, 7);
+    public static final Block RICE_CROP = new BlockCropWaterlogged("rice", () -> GTFData.RICE, 7);
+    public static final Block TOMATO_CROP = new BlockCrop("tomato", () -> GTFData.TOMATO_SEEDS, 3);
+    public static final Block PEANUT_CROP = new BlockCrop("peanut", () -> GTFData.PEANUT, 3);
+    public static final Block PINEAPPLE_CROP = new BlockCrop("pineapple", () -> GTFData.PINEAPPLE, 2);
 
     public static final Block STRIPPED_CINNAMON_LOG = new BlockLogStrippable("cinnamon", null, true, false);
     public static final Block CINNAMON_LOG = new BlockLogStrippable("cinnamon", () -> STRIPPED_CINNAMON_LOG, false, false);
@@ -66,15 +77,24 @@ public class GTFData {
     public static final Block COCONUT_LEAVES = new BlockLeaves("coconut_leaves");
     public static final Block COCONUT_PLANKS = new BlockPlanks(GTFoods.MODID, "coconut_planks");
     public static final Block COCONUT_SAPLING = new BlockSapling("coconut_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_COCONUT_TREE_FEATURE));
-    public static final Block COCONUT_HANGING_PLANT = new BlockHangingFruit("coconut_hanging_plant", "coconut");
+    public static final Block COCONUT_HANGING_PLANT = new BlockHangingFruit("coconut_hanging_plant", () -> GTFData.COCONUT);
 
-    public static final ItemBasic<?> SlicerBladeFrame = new ItemBasic<>(GTFoods.MODID, "slicer_blade_frame");
-    public static final ItemBasic<?> FlatSlicerBlades = new ItemBasic<>(GTFoods.MODID, "flat_slicer_blades");
-    public static final ItemBasic<?> GridSlicerBlades = new ItemBasic<>(GTFoods.MODID, "grid_slicer_blades");
-    public static final ItemBasic<?> EigthsSlicerBlades = new ItemBasic<>(GTFoods.MODID, "eigths_slicer_blades");
-    public static final ItemBasic<?> SplitSlicerBlades = new ItemBasic<>(GTFoods.MODID, "split_slicer_blades");
-    public static final ItemBasic<?> HollowQuartersSlicerBlades = new ItemBasic<>(GTFoods.MODID, "hollow_quarters_slicer_blades");
-    public static final ItemBasic<?> ClayJuicer = new ItemBasic<>(GTFoods.MODID, "clay_juicer");
+    public static final ItemBasic<?> SLICER_BLADE_FRAME = new ItemBasic<>(GTFoods.MODID, "slicer_blade_frame");
+    public static final ItemBasic<?> FLAT_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "flat_slicer_blades");
+    public static final ItemBasic<?> GRID_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "grid_slicer_blades");
+    public static final ItemBasic<?> EIGTHS_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "eigths_slicer_blades");
+    public static final ItemBasic<?> SPLIT_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "split_slicer_blades");
+    public static final ItemBasic<?> HOLLOW_QUARTERS_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "hollow_quarters_slicer_blades");
+    public static final ItemBasic<?> CLAY_JUICER = new ItemBasic<>(GTFoods.MODID, "clay_juicer");
+
+    public static final ItemSeed BANANA_PUP = new ItemSeed(GTFoods.MODID, "banana_pup", BANANA_CROP);
+    public static final ItemSeed RICE = new ItemSeed(GTFoods.MODID, "rice", RICE_CROP);
+    public static final ItemSeed BARLEY_SEEDS = new ItemSeed(GTFoods.MODID, "barley_seeds", BARLEY_CROP);
+    public static final ItemSeed CHILI_PEPPER_SEEDS = new ItemSeed(GTFoods.MODID, "chili_pepper_seeds", CHILI_PEPPER_CROP);
+    public static final ItemSeed CUCUMBER_SEEDS = new ItemSeed(GTFoods.MODID, "cucumber_seeds", CUCUMBER_CROP);
+    public static final ItemSeed OAT_SEEDS = new ItemSeed(GTFoods.MODID, "oat_seeds", OAT_CROP);
+    public static final ItemSeed RYE_SEEDS = new ItemSeed(GTFoods.MODID, "rye_seeds", RYE_CROP);
+    public static final ItemSeed TOMATO_SEEDS = new ItemSeed(GTFoods.MODID, "tomato_seeds", TOMATO_CROP);
 
     public static final Item BLUEBERRY = registerBerry("blueberry", BLUEBERRY_BUSH, 2, 0.3F);
     public static final Item GOOSEBERRY = registerBerry("gooseberry", GOOSEBERRY_BUSH, 2, 0.3F);
@@ -116,9 +136,9 @@ public class GTFData {
     public static final Item RED_CURRANTS = registerFoodItem("red_currants", 1, 0.3F);
     public static final Item WHITE_CURRANTS = registerFoodItem("white_currants", 1, 0.3F);
     public static final Item APPLE_SLICE = registerFoodItem("apple_slice", 1, 0.15F);
-    public static final Item PEANUT = registerFoodItem("peanut", 2, 0.15F);
+    public static final Item PEANUT = registerBerry("peanut", PEANUT_CROP, 2, 0.15F);
     public static final Item HAZELNUT = registerFoodItem("hazelnut", 2, 0.15F);
-    public static final Item PINEAPPLE = registerFoodItem("pineapple", 4, 0.15F);
+    public static final Item PINEAPPLE = registerBerry("pineapple", PINEAPPLE_CROP, 4, 0.15F);
     public static final Item PINEAPPLE_SLICE = registerFoodItem("pineapple_slice", new Food.Builder().nutrition(1).saturationMod(0.15F).fast().build());
     public static final Item CINNAMON_BARK = registerFoodItem("cinnamon_bark", 2, 0.15F);
     public static final Item COCONUT = registerFoodItem("coconut", 2, 0.15F);

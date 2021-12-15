@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResultType;
@@ -22,8 +23,10 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import trinsdar.gt_foods.data.GTFData;
 
+import java.util.function.Supplier;
+
 public class BlockHangingFruit extends BlockCrop{
-    public BlockHangingFruit(String id, String fruit) {
+    public BlockHangingFruit(String id, Supplier<Item> fruit) {
         super(id, fruit, 3);
     }
 

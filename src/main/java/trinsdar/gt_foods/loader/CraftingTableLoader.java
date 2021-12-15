@@ -18,12 +18,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraftforge.common.Tags;
-import trinsdar.gt4r.Ref;
 import trinsdar.gt4r.data.CustomTags;
 import trinsdar.gt4r.data.GT4RData;
 import trinsdar.gt4r.data.Materials;
 import trinsdar.gt_foods.GTFoods;
-import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.Machines;
 import trinsdar.gt_foods.data.ToolTypes;
 
@@ -79,7 +77,7 @@ public class CraftingTableLoader {
     }
 
     protected static void registerMachineRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
-        provider.addStackRecipe(consumer, GTFoods.MODID, "juicer_clay", "machines", "has_knife", provider.hasSafeItem(KNIFE.getForgeTag()), new ItemStack(ClayJuicer), of('C', CLAY_BALL, 'R', ToolTypes.ROLLING_PIN.getForgeTag(), 'K', KNIFE.getForgeTag()), "KCR", "CCC");
+        provider.addStackRecipe(consumer, GTFoods.MODID, "juicer_clay", "machines", "has_knife", provider.hasSafeItem(KNIFE.getForgeTag()), new ItemStack(CLAY_JUICER), of('C', CLAY_BALL, 'R', ToolTypes.ROLLING_PIN.getForgeTag(), 'K', KNIFE.getForgeTag()), "KCR", "CCC");
         if (AntimatterAPI.isModLoaded("gti")){
             for (Tier tier : Tier.getStandard()){
                 Item motor = GregTech.get(ItemBasic.class, "motor_"+tier.getId());
