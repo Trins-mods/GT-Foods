@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "entries": [
+    "gt_foods:seeds_from_grass",
+    "gt_foods:seeds_from_tall_grass"
+  ]
+}
