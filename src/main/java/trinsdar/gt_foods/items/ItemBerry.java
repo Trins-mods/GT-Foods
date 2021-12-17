@@ -14,12 +14,14 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockNamedItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.util.Arrays;
 import java.util.Set;
 
 import net.minecraft.item.Item.Properties;
+import trinsdar.gt_foods.GTFoods;
 
 public class ItemBerry extends BlockNamedItem implements IAntimatterObject, ITextureProvider, IModelProvider {
 
@@ -32,6 +34,10 @@ public class ItemBerry extends BlockNamedItem implements IAntimatterObject, ITex
         this.domain = domain;
         this.id = id;
         AntimatterAPI.register(getClass(), this);
+    }
+
+    public ItemBerry(String domain, String id, Block block) {
+        this(domain, id, block, new Item.Properties().tab(GTFoods.CREATIVE_TAB));
     }
 
     public ItemBerry tip(String tooltip) {

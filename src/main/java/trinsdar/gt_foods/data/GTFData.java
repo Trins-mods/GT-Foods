@@ -88,7 +88,7 @@ public class GTFData {
     public static final ItemBasic<?> CLAY_JUICER = new ItemBasic<>(GTFoods.MODID, "clay_juicer");
 
     public static final ItemSeed BANANA_PUP = new ItemSeed(GTFoods.MODID, "banana_pup", BANANA_CROP);
-    public static final ItemSeed RICE = new ItemSeed(GTFoods.MODID, "rice", RICE_CROP);
+    public static final ItemBerry RICE = new ItemBerry(GTFoods.MODID, "rice", RICE_CROP);
     public static final ItemSeed BARLEY_SEEDS = new ItemSeed(GTFoods.MODID, "barley_seeds", BARLEY_CROP);
     public static final ItemSeed CHILI_PEPPER_SEEDS = new ItemSeed(GTFoods.MODID, "chili_pepper_seeds", CHILI_PEPPER_CROP);
     public static final ItemSeed CUCUMBER_SEEDS = new ItemSeed(GTFoods.MODID, "cucumber_seeds", CUCUMBER_CROP);

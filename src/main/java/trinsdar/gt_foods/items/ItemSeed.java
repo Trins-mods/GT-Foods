@@ -7,7 +7,7 @@ import trinsdar.gt_foods.GTFoods;
 
 public class ItemSeed extends ItemBerry{
     public ItemSeed(String domain, String id, Block block) {
-        super(domain, id, block, new Item.Properties().tab(GTFoods.CREATIVE_TAB));
+        super(domain, id, block);
     }
 
     @Override
