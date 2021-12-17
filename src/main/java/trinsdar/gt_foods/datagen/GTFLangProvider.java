@@ -15,6 +15,7 @@ import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFMaterialTypes;
 import trinsdar.gt_foods.items.ItemBerry;
 import trinsdar.gt_foods.items.ItemFood;
+import trinsdar.gt_foods.items.ItemSeed;
 
 import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
 
@@ -27,6 +28,7 @@ public class GTFLangProvider extends AntimatterLanguageProvider {
     protected void processTranslations(String domain, String locale) {
         super.processTranslations(domain, locale);
         AntimatterAPI.all(ItemBerry.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        AntimatterAPI.all(ItemSeed.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         AntimatterAPI.all(ItemFood.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         AntimatterAPI.all(BlockCropBerry.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         AntimatterAPI.all(BlockCrop.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));

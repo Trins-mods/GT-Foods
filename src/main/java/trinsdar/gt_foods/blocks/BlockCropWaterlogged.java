@@ -22,6 +22,7 @@ import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.GTFData;
@@ -50,6 +51,14 @@ public class BlockCropWaterlogged extends BlockCrop implements IWaterLoggable {
         FluidState stateWater = worldIn.getFluidState(pos.above());
         BlockState stateAir = worldIn.getBlockState(pos.above(2));
         return state.getBlock() == Blocks.DIRT && stateWater.getType() == Fluids.WATER && stateAir.getBlock() == Blocks.AIR;
+    }
+
+    @Override
+    public boolean canSurvive(BlockState pState, IWorldReader pLevel, BlockPos pPos) {
+        FluidState stateWater = pLevel.getFluidState(pPos);
+        BlockState stateAir = pLevel.getBlockState(pPos.above());
+        boolean survive =  pLevel.getBlockState(pPos.below()).getBlock() == Blocks.DIRT && stateWater.getType() == Fluids.WATER && stateAir.getBlock() == Blocks.AIR;
+        return super.canSurvive(pState, pLevel, pPos) && survive;
     }
 
     @Override
