@@ -34,6 +34,9 @@ public class GTFData {
     public static final Block BLACKBERRY_BUSH = new BlockCropBerry("blackberry_bush", "blackberry");
     public static final Block RASPBERRY_BUSH =new BlockCropBerry("raspberry_bush", "raspberry");
     public static final Block STRAWBERRY_BUSH = new BlockCropBerry("strawberry_bush", "strawberry");
+    public static final Block BLACK_CURRANT_BUSH = new BlockCropBerry("black_currant_bush", "black_currants");
+    public static final Block RED_CURRANT_BUSH = new BlockCropBerry("red_currant_bush", "red_currants");
+    public static final Block WHITE_CURRANT_BUSH = new BlockCropBerry("white_currant_bush", "white_currants");
     public static final Block CRANBERRY_CROP = new BlockCropWaterlogged("cranberry", () -> GTFData.CRANBERRY, 3);
     public static final Block BANANA_CROP = new BlockCrop("banana", () -> GTFData.BANANA_PUP, 3);
     public static final Block BARLEY_CROP = new BlockCrop("barley", () -> GTFData.BARLEY_SEEDS, 7);
@@ -45,6 +48,10 @@ public class GTFData {
     public static final Block TOMATO_CROP = new BlockCrop("tomato", () -> GTFData.TOMATO_SEEDS, 3);
     public static final Block PEANUT_CROP = new BlockCrop("peanut", () -> GTFData.PEANUT, 3);
     public static final Block PINEAPPLE_CROP = new BlockCrop("pineapple", () -> GTFData.PINEAPPLE, 2);
+    //public static final Block EGGPLANT_CROP = new BlockCrop("eggplant", () -> GTFData.EGGPLANT, 2);
+    //public static final Block MINT_CROP = new BlockCrop("mint", () -> GTFData.MINT_SEEDS, 2);
+    //public static final Block FLAX_CROP = new BlockCrop("flax", () -> GTFData.FLAX_SEEDS, 2);
+    public static final Block ONION_CROP = new BlockCrop("onion", () -> GTFData.ONION, 3);
 
     public static final Block STRIPPED_CINNAMON_LOG = new BlockLogStrippable("cinnamon", null, true, false);
     public static final Block CINNAMON_LOG = new BlockLogStrippable("cinnamon", () -> STRIPPED_CINNAMON_LOG, false, false);
@@ -110,7 +117,7 @@ public class GTFData {
     public static final Item TOMATO = registerFoodItem("tomato", 1, 0.3F);
     public static final Item TOMATO_SLICE = registerFoodItem("tomato_slice", new Food.Builder().nutrition(0).saturationMod(0.075F).fast().build());
     public static final Item MAX_TOMATO = registerFoodItem("max_tomato", new Food.Builder().nutrition(9).saturationMod(0.5F).effect(() -> new EffectInstance(Effects.REGENERATION, 2), 1.0F).build());
-    public static final Item ONION = registerFoodItem("onion", 1, 0.6F);
+    public static final Item ONION = registerBerry("onion", ONION_CROP, 1, 0.6F);
     public static final Item ONION_SLICE = registerFoodItem("onion_slice", new Food.Builder().nutrition(0).saturationMod(0.15F).fast().build());
     public static final Item CUCUMBER = registerFoodItem("cucumber", 1, 0.6F);
     public static final Item CUCUMBER_SLICE = registerFoodItem("cucumber_slice", new Food.Builder().nutrition(0).saturationMod(0.15F).fast().build());
@@ -132,9 +139,9 @@ public class GTFData {
     public static final Item POMEGRANATE = registerFoodItem("pomegranate", 1, 0.3F);
     public static final Item POMERAISINS = registerFoodItem("pomeraisins", 2, 0.3F);
     public static final Item CANDLEBERRY = registerFoodItem("candleberry", 1, 0.3F);
-    public static final Item BLACK_CURRANTS = registerFoodItem("black_currants", 1, 0.3F);
-    public static final Item RED_CURRANTS = registerFoodItem("red_currants", 1, 0.3F);
-    public static final Item WHITE_CURRANTS = registerFoodItem("white_currants", 1, 0.3F);
+    public static final Item BLACK_CURRANTS = registerBerry("black_currants", BLACK_CURRANT_BUSH, 1, 0.3F);
+    public static final Item RED_CURRANTS = registerBerry("red_currants", RED_CURRANT_BUSH, 1, 0.3F);
+    public static final Item WHITE_CURRANTS = registerBerry("white_currants", WHITE_CURRANT_BUSH, 1, 0.3F);
     public static final Item APPLE_SLICE = registerFoodItem("apple_slice", 1, 0.15F);
     public static final Item PEANUT = registerBerry("peanut", PEANUT_CROP, 2, 0.15F);
     public static final Item HAZELNUT = registerFoodItem("hazelnut", 2, 0.15F);

@@ -2,13 +2,14 @@ package trinsdar.gt_foods.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.material.TextureSet;
+import trinsdar.gt4r.Ref;
 import trinsdar.gt_foods.GTFoods;
 
 import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.material.TextureSet.FINE;
 import static muramasa.antimatter.material.TextureSet.NONE;
 import static trinsdar.gt_foods.data.GTFMaterialTypes.FLOUR;
 import static trinsdar.gt_foods.data.GTFMaterialTypes.GROUND;
@@ -37,6 +38,7 @@ public class GTFMaterials {
     public static final Material Peanut = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "peanut", 0xf0d2a0, NONE).asDust(GROUND));
     public static final Material Hazelnut = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "hazelnut", 0xf0c88c, NONE).asDust(GROUND));
     public static final Material FishMeal = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "fishmeal", 0xff9664, NONE).asDust(GROUND));
+    public static final Material Salt = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "salt", 0xfafafa, FINE)).asDust();
 
     public static final Material Wheat = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "wheat", 0xffffc4, NONE)).flags(FLOUR);
     public static final Material Barley = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "barley", 0xc4ffc4, NONE)).flags(FLOUR);
