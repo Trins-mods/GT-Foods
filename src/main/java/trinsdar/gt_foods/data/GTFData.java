@@ -243,7 +243,10 @@ public class GTFData {
     //todo icecream and juice
 
     /** Food ingredients*/
-    public static final Item TOMATO_SAUCE = registerIngredient("tomato_sauce");
+    public static final ItemFood TOMATO_SAUCE = new ItemFood(GTFoods.MODID,"tomato_sauce");
+    public static final ItemFood RYE = new ItemFood(GTFoods.MODID, "rye");
+    public static final ItemFood BARLEY = new ItemFood(GTFoods.MODID, "barley");
+    public static final ItemFood OATS = new ItemFood(GTFoods.MODID, "oats");
 
     static Item registerFoodItem(String id, int hunger, float saturation) {
         return registerFoodItem(id, new Food.Builder().nutrition(hunger).saturationMod(saturation).build());
@@ -259,10 +262,6 @@ public class GTFData {
 
     static BlockNamedItem registerBerry(String id, Block block, int hunger, float saturation) {
         return new ItemBerry(GTFoods.MODID, id, block, new Item.Properties().tab(GTFoods.CREATIVE_TAB).food(new Food.Builder().nutrition(hunger).saturationMod(saturation).fast().build()));
-    }
-
-    static Item registerIngredient(String id){
-        return new ItemBasic<>(GTFoods.MODID, id, new Item.Properties().tab(GTFoods.CREATIVE_TAB));
     }
 
     public static void init(){

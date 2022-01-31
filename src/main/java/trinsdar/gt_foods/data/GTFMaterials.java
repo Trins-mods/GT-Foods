@@ -17,6 +17,8 @@ import static trinsdar.gt_foods.data.GTFMaterialTypes.GROUND;
 public class GTFMaterials {
     public static final Material StainlessSteel = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "stainless_steel", 0xc8c8dc, TextureSet.METALLIC)).flags(RING, ROD, PLATE_TINY);
 
+    public static final Material AppleJuice = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "apple_juice", 0xffff00, NONE)).asFluid();
+    public static final Material AppleCider = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "apple_cider", 0xffd026, NONE)).asFluid();
     public static final Material AppleCiderVinegar = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "apple_cider_vinegar", 0xa17a00, NONE)).asFluid();
     public static final Material Mayonnaise = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "mayonnaise", 0xd0c49e, NONE)).asFluid();
     public static final Material BarbecueSauce = AntimatterAPI.register(Material.class, new Material(GTFoods.MODID, "barbecue_sauce", 0x520000, NONE)).asFluid();

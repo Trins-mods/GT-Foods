@@ -47,7 +47,9 @@ import trinsdar.gt_foods.datagen.GTFBlockTagProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.datagen.GTFItemTagProvider;
 import trinsdar.gt_foods.datagen.GTFLangProvider;
+import trinsdar.gt_foods.loader.BathingLoader;
 import trinsdar.gt_foods.loader.CraftingTableLoader;
+import trinsdar.gt_foods.loader.FermenterLoader;
 import trinsdar.gt_foods.loader.FurnaceLoader;
 import trinsdar.gt_foods.loader.JuicerLoader;
 import trinsdar.gt_foods.loader.MixingLoader;
@@ -96,10 +98,11 @@ public class GTFoods extends AntimatterMod {
 
     private static void registerRecipeLoaders(AntimatterLoaderEvent event) {
         BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(Ref.ID, a, b);
-        loader.accept("slicer", SlicerLoader::init);
-        loader.accept("mixing", MixingLoader::init);
-        loader.accept("juicing", JuicerLoader::init);
-
+        loader.accept("slicer_food", SlicerLoader::init);
+        loader.accept("mixing_food", MixingLoader::init);
+        loader.accept("juicing_food", JuicerLoader::init);
+        loader.accept("fermenting_food", FermenterLoader::init);
+        loader.accept("bathing_food", BathingLoader::init);
     }
 
     private static void registerCraftingLoaders(AntimatterCraftingEvent event){

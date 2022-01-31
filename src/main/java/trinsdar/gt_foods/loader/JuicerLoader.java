@@ -22,5 +22,6 @@ public class JuicerLoader {
         RecipeMaps.JUICING.RB().ii(RecipeIngredient.of(Items.TROPICAL_FISH, 1)).io(Data.DUST.get(GTFMaterials.FishMeal, 1)).fo(GTFMaterials.FishOil.getLiquid(500)).add();
         RecipeMaps.JUICING.RB().ii(RecipeIngredient.of(GTFData.HAZELNUT, 1)).io(Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1)).chances(80, 80, 80, 80).fo(GTFMaterials.NutOil.getLiquid(75)).add();
         RecipeMaps.JUICING.RB().ii(RecipeIngredient.of(GTFData.PEANUT, 1)).io(Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), Data.DUST_SMALL.get(GTFMaterials.Peanut, 1)).chances(80, 80, 80, 80).fo(GTFMaterials.NutOil.getLiquid(75)).add();
+        RecipeMaps.JUICING.RB().ii(RecipeIngredient.of(Items.APPLE, 1)).fo(GTFMaterials.AppleJuice.getLiquid(75)).add();
     }
 }
