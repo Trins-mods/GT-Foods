@@ -26,6 +26,7 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
@@ -161,5 +162,14 @@ public class GTFoods extends AntimatterMod {
         for (Block block : blocks) {
             RenderTypeLookup.setRenderLayer(block, type);
         }
+    }
+
+    @Override
+    public void onGatherData(GatherDataEvent e) {
+        super.onGatherData(e);
+        final AntimatterBlockTagProvider p = new GTFBlockTagProvider(MODID, "GT Foods Block Tags", false, e.getGenerator(), new ExistingFileHelperOverride());
+        e.getGenerator().addProvider(p);
+        e.getGenerator().addProvider(new GTFItemTagProvider(MODID, "GT Foods Item Tags", false, e.getGenerator(), p, new ExistingFileHelperOverride()));
+        e.getGenerator().addProvider(new GTFBlockLootProvider(MODID, "GT Foods Loot generator", e.getGenerator()));
     }
 }

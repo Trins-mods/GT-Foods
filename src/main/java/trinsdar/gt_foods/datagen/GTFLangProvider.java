@@ -5,6 +5,7 @@ import muramasa.antimatter.Data;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.registration.IAntimatterObject;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DirectoryCache;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCrop;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
@@ -16,6 +17,8 @@ import trinsdar.gt_foods.data.GTFMaterialTypes;
 import trinsdar.gt_foods.items.ItemBerry;
 import trinsdar.gt_foods.items.ItemFood;
 import trinsdar.gt_foods.items.ItemSeed;
+
+import java.io.IOException;
 
 import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
 
@@ -37,5 +40,10 @@ public class GTFLangProvider extends AntimatterLanguageProvider {
         AntimatterAPI.all(BlockPlanks.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         AntimatterAPI.all(BlockSapling.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         GTFMaterialTypes.GROUND.all().forEach(m -> override(Data.DUST.get(m).getDescriptionId(), "Ground " + lowerUnderscoreToUpperSpaced(m.getId())));
+    }
+
+    @Override
+    public void run(DirectoryCache pCache) throws IOException {
+        super.run(pCache);
     }
 }

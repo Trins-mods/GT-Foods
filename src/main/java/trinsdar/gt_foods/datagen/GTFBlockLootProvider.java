@@ -10,12 +10,16 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SweetBerryBushBlock;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DirectoryCache;
+import net.minecraft.data.IDataProvider;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantRange;
 import net.minecraft.loot.ItemLootEntry;
+import net.minecraft.loot.LootParameterSets;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.LootTableManager;
 import net.minecraft.loot.RandomValueRange;
 import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.conditions.ILootCondition;
@@ -23,6 +27,7 @@ import net.minecraft.loot.conditions.MatchTool;
 import net.minecraft.loot.conditions.RandomChance;
 import net.minecraft.loot.functions.ApplyBonus;
 import net.minecraft.loot.functions.SetCount;
+import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.blocks.BlockCrop;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
 import trinsdar.gt_foods.blocks.BlockFloweringLeaves;
@@ -30,6 +35,13 @@ import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFData;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.function.Function;
+
+import static muramasa.antimatter.Ref.GSON;
 
 public class GTFBlockLootProvider extends AntimatterBlockLootProvider {
     private static final ILootCondition.IBuilder SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))));
@@ -65,6 +77,19 @@ public class GTFBlockLootProvider extends AntimatterBlockLootProvider {
         tables.put(GTFData.CHILI_PEPPER_CROP, b -> createCropDrops(b, GTFData.CHILI_PEPPER, GTFData.CHILI_PEPPER_SEEDS, withGrowthValue(b, 3)));
         tables.put(GTFData.CUCUMBER_CROP, b -> createCropDrops(b, GTFData.CUCUMBER, GTFData.CUCUMBER_SEEDS, withGrowthValue(b, 3)));
 
+    }
+
+    @Override
+    public void run(DirectoryCache cache) throws IOException {
+        loot();
+        for (Map.Entry<Block, Function<Block, LootTable.Builder>> e : tables.entrySet()) {
+            Path path = getPath(generator.getOutputFolder(), e.getKey().getRegistryName());
+            IDataProvider.save(GSON, cache, LootTableManager.serialize(e.getValue().apply(e.getKey()).setParamSet(LootParameterSets.BLOCK).build()), path);
+        }
+    }
+
+    private static Path getPath(Path root, ResourceLocation id) {
+        return root.resolve("data/" + id.getNamespace() + "/loot_tables/blocks/" + id.getPath() + ".json");
     }
 
     private ILootCondition.IBuilder withGrowthValue(Block block, int age){
