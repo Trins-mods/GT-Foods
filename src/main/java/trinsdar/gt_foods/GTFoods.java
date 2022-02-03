@@ -22,6 +22,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -60,7 +61,7 @@ import trinsdar.gt_foods.tree.TreeWorldGen;
 import java.util.function.BiConsumer;
 
 @Mod(value = GTFoods.MODID)
-public class GTFoods extends AntimatterMod {
+public class GTFoods {
     public static final String MODID = "gt_foods";
 
     // Directly reference a log4j logger.
@@ -69,18 +70,13 @@ public class GTFoods extends AntimatterMod {
 
 
     public GTFoods() {
-        super();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
         MinecraftForge.EVENT_BUS.addListener(BiomeFeatureInjection::onEvent);
-        AntimatterDynamics.addProvider(GTFoods.MODID, g -> new AntimatterBlockStateProvider(GTFoods.MODID, "GT Foods BlockStates", g));
-        AntimatterDynamics.addProvider(GTFoods.MODID, GTFItemModelProvider::new);
-        AntimatterDynamics.addProvider(GTFoods.MODID, GTFLangProvider::new);
-        new GTFRegistrar();
-        MinecraftForge.EVENT_BUS.addListener(GTFoods::registerRecipeLoaders);
-        MinecraftForge.EVENT_BUS.addListener(GTFoods::registerCraftingLoaders);
-        MinecraftForge.EVENT_BUS.addListener(GTFoods::onProviders);
+        if (ModList.get().isLoaded("antimatter")){
+            new GTFAntimatterAddon();
+        }
     }
 
     @SubscribeEvent
@@ -95,54 +91,6 @@ public class GTFoods extends AntimatterMod {
         e.getRegistry().register(TreeWorldGen.COCONUT_FOLIAGE_PLACER);
         e.getRegistry().register(TreeWorldGen.HAZEL_FOLIAGE_PLACER);
         e.getRegistry().register(TreeWorldGen.LEMON_FOLIAGE_PLACER);
-    }
-
-    private static void registerRecipeLoaders(AntimatterLoaderEvent event) {
-        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(Ref.ID, a, b);
-        loader.accept("slicer_food", SlicerLoader::init);
-        loader.accept("mixing_food", MixingLoader::init);
-        loader.accept("juicing_food", JuicerLoader::init);
-        loader.accept("fermenting_food", FermenterLoader::init);
-        loader.accept("bathing_food", BathingLoader::init);
-    }
-
-    private static void registerCraftingLoaders(AntimatterCraftingEvent event){
-        event.addLoader(FurnaceLoader::loadRecipes);
-        event.addLoader(CraftingTableLoader::loadRecipes);
-    }
-
-    private static void onProviders(AntimatterProvidersEvent event){
-        if (event.getSide() == Dist.CLIENT) return;
-        /*final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
-        event.addProvider(Ref.ID, g -> {
-            p[0] = new GTFBlockTagProvider(MODID, "GT Foods Block Tags", false, g, new ExistingFileHelperOverride());
-            return p[0];
-        });
-        event.addProvider(Ref.ID, g -> new GTFItemTagProvider(MODID, "GT Foods Item Tags", false, g, p[0], new ExistingFileHelperOverride()));*/
-        event.addProvider(Ref.ID, g -> new GTFBlockLootProvider(MODID, "GT Foods Loot generator",g));
-    }
-
-    @Override
-    public String getId() {
-        return GTFoods.MODID;
-    }
-
-    @Override
-    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
-        if (event == RegistrationEvent.DATA_INIT){
-            GTFMaterialTypes.init();
-            GTFMaterials.init();
-            GTFData.init();
-            RecipeMaps.init();
-            Machines.init();
-            Guis.init();
-            TreeWorldGen.init();
-        }
-    }
-
-    @Override
-    public int getPriority() {
-        return 200000;
     }
 
     private void setup(final FMLCommonSetupEvent event) {
@@ -162,14 +110,5 @@ public class GTFoods extends AntimatterMod {
         for (Block block : blocks) {
             RenderTypeLookup.setRenderLayer(block, type);
         }
-    }
-
-    @Override
-    public void onGatherData(GatherDataEvent e) {
-        super.onGatherData(e);
-        final GTFBlockTagProvider p = new GTFBlockTagProvider(MODID, e.getGenerator(), new ExistingFileHelperOverride());
-        e.getGenerator().addProvider(p);
-        e.getGenerator().addProvider(new GTFItemTagProvider(MODID, e.getGenerator(), p, new ExistingFileHelperOverride()));
-        e.getGenerator().addProvider(new GTFBlockLootProvider(MODID, "GT Foods Loot generator", e.getGenerator()));
     }
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gt_foods:block/crops/coconut_hanging_plant/0"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "loader": "antimatter:machine",
+  "Idle": [
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/down",
+      "textures": {
+        "base": "gt_foods:block/juicer/bottom",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/up",
+      "textures": {
+        "base": "gt_foods:block/juicer/middletop",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/north",
+      "textures": {
+        "base": "gt_foods:block/juicer/sides",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/south",
+      "textures": {
+        "base": "gt_foods:block/juicer/sides",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/west",
+      "textures": {
+        "base": "gt_foods:block/juicer/sides",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/east",
+      "textures": {
+        "base": "gt_foods:block/juicer/sides",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    }
+  ],
+  "Active": [
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/down",
+      "textures": {
+        "base": "gt_foods:block/juicer/bottom",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/up",
+      "textures": {
+        "base": "gt_foods:block/juicer/middletop",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/north",
+      "textures": {
+        "base": "gt_foods:block/juicer/sides",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/south",
+      "textures": {
+        "base": "gt_foods:block/juicer/sides",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/west",
+      "textures": {
+        "base": "gt_foods:block/juicer/sides",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    },
+    {
+      "parent": "gt_foods:block/machine/overlay/juicer/east",
+      "textures": {
+        "base": "gt_foods:block/juicer/sides",
+        "overlay": "antimatter:block/machine/overlay/invalid/back"
+      }
+    }
+  ],
+  "particle": "gt_foods:block/juicer/bottom"
+}

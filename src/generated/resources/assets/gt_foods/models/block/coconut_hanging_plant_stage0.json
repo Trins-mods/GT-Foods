@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "gt_foods:block/crops/coconut_hanging_plant/0"
+  }
+}

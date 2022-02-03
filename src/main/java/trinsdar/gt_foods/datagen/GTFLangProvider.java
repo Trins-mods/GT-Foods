@@ -1,7 +1,9 @@
 package trinsdar.gt_foods.datagen;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.AntimatterDynamics;
 import muramasa.antimatter.Data;
+import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.registration.IAntimatterObject;
 import net.minecraft.data.DataGenerator;
@@ -23,8 +25,10 @@ import java.io.IOException;
 import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
 
 public class GTFLangProvider extends AntimatterLanguageProvider {
+    DataGenerator generator;
     public GTFLangProvider(DataGenerator gen) {
         super(GTFoods.MODID, "GT Foods en_us Localization", "en_us", gen);
+        this.generator = gen;
     }
 
     @Override
@@ -45,5 +49,7 @@ public class GTFLangProvider extends AntimatterLanguageProvider {
     @Override
     public void run(DirectoryCache pCache) throws IOException {
         super.run(pCache);
+        new GTFItemModelProvider(generator).run(pCache);
+        new AntimatterBlockStateProvider(GTFoods.MODID, "GT Foods BlockStates", generator).run(pCache);
     }
 }
