@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "gt_foods:cinnamon_planks",
+    "gt_foods:hazel_planks",
+    "gt_foods:lemon_planks",
+    "gt_foods:coconut_planks"
+  ]
+}

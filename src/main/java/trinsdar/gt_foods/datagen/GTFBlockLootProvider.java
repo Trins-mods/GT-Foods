@@ -56,6 +56,10 @@ public class GTFBlockLootProvider extends AntimatterBlockLootProvider {
     @Override
     protected void loot() {
         super.loot();
+        lootGT();
+    }
+
+    protected void lootGT() {
         AntimatterAPI.all(BlockLogStrippable.class, providerDomain, this::add);
         AntimatterAPI.all(BlockSapling.class, providerDomain, this::add);
         AntimatterAPI.all(BlockPlanks.class, providerDomain, this::add);
@@ -81,7 +85,7 @@ public class GTFBlockLootProvider extends AntimatterBlockLootProvider {
 
     @Override
     public void run(DirectoryCache cache) throws IOException {
-        loot();
+        lootGT();
         for (Map.Entry<Block, Function<Block, LootTable.Builder>> e : tables.entrySet()) {
             Path path = getPath(generator.getOutputFolder(), e.getKey().getRegistryName());
             IDataProvider.save(GSON, cache, LootTableManager.serialize(e.getValue().apply(e.getKey()).setParamSet(LootParameterSets.BLOCK).build()), path);

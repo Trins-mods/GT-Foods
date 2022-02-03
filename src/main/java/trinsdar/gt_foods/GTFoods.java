@@ -113,12 +113,12 @@ public class GTFoods extends AntimatterMod {
 
     private static void onProviders(AntimatterProvidersEvent event){
         if (event.getSide() == Dist.CLIENT) return;
-        final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
+        /*final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
         event.addProvider(Ref.ID, g -> {
             p[0] = new GTFBlockTagProvider(MODID, "GT Foods Block Tags", false, g, new ExistingFileHelperOverride());
             return p[0];
         });
-        event.addProvider(Ref.ID, g -> new GTFItemTagProvider(MODID, "GT Foods Item Tags", false, g, p[0], new ExistingFileHelperOverride()));
+        event.addProvider(Ref.ID, g -> new GTFItemTagProvider(MODID, "GT Foods Item Tags", false, g, p[0], new ExistingFileHelperOverride()));*/
         event.addProvider(Ref.ID, g -> new GTFBlockLootProvider(MODID, "GT Foods Loot generator",g));
     }
 
@@ -167,9 +167,9 @@ public class GTFoods extends AntimatterMod {
     @Override
     public void onGatherData(GatherDataEvent e) {
         super.onGatherData(e);
-        final AntimatterBlockTagProvider p = new GTFBlockTagProvider(MODID, "GT Foods Block Tags", false, e.getGenerator(), new ExistingFileHelperOverride());
+        final GTFBlockTagProvider p = new GTFBlockTagProvider(MODID, e.getGenerator(), new ExistingFileHelperOverride());
         e.getGenerator().addProvider(p);
-        e.getGenerator().addProvider(new GTFItemTagProvider(MODID, "GT Foods Item Tags", false, e.getGenerator(), p, new ExistingFileHelperOverride()));
+        e.getGenerator().addProvider(new GTFItemTagProvider(MODID, e.getGenerator(), p, new ExistingFileHelperOverride()));
         e.getGenerator().addProvider(new GTFBlockLootProvider(MODID, "GT Foods Loot generator", e.getGenerator()));
     }
 }
