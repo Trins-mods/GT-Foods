@@ -1,14 +1,23 @@
 package trinsdar.gt_foods.loader;
 
+import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.Data;
+import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.fluids.FluidStack;
+import org.apache.http.annotation.Immutable;
 import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFMaterials;
 import trinsdar.gt_foods.data.RecipeMaps;
+import trinsdar.gt_foods.recipe.JuicingRecipe;
+import trinsdar.gt_foods.recipe.JuicingRecipeBuilder;
+
+import java.util.function.Consumer;
 
 public class JuicerLoader {
 
@@ -23,5 +32,26 @@ public class JuicerLoader {
         RecipeMaps.JUICING.RB().ii(RecipeIngredient.of(GTFData.HAZELNUT, 1)).io(Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1)).chances(80, 80, 80, 80).fo(GTFMaterials.NutOil.getLiquid(75)).add();
         RecipeMaps.JUICING.RB().ii(RecipeIngredient.of(GTFData.PEANUT, 1)).io(Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), Data.DUST_SMALL.get(GTFMaterials.Peanut, 1)).chances(80, 80, 80, 80).fo(GTFMaterials.NutOil.getLiquid(75)).add();
         RecipeMaps.JUICING.RB().ii(RecipeIngredient.of(Items.APPLE, 1)).fo(GTFMaterials.AppleJuice.getLiquid(75)).add();
+    }
+
+    public static void loadRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(Items.COCOA_BEANS), GTFMaterials.SeedOil.getLiquid(75)).addItemOutputsWithChances(
+                ImmutableMap.of(Data.DUST_SMALL.get(GTFMaterials.Cocoa, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Cocoa, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Cocoa, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Cocoa, 1), .8f)
+        ).addCriterion("has_cocoa_beans", provider.hasSafeItem(Items.COCOA_BEANS)).build(consumer, "cocoa_beans_to_seed_oil");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(Items.COCOA_BEANS), GTFMaterials.ChiliSauce.getLiquid(75)).addItemOutputsWithChances(
+                ImmutableMap.of(Data.DUST_SMALL.get(GTFMaterials.Chili, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Chili, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Chili, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Chili, 1), .8f)
+        ).addCriterion("has_chili_pepper", provider.hasSafeItem(GTFData.CHILI_PEPPER)).build(consumer, "chili_pepper_to_chili_sauce");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(Tags.Items.SEEDS), GTFMaterials.SeedOil.getLiquid(50)).addCriterion("has_seeds", provider.hasSafeItem(Tags.Items.SEEDS)).build(consumer, "seeds_to_seed_oil");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(Items.EGG), FluidStack.EMPTY).addItemOutputs(new ItemStack(GTFData.EGG_WHITE), new ItemStack(GTFData.EGG_YOLK)).addCriterion("has_egg", provider.hasSafeItem(Items.EGG)).build(consumer, "egg_yolk_and_white");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(Items.COD), GTFMaterials.FishOil.getLiquid(1000)).addItemOutputs(Data.DUST.get(GTFMaterials.FishMeal, 1)).addCriterion("has_cod", provider.hasSafeItem(Items.COD)).build(consumer, "cod_to_fish_oil");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(Items.SALMON), GTFMaterials.FishOil.getLiquid(2000)).addItemOutputs(Data.DUST.get(GTFMaterials.FishMeal, 1)).addCriterion("has_salmon", provider.hasSafeItem(Items.SALMON)).build(consumer, "salmon_to_fish_oil");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(Items.TROPICAL_FISH), GTFMaterials.FishOil.getLiquid(500)).addItemOutputs(Data.DUST.get(GTFMaterials.FishMeal, 1)).addCriterion("has_tropical_fish", provider.hasSafeItem(Items.TROPICAL_FISH)).build(consumer, "tropical_fish_to_fish_oil");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(GTFData.HAZELNUT), GTFMaterials.SeedOil.getLiquid(75)).addItemOutputsWithChances(
+                ImmutableMap.of(Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Hazelnut, 1), .8f)
+        ).addCriterion("has_hazelnut", provider.hasSafeItem(GTFData.HAZELNUT)).build(consumer, "hazelnuts_to_nut_oil");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(GTFData.PEANUT), GTFMaterials.SeedOil.getLiquid(75)).addItemOutputsWithChances(
+                ImmutableMap.of(Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), .8f, Data.DUST_SMALL.get(GTFMaterials.Peanut, 1), .8f)
+        ).addCriterion("has_peanut", provider.hasSafeItem(GTFData.PEANUT)).build(consumer, "peanuts_to_nut_oil");
+        JuicingRecipeBuilder.juicingRecipe(Ingredient.of(Items.APPLE), GTFMaterials.AppleJuice.getLiquid(75)).addCriterion("has_apple", provider.hasSafeItem(Items.APPLE)).build(consumer, "apple_to_apple_juice");
     }
 }

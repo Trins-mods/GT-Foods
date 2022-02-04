@@ -1,20 +1,17 @@
 package trinsdar.gt_foods.loader;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.recipe.map.RecipeMap;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
-import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFMaterialTypes;
 import trinsdar.gt_foods.data.GTFMaterials;
 
-import static trinsdar.gt_foods.data.RecipeMaps.MIXING;
+import static trinsdar.gt_foods.data.RecipeMaps.AntimatterMaps.MIXING;
 
 public class MixingLoader {
 

@@ -13,20 +13,29 @@ import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.AbstractCookingRecipe;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.IRecipeType;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import trinsdar.gt_foods.data.RecipeConstants;
+import trinsdar.gt_foods.recipe.JuicingRecipe;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-public class TileEntityJuicer extends TileEntityMachine<TileEntityJuicer> {
+public class TileEntityJuicer extends TileEntityMachine<TileEntityJuicer> implements IInventory {
     public TileEntityJuicer(Machine<?> type) {
         super(type);
         fluidHandler.set(() -> new MachineFluidHandler<>(this, 1000, 2000, 0, 1));
@@ -39,19 +48,16 @@ public class TileEntityJuicer extends TileEntityMachine<TileEntityJuicer> {
         success[0] = false;
         this.recipeHandler.ifPresent(r -> {
             if (!held.isEmpty()){
-                RecipeMap<?> map = getMachineType().getRecipeMap();
-                Recipe recipe = map != null ? map.find(new ItemStack[]{held}, new FluidStack[0], re -> !consumeInputs(re.getInputItems(), player, hand, true).isEmpty() && canOutput(re)) : null;
-                if (recipe != null){
-                    List<ItemStack> inputs = consumeInputs(recipe.getInputItems(), player, hand, false);
-                    inputs.forEach(i -> {
-                        if (!player.addItem(i)){
-                            player.drop(i, false);
+                JuicingRecipe recipe = getRecipeFor(held).orElse(null);
+                if (recipe != null && fluidHandler.map(f -> f.fillOutput(recipe.fluidOutput, IFluidHandler.FluidAction.SIMULATE) == recipe.fluidOutput.getAmount()).orElse(false)){
+                    held.shrink(1);
+                    for (ItemStack o : recipe.getOutputItems()) {
+                        if (!player.addItem(o)){
+                            player.drop(o, false);
                         }
-                    });
+                    }
                     this.fluidHandler.ifPresent(f -> {
-                        if (recipe.hasOutputFluids()){
-                            f.fillOutput(recipe.getOutputFluids()[0], IFluidHandler.FluidAction.EXECUTE);
-                        }
+                        f.fillOutput(recipe.fluidOutput, IFluidHandler.FluidAction.EXECUTE);
                     });
                     success[0] = true;
                 }
@@ -61,29 +67,52 @@ public class TileEntityJuicer extends TileEntityMachine<TileEntityJuicer> {
         return super.onInteract(state, world, pos, player, hand, hit, type);
     }
 
+    @SuppressWarnings("unchecked")
+    public Optional<JuicingRecipe> getRecipeFor(ItemStack toMatch) {
+        return RecipeConstants.JUICING_SERIALIZER.getRecipes(level).stream().flatMap((r) -> Util.toStream(r.itemInput.test(toMatch) ? Optional.of(r) : Optional.empty())).findFirst();
+    }
+
     public boolean canOutput(Recipe recipe) {
         return !this.fluidHandler.isPresent() || !recipe.hasOutputFluids() || this.fluidHandler.map(t -> t.canOutputsFit(recipe.getOutputFluids())).orElse(false);
     }
 
-    public List<ItemStack> consumeInputs(List<RecipeIngredient> items, PlayerEntity player, Hand hand, boolean simulate) {
-        if (items == null) return Collections.emptyList();
-        ItemStack compare = player.getItemInHand(hand);
-        List<ItemStack> consumedItems = new ObjectArrayList<>();
+    @Override
+    public int getContainerSize() {
+        return 0;
+    }
 
-        boolean success = items.stream().mapToInt(input -> {
-            int failed = 0;
-            int countToReach = input.count;
-            if (input.get().test(compare) && compare.getCount() >= countToReach) {
-                int toConsume = Math.min(compare.getCount(), Math.max(countToReach - compare.getCount(), countToReach));
-                ItemStack copy = compare.copy();
-                copy.setCount(toConsume);
-                consumedItems.add(copy);
-                if (!input.ignoreConsume() && !simulate) compare.shrink(toConsume);
-                if (compare.getCount() == 0) player.setItemInHand(hand, ItemStack.EMPTY);
-            }
-            return failed;
-        }).sum() == 0;
-        if (simulate) return success ? consumedItems : Collections.emptyList();
-        return consumedItems;
+    @Override
+    public boolean isEmpty() {
+        return true;
+    }
+
+    @Override
+    public ItemStack getItem(int pIndex) {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    public ItemStack removeItem(int pIndex, int pCount) {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    public ItemStack removeItemNoUpdate(int pIndex) {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
+    public void setItem(int pIndex, ItemStack pStack) {
+
+    }
+
+    @Override
+    public boolean stillValid(PlayerEntity pPlayer) {
+        return false;
+    }
+
+    @Override
+    public void clearContent() {
+
     }
 }

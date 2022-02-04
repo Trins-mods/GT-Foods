@@ -58,11 +58,13 @@ import trinsdar.gt_foods.loader.MixingLoader;
 import trinsdar.gt_foods.loader.SlicerLoader;
 import trinsdar.gt_foods.tree.TreeWorldGen;
 
+import java.util.Random;
 import java.util.function.BiConsumer;
 
 @Mod(value = GTFoods.MODID)
 public class GTFoods {
     public static final String MODID = "gt_foods";
+    public static final XSTR RNG = new XSTR();
 
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();

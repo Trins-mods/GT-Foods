@@ -5,7 +5,7 @@ import trinsdar.gt_foods.data.RecipeMaps;
 
 public class FermenterLoader {
     public static void init(){
-        RecipeMaps.FERMENTING.RB().fi(GTFMaterials.AppleJuice.getLiquid(50)).fo(GTFMaterials.AppleCider.getLiquid(25)).add(64, 16);
-        RecipeMaps.FERMENTING.RB().fi(GTFMaterials.AppleCider.getLiquid(10)).fo(GTFMaterials.AppleCiderVinegar.getLiquid(2)).add(25, 16);
+        RecipeMaps.AntimatterMaps.FERMENTING.RB().fi(GTFMaterials.AppleJuice.getLiquid(50)).fo(GTFMaterials.AppleCider.getLiquid(25)).add(64, 16);
+        RecipeMaps.AntimatterMaps.FERMENTING.RB().fi(GTFMaterials.AppleCider.getLiquid(10)).fo(GTFMaterials.AppleCiderVinegar.getLiquid(2)).add(25, 16);
     }
 }

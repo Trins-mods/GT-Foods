@@ -4,9 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "gtsp.refmap.json",
   "mixins": [
-    "MixinFoodStats",
-    "MixinMilkBucketItem",
-    "MixinBucketItem"
+    "MixinFoodStats"
   ],
   "minVersion": "0.8"
 }

@@ -31,7 +31,7 @@ public class Machines {
         Texture tex = new Texture(Ref.ID, "block/machine/overlay/invalid/back");
         return new Texture[]{tex, tex, tex, tex, tex, tex};
     };
-    public static BasicMachine SLICER = new BasicMachine(GTFoods.MODID, "slicer").setMap(RecipeMaps.SLICING).addFlags(GUI, ITEM);
+    public static BasicMachine SLICER = new BasicMachine(GTFoods.MODID, "slicer").setMap(RecipeMaps.AntimatterMaps.SLICING).addFlags(GUI, ITEM);
     public static BasicMachine JUICER = new Juicer(GTFoods.MODID, "juicer").setMap(RecipeMaps.JUICING).addFlags(ITEM, FLUID).setTiers(Tier.LV).baseTexture(J).renderContainedLiquids().noCovers().overlayTexture(O).custom().setTile(m -> () -> new TileEntityJuicer(m));
 
     public static void init(){
@@ -48,13 +48,13 @@ public class Machines {
     }
 
     public static class NonGtiMachines {
-        public static BasicMachine MIXER = new BasicMachine(GTFoods.MODID, "mixer").setMap(RecipeMaps.MIXING).addFlags(GUI, ITEM, FLUID);
+        public static BasicMachine MIXER = new BasicMachine(GTFoods.MODID, "mixer").setMap(RecipeMaps.AntimatterMaps.MIXING).addFlags(GUI, ITEM, FLUID);
 
         static void init(){}
     }
 
     public static class NonGt4rMachines {
-        public static BasicMachine BATH = new BasicMachine(GTFoods.MODID, "bath").setMap(RecipeMaps.BATHING).addFlags(GUI, ITEM, FLUID);
+        public static BasicMachine BATH = new BasicMachine(GTFoods.MODID, "bath").setMap(RecipeMaps.AntimatterMaps.BATHING).addFlags(GUI, ITEM, FLUID);
         static void init(){}
     }
 

@@ -1,14 +1,11 @@
 package trinsdar.gt_foods.loader;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.recipe.map.RecipeMap;
 import net.minecraft.item.ItemStack;
-import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFMaterials;
 
-import static trinsdar.gt_foods.data.RecipeMaps.BATHING;
+import static trinsdar.gt_foods.data.RecipeMaps.AntimatterMaps.BATHING;
 
 public class BathingLoader {
 

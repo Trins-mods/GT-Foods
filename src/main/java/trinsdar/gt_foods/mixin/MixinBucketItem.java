@@ -13,7 +13,7 @@ public class MixinBucketItem {
 
     @Redirect(method = "use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;", at = @At(value = "INVOKE", target = "Lnet/minecraft/fluid/Fluid;getBucket()Lnet/minecraft/item/Item;"))
     private Item redirectedFilledBucket(Fluid fluid){
-        if (fluid.getRegistryName().getPath().equals("liquid_milk")){
+        if (fluid.getRegistryName().getPath().equals("milk")){
             return Items.MILK_BUCKET;
         }
         return fluid.getBucket();
