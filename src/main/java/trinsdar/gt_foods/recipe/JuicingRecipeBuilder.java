@@ -66,8 +66,9 @@ public class JuicingRecipeBuilder {
 
     public void build(Consumer<IFinishedRecipe> consumerIn, ResourceLocation id) {
         this.validate(id);
-        this.advancementBuilder.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(IRequirementsStrategy.OR);
-        consumerIn.accept(new Result(id , this.ingredient, this.results, this.fluidOutput, this.advancementBuilder, new ResourceLocation(id.getNamespace(), "recipes/juicer/" + id.getPath())));
+        ResourceLocation realId = new ResourceLocation(id.getNamespace(), "juicer/" + id.getPath());
+        this.advancementBuilder.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(realId)).requirements(IRequirementsStrategy.OR);
+        consumerIn.accept(new Result(realId , this.ingredient, this.results, this.fluidOutput, this.advancementBuilder, new ResourceLocation(id.getNamespace(), "recipes/juicer/" + id.getPath())));
     }
 
     /**
@@ -114,11 +115,11 @@ public class JuicingRecipeBuilder {
                     array.add(resultObj);
                 }
                 json.add("itemOutputs", array);
-                JsonObject resultObj = new JsonObject();
-                resultObj.addProperty("fluid", fluidOutput.getFluid().getRegistryName().toString());
-                resultObj.addProperty("amount", fluidOutput.getAmount());
-                json.add("fluidOutput", resultObj);
             }
+            JsonObject resultObj = new JsonObject();
+            resultObj.addProperty("fluid", fluidOutput.getFluid().getRegistryName().toString());
+            resultObj.addProperty("amount", fluidOutput.getAmount());
+            json.add("fluidOutput", resultObj);
 
         }
 
@@ -142,7 +143,7 @@ public class JuicingRecipeBuilder {
         }
 
         /**
-         * Gets the ID for the advancement associated with this recipe. Should not be null if {@link #getAdvancementJson}
+         * Gets the ID for the advancement associated with this recipe. Should not be null if {@link #serializeAdvancement()}
          * is non-null.
          */
         @Nullable

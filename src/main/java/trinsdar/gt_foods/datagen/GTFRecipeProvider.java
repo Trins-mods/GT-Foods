@@ -32,14 +32,14 @@ public class GTFRecipeProvider extends AntimatterRecipeProvider {
     public void run(DirectoryCache pCache) {
         Path path = this.generator.getOutputFolder();
         Set<ResourceLocation> set = Sets.newHashSet();
-        buildShapelessRecipes((p_200410_3_) -> {
-            if (!set.add(p_200410_3_.getId())) {
-                throw new IllegalStateException("Duplicate recipe " + p_200410_3_.getId());
+        buildShapelessRecipes((finishedRecipe) -> {
+            if (!set.add(finishedRecipe.getId())) {
+                throw new IllegalStateException("Duplicate recipe " + finishedRecipe.getId());
             } else {
-                saveRecipe(pCache, p_200410_3_.serializeRecipe(), path.resolve("data/" + p_200410_3_.getId().getNamespace() + "/recipes/" + p_200410_3_.getId().getPath() + ".json"));
-                JsonObject jsonobject = p_200410_3_.serializeAdvancement();
+                saveRecipe(pCache, finishedRecipe.serializeRecipe(), path.resolve("data/" + finishedRecipe.getId().getNamespace() + "/recipes/" + finishedRecipe.getId().getPath() + ".json"));
+                JsonObject jsonobject = finishedRecipe.serializeAdvancement();
                 if (jsonobject != null) {
-                    saveAdvancement(pCache, jsonobject, path.resolve("data/" + p_200410_3_.getId().getNamespace() + "/advancements/" + p_200410_3_.getAdvancementId().getPath() + ".json"));
+                    saveAdvancement(pCache, jsonobject, path.resolve("data/" + finishedRecipe.getId().getNamespace() + "/advancements/" + finishedRecipe.getAdvancementId().getPath() + ".json"));
                 }
 
             }

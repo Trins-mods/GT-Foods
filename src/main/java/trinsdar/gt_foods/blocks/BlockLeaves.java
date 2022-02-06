@@ -24,6 +24,7 @@ public class BlockLeaves extends LeavesBlock implements IAntimatterObject, IMode
     public BlockLeaves(String id) {
         super(Block.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(BlockLeaves::allowsSpawnOnLeaves).isSuffocating((a, b, c) -> false).isViewBlocking((a, b, c) -> false));
         this.id = id;
+        this.setRegistryName(GTFoods.MODID, id);
         AntimatterAPI.register(this.getClass(), this);
     }
 

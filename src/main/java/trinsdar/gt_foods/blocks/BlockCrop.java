@@ -39,6 +39,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
         this.id = id + "_crop";
         this.seed = seed;
         this.maxAge = maxAge;
+        this.setRegistryName(GTFoods.MODID, id);
         AntimatterAPI.register(getClass(), this);
     }
 
