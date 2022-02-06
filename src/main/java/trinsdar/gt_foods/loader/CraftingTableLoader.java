@@ -43,7 +43,9 @@ public class CraftingTableLoader {
     public static void loadRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
         registerFoodCraftingRecipes(consumer, provider);
         registerFoodKnifeRecipes(consumer, provider);
-        registerMachineRecipes(consumer, provider);
+        //registerMachineRecipes(consumer, provider);
+        JuicerLoader.loadRecipes(consumer, provider);
+        FurnaceLoader.loadRecipes(consumer, provider);
     }
 
     protected static void registerFoodKnifeRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
@@ -62,7 +64,7 @@ public class CraftingTableLoader {
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_egg", "slices", "has_knife", knife, new ItemStack(SLICED_EGG, 4), map.apply(BOILED_EGG), array);
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_lemon", "slices", "has_knife", knife, new ItemStack(LEMON_SLICE, 4), map.apply(LEMON), array);
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_onion", "slices", "has_knife", knife, new ItemStack(ONION_SLICE, 4), map.apply(ONION), array);
-        provider.addStackRecipe(consumer, GTFoods.MODID, "slice_pic/kle", "slices", "has_knife", knife, new ItemStack(PICKLE_SLICE, 4), map.apply(PICKLE), array);
+        provider.addStackRecipe(consumer, GTFoods.MODID, "slice_pickle", "slices", "has_knife", knife, new ItemStack(PICKLE_SLICE, 4), map.apply(PICKLE), array);
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_pineapple", "slices", "has_knife", knife, new ItemStack(PINEAPPLE_SLICE, 4), map.apply(PINEAPPLE), array);
         provider.addStackRecipe(consumer, GTFoods.MODID, "fries", "slices", "has_knife", knife, new ItemStack(RAW_FRIES), map.apply(POTATO), "K", "I");
         provider.addStackRecipe(consumer, GTFoods.MODID, "slice_ham_raw", "slices", "has_knife", knife, new ItemStack(RAW_HAM_SLICE, 4), map.apply(RAW_HAM), array);
@@ -74,10 +76,11 @@ public class CraftingTableLoader {
 
         provider.shapeless(consumer, "dough_pizza", "dough", "has_rolling_pin", provider.hasSafeItem(ToolTypes.ROLLING_PIN.getForgeTag()), new ItemStack(PIZZA_DOUGH), ToolTypes.ROLLING_PIN.getForgeTag(), DOUGH);
         provider.shapeless(consumer, "dough_pasta", "dough", "has_rolling_pin", provider.hasSafeItem(ToolTypes.ROLLING_PIN.getForgeTag()), new ItemStack(FLATTENED_PASTA_DOUGH), ToolTypes.ROLLING_PIN.getForgeTag(), EGG_DOUGH);
+
+        provider.addStackRecipe(consumer, GTFoods.MODID, "juicer_clay", "machines", "has_knife", provider.hasSafeItem(KNIFE.getForgeTag()), new ItemStack(CLAY_JUICER), of('C', CLAY_BALL, 'R', ToolTypes.ROLLING_PIN.getForgeTag(), 'K', KNIFE.getForgeTag()), "KCR", "CCC");
     }
 
-    protected static void registerMachineRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
-        provider.addStackRecipe(consumer, GTFoods.MODID, "juicer_clay", "machines", "has_knife", provider.hasSafeItem(KNIFE.getForgeTag()), new ItemStack(CLAY_JUICER), of('C', CLAY_BALL, 'R', ToolTypes.ROLLING_PIN.getForgeTag(), 'K', KNIFE.getForgeTag()), "KCR", "CCC");
+    public static void registerMachineRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){
         if (AntimatterAPI.isModLoaded("gti")){
             for (Tier tier : Tier.getStandard()){
                 Item motor = GregTech.get(ItemBasic.class, "motor_"+tier.getId());

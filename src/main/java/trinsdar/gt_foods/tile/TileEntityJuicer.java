@@ -44,26 +44,23 @@ public class TileEntityJuicer extends TileEntityMachine<TileEntityJuicer> implem
     @Override
     public ActionResultType onInteract(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit, @Nullable AntimatterToolType type) {
         ItemStack held = player.getItemInHand(hand);
-        boolean[] success = new boolean[1];
-        success[0] = false;
-        this.recipeHandler.ifPresent(r -> {
-            if (!held.isEmpty()){
-                JuicingRecipe recipe = getRecipeFor(held).orElse(null);
-                if (recipe != null && fluidHandler.map(f -> f.fillOutput(recipe.fluidOutput, IFluidHandler.FluidAction.SIMULATE) == recipe.fluidOutput.getAmount()).orElse(false)){
-                    held.shrink(1);
-                    for (ItemStack o : recipe.getOutputItems()) {
-                        if (!player.addItem(o)){
-                            player.drop(o, false);
-                        }
+        if (!held.isEmpty()){
+            JuicingRecipe recipe = getRecipeFor(held).orElse(null);
+            if (recipe != null && canOutput(recipe)){
+                held.shrink(1);
+                for (ItemStack o : recipe.getOutputItems()) {
+                    if (!player.addItem(o)){
+                        player.drop(o, false);
                     }
-                    this.fluidHandler.ifPresent(f -> {
-                        f.fillOutput(recipe.fluidOutput, IFluidHandler.FluidAction.EXECUTE);
-                    });
-                    success[0] = true;
                 }
+                this.fluidHandler.ifPresent(f -> {
+                    if (!recipe.fluidOutput.isEmpty()) {
+                        f.fillOutput(recipe.fluidOutput, IFluidHandler.FluidAction.EXECUTE);
+                    }
+                });
+                return ActionResultType.SUCCESS;
             }
-        });
-        if (success[0]) return ActionResultType.SUCCESS;
+        }
         return super.onInteract(state, world, pos, player, hand, hit, type);
     }
 
@@ -72,8 +69,8 @@ public class TileEntityJuicer extends TileEntityMachine<TileEntityJuicer> implem
         return RecipeConstants.JUICING_SERIALIZER.getRecipes(level).stream().flatMap((r) -> Util.toStream(r.itemInput.test(toMatch) ? Optional.of(r) : Optional.empty())).findFirst();
     }
 
-    public boolean canOutput(Recipe recipe) {
-        return !this.fluidHandler.isPresent() || !recipe.hasOutputFluids() || this.fluidHandler.map(t -> t.canOutputsFit(recipe.getOutputFluids())).orElse(false);
+    public boolean canOutput(JuicingRecipe recipe) {
+        return !this.fluidHandler.isPresent() || recipe.fluidOutput.isEmpty() || this.fluidHandler.map(t -> t.canOutputsFit(new FluidStack[]{recipe.fluidOutput})).orElse(false);
     }
 
     @Override

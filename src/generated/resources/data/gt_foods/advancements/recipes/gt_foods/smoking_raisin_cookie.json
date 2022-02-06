@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:smoking_raisin_cookie"
+    ]
+  },
+  "criteria": {
+    "has_cookie_shaped_raisin_dough": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:cookie_shaped_raisin_dough"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:smoking_raisin_cookie"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cookie_shaped_raisin_dough",
+      "has_the_recipe"
+    ]
+  ]
+}

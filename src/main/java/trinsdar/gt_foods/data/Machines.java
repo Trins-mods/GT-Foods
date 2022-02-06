@@ -32,7 +32,7 @@ public class Machines {
         return new Texture[]{tex, tex, tex, tex, tex, tex};
     };
     public static BasicMachine SLICER = new BasicMachine(GTFoods.MODID, "slicer").setMap(RecipeMaps.AntimatterMaps.SLICING).addFlags(GUI, ITEM);
-    public static BasicMachine JUICER = new Juicer(GTFoods.MODID, "juicer").setMap(RecipeMaps.JUICING).addFlags(ITEM, FLUID).setTiers(Tier.LV).baseTexture(J).renderContainedLiquids().noCovers().overlayTexture(O).custom().setTile(m -> () -> new TileEntityJuicer(m));
+    public static BasicMachine JUICER = new Juicer(GTFoods.MODID, "juicer").addFlags(ITEM, FLUID).setTiers(Tier.LV).baseTexture(J).renderContainedLiquids().noCovers().overlayTexture(O).custom().setTile(m -> () -> new TileEntityJuicer(m));
 
     public static void init(){
         MachineFlag.ENERGY.remove(JUICER);

@@ -1,0 +1,28 @@
+{
+  "type": "gt_foods:juicing_serializer",
+  "ingredient": {
+    "item": "minecraft:cocoa_beans"
+  },
+  "itemOutputs": [
+    {
+      "item": "antimatter_shared:dust_small_cocoa",
+      "probability": 0.8
+    },
+    {
+      "item": "antimatter_shared:dust_small_cocoa",
+      "probability": 0.8
+    },
+    {
+      "item": "antimatter_shared:dust_small_cocoa",
+      "probability": 0.8
+    },
+    {
+      "item": "antimatter_shared:dust_small_cocoa",
+      "probability": 0.8
+    }
+  ],
+  "fluidOutput": {
+    "fluid": "antimatter_shared:liquid_seed_oil",
+    "amount": 75
+  }
+}

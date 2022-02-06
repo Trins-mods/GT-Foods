@@ -24,6 +24,7 @@ import trinsdar.gt_foods.datagen.GTFBlockTagProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.datagen.GTFItemTagProvider;
 import trinsdar.gt_foods.datagen.GTFLangProvider;
+import trinsdar.gt_foods.datagen.GTFRecipeProvider;
 import trinsdar.gt_foods.loader.BathingLoader;
 import trinsdar.gt_foods.loader.CraftingTableLoader;
 import trinsdar.gt_foods.loader.FermenterLoader;
@@ -58,8 +59,9 @@ public class GTFAntimatterAddon extends AntimatterMod {
     }
 
     private static void registerCraftingLoaders(AntimatterCraftingEvent event){
-        event.addLoader(FurnaceLoader::loadRecipes);
-        event.addLoader(CraftingTableLoader::loadRecipes);
+        //event.addLoader(FurnaceLoader::loadRecipes);
+        //event.addLoader(CraftingTableLoader::loadRecipes);
+        event.addLoader(CraftingTableLoader::registerMachineRecipes);
     }
 
     private static void onProviders(AntimatterProvidersEvent event){
@@ -103,5 +105,6 @@ public class GTFAntimatterAddon extends AntimatterMod {
         e.getGenerator().addProvider(p);
         e.getGenerator().addProvider(new GTFItemTagProvider(MODID, e.getGenerator(), p, new ExistingFileHelperOverride()));
         e.getGenerator().addProvider(new GTFBlockLootProvider(MODID, "GT Foods Loot generator", e.getGenerator()));
+        e.getGenerator().addProvider(new GTFRecipeProvider(MODID, "GT Foods Recipe Generator", e.getGenerator()));
     }
 }

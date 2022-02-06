@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "burgers",
+  "ingredients": [
+    {
+      "item": "gt_foods:bun_slices"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "gt_foods:cheese_burger"
+  }
+}

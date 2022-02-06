@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:campfire_cooking_dogmeat"
+    ]
+  },
+  "criteria": {
+    "has_raw_dogmeat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:raw_dogmeat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:campfire_cooking_dogmeat"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_dogmeat",
+      "has_the_recipe"
+    ]
+  ]
+}

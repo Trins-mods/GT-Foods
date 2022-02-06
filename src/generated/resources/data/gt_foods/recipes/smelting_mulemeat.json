@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "gt_foods:raw_mulemeat"
+  },
+  "result": {
+    "item": "gt_foods:grilled_mulemeat"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

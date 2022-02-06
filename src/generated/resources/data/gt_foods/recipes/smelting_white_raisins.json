@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "gt_foods:white_grapes"
+  },
+  "result": {
+    "item": "gt_foods:white_raisins"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "gt_foods:raw_ham_slice"
+  },
+  "result": {
+    "item": "gt_foods:cooked_ham_slice"
+  },
+  "experience": 1.0,
+  "cookingtime": 100
+}

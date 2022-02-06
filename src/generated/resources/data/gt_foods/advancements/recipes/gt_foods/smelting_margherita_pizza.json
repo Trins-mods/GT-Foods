@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:smelting_margherita_pizza"
+    ]
+  },
+  "criteria": {
+    "has_raw_margherita_pizza": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:raw_margherita_pizza"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:smelting_margherita_pizza"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_margherita_pizza",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:campfire_cooking_horsemeat"
+    ]
+  },
+  "criteria": {
+    "has_raw_horsemeat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:raw_horsemeat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:campfire_cooking_horsemeat"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_horsemeat",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:peanuts_to_nut_oil"
+    ]
+  },
+  "criteria": {
+    "has_peanut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:peanut"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:peanuts_to_nut_oil"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_peanut",
+      "has_the_recipe"
+    ]
+  ]
+}

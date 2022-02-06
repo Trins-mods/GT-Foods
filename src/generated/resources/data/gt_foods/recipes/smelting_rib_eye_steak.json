@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "gt_foods:raw_rib_eye_steak"
+  },
+  "result": {
+    "item": "gt_foods:grilled_rib_eye_steak"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

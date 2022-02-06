@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "large_sandwiches",
+  "ingredients": [
+    {
+      "item": "gt_foods:baguette_slices"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "gt_foods:large_cheese_sandwich"
+  }
+}

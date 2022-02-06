@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "gt_foods:raw_dogmeat"
+  },
+  "result": {
+    "item": "gt_foods:grilled_dogmeat"
+  },
+  "experience": 1.0,
+  "cookingtime": 100
+}

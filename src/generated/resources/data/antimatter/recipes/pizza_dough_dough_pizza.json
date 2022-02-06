@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "dough",
+  "ingredients": [
+    {
+      "tag": "forge:tools/rolling_pin"
+    },
+    {
+      "item": "gt_foods:dough"
+    }
+  ],
+  "result": {
+    "item": "gt_foods:pizza_dough"
+  }
+}

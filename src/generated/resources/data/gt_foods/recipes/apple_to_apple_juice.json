@@ -1,0 +1,6 @@
+{
+  "type": "gt_foods:juicing_serializer",
+  "ingredient": {
+    "item": "minecraft:apple"
+  }
+}

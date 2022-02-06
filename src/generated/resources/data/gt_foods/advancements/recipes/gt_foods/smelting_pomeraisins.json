@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:smelting_pomeraisins"
+    ]
+  },
+  "criteria": {
+    "has_pomegranate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:pomegranate"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:smelting_pomeraisins"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pomegranate",
+      "has_the_recipe"
+    ]
+  ]
+}

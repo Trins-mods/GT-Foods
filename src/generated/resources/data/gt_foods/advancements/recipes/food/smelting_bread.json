@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:smelting_bread"
+    ]
+  },
+  "criteria": {
+    "has_bread_dough": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:bread_dough"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:smelting_bread"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bread_dough",
+      "has_the_recipe"
+    ]
+  ]
+}

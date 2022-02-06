@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sandwiches",
+  "ingredients": [
+    {
+      "item": "gt_foods:bread_slices"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    }
+  ],
+  "result": {
+    "item": "gt_foods:steak_sandwich"
+  }
+}

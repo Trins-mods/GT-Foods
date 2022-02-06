@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "gt_foods:bun_dough"
+  },
+  "result": {
+    "item": "gt_foods:bun"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

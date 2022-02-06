@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "gt_foods:raw_ribs"
+  },
+  "result": {
+    "item": "gt_foods:grilled_ribs"
+  },
+  "experience": 0.0,
+  "cookingtime": 600
+}

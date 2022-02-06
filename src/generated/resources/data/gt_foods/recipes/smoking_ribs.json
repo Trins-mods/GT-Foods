@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "gt_foods:raw_ribs"
+  },
+  "result": {
+    "item": "gt_foods:grilled_ribs"
+  },
+  "experience": 1.0,
+  "cookingtime": 100
+}

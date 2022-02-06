@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "gt_foods:bread_dough"
+  },
+  "result": {
+    "item": "minecraft:bread"
+  },
+  "experience": 1.0,
+  "cookingtime": 100
+}

@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "gt_foods:cinnamon_log",
-    "gt_foods:stripped_cinnamon_log",
-    "gt_foods:cinnamon_wood",
-    "gt_foods:stripped_cinnamon_wood"
+    "minecraft:air",
+    "minecraft:air",
+    "minecraft:air",
+    "minecraft:air"
   ]
 }

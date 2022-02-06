@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:smelting_cake_bottom"
+    ]
+  },
+  "criteria": {
+    "has_raw_cake_bottom": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:raw_cake_bottom"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:smelting_cake_bottom"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_cake_bottom",
+      "has_the_recipe"
+    ]
+  ]
+}

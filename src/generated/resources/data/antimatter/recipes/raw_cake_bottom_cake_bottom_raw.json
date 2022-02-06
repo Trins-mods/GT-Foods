@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "misc",
+  "ingredients": [
+    {
+      "item": "gt_foods:sugary_dough"
+    },
+    {
+      "item": "gt_foods:sugary_dough"
+    },
+    {
+      "item": "gt_foods:sugary_dough"
+    },
+    {
+      "item": "gt_foods:sugary_dough"
+    }
+  ],
+  "result": {
+    "item": "gt_foods:raw_cake_bottom"
+  }
+}

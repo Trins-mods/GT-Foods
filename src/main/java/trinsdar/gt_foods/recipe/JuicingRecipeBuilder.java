@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 public class JuicingRecipeBuilder {
-    private JuicingRecipe.ItemOutput[] results;
+    private JuicingRecipe.ItemOutput[] results = new JuicingRecipe.ItemOutput[0];
     private final Ingredient ingredient;
     private final FluidStack fluidOutput;
     private final Advancement.Builder advancementBuilder = Advancement.Builder.advancement();

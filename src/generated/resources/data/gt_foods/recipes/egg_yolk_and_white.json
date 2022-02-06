@@ -1,0 +1,20 @@
+{
+  "type": "gt_foods:juicing_serializer",
+  "ingredient": {
+    "item": "minecraft:egg"
+  },
+  "itemOutputs": [
+    {
+      "item": "gt_foods:egg_white",
+      "probability": 1.0
+    },
+    {
+      "item": "gt_foods:egg_yolk",
+      "probability": 1.0
+    }
+  ],
+  "fluidOutput": {
+    "fluid": "minecraft:empty",
+    "amount": 0
+  }
+}

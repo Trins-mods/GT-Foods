@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slices",
+  "pattern": [
+    "KI"
+  ],
+  "key": {
+    "I": {
+      "item": "gt_foods:sugary_chocolate_raisin_dough"
+    },
+    "K": {
+      "tag": "forge:tools/knife"
+    }
+  },
+  "result": {
+    "item": "gt_foods:cookie_shaped_chocolate_raisin_dough",
+    "count": 4
+  }
+}
