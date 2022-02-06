@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "gt_foods:hazelnuts_to_nut_oil"
+      "gt_foods:juicer/hazelnuts_to_nut_oil"
     ]
   },
   "criteria": {

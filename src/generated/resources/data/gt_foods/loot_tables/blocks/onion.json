@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gt_foods:rice"
+          "name": "gt_foods:onion"
         }
       ]
     },
@@ -26,15 +26,15 @@
               }
             }
           ],
-          "name": "gt_foods:rice"
+          "name": "gt_foods:onion"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:rice_crop",
+          "block": "gt_foods:onion",
           "properties": {
-            "age": "7"
+            "age": "3"
           }
         }
       ]

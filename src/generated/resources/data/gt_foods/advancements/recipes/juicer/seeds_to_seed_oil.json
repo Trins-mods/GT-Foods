@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "gt_foods:seeds_to_seed_oil"
+      "gt_foods:juicer/seeds_to_seed_oil"
     ]
   },
   "criteria": {

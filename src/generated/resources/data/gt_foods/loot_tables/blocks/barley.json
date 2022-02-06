@@ -12,17 +12,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "gt_foods:cucumber_crop",
+                  "block": "gt_foods:barley",
                   "properties": {
-                    "age": "3"
+                    "age": "7"
                   }
                 }
               ],
-              "name": "gt_foods:cucumber"
+              "name": "gt_foods:barley"
             },
             {
               "type": "minecraft:item",
-              "name": "gt_foods:cucumber_seeds"
+              "name": "gt_foods:barley_seeds"
             }
           ]
         }
@@ -44,15 +44,15 @@
               }
             }
           ],
-          "name": "gt_foods:cucumber_seeds"
+          "name": "gt_foods:barley_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:cucumber_crop",
+          "block": "gt_foods:barley",
           "properties": {
-            "age": "3"
+            "age": "7"
           }
         }
       ]

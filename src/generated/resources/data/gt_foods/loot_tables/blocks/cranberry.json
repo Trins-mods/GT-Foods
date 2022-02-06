@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gt_foods:onion"
+          "name": "gt_foods:cranberry"
         }
       ]
     },
@@ -26,13 +26,13 @@
               }
             }
           ],
-          "name": "gt_foods:onion"
+          "name": "gt_foods:cranberry"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:onion_crop",
+          "block": "gt_foods:cranberry",
           "properties": {
             "age": "3"
           }

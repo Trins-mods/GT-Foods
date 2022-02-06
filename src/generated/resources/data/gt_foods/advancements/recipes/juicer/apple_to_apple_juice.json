@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "gt_foods:apple_to_apple_juice"
+      "gt_foods:juicer/apple_to_apple_juice"
     ]
   },
   "criteria": {

@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "gt_foods:chili_pepper_to_chili_sauce"
+      "gt_foods:juicer/chili_pepper_to_chili_sauce"
     ]
   },
   "criteria": {

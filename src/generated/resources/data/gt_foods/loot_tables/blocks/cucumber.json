@@ -12,17 +12,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "gt_foods:tomato_crop",
+                  "block": "gt_foods:cucumber",
                   "properties": {
                     "age": "3"
                   }
                 }
               ],
-              "name": "gt_foods:tomato"
+              "name": "gt_foods:cucumber"
             },
             {
               "type": "minecraft:item",
-              "name": "gt_foods:tomato_seeds"
+              "name": "gt_foods:cucumber_seeds"
             }
           ]
         }
@@ -44,37 +44,13 @@
               }
             }
           ],
-          "name": "gt_foods:tomato_seeds"
+          "name": "gt_foods:cucumber_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:tomato_crop",
-          "properties": {
-            "age": "3"
-          }
-        }
-      ]
-    },
-    {
-      "rolls": 1.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "conditions": [
-            {
-              "condition": "minecraft:random_chance",
-              "chance": 0.02
-            }
-          ],
-          "name": "gt_foods:max_tomato"
-        }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "gt_foods:tomato_crop",
+          "block": "gt_foods:cucumber",
           "properties": {
             "age": "3"
           }

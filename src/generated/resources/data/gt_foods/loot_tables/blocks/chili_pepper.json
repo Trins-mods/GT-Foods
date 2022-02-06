@@ -5,8 +5,26 @@
       "rolls": 1.0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "gt_foods:cranberry"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "gt_foods:chili_pepper",
+                  "properties": {
+                    "age": "3"
+                  }
+                }
+              ],
+              "name": "gt_foods:chili_pepper"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "gt_foods:chili_pepper_seeds"
+            }
+          ]
         }
       ]
     },
@@ -26,13 +44,13 @@
               }
             }
           ],
-          "name": "gt_foods:cranberry"
+          "name": "gt_foods:chili_pepper_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:cranberry_crop",
+          "block": "gt_foods:chili_pepper",
           "properties": {
             "age": "3"
           }

@@ -2,8 +2,6 @@
   "replace": false,
   "values": [
     "gt_foods:cinnamon_leaves",
-    "gt_foods:hazel_leaves",
-    "gt_foods:lemon_leaves",
     "gt_foods:coconut_leaves"
   ]
 }

@@ -2,5 +2,9 @@
   "type": "gt_foods:juicing_serializer",
   "ingredient": {
     "tag": "forge:seeds"
+  },
+  "fluidOutput": {
+    "fluid": "antimatter_shared:liquid_seed_oil",
+    "amount": 50
   }
 }

@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "gt_foods:egg_yolk_and_white"
+      "gt_foods:juicer/egg_yolk_and_white"
     ]
   },
   "criteria": {

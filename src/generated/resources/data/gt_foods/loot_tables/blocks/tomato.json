@@ -12,17 +12,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "gt_foods:oats_crop",
+                  "block": "gt_foods:tomato",
                   "properties": {
-                    "age": "7"
+                    "age": "3"
                   }
                 }
               ],
-              "name": "gt_foods:oats"
+              "name": "gt_foods:tomato"
             },
             {
               "type": "minecraft:item",
-              "name": "gt_foods:oat_seeds"
+              "name": "gt_foods:tomato_seeds"
             }
           ]
         }
@@ -44,15 +44,39 @@
               }
             }
           ],
-          "name": "gt_foods:oat_seeds"
+          "name": "gt_foods:tomato_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:oats_crop",
+          "block": "gt_foods:tomato",
           "properties": {
-            "age": "7"
+            "age": "3"
+          }
+        }
+      ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.02
+            }
+          ],
+          "name": "gt_foods:max_tomato"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "gt_foods:tomato",
+          "properties": {
+            "age": "3"
           }
         }
       ]

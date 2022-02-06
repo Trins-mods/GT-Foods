@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "gt_foods:tropical_fish_to_fish_oil"
+      "gt_foods:juicer/tropical_fish_to_fish_oil"
     ]
   },
   "criteria": {
