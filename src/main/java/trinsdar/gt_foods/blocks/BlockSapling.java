@@ -30,7 +30,7 @@ public class BlockSapling extends SaplingBlock implements IGrowable, IAntimatter
     public BlockSapling(String id, Tree tree) {
         super(tree, Block.Properties.of(Material.PLANT).noCollission().randomTicks().strength(0.0F).sound(SoundType.GRASS));
         this.id = id;
-        AntimatterAPI.register(BlockSapling.class, this);
+        AntimatterAPI.register(this.getClass(), this);
         //RubberTree.TREE_FEATURE.init();
     }
 

@@ -41,7 +41,7 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
         super(Properties.of(Material.PLANT).randomTicks().noCollission().sound(SoundType.SWEET_BERRY_BUSH));
         this.id = id;
         this.itemID = itemID;
-        AntimatterAPI.register(BlockCropBerry.class, this);
+        AntimatterAPI.register(this.getClass(), this);
     }
 
     @Override

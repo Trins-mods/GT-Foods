@@ -12,17 +12,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "gt_foods:oats",
+                  "block": "gt_foods:chili_pepper_crop",
                   "properties": {
-                    "age": "7"
+                    "age": "3"
                   }
                 }
               ],
-              "name": "gt_foods:oats"
+              "name": "gt_foods:chili_pepper"
             },
             {
               "type": "minecraft:item",
-              "name": "gt_foods:oat_seeds"
+              "name": "gt_foods:chili_pepper_seeds"
             }
           ]
         }
@@ -44,15 +44,15 @@
               }
             }
           ],
-          "name": "gt_foods:oat_seeds"
+          "name": "gt_foods:chili_pepper_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:oats",
+          "block": "gt_foods:chili_pepper_crop",
           "properties": {
-            "age": "7"
+            "age": "3"
           }
         }
       ]

@@ -36,10 +36,10 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
 
     public BlockCrop(String id, Supplier<Item> seed, int maxAge, Properties builder) {
         super(builder);
-        this.id = id;
+        this.id = id + "_crop";
         this.seed = seed;
         this.maxAge = maxAge;
-        AntimatterAPI.register(BlockCrop.class, this);
+        AntimatterAPI.register(getClass(), this);
     }
 
     public BlockCrop(String id, Supplier<Item> seed, int maxAge) {
@@ -74,7 +74,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
     public Texture[] getTextures() {
         Texture[] textures = new Texture[maxAge + 1];
         for (int i = 0; i < textures.length; i++){
-            textures[i] = new Texture(getDomain(), "block/crops/" + getId() + "/" + i);
+            textures[i] = new Texture(getDomain(), "block/crops/" + getId().replace("_crop", "") + "/" + i);
         }
         return textures;
     }
@@ -83,7 +83,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
     public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
         prov.getVariantBuilder(block).forAllStates(s -> {
             int age = s.getValue(AGE);
-            return ConfiguredModel.builder().modelFile(prov.models().getBuilder(block.getRegistryName().getPath() + "_stage" + age).parent(prov.models().getExistingFile(new ResourceLocation("minecraft:block/crop"))).texture("crop", getTextures()[Math.min(maxAge, age)])).build();
+            return ConfiguredModel.builder().modelFile(prov.models().getBuilder(getId().replace("_crop", "") + "_stage" + age).parent(prov.models().getExistingFile(new ResourceLocation("minecraft:block/crop"))).texture("crop", getTextures()[Math.min(maxAge, age)])).build();
         });
     }
 

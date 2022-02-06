@@ -5,8 +5,26 @@
       "rolls": 1.0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "gt_foods:pineapple"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "gt_foods:rye_crop",
+                  "properties": {
+                    "age": "7"
+                  }
+                }
+              ],
+              "name": "gt_foods:rye"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "gt_foods:rye_seeds"
+            }
+          ]
         }
       ]
     },
@@ -26,15 +44,15 @@
               }
             }
           ],
-          "name": "gt_foods:pineapple"
+          "name": "gt_foods:rye_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:pineapple",
+          "block": "gt_foods:rye_crop",
           "properties": {
-            "age": "2"
+            "age": "7"
           }
         }
       ]

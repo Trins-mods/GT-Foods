@@ -12,17 +12,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "gt_foods:rye",
+                  "block": "gt_foods:barley_crop",
                   "properties": {
                     "age": "7"
                   }
                 }
               ],
-              "name": "gt_foods:rye"
+              "name": "gt_foods:barley"
             },
             {
               "type": "minecraft:item",
-              "name": "gt_foods:rye_seeds"
+              "name": "gt_foods:barley_seeds"
             }
           ]
         }
@@ -44,13 +44,13 @@
               }
             }
           ],
-          "name": "gt_foods:rye_seeds"
+          "name": "gt_foods:barley_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:rye",
+          "block": "gt_foods:barley_crop",
           "properties": {
             "age": "7"
           }

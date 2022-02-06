@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "gt_foods:rice"
+          "name": "gt_foods:peanut"
         }
       ]
     },
@@ -26,15 +26,15 @@
               }
             }
           ],
-          "name": "gt_foods:rice"
+          "name": "gt_foods:peanut"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "gt_foods:rice",
+          "block": "gt_foods:peanut_crop",
           "properties": {
-            "age": "7"
+            "age": "3"
           }
         }
       ]

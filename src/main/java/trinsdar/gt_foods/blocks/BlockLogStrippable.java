@@ -45,7 +45,7 @@ public class BlockLogStrippable extends RotatedPillarBlock implements IAntimatte
         this.strip = strip;
         this.stripped = stripped;
         this.wood = wood;
-        AntimatterAPI.register(BlockLogStrippable.class, this);
+        AntimatterAPI.register(this.getClass(), this);
     }
 
     @Override
