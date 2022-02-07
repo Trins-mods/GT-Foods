@@ -91,17 +91,17 @@ public class JuicerCategory implements IRecipeCategory<JuicingRecipe> {
         IGuiItemStackGroup itemGroup = layout.getItemStacks();
         IGuiFluidStackGroup fluidGroup = layout.getFluidStacks();
         List<ItemStack> input = ingredients.getInputs(VanillaTypes.ITEM).get(0);
-        itemGroup.init(0, true, 50, 22);
+        itemGroup.init(0, true, 49, 21);
         itemGroup.set(0, input);
         if (!ingredients.getOutputs(VanillaTypes.FLUID).isEmpty()){
             FluidStack fluidOutput = ingredients.getOutputs(VanillaTypes.FLUID).get(0).get(0);
-            fluidGroup.init(0, false, 104, 57, 16, 16, fluidOutput.getAmount(), false, null);
+            fluidGroup.init(0, false, 104, 60, 16, 16, fluidOutput.getAmount(), false, null);
             fluidGroup.set(0, fluidOutput);
         }
         List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
         for (int i = 0; i < outputs.size() && i < 6; i++){
-            int x = 104 + ((i < 3 ? i : i - 3) * 18);
-            int y = i < 3 ? 13 : 31;
+            int x = 103 + ((i < 3 ? i : i - 3) * 18);
+            int y = i < 3 ? 12 : 30;
             List<ItemStack> output = outputs.get(i);
             itemGroup.init(i + 1, false, x, y);
             itemGroup.set(i + 1, output);

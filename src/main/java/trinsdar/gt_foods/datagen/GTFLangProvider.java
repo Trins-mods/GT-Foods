@@ -44,6 +44,7 @@ public class GTFLangProvider extends AntimatterLanguageProvider {
         AntimatterAPI.all(BlockPlanks.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         AntimatterAPI.all(BlockSapling.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         GTFMaterialTypes.GROUND.all().forEach(m -> override(Data.DUST.get(m).getDescriptionId(), "Ground " + lowerUnderscoreToUpperSpaced(m.getId())));
+        add("jei.category.gt_foods.juicing", "Juicing");
     }
 
     @Override
