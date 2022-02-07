@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "gt_foods:egg_yolk_and_white"
+        "recipe": "gt_foods:juicer/egg_yolk_and_white"
       }
     }
   },

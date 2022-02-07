@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "gt_foods:chili_pepper_to_chili_sauce"
+        "recipe": "gt_foods:juicer/chili_pepper_to_chili_sauce"
       }
     }
   },

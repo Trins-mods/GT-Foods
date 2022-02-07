@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "gt_foods:peanuts_to_nut_oil"
+        "recipe": "gt_foods:juicer/peanuts_to_nut_oil"
       }
     }
   },

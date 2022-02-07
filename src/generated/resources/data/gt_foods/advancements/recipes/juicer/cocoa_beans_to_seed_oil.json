@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "gt_foods:cocoa_beans_to_seed_oil"
+        "recipe": "gt_foods:juicer/cocoa_beans_to_seed_oil"
       }
     }
   },

@@ -50,10 +50,10 @@ public class GTFAntimatterAddon extends AntimatterMod {
     }
 
     private static void registerRecipeLoaders(AntimatterLoaderEvent event) {
-        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(Ref.ID, a, b);
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(MODID, a, b);
         loader.accept("slicer_food", SlicerLoader::init);
         loader.accept("mixing_food", MixingLoader::init);
-        loader.accept("juicing_food", JuicerLoader::init);
+        //loader.accept("juicing_food", JuicerLoader::init);
         loader.accept("fermenting_food", FermenterLoader::init);
         loader.accept("bathing_food", BathingLoader::init);
     }

@@ -7,6 +7,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import muramasa.antimatter.Ref;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.GTFData;
@@ -43,6 +44,6 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(GTFData.CLAY_JUICER, JuicerCategory.uid);
+        registration.addRecipeCatalyst(new ItemStack(GTFData.CLAY_JUICER), JuicerCategory.uid);
     }
 }

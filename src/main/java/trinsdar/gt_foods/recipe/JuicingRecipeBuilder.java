@@ -67,7 +67,7 @@ public class JuicingRecipeBuilder {
     public void build(Consumer<IFinishedRecipe> consumerIn, ResourceLocation id) {
         this.validate(id);
         ResourceLocation realId = new ResourceLocation(id.getNamespace(), "juicer/" + id.getPath());
-        this.advancementBuilder.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(realId)).requirements(IRequirementsStrategy.OR);
+        this.advancementBuilder.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(realId)).rewards(AdvancementRewards.Builder.recipe(realId)).requirements(IRequirementsStrategy.OR);
         consumerIn.accept(new Result(realId , this.ingredient, this.results, this.fluidOutput, this.advancementBuilder, new ResourceLocation(id.getNamespace(), "recipes/juicer/" + id.getPath())));
     }
 

@@ -82,7 +82,7 @@ public class JuicerCategory implements IRecipeCategory<JuicingRecipe> {
     @Override
     public void setIngredients(JuicingRecipe recipe, IIngredients ingredients) {
         ingredients.setInputs(VanillaTypes.ITEM, Arrays.asList(recipe.itemInput.getItems()));
-        ingredients.setOutput(VanillaTypes.FLUID, recipe.fluidOutput);
+        if (!recipe.fluidOutput.isEmpty()) ingredients.setOutput(VanillaTypes.FLUID, recipe.fluidOutput);
         ingredients.setOutputLists(VanillaTypes.ITEM, Arrays.stream(recipe.getOutputItems(false)).map(Collections::singletonList).collect(Collectors.toList()));
     }
 
@@ -91,18 +91,20 @@ public class JuicerCategory implements IRecipeCategory<JuicingRecipe> {
         IGuiItemStackGroup itemGroup = layout.getItemStacks();
         IGuiFluidStackGroup fluidGroup = layout.getFluidStacks();
         List<ItemStack> input = ingredients.getInputs(VanillaTypes.ITEM).get(0);
-        itemGroup.init(0, true, 53, 25);
+        itemGroup.init(0, true, 50, 22);
         itemGroup.set(0, input);
-        FluidStack fluidOutput = ingredients.getOutputs(VanillaTypes.FLUID).get(0).get(0);
-        fluidGroup.init(0, false, 107, 53, 16, 16, fluidOutput.getAmount(), false, null);
-        fluidGroup.set(0, fluidOutput);
+        if (!ingredients.getOutputs(VanillaTypes.FLUID).isEmpty()){
+            FluidStack fluidOutput = ingredients.getOutputs(VanillaTypes.FLUID).get(0).get(0);
+            fluidGroup.init(0, false, 104, 57, 16, 16, fluidOutput.getAmount(), false, null);
+            fluidGroup.set(0, fluidOutput);
+        }
         List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
         for (int i = 0; i < outputs.size() && i < 6; i++){
-            int x = 107 + ((i < 3 ? i : i - 3) * 18);
-            int y = i < 3 ? 16 : 34;
+            int x = 104 + ((i < 3 ? i : i - 3) * 18);
+            int y = i < 3 ? 13 : 31;
             List<ItemStack> output = outputs.get(i);
             itemGroup.init(i + 1, false, x, y);
-            itemGroup.set(i + 1, input);
+            itemGroup.set(i + 1, output);
         }
         itemGroup.addTooltipCallback((index, isInput, stack, tooltip) -> {
             if (recipe.hasChances() && !isInput) {

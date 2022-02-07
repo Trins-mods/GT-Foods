@@ -9,6 +9,7 @@ import net.minecraft.block.AbstractBlock.Properties;
 public class BlockPlanks extends BlockBasic {
     public BlockPlanks(String domain, String id) {
         super(domain, id, Properties.copy(Blocks.OAK_PLANKS));
+        setRegistryName(domain, id);
     }
 
     @Override

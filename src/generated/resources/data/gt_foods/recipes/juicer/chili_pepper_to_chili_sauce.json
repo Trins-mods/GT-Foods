@@ -1,7 +1,7 @@
 {
   "type": "gt_foods:juicing_serializer",
   "ingredient": {
-    "item": "minecraft:cocoa_beans"
+    "item": "gt_foods:chili_pepper"
   },
   "itemOutputs": [
     {

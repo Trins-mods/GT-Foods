@@ -22,7 +22,7 @@
     }
   ],
   "fluidOutput": {
-    "fluid": "antimatter_shared:liquid_seed_oil",
+    "fluid": "antimatter_shared:liquid_nut_oil",
     "amount": 75
   }
 }
