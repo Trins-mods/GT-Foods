@@ -86,7 +86,7 @@ public class GTFAntimatterAddon extends AntimatterMod {
             GTFMaterialTypes.init();
             GTFMaterials.init();
             GTFData.init();
-            RecipeMaps.init();
+            RecipeMaps.AntimatterMaps.init();
             Machines.init();
             Guis.init();
             TreeWorldGen.init();

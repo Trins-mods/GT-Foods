@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
@@ -54,6 +55,9 @@ public class JuicingRecipeSerializer extends ForgeRegistryEntry<IRecipeSerialize
         Fluid fluid = ForgeRegistries.FLUIDS.getValue(id);
         if (fluid == null){
             throw new IllegalArgumentException("Fluid " + id + " does not exist.");
+        }
+        if (fluid == Fluids.EMPTY){
+            return FluidStack.EMPTY;
         }
         int amount = readAmount(json, "amount");
         return new FluidStack(fluid, amount);

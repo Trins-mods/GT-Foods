@@ -15,9 +15,6 @@ public class RecipeMaps {
     //public static RecipeMap<?> JUICING = AntimatterAPI.register(RecipeMap.class, new RecipeMap<>(GTFoods.MODID, "juicing", new RecipeBuilder()));
 
     public static void init(){
-        if (ModList.get().isLoaded("antimatter")){
-            AntimatterMaps.init();
-        }
     }
 
     public static class AntimatterMaps {

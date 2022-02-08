@@ -42,7 +42,7 @@ public class JuicerCategory implements IRecipeCategory<JuicingRecipe> {
     protected IDrawable background, icon;
     protected IDrawableAnimated progressBar;
     public JuicerCategory(){
-        this.title = new TranslationTextComponent("jei.category.gt_foods.juicing").toString();
+        this.title = new TranslationTextComponent("jei.category.gt_foods.juicing").getString();
         background = guiHelper.drawableBuilder(new ResourceLocation(GTFoods.MODID, "textures/gui/machine/juicer.png"), 3, 3, 170, 80).addPadding(0, 55, 0, 0).build();
         progressBar = guiHelper.drawableBuilder(new ResourceLocation(GTFoods.MODID, "textures/gui/machine/juicer.png"), 176, 0, 20, 18).buildAnimated(50, IDrawableAnimated.StartDirection.LEFT, false);
         //todo: fix to real juicer
