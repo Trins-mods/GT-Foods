@@ -13,12 +13,9 @@ import net.minecraft.world.gen.foliageplacer.FoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import trinsdar.gt_foods.data.GTFData;
 
-import javax.swing.tree.TreeNode;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
-
-import net.minecraft.world.gen.foliageplacer.FoliagePlacer.Foliage;
 
 public class CoconutFoliagePlacer extends FoliagePlacer {
     public static final Codec<CoconutFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {

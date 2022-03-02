@@ -3,18 +3,14 @@ package trinsdar.gt_foods.loader;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
-import org.apache.http.annotation.Immutable;
 import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFMaterials;
-import trinsdar.gt_foods.data.RecipeMaps;
-import trinsdar.gt_foods.recipe.JuicingRecipe;
 import trinsdar.gt_foods.recipe.JuicingRecipeBuilder;
 
 import java.util.function.Consumer;

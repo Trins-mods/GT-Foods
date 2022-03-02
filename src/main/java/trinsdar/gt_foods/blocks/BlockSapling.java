@@ -1,12 +1,6 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.registration.IAntimatterObject;
-import muramasa.antimatter.registration.IModelProvider;
-import muramasa.antimatter.registration.ITextureProvider;
-import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
@@ -21,17 +15,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.server.ServerWorld;
 import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
+import trinsdar.gt_foods.data.registration.IModelProvider;
+import trinsdar.gt_foods.data.registration.IRegistrationObject;
+import trinsdar.gt_foods.data.registration.ITextureProvider;
+import trinsdar.gt_foods.data.registration.Texture;
+import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 
 import java.util.Random;
 
-public class BlockSapling extends SaplingBlock implements IGrowable, IAntimatterObject, IModelProvider, ITextureProvider {
+public class BlockSapling extends SaplingBlock implements IGrowable, IRegistrationObject, IModelProvider, ITextureProvider {
     protected String id;
 
     public BlockSapling(String id, Tree tree) {
         super(tree, Block.Properties.of(Material.PLANT).noCollission().randomTicks().strength(0.0F).sound(SoundType.GRASS));
         this.id = id;
         this.setRegistryName(GTFoods.MODID, id);
-        AntimatterAPI.register(this.getClass(), this);
+        GTFRegistration.register(this.getClass(), this);
         //RubberTree.TREE_FEATURE.init();
     }
 
@@ -61,7 +61,7 @@ public class BlockSapling extends SaplingBlock implements IGrowable, IAntimatter
     }
 
     @Override
-    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+    public void onItemModelBuild(IItemProvider item, GTFItemModelProvider prov) {
         prov.getBuilder(item).parent(prov.getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", getTextures()[0]);
     }
 

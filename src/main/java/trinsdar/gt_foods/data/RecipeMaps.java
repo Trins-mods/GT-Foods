@@ -3,12 +3,7 @@ package trinsdar.gt_foods.data;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.recipe.map.RecipeMap;
-import net.minecraftforge.fml.ModList;
 import trinsdar.gt_foods.GTFoods;
-import trinsdar.gt_foods.recipe.JuicingRecipe;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RecipeMaps {
 

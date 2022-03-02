@@ -1,15 +1,24 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.block.BlockBasic;
-import muramasa.antimatter.texture.Texture;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
+import trinsdar.gt_foods.data.registration.IModelProvider;
+import trinsdar.gt_foods.data.registration.IRegistrationObject;
+import trinsdar.gt_foods.data.registration.ITextureProvider;
+import trinsdar.gt_foods.data.registration.Texture;
 
-import net.minecraft.block.AbstractBlock.Properties;
+public class BlockPlanks extends Block implements IRegistrationObject, ITextureProvider, IModelProvider {
+    protected String id;
+    public BlockPlanks(String id) {
+        super(Properties.copy(Blocks.OAK_PLANKS));
+        this.id = id;
+        GTFRegistration.register(this.getClass(), this);
+    }
 
-public class BlockPlanks extends BlockBasic {
-    public BlockPlanks(String domain, String id) {
-        super(domain, id, Properties.copy(Blocks.OAK_PLANKS));
-        setRegistryName(domain, id);
+    @Override
+    public String getId() {
+        return id;
     }
 
     @Override

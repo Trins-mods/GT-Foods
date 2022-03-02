@@ -11,7 +11,6 @@ import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
 import net.minecraft.world.gen.feature.WorldDecoratingHelper;
-import net.minecraft.world.gen.foliageplacer.FoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -26,10 +25,10 @@ import java.util.stream.Stream;
 
 public class TreeWorldGen {
     public static final WeightedBlockStateProvider HAZEL_LEAF_BLOCKS = new WeightedBlockStateProvider().add(GTFData.HAZEL_LEAVES.defaultBlockState().setValue(BlockFloweringLeaves.FLOWERING, 1), 1).add(GTFData.HAZEL_LEAVES.defaultBlockState(), 9);
-    public static final FoliagePlacerType<CinnamonFoliagePlacer> CINNAMON_FOLIAGE_PLACER = new FoliagePlacerType<>(CinnamonFoliagePlacer.CODEC);
-    public static final FoliagePlacerType<CoconutFoliagePlacer> COCONUT_FOLIAGE_PLACER = new FoliagePlacerType<>(CoconutFoliagePlacer.CODEC);
-    public static final FoliagePlacerType<HazelFoliagePlacer> HAZEL_FOLIAGE_PLACER = new FoliagePlacerType<>(HazelFoliagePlacer.CODEC);
-    public static final FoliagePlacerType<LemonFoliagePlacer> LEMON_FOLIAGE_PLACER = new FoliagePlacerType<>(LemonFoliagePlacer.CODEC);
+    public static final FoliagePlacerType<CinnamonFoliagePlacer> CINNAMON_FOLIAGE_PLACER = new CustomFoliagePlacerType<>("cinnamon", CinnamonFoliagePlacer.CODEC);
+    public static final FoliagePlacerType<CoconutFoliagePlacer> COCONUT_FOLIAGE_PLACER = new CustomFoliagePlacerType<>("coconut", CoconutFoliagePlacer.CODEC);
+    public static final FoliagePlacerType<HazelFoliagePlacer> HAZEL_FOLIAGE_PLACER = new CustomFoliagePlacerType<>("hazel", HazelFoliagePlacer.CODEC);
+    public static final FoliagePlacerType<LemonFoliagePlacer> LEMON_FOLIAGE_PLACER = new CustomFoliagePlacerType<>("lemon", LemonFoliagePlacer.CODEC);
     final static BaseTreeFeatureConfig CINNAMON_TREE_CONFIG =
             (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(GTFData.CINNAMON_LOG.defaultBlockState()), new SimpleBlockStateProvider(GTFData.CINNAMON_LEAVES.defaultBlockState()),
                     new CinnamonFoliagePlacer(), new StraightTrunkPlacer(6, 3, 0), new TwoLayerFeature(1, 0, 2))).ignoreVines().build();

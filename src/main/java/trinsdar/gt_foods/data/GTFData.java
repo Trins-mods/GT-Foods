@@ -1,13 +1,11 @@
 package trinsdar.gt_foods.data;
 
-import muramasa.antimatter.item.ItemBasic;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
-import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.blocks.BlockCrop;
 import trinsdar.gt_foods.blocks.BlockCropBerry;
@@ -18,14 +16,12 @@ import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.blocks.BlockSapling;
+import trinsdar.gt_foods.items.ItemBase;
 import trinsdar.gt_foods.items.ItemBerry;
 import trinsdar.gt_foods.items.ItemFood;
 import trinsdar.gt_foods.items.ItemSeed;
 import trinsdar.gt_foods.tree.GTFTree;
 import trinsdar.gt_foods.tree.TreeWorldGen;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class GTFData {
 
@@ -58,7 +54,7 @@ public class GTFData {
     public static final Block STRIPPED_CINNAMON_WOOD = new BlockLogStrippable("cinnamon", null, true, true);
     public static final Block CINNAMON_WOOD = new BlockLogStrippable("cinnamon", () -> STRIPPED_CINNAMON_WOOD, false, true);
     public static final Block CINNAMON_LEAVES = new BlockLeaves("cinnamon_leaves");
-    public static final Block CINNAMON_PLANKS = new BlockPlanks(GTFoods.MODID, "cinnamon_planks");
+    public static final Block CINNAMON_PLANKS = new BlockPlanks("cinnamon_planks");
     public static final Block CINNAMON_SAPLING = new BlockSapling("cinnamon_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_CINNAMON_TREE_FEATURE));
 
     public static final Block STRIPPED_HAZEL_LOG = new BlockLogStrippable("hazel", null, true, false);
@@ -66,7 +62,7 @@ public class GTFData {
     public static final Block STRIPPED_HAZEL_WOOD = new BlockLogStrippable("hazel", null, true, true);
     public static final Block HAZEL_WOOD = new BlockLogStrippable("hazel", () -> STRIPPED_HAZEL_WOOD, false, true);
     public static final Block HAZEL_LEAVES = new BlockFloweringLeaves("hazel_leaves", "hazelnut");
-    public static final Block HAZEL_PLANKS = new BlockPlanks(GTFoods.MODID, "hazel_planks");
+    public static final Block HAZEL_PLANKS = new BlockPlanks("hazel_planks");
     public static final Block HAZEL_SAPLING = new BlockSapling("hazel_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_HAZEL_TREE_FEATURE));
 
     public static final Block STRIPPED_LEMON_LOG = new BlockLogStrippable("lemon", null, true, false);
@@ -74,7 +70,7 @@ public class GTFData {
     public static final Block STRIPPED_LEMON_WOOD = new BlockLogStrippable("lemon", null, true, true);
     public static final Block LEMON_WOOD = new BlockLogStrippable("lemon", () -> STRIPPED_LEMON_WOOD, false, true);
     public static final Block LEMON_LEAVES = new BlockFloweringLeaves("lemon_leaves", "lemon");
-    public static final Block LEMON_PLANKS = new BlockPlanks(GTFoods.MODID, "lemon_planks");
+    public static final Block LEMON_PLANKS = new BlockPlanks("lemon_planks");
     public static final Block LEMON_SAPLING = new BlockSapling("lemon_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_LEMON_TREE_FEATURE));
 
     public static final Block STRIPPED_COCONUT_LOG = new BlockLogStrippable("coconut", null, true, false);
@@ -82,17 +78,17 @@ public class GTFData {
     public static final Block STRIPPED_COCONUT_WOOD = new BlockLogStrippable("coconut", null, true, true);
     public static final Block COCONUT_WOOD = new BlockLogStrippable("coconut", () -> STRIPPED_COCONUT_WOOD, false, true);
     public static final Block COCONUT_LEAVES = new BlockLeaves("coconut_leaves");
-    public static final Block COCONUT_PLANKS = new BlockPlanks(GTFoods.MODID, "coconut_planks");
+    public static final Block COCONUT_PLANKS = new BlockPlanks("coconut_planks");
     public static final Block COCONUT_SAPLING = new BlockSapling("coconut_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_COCONUT_TREE_FEATURE));
     public static final Block COCONUT_HANGING_PLANT = new BlockHangingFruit("coconut_hanging_plant", () -> GTFData.COCONUT);
 
-    public static final ItemBasic<?> SLICER_BLADE_FRAME = new ItemBasic<>(GTFoods.MODID, "slicer_blade_frame");
-    public static final ItemBasic<?> FLAT_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "flat_slicer_blades");
-    public static final ItemBasic<?> GRID_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "grid_slicer_blades");
-    public static final ItemBasic<?> EIGTHS_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "eigths_slicer_blades");
-    public static final ItemBasic<?> SPLIT_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "split_slicer_blades");
-    public static final ItemBasic<?> HOLLOW_QUARTERS_SLICER_BLADES = new ItemBasic<>(GTFoods.MODID, "hollow_quarters_slicer_blades");
-    public static final ItemBasic<?> CLAY_JUICER = new ItemBasic<>(GTFoods.MODID, "clay_juicer");
+    public static final ItemBase SLICER_BLADE_FRAME = new ItemBase("slicer_blade_frame");
+    public static final ItemBase FLAT_SLICER_BLADES = new ItemBase("flat_slicer_blades");
+    public static final ItemBase GRID_SLICER_BLADES = new ItemBase("grid_slicer_blades");
+    public static final ItemBase EIGTHS_SLICER_BLADES = new ItemBase("eigths_slicer_blades");
+    public static final ItemBase SPLIT_SLICER_BLADES = new ItemBase("split_slicer_blades");
+    public static final ItemBase HOLLOW_QUARTERS_SLICER_BLADES = new ItemBase("hollow_quarters_slicer_blades");
+    public static final ItemBase CLAY_JUICER = new ItemBase("clay_juicer");
 
     public static final ItemSeed BANANA_PUP = new ItemSeed(GTFoods.MODID, "banana_pup", BANANA_CROP);
     public static final ItemBerry RICE = new ItemBerry(GTFoods.MODID, "rice", RICE_CROP);
@@ -243,17 +239,17 @@ public class GTFData {
     //todo icecream and juice
 
     /** Food ingredients*/
-    public static final ItemFood TOMATO_SAUCE = new ItemFood(GTFoods.MODID,"tomato_sauce");
-    public static final ItemFood RYE = new ItemFood(GTFoods.MODID, "rye");
-    public static final ItemFood BARLEY = new ItemFood(GTFoods.MODID, "barley");
-    public static final ItemFood OATS = new ItemFood(GTFoods.MODID, "oats");
+    public static final ItemFood TOMATO_SAUCE = new ItemFood("tomato_sauce");
+    public static final ItemFood RYE = new ItemFood("rye");
+    public static final ItemFood BARLEY = new ItemFood("barley");
+    public static final ItemFood OATS = new ItemFood("oats");
 
     static Item registerFoodItem(String id, int hunger, float saturation) {
         return registerFoodItem(id, new Food.Builder().nutrition(hunger).saturationMod(saturation).build());
     }
 
     static Item registerFoodItem(String id, Food food) {
-        return new ItemFood(GTFoods.MODID, id, new Item.Properties().tab(GTFoods.CREATIVE_TAB).food(food));
+        return new ItemFood(id, new Item.Properties().tab(GTFoods.CREATIVE_TAB).food(food));
     }
 
     static Item registerMeatItem(String id, int hunger, float saturation) {

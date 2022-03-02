@@ -1,14 +1,13 @@
 package trinsdar.gt_foods.data;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.material.TextureSet;
-import trinsdar.gt4r.Ref;
 import trinsdar.gt_foods.GTFoods;
 
-import static muramasa.antimatter.Data.*;
+import static muramasa.antimatter.Data.PLATE_TINY;
+import static muramasa.antimatter.Data.RING;
+import static muramasa.antimatter.Data.ROD;
 import static muramasa.antimatter.material.TextureSet.FINE;
 import static muramasa.antimatter.material.TextureSet.NONE;
 import static trinsdar.gt_foods.data.GTFMaterialTypes.FLOUR;

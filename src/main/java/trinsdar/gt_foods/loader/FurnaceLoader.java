@@ -2,15 +2,12 @@ package trinsdar.gt_foods.loader;
 
 import muramasa.antimatter.datagen.builder.AntimatterCookingRecipeBuilder;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import trinsdar.gt_foods.GTFoods;
-import trinsdar.gt_foods.data.GTFData;
-import trinsdar.gt_foods.data.Machines;
 
 import java.util.function.Consumer;
 
@@ -18,8 +15,6 @@ import static net.minecraft.item.Items.BREAD;
 import static net.minecraft.item.Items.COOKIE;
 import static net.minecraft.item.Items.EGG;
 import static trinsdar.gt_foods.data.GTFData.*;
-import static trinsdar.gt_foods.data.GTFData.POMEGRANATE;
-import static trinsdar.gt_foods.data.GTFData.POMERAISINS;
 
 public class FurnaceLoader {
     public static void loadRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){

@@ -1,17 +1,10 @@
 package trinsdar.gt_foods.datagen;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.util.TagUtils;
-import net.minecraft.block.Block;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DirectoryCache;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ITag;
-import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import trinsdar.gt_foods.GTFoods;
@@ -19,15 +12,6 @@ import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.data.GTFData;
-
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class GTFBlockTagProvider extends BlockTagsProvider /*AntimatterBlockTagProvider*/ {
     public GTFBlockTagProvider(String providerDomain, DataGenerator gen, ExistingFileHelper helper) {

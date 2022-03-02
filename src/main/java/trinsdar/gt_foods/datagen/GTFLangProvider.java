@@ -1,11 +1,9 @@
 package trinsdar.gt_foods.datagen;
 
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterDynamics;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
-import muramasa.antimatter.registration.IAntimatterObject;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
 import trinsdar.gt_foods.GTFoods;

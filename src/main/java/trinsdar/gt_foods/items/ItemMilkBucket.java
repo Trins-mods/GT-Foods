@@ -1,6 +1,5 @@
 package trinsdar.gt_foods.items;
 
-import muramasa.antimatter.fluid.AntimatterMaterialFluid;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

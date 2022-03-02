@@ -1,34 +1,25 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.registration.IAntimatterObject;
-import muramasa.antimatter.registration.IItemBlockProvider;
-import muramasa.antimatter.registration.IModelProvider;
-import muramasa.antimatter.registration.ITextureProvider;
-import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
 import trinsdar.gt_foods.GTFoods;
-import trinsdar.gt_foods.items.ItemBerry;
-
-import net.minecraft.block.AbstractBlock.Properties;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
+import trinsdar.gt_foods.data.registration.IModelProvider;
+import trinsdar.gt_foods.data.registration.IRegistrationObject;
+import trinsdar.gt_foods.data.registration.ITextureProvider;
+import trinsdar.gt_foods.data.registration.Texture;
+import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 
 import java.util.function.Supplier;
 
-public class BlockCrop extends CropsBlock implements IAntimatterObject, ITextureProvider, IModelProvider, IItemBlockProvider {
+public class BlockCrop extends CropsBlock implements IRegistrationObject, ITextureProvider, IModelProvider {
 
     final String id;
     final int maxAge;
@@ -40,7 +31,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
         this.seed = seed;
         this.maxAge = maxAge;
         this.setRegistryName(GTFoods.MODID, id);
-        AntimatterAPI.register(getClass(), this);
+        GTFRegistration.register(getClass(), this);
     }
 
     public BlockCrop(String id, Supplier<Item> seed, int maxAge) {
@@ -89,12 +80,7 @@ public class BlockCrop extends CropsBlock implements IAntimatterObject, ITexture
     }
 
     @Override
-    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+    public void onItemModelBuild(IItemProvider item, GTFItemModelProvider prov) {
 
-    }
-
-    @Override
-    public boolean generateItemBlock() {
-        return false;
     }
 }

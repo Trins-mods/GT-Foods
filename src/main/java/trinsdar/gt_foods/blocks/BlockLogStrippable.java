@@ -1,11 +1,6 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.registration.IAntimatterObject;
-import muramasa.antimatter.registration.IModelProvider;
-import muramasa.antimatter.registration.ITextureProvider;
-import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -15,25 +10,25 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.ToolType;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.GTFData;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
+import trinsdar.gt_foods.data.registration.IModelProvider;
+import trinsdar.gt_foods.data.registration.IRegistrationObject;
+import trinsdar.gt_foods.data.registration.ITextureProvider;
+import trinsdar.gt_foods.data.registration.Texture;
 
 import java.util.function.Supplier;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class BlockLogStrippable extends RotatedPillarBlock implements IAntimatterObject, ITextureProvider, IModelProvider {
+public class BlockLogStrippable extends RotatedPillarBlock implements IRegistrationObject, ITextureProvider, IModelProvider {
     private Supplier<Block> stripped;
     private String id;
     private boolean strip, wood;
@@ -46,7 +41,7 @@ public class BlockLogStrippable extends RotatedPillarBlock implements IAntimatte
         this.stripped = stripped;
         this.wood = wood;
         this.setRegistryName(GTFoods.MODID, id);
-        AntimatterAPI.register(this.getClass(), this);
+        GTFRegistration.register(this.getClass(), this);
     }
 
     @Override

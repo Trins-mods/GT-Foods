@@ -1,9 +1,7 @@
 package trinsdar.gt_foods.items;
 
-import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.registration.Texture;
 
 public class ItemSeed extends ItemBerry{
     public ItemSeed(String domain, String id, Block block) {

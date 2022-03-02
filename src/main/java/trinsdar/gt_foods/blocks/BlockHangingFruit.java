@@ -1,16 +1,12 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
@@ -19,9 +15,9 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import trinsdar.gt_foods.data.GTFData;
+import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 
 import java.util.function.Supplier;
 
@@ -76,12 +72,7 @@ public class BlockHangingFruit extends BlockCrop{
     }
 
     @Override
-    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+    public void onItemModelBuild(IItemProvider item, GTFItemModelProvider prov) {
         prov.getBuilder(item).parent(prov.getExistingFile(new ResourceLocation("item/generated"))).texture("layer0", getTextures()[0]);
-    }
-
-    @Override
-    public boolean generateItemBlock() {
-        return true;
     }
 }

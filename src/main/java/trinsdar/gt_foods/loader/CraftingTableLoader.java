@@ -33,11 +33,8 @@ import static muramasa.antimatter.Data.KNIFE;
 import static muramasa.antimatter.Data.PLATE;
 import static muramasa.antimatter.machine.Tier.LV;
 import static net.minecraft.item.Items.*;
-import static net.minecraft.item.Items.COOKED_BEEF;
-import static trinsdar.gt_foods.data.GTFMaterials.StainlessSteel;
 import static trinsdar.gt_foods.data.GTFData.*;
-import static trinsdar.gt_foods.data.GTFData.RAW_CAKE_BOTTOM;
-import static trinsdar.gt_foods.data.GTFData.SUGARY_DOUGH;
+import static trinsdar.gt_foods.data.GTFMaterials.StainlessSteel;
 
 public class CraftingTableLoader {
     public static void loadRecipes(Consumer<IFinishedRecipe> consumer, AntimatterRecipeProvider provider){

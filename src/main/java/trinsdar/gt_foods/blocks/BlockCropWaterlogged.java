@@ -1,13 +1,8 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.registration.IAntimatterObject;
-import muramasa.antimatter.registration.IModelProvider;
-import muramasa.antimatter.registration.ITextureProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.CropsBlock;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -15,26 +10,18 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
-import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import trinsdar.gt_foods.GTFoods;
-import trinsdar.gt_foods.data.GTFData;
-import trinsdar.gt_foods.items.ItemBerry;
 
 import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
 import static net.minecraft.state.properties.BlockStateProperties.WATERLOGGED;
-
-import net.minecraft.block.AbstractBlock.Properties;
-
-import java.util.function.Supplier;
 
 public class BlockCropWaterlogged extends BlockCrop implements IWaterLoggable {
 

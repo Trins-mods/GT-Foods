@@ -1,13 +1,6 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.registration.IAntimatterObject;
-import muramasa.antimatter.registration.IItemBlockProvider;
-import muramasa.antimatter.registration.IModelProvider;
-import muramasa.antimatter.registration.ITextureProvider;
-import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -30,11 +23,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
+import trinsdar.gt_foods.data.registration.IModelProvider;
+import trinsdar.gt_foods.data.registration.IRegistrationObject;
+import trinsdar.gt_foods.data.registration.ITextureProvider;
+import trinsdar.gt_foods.data.registration.Texture;
+import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.items.ItemBerry;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
-public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterObject, ITextureProvider, IModelProvider, IItemBlockProvider {
+public class BlockCropBerry extends SweetBerryBushBlock implements IRegistrationObject, ITextureProvider, IModelProvider {
     final String id, itemID;
 
     public BlockCropBerry(String id, String itemID) {
@@ -42,7 +39,7 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
         this.id = id;
         this.itemID = itemID;
         this.setRegistryName(GTFoods.MODID, id);
-        AntimatterAPI.register(this.getClass(), this);
+        GTFRegistration.register(this.getClass(), this);
     }
 
     @Override
@@ -61,7 +58,7 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
     }
 
     public Item getItem() {
-        return AntimatterAPI.get(ItemBerry.class, this.itemID, getDomain());
+        return GTFRegistration.get(ItemBerry.class, this.itemID);
     }
 
     @Override
@@ -114,12 +111,7 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IAntimatterOb
     }
 
     @Override
-    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+    public void onItemModelBuild(IItemProvider item, GTFItemModelProvider prov) {
 
-    }
-
-    @Override
-    public boolean generateItemBlock() {
-        return false;
     }
 }

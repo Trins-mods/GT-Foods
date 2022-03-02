@@ -2,13 +2,11 @@ package trinsdar.gt_foods.datagen;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.ExistingFileHelperOverride;
-import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
-import net.minecraft.data.TagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;

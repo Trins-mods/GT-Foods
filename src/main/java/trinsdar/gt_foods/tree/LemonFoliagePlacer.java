@@ -15,8 +15,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import net.minecraft.world.gen.foliageplacer.FoliagePlacer.Foliage;
-
 public class LemonFoliagePlacer extends FoliagePlacer {
     public static final Codec<LemonFoliagePlacer> CODEC = RecordCodecBuilder.create((p_242834_0_) -> {
         return foliagePlacerParts(p_242834_0_).apply(p_242834_0_, LemonFoliagePlacer::new);

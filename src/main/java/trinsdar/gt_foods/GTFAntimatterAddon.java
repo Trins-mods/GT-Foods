@@ -13,7 +13,6 @@ import muramasa.antimatter.registration.RegistrationEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
-import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFMaterialTypes;
 import trinsdar.gt_foods.data.GTFMaterials;
 import trinsdar.gt_foods.data.Guis;
@@ -28,11 +27,8 @@ import trinsdar.gt_foods.datagen.GTFRecipeProvider;
 import trinsdar.gt_foods.loader.BathingLoader;
 import trinsdar.gt_foods.loader.CraftingTableLoader;
 import trinsdar.gt_foods.loader.FermenterLoader;
-import trinsdar.gt_foods.loader.FurnaceLoader;
-import trinsdar.gt_foods.loader.JuicerLoader;
 import trinsdar.gt_foods.loader.MixingLoader;
 import trinsdar.gt_foods.loader.SlicerLoader;
-import trinsdar.gt_foods.tree.TreeWorldGen;
 
 import java.util.function.BiConsumer;
 
@@ -85,11 +81,9 @@ public class GTFAntimatterAddon extends AntimatterMod {
         if (event == RegistrationEvent.DATA_INIT){
             GTFMaterialTypes.init();
             GTFMaterials.init();
-            GTFData.init();
             RecipeMaps.AntimatterMaps.init();
             Machines.init();
             Guis.init();
-            TreeWorldGen.init();
         }
     }
 

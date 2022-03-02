@@ -63,9 +63,9 @@ public class Machines {
             super(domain, id);
         }
 
-        @Override
+        /*@Override
         protected Block getBlock(Machine<BasicMachine> type, Tier tier) {
             return new BlockJuicer(type, tier);
-        }
+        }*/
     }
 }

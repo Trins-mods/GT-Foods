@@ -1,9 +1,7 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.texture.Texture;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +22,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
-import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
+import trinsdar.gt_foods.data.registration.Texture;
 import trinsdar.gt_foods.items.ItemFood;
 
 import java.util.Random;
@@ -49,7 +48,7 @@ public class BlockFloweringLeaves extends BlockLeaves{
     }
 
     private Item getFruit(){
-        return AntimatterAPI.get(ItemFood.class, fruitId, GTFoods.MODID);
+        return GTFRegistration.get(ItemFood.class, fruitId);
     }
 
     @Override

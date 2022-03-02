@@ -5,19 +5,15 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
-import muramasa.antimatter.Ref;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.RecipeConstants;
-import trinsdar.gt_foods.recipe.JuicingRecipe;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {

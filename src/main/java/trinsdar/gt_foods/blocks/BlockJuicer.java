@@ -1,15 +1,9 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.machine.BlockMachine;
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.tile.TileEntityMachine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -22,22 +16,32 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapeArray;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.common.ToolType;
 import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
+import trinsdar.gt_foods.data.registration.IModelProvider;
+import trinsdar.gt_foods.data.registration.IRegistrationObject;
+import trinsdar.gt_foods.data.registration.ITextureProvider;
+import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 
-public class BlockJuicer extends BlockMachine {
+public class BlockJuicer extends Block implements IRegistrationObject, IModelProvider {
 
     public final VoxelShape JUICER_SHAPE;
-    public BlockJuicer(Machine<?> type, Tier tier) {
-        super(type, tier, Properties.of(Material.STONE).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops().noOcclusion().harvestTool(ToolType.PICKAXE));
+    public BlockJuicer() {
+        super(Properties.of(Material.STONE).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops().noOcclusion().harvestTool(ToolType.PICKAXE));
         VoxelShape bottom = VoxelShapes.create(new AxisAlignedBB(0.125, 0, 0.125, 0.875, 0.25, 0.875));
         VoxelShape top = VoxelShapes.create(new AxisAlignedBB(0.375, 0.25, 0.375, 0.625, 0.375, 0.625));
         JUICER_SHAPE = VoxelShapes.or(bottom, top);
+        GTFRegistration.register(this.getClass(), this);
+    }
+
+    @Override
+    public String getId() {
+        return "juicer";
     }
 
     @Override
@@ -51,7 +55,7 @@ public class BlockJuicer extends BlockMachine {
     }
 
     @Override
-    public void onItemModelBuild(IItemProvider item, AntimatterItemModelProvider prov) {
+    public void onItemModelBuild(IItemProvider item, GTFItemModelProvider prov) {
         ItemModelBuilder b = prov.getBuilder(item).parent(prov.existing(GTFoods.MODID, "block/juicer"));
     }
 
