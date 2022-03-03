@@ -14,6 +14,7 @@ import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFMaterialTypes;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
 import trinsdar.gt_foods.items.ItemBerry;
 import trinsdar.gt_foods.items.ItemFood;
 import trinsdar.gt_foods.items.ItemSeed;
@@ -32,15 +33,15 @@ public class GTFLangProvider extends AntimatterLanguageProvider {
     @Override
     protected void processTranslations(String domain, String locale) {
         super.processTranslations(domain, locale);
-        AntimatterAPI.all(ItemBerry.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        AntimatterAPI.all(ItemSeed.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        AntimatterAPI.all(ItemFood.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        AntimatterAPI.all(BlockCropBerry.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        AntimatterAPI.all(BlockCrop.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        AntimatterAPI.all(BlockLogStrippable.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        AntimatterAPI.all(BlockLeaves.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        AntimatterAPI.all(BlockPlanks.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
-        AntimatterAPI.all(BlockSapling.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(ItemBerry.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(ItemSeed.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(ItemFood.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(BlockCropBerry.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(BlockCrop.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(BlockLogStrippable.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(BlockLeaves.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(BlockPlanks.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
+        GTFRegistration.all(BlockSapling.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         GTFMaterialTypes.GROUND.all().forEach(m -> override(Data.DUST.get(m).getDescriptionId(), "Ground " + lowerUnderscoreToUpperSpaced(m.getId())));
         add("jei.category.gt_foods.juicing", "Juicing");
     }
@@ -49,6 +50,6 @@ public class GTFLangProvider extends AntimatterLanguageProvider {
     public void run(DirectoryCache pCache) throws IOException {
         super.run(pCache);
         new GTFItemModelProvider(generator).run(pCache);
-        new AntimatterBlockStateProvider(GTFoods.MODID, "GT Foods BlockStates", generator).run(pCache);
+        new GTFBlockStateProvider(GTFoods.MODID, "GT Foods BlockStates", generator).run(pCache);
     }
 }

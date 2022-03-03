@@ -15,6 +15,7 @@ import trinsdar.gt_foods.data.registration.IModelProvider;
 import trinsdar.gt_foods.data.registration.IRegistrationObject;
 import trinsdar.gt_foods.data.registration.ITextureProvider;
 import trinsdar.gt_foods.data.registration.Texture;
+import trinsdar.gt_foods.datagen.GTFBlockStateProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 
 import java.util.function.Supplier;
@@ -72,7 +73,7 @@ public class BlockCrop extends CropsBlock implements IRegistrationObject, ITextu
     }
 
     @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+    public void onBlockModelBuild(Block block, GTFBlockStateProvider prov) {
         prov.getVariantBuilder(block).forAllStates(s -> {
             int age = s.getValue(AGE);
             return ConfiguredModel.builder().modelFile(prov.models().getBuilder(getId().replace("_crop", "") + "_stage" + age).parent(prov.models().getExistingFile(new ResourceLocation("minecraft:block/crop"))).texture("crop", getTextures()[Math.min(maxAge, age)])).build();

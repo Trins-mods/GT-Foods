@@ -22,8 +22,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import trinsdar.gt_foods.GTFoods;
 import trinsdar.gt_foods.data.registration.GTFRegistration;
 import trinsdar.gt_foods.data.registration.Texture;
+import trinsdar.gt_foods.datagen.GTFBlockStateProvider;
 import trinsdar.gt_foods.items.ItemFood;
 
 import java.util.Random;
@@ -86,25 +88,25 @@ public class BlockFloweringLeaves extends BlockLeaves{
     }
 
     @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+    public void onBlockModelBuild(Block block, GTFBlockStateProvider prov) {
         prov.getVariantBuilder(block).forAllStates(s -> {
             int age = s.getValue(FLOWERING);
             ModelFile model;
             switch (age){
                 case 0: {
-                    model = prov.getBuilder(block).parent(prov.models().getExistingFile(new ResourceLocation(Ref.ID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath()));
+                    model = prov.getBuilder(block).parent(prov.models().getExistingFile(new ResourceLocation(GTFoods.MODID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath()));
                     break;
                 }
                 case 1: {
-                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_flowering").parent(prov.models().getExistingFile(new ResourceLocation(Ref.ID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "_flowering"));
+                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_flowering").parent(prov.models().getExistingFile(new ResourceLocation(GTFoods.MODID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "_flowering"));
                     break;
                 }
                 case 2: {
-                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_pre_fruiting").parent(prov.models().getExistingFile(new ResourceLocation(Ref.ID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "_pre_fruiting"));
+                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_pre_fruiting").parent(prov.models().getExistingFile(new ResourceLocation(GTFoods.MODID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "_pre_fruiting"));
                     break;
                 }
                 default: {
-                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_fruiting").parent(prov.models().getExistingFile(new ResourceLocation(Ref.ID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "_fruiting"));
+                    model = prov.models().getBuilder(block.getRegistryName().getPath() + "_fruiting").parent(prov.models().getExistingFile(new ResourceLocation(GTFoods.MODID, "block/preset/simple"))).texture("all", new Texture(getDomain(), getTextures()[0].getPath() + "_fruiting"));
                     break;
                 }
             }

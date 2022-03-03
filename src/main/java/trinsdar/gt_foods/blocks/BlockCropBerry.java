@@ -28,6 +28,7 @@ import trinsdar.gt_foods.data.registration.IModelProvider;
 import trinsdar.gt_foods.data.registration.IRegistrationObject;
 import trinsdar.gt_foods.data.registration.ITextureProvider;
 import trinsdar.gt_foods.data.registration.Texture;
+import trinsdar.gt_foods.datagen.GTFBlockStateProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.items.ItemBerry;
 
@@ -84,7 +85,7 @@ public class BlockCropBerry extends SweetBerryBushBlock implements IRegistration
     }
 
     @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+    public void onBlockModelBuild(Block block, GTFBlockStateProvider prov) {
         prov.getVariantBuilder(block).forAllStates(s -> {
             int age = s.getValue(AGE);
             ModelFile model;

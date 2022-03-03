@@ -35,6 +35,7 @@ import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFData;
+import trinsdar.gt_foods.data.registration.GTFRegistration;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -60,10 +61,10 @@ public class GTFBlockLootProvider extends AntimatterBlockLootProvider {
     }
 
     protected void lootGT() {
-        AntimatterAPI.all(BlockLogStrippable.class, providerDomain, this::add);
-        AntimatterAPI.all(BlockSapling.class, providerDomain, this::add);
-        AntimatterAPI.all(BlockPlanks.class, providerDomain, this::add);
-        AntimatterAPI.all(BlockCropBerry.class, providerDomain, b -> tables.put(b, b2 -> applyExplosionDecay(b, LootTable.lootTable().withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(b).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3))).add(ItemLootEntry.lootTableItem(b.getItem())).apply(SetCount.setCount(RandomValueRange.between(2.0F, 3.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))).withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(Blocks.SWEET_BERRY_BUSH).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2))).add(ItemLootEntry.lootTableItem(b.getItem())).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))))));
+        GTFRegistration.all(BlockLogStrippable.class, this::add);
+        GTFRegistration.all(BlockSapling.class, this::add);
+        GTFRegistration.all(BlockPlanks.class, this::add);
+        GTFRegistration.all(BlockCropBerry.class, b -> tables.put(b, b2 -> applyExplosionDecay(b, LootTable.lootTable().withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(b).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 3))).add(ItemLootEntry.lootTableItem(b.getItem())).apply(SetCount.setCount(RandomValueRange.between(2.0F, 3.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))).withPool(LootPool.lootPool().when(BlockStateProperty.hasBlockStateProperties(Blocks.SWEET_BERRY_BUSH).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SweetBerryBushBlock.AGE, 2))).add(ItemLootEntry.lootTableItem(b.getItem())).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F))).apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))))));
 
         tables.put(GTFData.CINNAMON_LEAVES, b -> createLeavesDrops(GTFData.CINNAMON_LEAVES, GTFData.CINNAMON_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F));
         tables.put(GTFData.COCONUT_LEAVES, b -> createLeavesDrops(GTFData.COCONUT_LEAVES, GTFData.COCONUT_SAPLING, 0.025F, 0.027777778F, 0.03125F, 0.041666668F, 0.1F));

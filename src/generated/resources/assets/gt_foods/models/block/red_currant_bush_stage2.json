@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "gt_foods:block/crops/red_currant_bush_stage2"
-  }
-}

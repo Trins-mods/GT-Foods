@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "gt_foods:item/tool/rolling_pin",
-    "layer1": "gt_foods:item/tool/overlay/rolling_pin"
-  }
-}

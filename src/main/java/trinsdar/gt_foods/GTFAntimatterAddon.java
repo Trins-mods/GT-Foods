@@ -19,6 +19,7 @@ import trinsdar.gt_foods.data.Guis;
 import trinsdar.gt_foods.data.Machines;
 import trinsdar.gt_foods.data.RecipeMaps;
 import trinsdar.gt_foods.datagen.GTFBlockLootProvider;
+import trinsdar.gt_foods.datagen.GTFBlockStateProvider;
 import trinsdar.gt_foods.datagen.GTFBlockTagProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.datagen.GTFItemTagProvider;
@@ -36,7 +37,7 @@ import static trinsdar.gt_foods.GTFoods.MODID;
 
 public class GTFAntimatterAddon extends AntimatterMod {
     public GTFAntimatterAddon(){
-        AntimatterDynamics.addProvider(MODID, g -> new AntimatterBlockStateProvider(MODID, "GT Foods BlockStates", g));
+        AntimatterDynamics.addProvider(MODID, g -> new GTFBlockStateProvider(MODID, "GT Foods BlockStates", g));
         AntimatterDynamics.addProvider(MODID, GTFItemModelProvider::new);
         AntimatterDynamics.addProvider(MODID, GTFLangProvider::new);
         new GTFRegistrar();

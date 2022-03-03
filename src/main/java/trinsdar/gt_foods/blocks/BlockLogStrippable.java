@@ -25,6 +25,7 @@ import trinsdar.gt_foods.data.registration.IModelProvider;
 import trinsdar.gt_foods.data.registration.IRegistrationObject;
 import trinsdar.gt_foods.data.registration.ITextureProvider;
 import trinsdar.gt_foods.data.registration.Texture;
+import trinsdar.gt_foods.datagen.GTFBlockStateProvider;
 
 import java.util.function.Supplier;
 
@@ -102,7 +103,7 @@ public class BlockLogStrippable extends RotatedPillarBlock implements IRegistrat
     }
 
     @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+    public void onBlockModelBuild(Block block, GTFBlockStateProvider prov) {
         if (wood){
             prov.axisBlock((RotatedPillarBlock) block, new Texture(getDomain(), "block/tree/" + getId().replace("wood", "log") + "_side"), new Texture(getDomain(), "block/tree/" + getId().replace("wood", "log") + "_side"));
             return;

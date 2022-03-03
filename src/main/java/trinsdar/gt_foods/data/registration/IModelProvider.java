@@ -4,6 +4,7 @@ import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import net.minecraft.block.Block;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.extensions.IForgeBlock;
+import trinsdar.gt_foods.datagen.GTFBlockStateProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 
 public interface IModelProvider {
@@ -14,7 +15,7 @@ public interface IModelProvider {
         else prov.getBuilder(item);
     }
 
-    default void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+    default void onBlockModelBuild(Block block, GTFBlockStateProvider prov) {
         if (block instanceof ITextureProvider) prov.state(block, ((ITextureProvider) block).getTextures());
     }
 }

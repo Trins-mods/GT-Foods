@@ -20,6 +20,7 @@ import trinsdar.gt_foods.data.registration.IModelProvider;
 import trinsdar.gt_foods.data.registration.IRegistrationObject;
 import trinsdar.gt_foods.data.registration.ITextureProvider;
 import trinsdar.gt_foods.data.registration.Texture;
+import trinsdar.gt_foods.datagen.GTFBlockStateProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 
 import java.util.Random;
@@ -56,7 +57,7 @@ public class BlockSapling extends SaplingBlock implements IGrowable, IRegistrati
     }
 
     @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+    public void onBlockModelBuild(Block block, GTFBlockStateProvider prov) {
         prov.state(block, prov.getBuilder(block).parent(prov.existing("minecraft", "block/cross")).texture("cross", getTextures()[0]));
     }
 
