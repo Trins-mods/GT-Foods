@@ -20,6 +20,7 @@ import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockSapling;
 import trinsdar.gt_foods.data.GTFConfiguredFeatures;
 import trinsdar.gt_foods.data.GTFData;
+import trinsdar.gt_foods.data.TileEntityTypes;
 import trinsdar.gt_foods.data.registration.GTFRegistration;
 import trinsdar.gt_foods.tree.TreeWorldGen;
 
@@ -39,6 +40,7 @@ public class GTFoods {
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
         MinecraftForge.EVENT_BUS.addListener(BiomeFeatureInjection::onEvent);
         GTFData.init();
+        TileEntityTypes.init();
         TreeWorldGen.init();
         if (ModList.get().isLoaded("antimatter")){
             new GTFAntimatterAddon();

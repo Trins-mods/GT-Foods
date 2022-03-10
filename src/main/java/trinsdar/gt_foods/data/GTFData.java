@@ -12,6 +12,7 @@ import trinsdar.gt_foods.blocks.BlockCropBerry;
 import trinsdar.gt_foods.blocks.BlockCropWaterlogged;
 import trinsdar.gt_foods.blocks.BlockFloweringLeaves;
 import trinsdar.gt_foods.blocks.BlockHangingFruit;
+import trinsdar.gt_foods.blocks.BlockJuicer;
 import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
@@ -81,6 +82,8 @@ public class GTFData {
     public static final Block COCONUT_PLANKS = new BlockPlanks("coconut_planks");
     public static final Block COCONUT_SAPLING = new BlockSapling("coconut_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_COCONUT_TREE_FEATURE));
     public static final Block COCONUT_HANGING_PLANT = new BlockHangingFruit("coconut_hanging_plant", () -> GTFData.COCONUT);
+
+    public static final Block JUICER = new BlockJuicer();
 
     public static final ItemBase SLICER_BLADE_FRAME = new ItemBase("slicer_blade_frame");
     public static final ItemBase FLAT_SLICER_BLADES = new ItemBase("flat_slicer_blades");

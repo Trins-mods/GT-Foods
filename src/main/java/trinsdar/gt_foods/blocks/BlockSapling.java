@@ -1,6 +1,5 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;

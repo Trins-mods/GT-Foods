@@ -8,6 +8,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.IItemProvider;
@@ -22,11 +23,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.common.ToolType;
 import trinsdar.gt_foods.GTFoods;
+import trinsdar.gt_foods.data.TileEntityTypes;
 import trinsdar.gt_foods.data.registration.GTFRegistration;
 import trinsdar.gt_foods.data.registration.IModelProvider;
 import trinsdar.gt_foods.data.registration.IRegistrationObject;
 import trinsdar.gt_foods.data.registration.ITextureProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
+
+import javax.annotation.Nullable;
 
 public class BlockJuicer extends Block implements IRegistrationObject, IModelProvider {
 
@@ -68,5 +72,16 @@ public class BlockJuicer extends Block implements IRegistrationObject, IModelPro
         }
         return ActionResultType.PASS;
         //return super.use(p_225533_1_, p_225533_2_, p_225533_3_, p_225533_4_, p_225533_5_, p_225533_6_);
+    }
+
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return TileEntityTypes.JUICER_TYPE.create();
     }
 }

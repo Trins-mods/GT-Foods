@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraftforge.event.RegistryEvent;
@@ -135,6 +136,10 @@ public class GTFRegistration {
                 i.setRegistryName(((IRegistrationObject) i).getDomain(), ((IRegistrationObject) i).getId());
             e.getRegistry().register(i);
         });
+    }
+
+    public static void onRegisterTileEntityType(final RegistryEvent.Register<TileEntityType<?>> e){
+        all(TileEntityType.class, t -> e.getRegistry().register(t));
     }
 
     @SubscribeEvent

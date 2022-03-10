@@ -1,6 +1,5 @@
 package trinsdar.gt_foods.data.registration;
 
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import net.minecraft.block.Block;
 import net.minecraft.util.IItemProvider;
 import net.minecraftforge.common.extensions.IForgeBlock;

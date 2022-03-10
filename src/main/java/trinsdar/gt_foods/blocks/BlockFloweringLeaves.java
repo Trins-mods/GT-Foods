@@ -1,7 +1,5 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
