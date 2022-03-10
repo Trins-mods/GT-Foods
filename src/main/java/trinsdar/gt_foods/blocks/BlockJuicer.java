@@ -1,8 +1,5 @@
 package trinsdar.gt_foods.blocks;
 
-import muramasa.antimatter.tile.TileEntityMachine;
-import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.util.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -27,8 +24,8 @@ import trinsdar.gt_foods.data.TileEntityTypes;
 import trinsdar.gt_foods.data.registration.GTFRegistration;
 import trinsdar.gt_foods.data.registration.IModelProvider;
 import trinsdar.gt_foods.data.registration.IRegistrationObject;
-import trinsdar.gt_foods.data.registration.ITextureProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
+import trinsdar.gt_foods.tile.TileEntityJuicer;
 
 import javax.annotation.Nullable;
 
@@ -65,10 +62,9 @@ public class BlockJuicer extends Block implements IRegistrationObject, IModelPro
 
     @Override
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-        TileEntityMachine<?> tile = (TileEntityMachine<?>) world.getBlockEntity(pos);
-        if (tile != null){
-            AntimatterToolType type = Utils.getToolType(player);
-            return tile.onInteract(state, world, pos, player, hand, hit, type);
+        TileEntity tile = world.getBlockEntity(pos);
+        if (tile instanceof TileEntityJuicer){
+            return ((TileEntityJuicer)tile).onInteract(state, world, pos, player, hand, hit);
         }
         return ActionResultType.PASS;
         //return super.use(p_225533_1_, p_225533_2_, p_225533_3_, p_225533_4_, p_225533_5_, p_225533_6_);
