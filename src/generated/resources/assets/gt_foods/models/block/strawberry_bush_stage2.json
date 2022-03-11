@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "gt_foods:block/crops/strawberry_bush_stage2"
+  }
+}

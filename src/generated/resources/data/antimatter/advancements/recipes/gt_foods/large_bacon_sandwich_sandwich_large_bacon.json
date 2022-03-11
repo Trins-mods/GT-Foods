@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "antimatter:large_bacon_sandwich_sandwich_large_bacon"
+    ]
+  },
+  "criteria": {
+    "has_baguette_slices": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:sliced_baguette"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "antimatter:large_bacon_sandwich_sandwich_large_bacon"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_baguette_slices",
+      "has_the_recipe"
+    ]
+  ]
+}

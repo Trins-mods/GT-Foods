@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "gt_foods:green_grapes"
+  },
+  "result": {
+    "item": "gt_foods:green_raisins"
+  },
+  "experience": 1.0,
+  "cookingtime": 100
+}

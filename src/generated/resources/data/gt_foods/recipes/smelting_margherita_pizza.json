@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "gt_foods:raw_margherita_pizza"
+  },
+  "result": {
+    "item": "gt_foods:margherita_pizza"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

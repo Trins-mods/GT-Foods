@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "gt_foods:cookie_shaped_chocolate_raisin_dough"
+  },
+  "result": {
+    "item": "gt_foods:chocolate_raisin_cookie"
+  },
+  "experience": 1.0,
+  "cookingtime": 100
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sandwiches",
+  "ingredients": [
+    {
+      "item": "gt_foods:sliced_bread"
+    },
+    {
+      "item": "gt_foods:sliced_bread"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    },
+    {
+      "item": "gt_foods:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "gt_foods:cheese_sandwich"
+  }
+}

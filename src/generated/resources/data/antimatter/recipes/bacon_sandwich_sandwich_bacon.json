@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "sandwiches",
+  "ingredients": [
+    {
+      "item": "gt_foods:sliced_bread"
+    },
+    {
+      "item": "gt_foods:sliced_bread"
+    },
+    {
+      "item": "gt_foods:cooked_bacon"
+    },
+    {
+      "item": "gt_foods:cooked_bacon"
+    },
+    {
+      "item": "gt_foods:cooked_bacon"
+    }
+  ],
+  "result": {
+    "item": "gt_foods:bacon_sandwich"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:campfire_cooking_mincemeat_pizza"
+    ]
+  },
+  "criteria": {
+    "has_raw_mincemeat_pizza": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:raw_mincemeat_pizza"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:campfire_cooking_mincemeat_pizza"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_mincemeat_pizza",
+      "has_the_recipe"
+    ]
+  ]
+}

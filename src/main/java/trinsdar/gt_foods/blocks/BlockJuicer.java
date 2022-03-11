@@ -17,6 +17,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.common.ToolType;
 import trinsdar.gt_foods.GTFoods;
@@ -24,6 +25,7 @@ import trinsdar.gt_foods.data.TileEntityTypes;
 import trinsdar.gt_foods.data.registration.GTFRegistration;
 import trinsdar.gt_foods.data.registration.IModelProvider;
 import trinsdar.gt_foods.data.registration.IRegistrationObject;
+import trinsdar.gt_foods.datagen.GTFBlockStateProvider;
 import trinsdar.gt_foods.datagen.GTFItemModelProvider;
 import trinsdar.gt_foods.tile.TileEntityJuicer;
 
@@ -79,5 +81,14 @@ public class BlockJuicer extends Block implements IRegistrationObject, IModelPro
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return TileEntityTypes.JUICER_TYPE.create();
+    }
+
+    @Override
+    public void onBlockModelBuild(Block block, GTFBlockStateProvider prov) {
+        prov.getVariantBuilder(block).forAllStates(s -> ConfiguredModel.builder()
+                .modelFile(prov.existing(GTFoods.MODID, "block/juicer"))
+                .uvLock(true)
+                .build()
+        );
     }
 }

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "gt_foods:raw_mincemeat_pizza"
+  },
+  "result": {
+    "item": "gt_foods:mincemeat_pizza"
+  },
+  "experience": 0.0,
+  "cookingtime": 600
+}

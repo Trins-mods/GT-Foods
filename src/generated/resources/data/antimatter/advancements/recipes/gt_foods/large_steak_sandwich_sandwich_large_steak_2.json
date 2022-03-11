@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "antimatter:large_steak_sandwich_sandwich_large_steak_2"
+    ]
+  },
+  "criteria": {
+    "has_baguette_slices": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:sliced_baguette"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "antimatter:large_steak_sandwich_sandwich_large_steak_2"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_baguette_slices",
+      "has_the_recipe"
+    ]
+  ]
+}

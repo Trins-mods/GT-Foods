@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "gt_foods:cookie_shaped_dough"
+  },
+  "result": {
+    "item": "minecraft:cookie"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

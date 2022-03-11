@@ -1,0 +1,6 @@
+{
+  "parent": "gt_foods:block/preset/simple",
+  "textures": {
+    "all": "gt_foods:block/tree/hazel_leaves_pre_fruiting"
+  }
+}

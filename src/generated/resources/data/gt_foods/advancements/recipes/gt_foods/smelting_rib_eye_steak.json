@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:smelting_rib_eye_steak"
+    ]
+  },
+  "criteria": {
+    "has_raw_rib_eye_steak": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:raw_rib_eye_steak"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:smelting_rib_eye_steak"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_rib_eye_steak",
+      "has_the_recipe"
+    ]
+  ]
+}

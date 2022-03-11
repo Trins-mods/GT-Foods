@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "antimatter:hamburger_hamburger"
+    ]
+  },
+  "criteria": {
+    "has_bun_slices": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:sliced_bun"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "antimatter:hamburger_hamburger"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_bun_slices",
+      "has_the_recipe"
+    ]
+  ]
+}

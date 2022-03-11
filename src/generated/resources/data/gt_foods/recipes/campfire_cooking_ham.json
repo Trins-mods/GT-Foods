@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "gt_foods:raw_ham"
+  },
+  "result": {
+    "item": "gt_foods:cooked_ham"
+  },
+  "experience": 0.0,
+  "cookingtime": 600
+}

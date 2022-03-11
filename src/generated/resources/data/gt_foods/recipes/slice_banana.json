@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slices",
+  "pattern": [
+    "KI"
+  ],
+  "key": {
+    "I": {
+      "item": "gt_foods:banana"
+    },
+    "K": {
+      "tag": "forge:tools/knife"
+    }
+  },
+  "result": {
+    "item": "gt_foods:banana_slice",
+    "count": 4
+  }
+}

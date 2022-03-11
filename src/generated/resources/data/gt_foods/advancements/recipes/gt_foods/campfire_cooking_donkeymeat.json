@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:campfire_cooking_donkeymeat"
+    ]
+  },
+  "criteria": {
+    "has_raw_donkeymeat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:raw_donkeymeat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:campfire_cooking_donkeymeat"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_donkeymeat",
+      "has_the_recipe"
+    ]
+  ]
+}

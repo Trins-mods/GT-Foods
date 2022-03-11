@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "gt_foods:block/tree/stripped_cinnamon_log_side",
+    "end": "gt_foods:block/tree/stripped_cinnamon_log_top"
+  }
+}

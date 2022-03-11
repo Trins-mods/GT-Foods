@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:juicer/hazelnuts_to_nut_oil"
+    ]
+  },
+  "criteria": {
+    "has_hazelnut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "gt_foods:hazelnut"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:juicer/hazelnuts_to_nut_oil"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_hazelnut",
+      "has_the_recipe"
+    ]
+  ]
+}

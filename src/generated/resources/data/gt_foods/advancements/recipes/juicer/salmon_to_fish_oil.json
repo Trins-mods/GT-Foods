@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "gt_foods:juicer/salmon_to_fish_oil"
+    ]
+  },
+  "criteria": {
+    "has_salmon": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:salmon"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "gt_foods:juicer/salmon_to_fish_oil"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_salmon",
+      "has_the_recipe"
+    ]
+  ]
+}

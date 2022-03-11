@@ -1,0 +1,172 @@
+{
+  "variants": {
+    "distance=1,flowering=0,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=2,flowering=0,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=3,flowering=0,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=4,flowering=0,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=5,flowering=0,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=6,flowering=0,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=7,flowering=0,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=1,flowering=1,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=2,flowering=1,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=3,flowering=1,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=4,flowering=1,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=5,flowering=1,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=6,flowering=1,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=7,flowering=1,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=1,flowering=2,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=2,flowering=2,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=3,flowering=2,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=4,flowering=2,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=5,flowering=2,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=6,flowering=2,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=7,flowering=2,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=1,flowering=3,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=2,flowering=3,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=3,flowering=3,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=4,flowering=3,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=5,flowering=3,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=6,flowering=3,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=7,flowering=3,persistent=false": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=1,flowering=0,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=2,flowering=0,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=3,flowering=0,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=4,flowering=0,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=5,flowering=0,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=6,flowering=0,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=7,flowering=0,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves"
+    },
+    "distance=1,flowering=1,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=2,flowering=1,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=3,flowering=1,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=4,flowering=1,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=5,flowering=1,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=6,flowering=1,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=7,flowering=1,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_flowering"
+    },
+    "distance=1,flowering=2,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=2,flowering=2,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=3,flowering=2,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=4,flowering=2,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=5,flowering=2,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=6,flowering=2,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=7,flowering=2,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_pre_fruiting"
+    },
+    "distance=1,flowering=3,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=2,flowering=3,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=3,flowering=3,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=4,flowering=3,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=5,flowering=3,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=6,flowering=3,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    },
+    "distance=7,flowering=3,persistent=true": {
+      "model": "gt_foods:block/hazel_leaves_fruiting"
+    }
+  }
+}

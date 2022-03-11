@@ -1,0 +1,28 @@
+{
+  "type": "gt_foods:juicing_serializer",
+  "ingredient": {
+    "item": "gt_foods:chili_pepper"
+  },
+  "itemOutputs": [
+    {
+      "item": "antimatter_shared:dust_small_chili",
+      "probability": 0.8
+    },
+    {
+      "item": "antimatter_shared:dust_small_chili",
+      "probability": 0.8
+    },
+    {
+      "item": "antimatter_shared:dust_small_chili",
+      "probability": 0.8
+    },
+    {
+      "item": "antimatter_shared:dust_small_chili",
+      "probability": 0.8
+    }
+  ],
+  "fluidOutput": {
+    "fluid": "antimatter_shared:liquid_chili_sauce",
+    "amount": 75
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "gt_foods:juicing_serializer",
+  "ingredient": {
+    "item": "minecraft:salmon"
+  },
+  "itemOutputs": [
+    {
+      "item": "antimatter_shared:dust_fishmeal",
+      "probability": 1.0
+    }
+  ],
+  "fluidOutput": {
+    "fluid": "antimatter_shared:liquid_fish_oil",
+    "amount": 2000
+  }
+}
