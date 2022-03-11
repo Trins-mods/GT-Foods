@@ -40,6 +40,6 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(GTFData.CLAY_JUICER), JuicerCategory.uid);
+        registration.addRecipeCatalyst(new ItemStack(GTFData.JUICER), JuicerCategory.uid);
     }
 }

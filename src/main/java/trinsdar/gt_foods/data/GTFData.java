@@ -83,7 +83,7 @@ public class GTFData {
     public static final Block COCONUT_SAPLING = new BlockSapling("coconut_sapling", new GTFTree(() -> TreeWorldGen.CONFIGURED_COCONUT_TREE_FEATURE));
     public static final Block COCONUT_HANGING_PLANT = new BlockHangingFruit("coconut_hanging_plant", () -> GTFData.COCONUT);
 
-    public static final Block JUICER = new BlockJuicer();
+    public static final BlockJuicer JUICER = new BlockJuicer();
 
     public static final ItemBase SLICER_BLADE_FRAME = new ItemBase("slicer_blade_frame");
     public static final ItemBase FLAT_SLICER_BLADES = new ItemBase("flat_slicer_blades");

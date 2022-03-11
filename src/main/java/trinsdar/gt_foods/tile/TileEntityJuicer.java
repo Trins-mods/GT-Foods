@@ -1,5 +1,6 @@
 package trinsdar.gt_foods.tile;
 
+import muramasa.antimatter.tile.TileEntityMachine;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
@@ -51,6 +52,12 @@ public class TileEntityJuicer extends TileEntity implements IInventory {
             }
         }
         return ActionResultType.PASS;
+    }
+
+    @Override
+    public void setRemoved() {
+        this.tank.invalidate();
+        super.setRemoved();
     }
 
     @SuppressWarnings("unchecked")

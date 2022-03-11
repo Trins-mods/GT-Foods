@@ -58,7 +58,7 @@ public class GTFoods {
         GTFRegistration.all(BlockCropBerry.class, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
         GTFRegistration.all(BlockSapling.class, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
         GTFRegistration.all(BlockLeaves.class, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
-        GTFRegistration.all(BlockJuicer.class, b -> RenderTypeLookup.setRenderLayer(b, RenderType.cutout()));
+        RenderTypeLookup.setRenderLayer(GTFData.JUICER, RenderType.cutout());
     }
 
     @OnlyIn(Dist.CLIENT)

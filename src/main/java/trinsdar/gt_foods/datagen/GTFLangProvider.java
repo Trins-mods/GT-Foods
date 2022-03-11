@@ -13,6 +13,7 @@ import trinsdar.gt_foods.blocks.BlockLeaves;
 import trinsdar.gt_foods.blocks.BlockLogStrippable;
 import trinsdar.gt_foods.blocks.BlockPlanks;
 import trinsdar.gt_foods.blocks.BlockSapling;
+import trinsdar.gt_foods.data.GTFData;
 import trinsdar.gt_foods.data.GTFMaterialTypes;
 import trinsdar.gt_foods.data.registration.GTFRegistration;
 import trinsdar.gt_foods.items.ItemBerry;
@@ -43,6 +44,7 @@ public class GTFLangProvider extends AntimatterLanguageProvider {
         GTFRegistration.all(BlockPlanks.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         GTFRegistration.all(BlockSapling.class).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
         GTFMaterialTypes.GROUND.all().forEach(m -> override(Data.DUST.get(m).getDescriptionId(), "Ground " + lowerUnderscoreToUpperSpaced(m.getId())));
+        add(GTFData.JUICER, lowerUnderscoreToUpperSpaced(GTFData.JUICER.getId()));
         add("jei.category.gt_foods.juicing", "Juicing");
     }
 

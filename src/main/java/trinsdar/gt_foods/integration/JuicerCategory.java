@@ -37,7 +37,7 @@ public class JuicerCategory implements IRecipeCategory<JuicingRecipe> {
         background = guiHelper.drawableBuilder(new ResourceLocation(GTFoods.MODID, "textures/gui/machine/juicer.png"), 3, 3, 170, 80).addPadding(0, 55, 0, 0).build();
         progressBar = guiHelper.drawableBuilder(new ResourceLocation(GTFoods.MODID, "textures/gui/machine/juicer.png"), 176, 0, 20, 18).buildAnimated(50, IDrawableAnimated.StartDirection.LEFT, false);
         //todo: fix to real juicer
-        this.icon = guiHelper.createDrawableIngredient(new ItemStack(GTFData.CLAY_JUICER));
+        this.icon = guiHelper.createDrawableIngredient(new ItemStack(GTFData.JUICER));
     }
     @Override
     public ResourceLocation getUid() {
